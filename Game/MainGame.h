@@ -4,14 +4,15 @@
 #include <dove/Quad.h>
 #include <dove/GLSL.h>
 #include <vector>
-#include <Dove/Window.h>
+#include <dove/Window.h>
+#include <dove/Camera.h>
 
 using namespace std;
 
 class MainGame
 {
 public:
-	MainGame();
+	MainGame(int windowWdith, int windowHeight);
 	~MainGame();
 
 	void run();
@@ -20,11 +21,13 @@ public:
 private:
 
 	
-	Dove::Window window;
+	
 
 	vector<Dove::Quad*> quads;
 
+	Dove::Window window;
 	Dove::GLSL colorProgram;
+	Dove::Camera camera;
 
 	enum class GameState { running, ended };
 

@@ -125,8 +125,8 @@
     <ClInclude Include="MainGame.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="shader\colorShade.frag" />
-    <None Include="shader\colorShade.vert" />
+    <None Include="shader\colorShade.sf" />
+    <None Include="shader\colorShade.sv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

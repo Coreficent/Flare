@@ -140,6 +140,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Dove.h" />
     <ClInclude Include="error.h" />
     <ClInclude Include="GLSL.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Dove.cpp" />
     <ClCompile Include="error.cpp" />
     <ClCompile Include="GLSL.cpp" />

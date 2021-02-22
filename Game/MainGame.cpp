@@ -9,7 +9,7 @@
 using namespace std;
 
 
-MainGame::MainGame() : window{}, quads{}, currentState{GameState::running}, timeTracker{0.0f}, fps{0}, frameTime{0}, budget{16}, windowWidth{1024}, windowHeight{700}
+MainGame::MainGame(int windowWdith, int windowHeight) : quads{}, window{}, camera{ windowWdith, windowHeight }, currentState{GameState::running}, timeTracker{0.0f}, fps{0}, frameTime{0}, budget{16}, windowWidth{ windowWdith },windowHeight{ windowHeight }
 {
 }
 
@@ -22,8 +22,8 @@ void MainGame::run()
 	this->initialize();
 
 
-	this->quads.push_back(new Dove::Quad{0.0f, 0.0f, 1.0f, 1.0f});
-	this->quads.push_back(new Dove::Quad{-1.0f, -1.0f, 1.0f, 1.0f});
+	this->quads.push_back(new Dove::Quad{0.0f, 0.0f, 100.0f, 100.0f});
+	this->quads.push_back(new Dove::Quad{250.0f, 250.0f, 250.0f, 250.0f});
 	this->quads[0]->initialize("texture/cake.png");
 	this->quads[1]->initialize("texture/cake.png");
 
@@ -43,7 +43,7 @@ void MainGame::initialize()
 
 void MainGame::initializeShader()
 {
-	this->colorProgram.compileShader("shader/colorShade.vert", "shader/colorShade.frag");
+	this->colorProgram.compileShader("shader/colorShade.sv", "shader/colorShade.sf");
 	this->colorProgram.addAttribute("vertexPosition");
 	this->colorProgram.addAttribute("vertexColor");
 	this->colorProgram.addAttribute("vertexUV");
@@ -58,13 +58,16 @@ void MainGame::gameLoop()
 		auto startTick = SDL_GetTicks();
 		this->timeTracker += 0.1f;
 		this->processInput();
+		this->camera.update();
 		this->render();
 		this->calculateFPS();
 		auto frameTicks = SDL_GetTicks() - startTick;
+
+		
+
 		if (this->budget > frameTicks)
 		{
-			//SDL_Delay(this->budget - frameTicks);
-			cout << this->budget-frameTicks << endl;
+			SDL_Delay(this->budget - frameTicks);
 		}
 	}
 }
@@ -104,6 +107,11 @@ void MainGame::render()
 	auto location = this->colorProgram.getUniform("timeTracker");
 	glUniform1f(location, this->timeTracker);
 
+	// camera location
+	auto locationCamera = this->colorProgram.getUniform("cameraPosition");
+	auto cameraMatrix = this->camera.getCameraMatrix();
+
+	glUniformMatrix4fv(locationCamera, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
 	for (auto& i: this->quads)
 	{
