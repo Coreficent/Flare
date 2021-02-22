@@ -1,7 +1,6 @@
-#include <iostream>
-
 #include "flare/Core.h"
 #include "gsl/gsl"
+#include <iostream>
 
 int main(int argc, char** argv)
 {
