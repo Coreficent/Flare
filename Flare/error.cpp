@@ -13,7 +13,7 @@ void fatalError(string errorString)
 	SDL_Quit();
 	exit(-1);
 }
-void debugPrint(float value)
+void debugPrint(string value)
 {
-	cout << value << endl;
+	cout << value;
 }

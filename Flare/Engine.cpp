@@ -35,6 +35,9 @@ void Engine::initialize()
 	// sdl initialization
 	SDL_Init(SDL_INIT_EVERYTHING);
 
+	// have two alternating buffers to render to smooth the rendering
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
 	// window initialization
 	this->window = SDL_CreateWindow(this->WINDOW_NAME, SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, this->windowWidth, this->windowHeight, SDL_WINDOW_OPENGL);
 
@@ -55,11 +58,15 @@ void Engine::initialize()
 		fatalError("glew failed");
 	}
 
-	// have two alternating buffers to render to smooth the rendering
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	debugPrint("opengl version");
+	printf("%s\n", reinterpret_cast<const char*>(glGetString(GL_VERSION)));
 
 	//background: color to clear to
 	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+
+
+	// vertical synch 0 off 1 on
+	SDL_GL_SetSwapInterval(1);
 
 	this->initializeShader();
 }
@@ -141,7 +148,7 @@ void Engine::render()
 void Engine::calculateFPS()
 {
 	static const auto SAMPLE_SIZE{50};
-	static array<float, SAMPLE_SIZE> frameTimes{0,0,0};
+	static array<Uint32, SAMPLE_SIZE> frameTimes{0,0,0};
 	static auto currentFrame{0};
 	static auto previousTicks = SDL_GetTicks();
 
@@ -161,6 +168,7 @@ void Engine::calculateFPS()
 
 	if (!(currentFrame % 60))
 	{
-		debugPrint(this->fps);
+		debugPrint("fps: ");
+		printf("%f\n", this->fps);
 	}
 }

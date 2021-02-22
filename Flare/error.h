@@ -4,4 +4,4 @@
 using namespace std;
 
 extern void fatalError(string errorString);
-extern void debugPrint(float value);
+extern void debugPrint(string value);
