@@ -6,10 +6,11 @@
 #include "MainGame.h"
 
 #include <dove/Dove.h>
+#include <Dove/ResourceManager.h>
 using namespace std;
 
 
-MainGame::MainGame(int windowWdith, int windowHeight) : quads{}, window{}, camera{windowWdith, windowHeight}, currentState{GameState::running}, currentTicks{0}, timeTracker{0.0f}, fps{0}, frameTime{0}, budget{16}, windowWidth{windowWdith},windowHeight{windowHeight}
+MainGame::MainGame(int windowWdith, int windowHeight) : window {}, camera{ windowWdith, windowHeight }, quad_batch_{}, currentState{ GameState::running }, currentTicks{ 0 }, timeTracker{ 0.0f }, fps{ 0 }, frameTime{ 0 }, budget{ 16 }, windowWidth{ windowWdith }, windowHeight{ windowHeight }
 {
 }
 
@@ -22,10 +23,6 @@ void MainGame::run()
 	this->initialize();
 
 
-	this->quads.push_back(new Dove::Quad{0.0f, 0.0f, 300.0f, 300.0f});
-	this->quads.push_back(new Dove::Quad{200.0f, 200.0f, 250.0f, 250.0f});
-	this->quads[0]->initialize("texture/cake.png");
-	this->quads[1]->initialize("texture/cake.png");
 
 	// running the game logic
 	this->gameLoop();
@@ -37,7 +34,7 @@ void MainGame::initialize()
 
 	this->window.createWindow("Dove", this->windowWidth, this->windowHeight, 0);
 
-
+	this->quad_batch_.initialize();
 	this->initializeShader();
 }
 
@@ -132,10 +129,21 @@ void MainGame::render()
 
 	glUniformMatrix4fv(locationCamera, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
-	for (auto& i: this->quads)
+	this->quad_batch_.begin();
+	glm::vec4 position{ 0.0f,0.0f,50.0f,50.0f };
+	glm::vec4 uv{ 0.0f,0.0f,1.0f,1.0f };
+	static auto texture = Dove::ResourceManager::getTexture("texture/cake.png");
+	Dove::Color color;
+	color.r = 255;
+	color.g = 255;
+	color.b = 255;
+	color.a = 255;
+	for(auto i{0};i<4000;++i)
 	{
-		i->draw();
+		this->quad_batch_.draw(position + glm::vec4{ 1.0f * i,0.0f,0.0f,0.0f }, uv, texture.id, 0.0f, color);
 	}
+	this->quad_batch_.end();
+	this->quad_batch_.render();
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 	this->colorProgram.unuse();
@@ -172,6 +180,6 @@ void MainGame::calculateFPS()
 	auto frameTicks = SDL_GetTicks() - this->currentTicks;
 	if (this->budget > frameTicks)
 	{
-		SDL_Delay(this->budget - frameTicks);
+		//SDL_Delay(this->budget - frameTicks);
 	}
 }

@@ -149,6 +149,7 @@
     <ClInclude Include="IOManager.h" />
     <ClInclude Include="picoPNG.h" />
     <ClInclude Include="Quad.h" />
+    <ClInclude Include="QuadBatch.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="TextureCache.h" />
     <ClInclude Include="Vertex.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="IOManager.cpp" />
     <ClCompile Include="picoPNG.cpp" />
     <ClCompile Include="Quad.cpp" />
+    <ClCompile Include="QuadBatch.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="TextureCache.cpp" />
     <ClCompile Include="Window.cpp" />

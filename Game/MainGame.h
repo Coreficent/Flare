@@ -6,7 +6,7 @@
 #include <vector>
 #include <dove/Window.h>
 #include <dove/Camera.h>
-
+#include <dove/QuadBatch.h>
 using namespace std;
 
 class MainGame
@@ -23,11 +23,11 @@ private:
 	
 	
 
-	vector<Dove::Quad*> quads;
 
 	Dove::Window window;
 	Dove::GLSL colorProgram;
 	Dove::Camera camera;
+	Dove::QuadBatch quad_batch_;
 
 	enum class GameState { running, ended };
 
