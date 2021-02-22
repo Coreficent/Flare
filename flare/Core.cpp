@@ -14,7 +14,7 @@ namespace Flare
 	{
 		dout << "Debug Mode" << endl;
 
-		this->window.initialize("Dove", windowWidth, windowHeight);
+		this->window.initialize("Flare", windowWidth, windowHeight);
 		this->audio.initialize();
 		this->renderer.initialize();
 
