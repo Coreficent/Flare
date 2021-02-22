@@ -3,7 +3,7 @@
 #include <array>
 #include "Dove.h"
 #include "ResourceManager.h"
-#include "display_object.h"
+#include "Display.h"
 #include "mathematics.h"
 
 namespace Dove
@@ -179,37 +179,24 @@ namespace Dove
 		color.g = 255;
 		color.b = 255;
 		color.a = 255;
-		Display_object display_object{ texture.id };
+		Display display_object{ texture.id };
 		display_object.set_width(100.0f);
 		display_object.set_height(100.0f);
 		display_object.scale_x(2.0f);
 		display_object.scale_y(4.0f);
 		display_object.scale(0.5f);
 		display_object.rotate(to_radian(90.0f));
-		for (auto i{0}; i < 1; ++i)
+		for (auto i{0}; i < 1500; ++i)
 		{
-			//this->quad_batch_.draw(position + glm::vec4{50.0f * i,0.0f,0.0f,0.0f}, uv, texture.id, 0.0f, color);
-			// TODO display object test
-
-			
 			display_object.set_x(100.0f*i);
-			
-
-			this->quad_batch_.glyphs.emplace_back();
-
-
-
-			display_object.render(this->quad_batch_.glyphs.back());
-
-			// TODO display object test //
+			display_object.render(this->quad_batch_.next_glyph());
 		}
 		
-		this->quad_batch_.draw(glm::vec4{ 0.0f,0.0f,512.0f,1024.0f }, uv, this->sprite_font->_texID, 0.0f, color);
-		
+	
 		this->quad_batch_.end();
 		this->quad_batch_.render();
 
-		this->draw_text();
+		//this->draw_text();
 
 		glBindTexture(GL_TEXTURE_2D, 0);
 		this->colorProgram.unuse();

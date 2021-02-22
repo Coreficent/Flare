@@ -287,11 +287,8 @@ namespace Dove
 				glm::vec4 destRect(tp, _glyphs[gi].size * scaling);
 				glm::vec4 uv = _glyphs[gi].uvRect;
 
-				//TODO find correct coordinates
-				//uv.y = -uv.y;
-				//uv.w = -uv.w;
-				//TODO fix sprite generation
-				batch.draw(destRect, uv, _texID, depth, tint);
+				//TODO implement render for text
+				//batch.draw(destRect, uv, _texID, depth, tint);
 				tp.x += _glyphs[gi].size.x * scaling.x;
 			}
 		}

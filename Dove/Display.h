@@ -6,11 +6,11 @@
 
 namespace Dove
 {
-	class Display_object
+	class Display
 	{
 	public:
-		explicit Display_object(GLuint texture_id);
-		~Display_object();
+		explicit Display(GLuint texture_id);
+		~Display();
 
 		float get_x() const;
 		float get_y() const;
@@ -32,6 +32,7 @@ namespace Dove
 		void render(Glyph& glyph) const;
 
 	private:
+
 
 		Matrix matrix{};
 

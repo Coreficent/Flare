@@ -43,6 +43,12 @@
     <Filter Include="Source Files\geometry">
       <UniqueIdentifier>{42e5ce9f-14c8-40ba-b5c4-55dc393afacf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\render">
+      <UniqueIdentifier>{63a42c88-c8cd-4569-bd2c-0505be98701b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\render">
+      <UniqueIdentifier>{925f0ec6-eb17-48b8-a117-497623f42927}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -105,9 +111,6 @@
     <ClInclude Include="Window.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
-    <ClInclude Include="Display_object.h">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
     <ClInclude Include="Matrix.h">
       <Filter>Header Files\geometry</Filter>
     </ClInclude>
@@ -116,6 +119,12 @@
     </ClInclude>
     <ClInclude Include="mathematics.h">
       <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="Glyph.h">
+      <Filter>Header Files\render</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -170,9 +179,6 @@
     <ClCompile Include="Window.cpp">
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
-    <ClCompile Include="Display_object.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
     <ClCompile Include="Matrix.cpp">
       <Filter>Source Files\geometry</Filter>
     </ClCompile>
@@ -181,6 +187,12 @@
     </ClCompile>
     <ClCompile Include="mathematics.cpp">
       <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Display.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="Glyph.cpp">
+      <Filter>Source Files\render</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

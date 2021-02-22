@@ -15,6 +15,15 @@ namespace Dove
 	{
 	}
 
+	Glyph& QuadBatch::next_glyph()
+	{
+		if(this->glyph_id>=this->glyphs.size())
+		{
+			this->glyphs.push_back(Glyph{});
+		}
+		return this->glyphs[glyph_id++];
+	}
+
 	void QuadBatch::initialize()
 	{
 		this->createVertexArray();
@@ -24,30 +33,26 @@ namespace Dove
 	{
 		this->sortType = sortType;
 		this->renderBatches.clear();
-		this->glyphs.clear();
-		this->glyphs_pointers.clear();
+		this->glyph_id = 0;
+		//this->glyphs.clear();
+		//this->glyphs_pointers.clear();
 	}
 
 	void QuadBatch::end()
 	{
 		//TODO temp delete comment
-		
-		
-		this->glyphs_pointers.resize(this->glyphs.size());
-		for (unsigned __int64 i{0}, l{(this->glyphs.size())}; i < l; ++i)
+
+
+		this->glyphs_pointers.resize(this->glyph_id);
+		for (unsigned __int64 i{0}, l{ this->glyph_id }; i < l; ++i)
 		{
 			this->glyphs_pointers[i] = &this->glyphs[i];
 		}
 		//this->sortGlyphs();
-		
+
 		this->createRenderBatches();
 	}
 
-	void QuadBatch::draw(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color)
-	{
-		//this->glyphs.emplace_back(bound, uv, texture, depth, color, 5*0.7853f);
-		this->glyphs.emplace_back(bound, uv, texture, depth, color, 0.0*0.7853f);
-	}
 
 	void QuadBatch::render()
 	{
@@ -60,6 +65,7 @@ namespace Dove
 
 		glBindVertexArray(0);
 	}
+
 
 	void QuadBatch::createVertexArray()
 	{
