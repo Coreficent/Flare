@@ -41,7 +41,8 @@ namespace Dove
 
 	Audio::~Audio()
 	{
-		Mix_Quit();
+		//used sdl quit else where
+		//Mix_Quit();
 	}
 
 	void Audio::initialize()

@@ -157,7 +157,7 @@
     <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IOManager.h" />
-    <ClInclude Include="Dove.h" />
+    <ClInclude Include="Core.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Media.h" />
     <ClInclude Include="Music.h" />
@@ -165,7 +165,6 @@
     <ClInclude Include="Point.h" />
     <ClInclude Include="Quad.h" />
     <ClInclude Include="QuadBatch.h" />
-    <ClInclude Include="Render.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="SpriteFont.h" />
@@ -187,7 +186,7 @@
     <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IOManager.cpp" />
-    <ClCompile Include="Dove.cpp" />
+    <ClCompile Include="Core.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Media.cpp" />
     <ClCompile Include="Music.cpp" />
@@ -195,7 +194,6 @@
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Quad.cpp" />
     <ClCompile Include="QuadBatch.cpp" />
-    <ClCompile Include="Render.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="mathematics.cpp" />
     <ClCompile Include="Sound.cpp" />

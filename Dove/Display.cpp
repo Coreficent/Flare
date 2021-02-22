@@ -3,7 +3,7 @@
 #include <glm/gtc/matrix_transform.inl>
 #include "Point.h"
 #include "mathematics.h"
-#include "Dove.h"
+#include "Core.h"
 
 namespace Dove
 {
@@ -108,7 +108,7 @@ namespace Dove
 
 	void Display::render() const
 	{
-		auto& glyph = Dove::core->quad_batch_.next_glyph();
+		auto& glyph = Core::core->quad_batch_.next_glyph();
 
 		auto top_left = this->locate_vertex(0.0f, 0.0f);
 		auto top_right = this->locate_vertex(this->width, 0.0f);

@@ -2,10 +2,11 @@
 #include <array>
 #include <sdl/SDL_stdinc.h>
 #include <sdl/SDL.h>
-#include "error.h"
+#include "debug.h"
 
 namespace Dove
 {
+	using namespace std;
 	FrameManager::FrameManager()
 	{
 	}
@@ -29,7 +30,7 @@ namespace Dove
 			average_cost += i;
 		}
 		auto fps = 1000.0f / ((average_cost + 0.0001f) / this->samples.size());
-		auto remaining_budget = this->budget - current_cost;
+		auto remaining_budget = static_cast<int>(this->budget - current_cost);
 
 		if (this->budget > current_cost)
 		{
@@ -38,8 +39,7 @@ namespace Dove
 
 		if (!(this->current_frame % 60))
 		{
-			debug_print("fps: ");
-			printf("%f :: budget %d\n", fps, remaining_budget);
+			dout << "fps: " << fps << " budget "<< remaining_budget<< endl;
 		}
 	}
 }

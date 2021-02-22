@@ -1,9 +1,9 @@
 #include <iostream>
-#include <dove/Dove.h>
+#include <dove/Core.h>
 
 int main(int argc, char** argv)
 {
-	Dove::Dove dove{1600,900};
+	Dove::Core dove{1600,900};
 	dove.run();
 	
 	return 0;

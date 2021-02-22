@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
-#include <array>
-#include "Dove.h"
+#include "Core.h"
 #include "ResourceManager.h"
 #include "Display.h"
 #include "mathematics.h"
@@ -11,46 +10,39 @@ namespace Dove
 {
 	using namespace std;
 
-	Dove* Dove::core{nullptr};
+	Core* Core::core{nullptr};
 
-	Dove::Dove(int windowWdith, int windowHeight)
+	Core::Core(int windowWdith, int windowHeight)
 		:  camera{windowWdith, windowHeight},  quad_batch_{}, input_manager{}, frame_manager{}, text_batch{}, currentState{GameState::running}, currentTicks{0}, windowWidth{windowWdith}, windowHeight{windowHeight}
 	{
 		dout << "<Debug Mode>" << endl;
 
-		
-
-		///////////////////
-
-		/////
-		//this->window.borderless = true;
-		//this->window.full_screen = true;
 		this->window.initialize("Dove", this->windowWidth, this->windowHeight);
-		this->render.initialize();
+		
 		this->audio.initialize();
 		this->sprite_font.initialize("font/disney.ttf", 64);
 
+		this->colorProgram.compileShader("shader/colorShade.sv", "shader/colorShade.sf");
+		this->colorProgram.addAttribute("vertexPosition");
+		this->colorProgram.addAttribute("vertexColor");
+		this->colorProgram.addAttribute("vertexUV");
+		this->colorProgram.linkShader();
+
 		this->quad_batch_.initialize();
-		this->initializeShader();
+		
 
 		this->text_batch.initialize();
 
 
-		//
-		//this->camera.initialize();
-		//
-		// initialize audio
-		
-
 		core = this;
 	}
 
-	Dove::~Dove()
+	Core::~Core()
 	{
 		
 	}
 
-	void Dove::run()
+	void Core::run()
 	{
 		
 		Musice music = this->audio.load_music("music/x.ogg");
@@ -62,31 +54,24 @@ namespace Dove
 
 
 
-	void Dove::initializeShader()
-	{
-		this->colorProgram.compileShader("shader/colorShade.sv", "shader/colorShade.sf");
-		this->colorProgram.addAttribute("vertexPosition");
-		this->colorProgram.addAttribute("vertexColor");
-		this->colorProgram.addAttribute("vertexUV");
-		this->colorProgram.linkShader();
-	}
-
 	// main loop
-	void Dove::gameLoop()
+	void Core::gameLoop()
 	{
 		while (this->currentState != GameState::ended)
 		{
 			this->frame_manager.calculate_fps();
-			//this->timeTracker += 0.1f;
+		
 			this->processInput();
 			this->camera.update();
 
 			this->renderLoop();
+			
 		}
+		
 	}
 
 	// process input
-	void Dove::processInput()
+	void Core::processInput()
 	{
 		SDL_Event event{};
 
@@ -157,12 +142,12 @@ namespace Dove
 	}
 
 	// render
-	void Dove::renderLoop()
+	void Core::renderLoop()
 	{
 		glClearDepth(1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		this->colorProgram.use();
+		Core::core->colorProgram.use();
 		glActiveTexture(GL_TEXTURE0);
 
 		auto textureLocation = this->colorProgram.getUniform("cakeSampler");
@@ -179,8 +164,8 @@ namespace Dove
 		glUniformMatrix4fv(locationCamera, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
 		this->quad_batch_.begin();
-		glm::vec4 position{0.0f,0.0f,50.0f,50.0f};
-		glm::vec4 uv{0.0f,0.0f,1.0f,1.0f};
+		glm::vec4 position{ 0.0f,0.0f,50.0f,50.0f };
+		glm::vec4 uv{ 0.0f,0.0f,1.0f,1.0f };
 		static auto texture = ResourceManager::getTexture("texture/cake.png");
 		Color color;
 		color.r = 255;
@@ -193,7 +178,7 @@ namespace Dove
 		display_object.set_height(100.0f);
 		display_object.scale(2.0f);
 		display_object.rotate(to_radian(0.0f));
-		for (auto i{0}; i < 1500; ++i)
+		for (auto i{ 0 }; i < 1500; ++i)
 		{
 			display_object.set_x(100.0f * i);
 			display_object.render();
@@ -204,7 +189,7 @@ namespace Dove
 		//////////
 
 
-		this->sprite_font.draw(this->quad_batch_, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{125,0,125,125});
+		this->sprite_font.draw(this->quad_batch_, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
 
 		// ouput sprite sheet
 		Glyph& glyph = this->quad_batch_.next_glyph();

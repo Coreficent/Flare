@@ -150,9 +150,6 @@
     <ClInclude Include="Stage.h">
       <Filter>Header Files\display</Filter>
     </ClInclude>
-    <ClInclude Include="Dove.h">
-      <Filter>Header Files\core</Filter>
-    </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Header Files\window</Filter>
     </ClInclude>
@@ -165,9 +162,6 @@
     <ClInclude Include="debug.h">
       <Filter>Header Files\utility</Filter>
     </ClInclude>
-    <ClInclude Include="Render.h">
-      <Filter>Header Files\render</Filter>
-    </ClInclude>
     <ClInclude Include="Music.h">
       <Filter>Header Files\audio</Filter>
     </ClInclude>
@@ -176,6 +170,9 @@
     </ClInclude>
     <ClInclude Include="Audio.h">
       <Filter>Header Files\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>Header Files\core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -239,9 +236,6 @@
     <ClCompile Include="Stage.cpp">
       <Filter>Source Files\display</Filter>
     </ClCompile>
-    <ClCompile Include="Dove.cpp">
-      <Filter>Source Files\core</Filter>
-    </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>Source Files\window</Filter>
     </ClCompile>
@@ -251,9 +245,6 @@
     <ClCompile Include="Glyph.cpp">
       <Filter>Source Files\graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Render.cpp">
-      <Filter>Source Files\render</Filter>
-    </ClCompile>
     <ClCompile Include="Music.cpp">
       <Filter>Source Files\audio</Filter>
     </ClCompile>
@@ -262,6 +253,9 @@
     </ClCompile>
     <ClCompile Include="Audio.cpp">
       <Filter>Source Files\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>Source Files\core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

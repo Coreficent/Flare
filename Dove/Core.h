@@ -10,30 +10,32 @@
 #include "QuadBatch.h"
 #include "Stage.h"
 #include "Media.h"
-#include "Render.h"
+
 
 namespace Dove
 {
 	using namespace std;
 
-	class Dove
+	class Core
 	{
 	public:
-		Dove(int windowWdith, int windowHeight);
-		~Dove();
+		Core(int windowWdith, int windowHeight);
+		~Core();
 
 		void run();
 
+		friend class Render;
+
 		friend class Display;
+		
 
 		Stage stage{};
 
 	private:
-		static Dove* core;
+		static Core* core;
 
 		Media media{};
 		Window window{};
-		Render render{};
 		Audio audio{};
 		SpriteFont sprite_font{};
 
@@ -58,7 +60,7 @@ namespace Dove
 		int windowWidth;
 		int windowHeight;
 
-		void initializeShader();
+	
 		void gameLoop();
 		void processInput();
 		void renderLoop();
