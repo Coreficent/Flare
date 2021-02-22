@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-namespace Dove
+namespace Flare
 {
 	class IOManager
 	{

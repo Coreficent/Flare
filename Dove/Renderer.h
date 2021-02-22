@@ -9,7 +9,7 @@
 #include "Vial.h"
 #include <unordered_map>
 
-namespace Dove
+namespace Flare
 {
 	enum class GlyphSortType
 	{

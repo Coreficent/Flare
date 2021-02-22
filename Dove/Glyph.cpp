@@ -1,7 +1,7 @@
 #include "Glyph.h"
 
 
-namespace Dove
+namespace Flare
 {
 	Glyph::Glyph()
 	{

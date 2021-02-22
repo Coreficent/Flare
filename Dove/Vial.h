@@ -2,7 +2,7 @@
 #include <vector>
 
 
-namespace Dove
+namespace Flare
 {
 	template <typename T>
 	class Vial

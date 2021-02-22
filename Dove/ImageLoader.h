@@ -2,7 +2,7 @@
 #include "GLTexture.h"
 #include <string>
 
-namespace Dove
+namespace Flare
 {
 	class ImageLoader
 	{

@@ -3,7 +3,7 @@
 #include "IOManager.h"
 #include "error.h"
 
-namespace Dove
+namespace Flare
 {
 	using namespace std;
 

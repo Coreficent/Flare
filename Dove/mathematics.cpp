@@ -1,6 +1,6 @@
 #include "mathematics.h"
 
-namespace Dove
+namespace Flare
 {
 	float to_radian(float value)
 	{

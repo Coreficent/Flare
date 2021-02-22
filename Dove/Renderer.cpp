@@ -8,7 +8,7 @@
 
 using namespace std;
 
-namespace Dove
+namespace Flare
 {
 	Renderer::Renderer(int width, int height):
 		camera{width,height}, sortType{GlyphSortType::NONE}, vertexBufferID{0}, vertexArrayID{0}

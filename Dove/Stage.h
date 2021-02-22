@@ -2,7 +2,7 @@
 #include "Container.h"
 
 class Stage :
-	public Dove::Container
+	public Flare::Container
 {
 public:
 	Stage();

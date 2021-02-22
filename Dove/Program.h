@@ -3,7 +3,7 @@
 #include "Audio.h"
 #include "Renderer.h"
 
-namespace Dove
+namespace Flare
 {
 	class Program
 	{

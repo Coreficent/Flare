@@ -3,7 +3,7 @@
 #include <string>
 #include <map>
 
-namespace Dove
+namespace Flare
 {
 	using namespace std;
 

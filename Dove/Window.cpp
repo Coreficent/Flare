@@ -3,7 +3,7 @@
 #include "debug.h"
 
 
-namespace Dove
+namespace Flare
 {
 	using namespace std;
 

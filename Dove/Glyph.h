@@ -1,7 +1,7 @@
 #pragma once
 #include "Vertex.h"
 
-namespace Dove
+namespace Flare
 {
 	class Glyph
 	{

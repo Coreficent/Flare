@@ -2,7 +2,7 @@
 #include <sdl/SDL.h>
 #include <string>
 
-namespace Dove
+namespace Flare
 {
 	enum WindowFlags
 	{

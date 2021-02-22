@@ -1,7 +1,7 @@
 #include "TextureCache.h"
 #include "ImageLoader.h"
 
-namespace Dove
+namespace Flare
 {
 	using namespace std;
 

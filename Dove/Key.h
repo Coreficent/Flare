@@ -2,7 +2,7 @@
 #include <sdl/SDL.h>
 #include "InputManager.h"
 
-namespace Dove
+namespace Flare
 {
 	using namespace std;
 

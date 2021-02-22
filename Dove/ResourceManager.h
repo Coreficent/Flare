@@ -1,7 +1,7 @@
 #pragma once
 #include "TextureCache.h"
 
-namespace Dove
+namespace Flare
 {
 	class ResourceManager
 	{

@@ -2,7 +2,7 @@
 #include <string>
 #include <sdl/SDL_stdinc.h>
 
-namespace Dove
+namespace Flare
 {
 	struct AudioStruct
 	{

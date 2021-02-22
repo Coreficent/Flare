@@ -5,7 +5,7 @@
 #include <fstream>
 
 
-namespace Dove
+namespace Flare
 {
 	using namespace std;
 

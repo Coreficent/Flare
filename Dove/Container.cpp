@@ -1,6 +1,6 @@
 #include "Container.h"
 
-namespace Dove
+namespace Flare
 {
 	Container::Container()
 		: Display{}

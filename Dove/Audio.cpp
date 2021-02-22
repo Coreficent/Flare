@@ -1,7 +1,7 @@
 #include "Audio.h"
 #include <sdl/SDL_mixer.h>
 
-namespace Dove
+namespace Flare
 {
 	void SoundEffect::play(int loop)
 	{

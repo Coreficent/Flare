@@ -5,7 +5,7 @@
 #include <string>
 
 
-namespace Dove
+namespace Flare
 {
 	class Quad
 	{

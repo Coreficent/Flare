@@ -5,7 +5,7 @@
 
 #include "GlTexture.h"
 
-namespace Dove
+namespace Flare
 {
 	class TextureCache
 	{

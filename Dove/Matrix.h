@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Dove
+namespace Flare
 {
 	class Matrix
 	{

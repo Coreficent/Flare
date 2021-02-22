@@ -1,7 +1,7 @@
 #pragma once
 #include <cmath>
 
-namespace Dove
+namespace Flare
 {
 	const float PI = 3.14159265f;
 	const float NaN = NAN;

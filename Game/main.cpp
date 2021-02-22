@@ -5,7 +5,7 @@
 
 int main(int argc, char** argv)
 {
-	Dove::Core core{1600,900};
+	Flare::Core core{1600,900};
 	core.run();
 
 	return 0;

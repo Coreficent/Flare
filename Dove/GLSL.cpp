@@ -5,7 +5,7 @@
 
 using namespace std;
 
-namespace Dove
+namespace Flare
 {
 	GLSL::GLSL() : programID{0}, vertexShaderID{0}, fragmentShaderID{0}, attributeCount{0}
 	{

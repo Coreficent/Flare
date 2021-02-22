@@ -4,7 +4,7 @@
 #include "Point.h"
 #include "Renderer.h"
 
-namespace Dove
+namespace Flare
 {
 	class Display
 	{

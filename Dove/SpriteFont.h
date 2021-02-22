@@ -31,7 +31,7 @@ Modified By: Benjamin Arnold
 
 #include "Vertex.h"
 
-namespace Dove
+namespace Flare
 {
 	class Renderer;
 

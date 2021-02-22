@@ -1,6 +1,6 @@
 #include "Point.h"
 
-namespace Dove
+namespace Flare
 {
 	Point::Point()
 	{

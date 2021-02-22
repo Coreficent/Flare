@@ -12,7 +12,7 @@
 #include "Game.h"
 
 
-namespace Dove
+namespace Flare
 {
 	using namespace std;
 

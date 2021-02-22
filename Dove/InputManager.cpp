@@ -1,6 +1,6 @@
 #include "InputManager.h"
 
-namespace Dove
+namespace Flare
 {
 	InputManager::InputManager(): keymap{}, mouse_position{}
 	{

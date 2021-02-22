@@ -2,7 +2,7 @@
 #include "debug.h"
 #include "Audio.h"
 
-namespace Dove
+namespace Flare
 {
 	Program::Program()
 	{

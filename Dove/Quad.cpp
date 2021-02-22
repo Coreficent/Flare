@@ -4,7 +4,7 @@
 #include "Vertex.h"
 #include "ResourceManager.h"
 
-namespace Dove
+namespace Flare
 {
 	using namespace std;
 

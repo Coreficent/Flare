@@ -3,7 +3,7 @@
 #include <gl/glew.h>
 
 
-namespace Dove
+namespace Flare
 {
 	class GLSL
 	{

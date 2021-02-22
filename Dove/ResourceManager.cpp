@@ -1,7 +1,7 @@
 #include "ResourceManager.h"
 using namespace std;
 
-namespace Dove
+namespace Flare
 {
 	TextureCache ResourceManager::textureCache;
 

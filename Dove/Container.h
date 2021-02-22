@@ -2,7 +2,7 @@
 #include "Display.h"
 #include <memory>
 
-namespace Dove
+namespace Flare
 {
 	class Container : public Display
 	{

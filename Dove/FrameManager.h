@@ -2,7 +2,7 @@
 #include <sdl/SDL_stdinc.h>
 #include <array>
 
-namespace Dove
+namespace Flare
 {
 	class FrameManager
 	{

@@ -4,7 +4,7 @@
 
 #include "glm/detail/type_vec2.hpp"
 
-namespace Dove
+namespace Flare
 {
 	class InputManager
 	{

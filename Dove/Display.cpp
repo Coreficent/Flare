@@ -5,7 +5,7 @@
 #include "mathematics.h"
 #include "Core.h"
 
-namespace Dove
+namespace Flare
 {
 	Display::Display()
 	{

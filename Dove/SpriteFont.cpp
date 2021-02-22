@@ -19,7 +19,7 @@ int closestPow2(int i)
 
 #define MAX_TEXTURE_RES 4096
 
-namespace Dove
+namespace Flare
 {
 	SpriteFont::SpriteFont()
 	{

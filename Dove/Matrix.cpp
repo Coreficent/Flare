@@ -1,6 +1,6 @@
 #include "Matrix.h"
 
-namespace Dove
+namespace Flare
 {
 	Matrix::Matrix()
 	{
