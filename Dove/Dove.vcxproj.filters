@@ -201,6 +201,9 @@
     <ClInclude Include="Vial.h">
       <Filter>Header Files\container</Filter>
     </ClInclude>
+    <ClInclude Include="Batch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="error.cpp">
@@ -292,6 +295,9 @@
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Batch.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

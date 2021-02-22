@@ -9,10 +9,6 @@ using namespace std;
 
 namespace Dove
 {
-	RenderBatch::RenderBatch()
-	{
-	}
-
 	Renderer::Renderer(int width, int height):
 		camera{width,height}, sortType{GlyphSortType::NONE}, vertexBufferID{0}, vertexArrayID{0}
 	{
@@ -21,16 +17,10 @@ namespace Dove
 	Renderer::~Renderer()
 	{
 	}
-	/*
+
 	Glyph& Renderer::next_glyph()
 	{
 		return this->glyphs_vial.next();
-	}
-	*/
-	Glyph& Renderer::next_glyph(GLuint texture)
-	{
-		++this->glyph_count;
-		return this->render_buffer[texture].next();
 	}
 
 	void Renderer::initialize()
@@ -44,63 +34,55 @@ namespace Dove
 
 
 		this->sprite_font.initialize("font/disney.ttf", 64);
+
+		//TODO test
+		this->batch = new Batch{};
+		this->batch->texture = this->sprite_font._texID;
 	}
 
 	void Renderer::begin(GlyphSortType sortType)
 	{
-		this->glyph_count = 0;
 		this->sortType = sortType;
-		//this->renderBatches.clear();
-		this->render_baches.refill();
-
-		for(auto& vial : this->render_buffer)
-		{
-			vial.second.refill();
-		}
-		//this->glyphs_vial.refill();
+		this->renderBatches.clear();
+		this->glyphs_vial.refill();
 		//this->glyphs.clear();
 		//this->glyphs_pointers.clear();
+		//TODO test
+		this->batch->begin();
 	}
 
 	void Renderer::end()
 	{
 		//TODO temp delete comment
 
-		/*
+
 		this->glyphs_pointers.resize(this->glyphs_vial.size());
 		for (unsigned int i{0}, l{ this->glyphs_vial.size() }; i < l; ++i)
 		{
 			this->glyphs_pointers[i] = &this->glyphs_vial[i];
 		}
-		*/
 		//this->sortGlyphs();
 
 		this->createRenderBatches();
+		//TODO test
+		this->batch->end();
 	}
 
 
-	void Renderer::render_batch()
+	void Renderer::render()
 	{
 		glBindVertexArray(this->vertexArrayID);
-
-
-		for(unsigned int i = 0, l = this->render_baches.size();i<l;++i)
-		{
-			glBindTexture(GL_TEXTURE_2D, this->render_baches[i].texture);
-			glDrawArrays(GL_TRIANGLES, this->render_baches[i].offset, this->render_baches[i].vertexCount);
-		}
-
-		/*
 		for (auto& i : this->renderBatches)
 		{
 			glBindTexture(GL_TEXTURE_2D, i.texture);
 			glDrawArrays(GL_TRIANGLES, i.offset, i.vertexCount);
 		}
-		*/
+		//TODO test
+		this->batch->render();
 		glBindVertexArray(0);
 	}
 
-	void Renderer::render()
+	void Renderer::renderNow()
 	{
 		this->camera.update();
 
@@ -148,8 +130,7 @@ namespace Dove
 		this->sprite_font.draw(*this, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{125,0,125,125});
 
 		// ouput sprite sheet
-		//Glyph& glyph = this->next_glyph();
-		Glyph& glyph = this->next_glyph(this->sprite_font._texID);
+		Glyph& glyph = this->next_glyph();
 
 		glyph.top_left.color = color;
 		glyph.top_left.setPosition(0.0f, 0.0f);
@@ -169,9 +150,17 @@ namespace Dove
 
 		glyph.texture = this->sprite_font._texID;
 
+
+
+		//TODO test
+		this->batch->draw(glyph.top_left);
+		this->batch->draw(glyph.top_right);
+		this->batch->draw(glyph.down_left);
+
+
 		////////// out put sprite sheet
 		this->end();
-		this->render_batch();
+		this->render();
 
 		//this->draw_text();
 
@@ -210,7 +199,6 @@ namespace Dove
 	void Renderer::sortGlyphs()
 	{
 		//TODO use sort?
-		/*
 		switch (this->sortType)
 		{
 		case GlyphSortType::NONE:
@@ -228,17 +216,16 @@ namespace Dove
 			stable_sort(this->glyphs_pointers.begin(), this->glyphs_pointers.end(), this->compareTexture);
 			break;
 		}
-		*/
 	}
 
 	void Renderer::createRenderBatches()
 	{
-		/*
 		if (this->glyphs_pointers.empty())
 		{
 			return;
 		}
 		vector<Vertex> vertices{};
+		
 		vertices.resize(this->glyphs_pointers.size() * 6);
 
 		// TODO int size?
@@ -252,70 +239,36 @@ namespace Dove
 			{
 				if (this->glyphs_pointers[glyph]->texture != previous_texture)
 				{
-					//this->renderBatches.emplace_back(offset, 6, this->glyphs_pointers[glyph]->texture);
-					auto& next = this->render_baches.next();
-					next.offset = offset;
-					next.vertexCount = 6;
-					next.texture = this->glyphs_pointers[glyph]->texture;
+					this->renderBatches.emplace_back(offset, 6, this->glyphs_pointers[glyph]->texture);
 				}
 				else
 				{
-					//this->renderBatches.back().vertexCount += 6;
-					this->render_baches[this->render_baches.size() - 1].vertexCount += 6;
+					this->renderBatches.back().vertexCount += 6;
 				}
+				
 				vertices[vertex++] = this->glyphs_pointers[glyph]->down_left;
 				vertices[vertex++] = this->glyphs_pointers[glyph]->top_left;
 				vertices[vertex++] = this->glyphs_pointers[glyph]->top_right;
 				vertices[vertex++] = this->glyphs_pointers[glyph]->top_right;
 				vertices[vertex++] = this->glyphs_pointers[glyph]->down_right;
 				vertices[vertex++] = this->glyphs_pointers[glyph]->down_left;
+				
 				offset += 6;
 				previous_texture = this->glyphs_pointers[glyph]->texture;
 			}
 			while (++glyph < length);
 		}
-		*/
-
 		
-		auto offset_i{ 0 }, vertex{0};
-		vector<Vertex> buffered_vertices{};
-		buffered_vertices.resize(glyph_count * 6);
-		/*
-		
-		
-		for(auto& pair : this->render_buffer)
-		{
-			GLuint vertex_total{ 6 * pair.second.size() };
-			auto& next = this->render_baches.next();
-			next.offset = offset_i;
-			next.vertexCount = vertex_total;
-			next.texture = pair.first;
-			
-			for(unsigned int i{0},l{ pair.second.size()};i<l;++i)
-			{
-				auto& glyph_current = pair.second[i];
-				buffered_vertices[vertex++] = glyph_current.down_left;
-				buffered_vertices[vertex++] = glyph_current.top_left;
-				buffered_vertices[vertex++] = glyph_current.top_right;
-				buffered_vertices[vertex++] = glyph_current.top_right;
-				buffered_vertices[vertex++] = glyph_current.down_right;
-				buffered_vertices[vertex++] = glyph_current.down_left;
-			}
-			
-			offset_i += vertex_total;
-		}
-		*/
 		glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferID);
-		glBufferData(GL_ARRAY_BUFFER, buffered_vertices.size() * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
-		glBufferSubData(GL_ARRAY_BUFFER, 0, buffered_vertices.size() * sizeof(Vertex), buffered_vertices.data());
+		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.size() * sizeof(Vertex), vertices.data());
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
 	void Renderer::draw(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color)
 	{
 		//this->glyphs.emplace_back(bound, uv, texture, depth, color, 5*0.7853f);
-		//Glyph& glyph = this->next_glyph();
-		Glyph& glyph = this->next_glyph(texture);
+		Glyph& glyph = this->next_glyph();
 		/**/
 		glyph.down_left.color = color;
 		glyph.down_left.setPosition(bound.x, bound.y + bound.w);

@@ -26,7 +26,7 @@ namespace Dove
 		}
 
 		this->fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
-		if (!this->vertexShaderID)
+		if (!this->fragmentShaderID)
 		{
 			output_error("fragment shader failed");
 		}
