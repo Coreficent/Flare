@@ -59,6 +59,7 @@ namespace Dove
 	class SpriteFont
 	{
 	public:
+		SpriteFont();
 		SpriteFont(const char* font, int size, char cs, char ce);
 
 		SpriteFont(const char* font, int size) :
@@ -66,6 +67,7 @@ namespace Dove
 		{
 		}
 
+		void initialize(const char* font, int size);
 		/// Destroys the font resources
 		void dispose();
 

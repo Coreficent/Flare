@@ -27,7 +27,7 @@ namespace Dove
 			cerr << "cannot load wave" << file_path << endl;
 		}
 
-		Audio audio = {};
+		AudioStruct audio = {};
 		audio.position = wav_start;
 		audio.length = wave_length;
 
@@ -56,7 +56,7 @@ namespace Dove
 
 	void AudioManager::audio_callback(void* user_data, Uint8* stream, int stream_length)
 	{
-		auto audio = static_cast<Audio*>(user_data);
+		auto audio = static_cast<AudioStruct*>(user_data);
 
 		if (!audio->length)
 		{

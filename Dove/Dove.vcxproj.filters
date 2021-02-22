@@ -67,6 +67,18 @@
     <Filter Include="Header Files\media">
       <UniqueIdentifier>{5394d912-3d7f-429f-b612-f24923484d5a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\graphics">
+      <UniqueIdentifier>{a55ce34a-a04e-4e42-89ff-ccd5cd73c70f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\graphics">
+      <UniqueIdentifier>{fc3743a2-7a05-4c19-9e54-dc8edd551773}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\audio">
+      <UniqueIdentifier>{707ca542-2dd6-4cd2-9738-b4e6e632d6f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\audio">
+      <UniqueIdentifier>{1e914441-13b8-4ac4-90b1-dcafd0b7cf09}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -77,9 +89,6 @@
     </ClInclude>
     <ClInclude Include="FrameManager.h">
       <Filter>Header Files\frame</Filter>
-    </ClInclude>
-    <ClInclude Include="AudioEngine.h">
-      <Filter>Header Files\unsorted</Filter>
     </ClInclude>
     <ClInclude Include="AudioManager.h">
       <Filter>Header Files\unsorted</Filter>
@@ -135,9 +144,6 @@
     <ClInclude Include="Display.h">
       <Filter>Header Files\display</Filter>
     </ClInclude>
-    <ClInclude Include="Glyph.h">
-      <Filter>Header Files\render</Filter>
-    </ClInclude>
     <ClInclude Include="Container.h">
       <Filter>Header Files\display</Filter>
     </ClInclude>
@@ -147,14 +153,29 @@
     <ClInclude Include="Dove.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
-    <ClInclude Include="Header.h">
-      <Filter>Header Files\utility</Filter>
-    </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Header Files\window</Filter>
     </ClInclude>
     <ClInclude Include="Media.h">
       <Filter>Header Files\media</Filter>
+    </ClInclude>
+    <ClInclude Include="Glyph.h">
+      <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="debug.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Render.h">
+      <Filter>Header Files\render</Filter>
+    </ClInclude>
+    <ClInclude Include="Music.h">
+      <Filter>Header Files\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Header Files\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Header Files\audio</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -163,9 +184,6 @@
     </ClCompile>
     <ClCompile Include="FrameManager.cpp">
       <Filter>Source Files\frame</Filter>
-    </ClCompile>
-    <ClCompile Include="AudioEngine.cpp">
-      <Filter>Source Files\unsorted</Filter>
     </ClCompile>
     <ClCompile Include="AudioManager.cpp">
       <Filter>Source Files\unsorted</Filter>
@@ -215,9 +233,6 @@
     <ClCompile Include="Display.cpp">
       <Filter>Source Files\display</Filter>
     </ClCompile>
-    <ClCompile Include="Glyph.cpp">
-      <Filter>Source Files\render</Filter>
-    </ClCompile>
     <ClCompile Include="Container.cpp">
       <Filter>Source Files\display</Filter>
     </ClCompile>
@@ -232,6 +247,21 @@
     </ClCompile>
     <ClCompile Include="Media.cpp">
       <Filter>Source Files\media</Filter>
+    </ClCompile>
+    <ClCompile Include="Glyph.cpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Render.cpp">
+      <Filter>Source Files\render</Filter>
+    </ClCompile>
+    <ClCompile Include="Music.cpp">
+      <Filter>Source Files\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Source Files\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Source Files\audio</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

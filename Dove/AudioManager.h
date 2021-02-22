@@ -4,7 +4,7 @@
 
 namespace Dove
 {
-	struct Audio
+	struct AudioStruct
 	{
 		Uint8* position;
 		Uint32 length;

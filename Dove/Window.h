@@ -17,7 +17,7 @@ namespace Dove
 		Window();
 		~Window();
 
-		void open_window(std::string name, int width, int height);
+		void initialize(std::string name, int width, int height);
 		void swap_window() const;
 
 		bool full_screen{false};

@@ -143,7 +143,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AudioEngine.h" />
+    <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Container.h" />
@@ -152,7 +152,7 @@
     <ClInclude Include="FrameManager.h" />
     <ClInclude Include="GLSL.h" />
     <ClInclude Include="GLTexture.h" />
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="debug.h" />
     <ClInclude Include="mathematics.h" />
     <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="InputManager.h" />
@@ -160,11 +160,14 @@
     <ClInclude Include="Dove.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Media.h" />
+    <ClInclude Include="Music.h" />
     <ClInclude Include="picoPNG.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Quad.h" />
     <ClInclude Include="QuadBatch.h" />
+    <ClInclude Include="Render.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="SpriteFont.h" />
     <ClInclude Include="Glyph.h" />
     <ClInclude Include="Stage.h" />
@@ -173,7 +176,7 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AudioEngine.cpp" />
+    <ClCompile Include="Audio.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Container.cpp" />
@@ -187,12 +190,15 @@
     <ClCompile Include="Dove.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Media.cpp" />
+    <ClCompile Include="Music.cpp" />
     <ClCompile Include="picoPNG.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Quad.cpp" />
     <ClCompile Include="QuadBatch.cpp" />
+    <ClCompile Include="Render.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="mathematics.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="SpriteFont.cpp" />
     <ClCompile Include="Glyph.cpp" />
     <ClCompile Include="Stage.cpp" />

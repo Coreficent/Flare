@@ -5,7 +5,7 @@
 #include "ResourceManager.h"
 #include "Display.h"
 #include "mathematics.h"
-#include "Header.h"
+#include "debug.h"
 
 namespace Dove
 {
@@ -13,7 +13,8 @@ namespace Dove
 
 	Dove* Dove::core{nullptr};
 
-	Dove::Dove(int windowWdith, int windowHeight) : sprite_font{nullptr},  camera{windowWdith, windowHeight}, camera_interface{windowWdith, windowHeight}, quad_batch_{}, input_manager{}, frame_manager{}, text_batch{}, audio_engine{}, currentState{GameState::running}, currentTicks{0}, windowWidth{windowWdith}, windowHeight{windowHeight}
+	Dove::Dove(int windowWdith, int windowHeight)
+		:  camera{windowWdith, windowHeight},  quad_batch_{}, input_manager{}, frame_manager{}, text_batch{}, currentState{GameState::running}, currentTicks{0}, windowWidth{windowWdith}, windowHeight{windowHeight}
 	{
 		dout << "<Debug Mode>" << endl;
 
@@ -24,43 +25,42 @@ namespace Dove
 		/////
 		//this->window.borderless = true;
 		//this->window.full_screen = true;
-		this->window.open_window("Dove", this->windowWidth, this->windowHeight);
+		this->window.initialize("Dove", this->windowWidth, this->windowHeight);
+		this->render.initialize();
+		this->audio.initialize();
+		this->sprite_font.initialize("font/disney.ttf", 64);
 
 		this->quad_batch_.initialize();
 		this->initializeShader();
 
 		this->text_batch.initialize();
 
-		this->sprite_font = new SpriteFont{"font/disney.ttf",64};
+
 		//
 		//this->camera.initialize();
 		//
 		// initialize audio
-		this->audio_engine.initialize();
+		
 
 		core = this;
 	}
 
 	Dove::~Dove()
 	{
-		delete this->sprite_font;
 		
 	}
 
 	void Dove::run()
 	{
-		this->initialize();
-
-		Music music = this->audio_engine.load_music("music/x.ogg");
+		
+		Musice music = this->audio.load_music("music/x.ogg");
 		music.play(-1);
 
 		// running the game logic
 		this->gameLoop();
 	}
 
-	void Dove::initialize()
-	{
-	}
+
 
 	void Dove::initializeShader()
 	{
@@ -80,8 +80,8 @@ namespace Dove
 			//this->timeTracker += 0.1f;
 			this->processInput();
 			this->camera.update();
-			this->camera_interface.update();
-			this->render();
+
+			this->renderLoop();
 		}
 	}
 
@@ -109,13 +109,13 @@ namespace Dove
 			case SDL_MOUSEBUTTONDOWN:
 				this->input_manager.pressKey(event.button.button);
 				//TODO use member var
-				SoundEffect sound = this->audio_engine.load_sound_effect("sound/shotgun.wav");
+				SoundEffect sound = this->audio.load_sound_effect("sound/shotgun.wav");
 				sound.play();
 
 				break;
 			case SDL_MOUSEBUTTONUP:
 				this->input_manager.releaseKey(event.button.button);
-				SoundEffect sound2 = this->audio_engine.load_sound_effect("sound/cg1.wav");
+				SoundEffect sound2 = this->audio.load_sound_effect("sound/cg1.wav");
 				sound2.play();
 				break;
 			}
@@ -157,7 +157,7 @@ namespace Dove
 	}
 
 	// render
-	void Dove::render()
+	void Dove::renderLoop()
 	{
 		glClearDepth(1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -204,7 +204,7 @@ namespace Dove
 		//////////
 
 
-		this->sprite_font->draw(this->quad_batch_, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{125,0,125,125});
+		this->sprite_font.draw(this->quad_batch_, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{125,0,125,125});
 
 		// ouput sprite sheet
 		Glyph& glyph = this->quad_batch_.next_glyph();
@@ -225,7 +225,7 @@ namespace Dove
 		glyph.down_right.setPosition(500.0f, 500.0f);
 		glyph.down_right.setUV(1.0f, 1.0f);
 
-		glyph.texture = this->sprite_font->_texID;
+		glyph.texture = this->sprite_font._texID;
 
 		////////// out put sprite sheet
 		this->quad_batch_.end();

@@ -1,4 +1,4 @@
-#include "AudioEngine.h"
+#include "Audio.h"
 #include <sdl/SDL_mixer.h>
 
 namespace Dove
@@ -14,37 +14,37 @@ namespace Dove
 		}
 	}
 
-	void Music::play(int loop)
+	void Musice::play(int loop)
 	{
 		Mix_PlayMusic(this->mix_music, loop);
 	}
 
-	void Music::stop()
+	void Musice::stop()
 	{
 		Mix_PauseMusic();
 	}
 
-	void Music::resume()
+	void Musice::resume()
 	{
 		Mix_ResumeMusic();
 	}
 
-	void Music::pause()
+	void Musice::pause()
 	{
 		Mix_PauseMusic();
 	}
 
-	AudioEngine::AudioEngine()
+	Audio::Audio()
 	{
 	}
 
 
-	AudioEngine::~AudioEngine()
+	Audio::~Audio()
 	{
-		this->finalize();
+		Mix_Quit();
 	}
 
-	void AudioEngine::initialize()
+	void Audio::initialize()
 	{
 		if (Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG) == -1)
 		{
@@ -58,12 +58,9 @@ namespace Dove
 		}
 	}
 
-	void AudioEngine::finalize()
-	{
-		Mix_Quit();
-	}
+	
 
-	SoundEffect AudioEngine::load_sound_effect(const std::string& file_path)
+	SoundEffect Audio::load_sound_effect(const std::string& file_path)
 	{
 		auto it = this->effect_map.find(file_path);
 
@@ -86,11 +83,11 @@ namespace Dove
 		return effect;
 	}
 
-	Music AudioEngine::load_music(const std::string& file_path)
+	Musice Audio::load_music(const std::string& file_path)
 	{
 		auto it = this->music_map.find(file_path);
 
-		Music effect;
+		Musice effect;
 
 		if (it == this->music_map.end())
 		{

@@ -21,8 +21,19 @@ int closestPow2(int i)
 
 namespace Dove
 {
+	SpriteFont::SpriteFont()
+	{
+	}
+
 	SpriteFont::SpriteFont(const char* font, int size, char cs, char ce)
 	{
+		this->initialize(font,size);
+	}
+
+	void SpriteFont::initialize(const char* font, int size)
+	{
+		char cs = FIRST_PRINTABLE_CHAR;
+		char ce = LAST_PRINTABLE_CHAR;
 		// Initialize SDL_ttf
 		if (!TTF_WasInit())
 		{
@@ -104,7 +115,7 @@ namespace Dove
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, bestWidth, bestHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
 
 		// Now draw all the glyphs
-		SDL_Color fg = {255, 255, 255, 255};
+		SDL_Color fg = { 255, 255, 255, 255 };
 		int ly = padding;
 		for (int ri = 0; ri < bestRows; ri++)
 		{

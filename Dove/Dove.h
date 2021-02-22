@@ -6,10 +6,11 @@
 #include "Camera.h"
 #include "InputManager.h"
 #include "FrameManager.h"
-#include "AudioEngine.h"
+#include "Audio.h"
 #include "QuadBatch.h"
 #include "Stage.h"
 #include "Media.h"
+#include "Render.h"
 
 namespace Dove
 {
@@ -30,19 +31,19 @@ namespace Dove
 	private:
 		static Dove* core;
 
-		SpriteFont* sprite_font;
-
 		Media media{};
 		Window window{};
+		Render render{};
+		Audio audio{};
+		SpriteFont sprite_font{};
 
 		GLSL colorProgram;
 		Camera camera;
-		Camera camera_interface;
 		QuadBatch quad_batch_;
 		InputManager input_manager;
 		FrameManager frame_manager;
 		QuadBatch text_batch;
-		AudioEngine audio_engine;
+		
 
 		enum class GameState
 		{
@@ -57,10 +58,9 @@ namespace Dove
 		int windowWidth;
 		int windowHeight;
 
-		void initialize();
 		void initializeShader();
 		void gameLoop();
 		void processInput();
-		void render();
+		void renderLoop();
 	};
 }

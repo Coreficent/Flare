@@ -10,16 +10,16 @@ namespace Dove
 	class SoundEffect
 	{
 	public:
-		friend class AudioEngine;
+		friend class Audio;
 		void play(int loop = 0);
 	private:
 		Mix_Chunk* mix_chunk;
 	};
 
-	class Music
+	class Musice
 	{
 	public:
-		friend class AudioEngine;
+		friend class Audio;
 		void play(int loop = -1);
 		void stop();
 		void resume();
@@ -29,17 +29,17 @@ namespace Dove
 	};
 
 
-	class AudioEngine
+	class Audio
 	{
 	public:
-		AudioEngine();
-		~AudioEngine();
+		Audio();
+		~Audio();
 
 		void initialize();
-		void finalize();
+
 
 		SoundEffect load_sound_effect(const std::string& file_path);
-		Music load_music(const std::string& file_path);
+		Musice load_music(const std::string& file_path);
 	private:
 		map<string, Mix_Chunk*> effect_map;
 		map<string, Mix_Music*> music_map;
