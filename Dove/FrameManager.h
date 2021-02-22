@@ -17,6 +17,6 @@ namespace Dove
 		Uint32 current_frame{0};
 		Uint32 previous_ticks{0};
 
-		unsigned int budget{0};
+		unsigned int budget{16};
 	};
 }

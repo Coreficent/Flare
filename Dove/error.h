@@ -1,8 +1,7 @@
 #pragma once
-#include <string>
 
 namespace Dove
 {
-	extern void fatalError(std::string errorString);
-	extern void debugPrint(std::string value);
+	extern void output_error(std::string errorString);
+	extern void debug_print(std::string value);
 }

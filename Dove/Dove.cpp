@@ -4,11 +4,12 @@
 #include "Dove.h"
 #include "ResourceManager.h"
 
-namespace Dove {
+namespace Dove
+{
 	using namespace std;
 
 
-	Dove::Dove(int windowWdith, int windowHeight) :sprite_font{ nullptr }, window{}, camera{ windowWdith, windowHeight }, camera_interface{ windowWdith, windowHeight }, quad_batch_{}, input_manager{}, frame_manager{}, text_batch{}, audio_engine{}, currentState{ GameState::running }, currentTicks{ 0 }, windowWidth{ windowWdith }, windowHeight{ windowHeight }
+	Dove::Dove(int windowWdith, int windowHeight) : sprite_font{nullptr}, window{}, camera{windowWdith, windowHeight}, camera_interface{windowWdith, windowHeight}, quad_batch_{}, input_manager{}, frame_manager{}, text_batch{}, audio_engine{}, currentState{GameState::running}, currentTicks{0}, windowWidth{windowWdith}, windowHeight{windowHeight}
 	{
 	}
 
@@ -42,14 +43,12 @@ namespace Dove {
 
 		this->text_batch.initialize();
 
-		this->sprite_font = new SpriteFont{ "font/disney.ttf",64 };
+		this->sprite_font = new SpriteFont{"font/disney.ttf",64};
 		//
 		//this->camera.initialize();
 		//
 		// initialize audio
 		this->audio_engine.initialize();
-
-
 	}
 
 	void Dove::initializeShader()
@@ -66,7 +65,6 @@ namespace Dove {
 	{
 		while (this->currentState != GameState::ended)
 		{
-
 			this->frame_manager.calculate_fps();
 			//this->timeTracker += 0.1f;
 			this->processInput();
@@ -110,30 +108,34 @@ namespace Dove {
 				SoundEffect sound2 = this->audio_engine.load_sound_effect("sound/cg1.wav");
 				sound2.play();
 				break;
-
 			}
 		}
 
 
-
-		if (this->input_manager.keyPressed(SDLK_w)) {
+		if (this->input_manager.keyPressed(SDLK_w))
+		{
 			this->camera.setPosition(this->camera.getPosition() + glm::vec2(0.0, -5.0));
 		}
-		if (this->input_manager.keyPressed(SDLK_s)) {
+		if (this->input_manager.keyPressed(SDLK_s))
+		{
 			this->camera.setPosition(this->camera.getPosition() + glm::vec2(0.0, 5.0));
 		}
 
-		if (this->input_manager.keyPressed(SDLK_a)) {
+		if (this->input_manager.keyPressed(SDLK_a))
+		{
 			this->camera.setPosition(this->camera.getPosition() + glm::vec2(5.0, 0.0));
 		}
-		if (this->input_manager.keyPressed(SDLK_d)) {
+		if (this->input_manager.keyPressed(SDLK_d))
+		{
 			this->camera.setPosition(this->camera.getPosition() + glm::vec2(-5.0, 0.0));
 		}
 
-		if (this->input_manager.keyPressed(SDLK_q)) {
+		if (this->input_manager.keyPressed(SDLK_q))
+		{
 			this->camera.setScale(this->camera.getScale() + 0.1f);
 		}
-		if (this->input_manager.keyPressed(SDLK_e)) {
+		if (this->input_manager.keyPressed(SDLK_e))
+		{
 			this->camera.setScale(this->camera.getScale() - 0.1f);
 		}
 		if (this->input_manager.keyPressed(SDL_BUTTON_LEFT))
@@ -167,17 +169,17 @@ namespace Dove {
 		glUniformMatrix4fv(locationCamera, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
 		this->quad_batch_.begin();
-		glm::vec4 position{ 0.0f,0.0f,50.0f,50.0f };
-		glm::vec4 uv{ 0.0f,0.0f,1.0f,1.0f };
+		glm::vec4 position{0.0f,0.0f,50.0f,50.0f};
+		glm::vec4 uv{0.0f,0.0f,1.0f,1.0f};
 		static auto texture = ResourceManager::getTexture("texture/cake.png");
 		Color color;
 		color.r = 255;
 		color.g = 255;
 		color.b = 255;
 		color.a = 255;
-		for (auto i{ 0 }; i < 1000; ++i)
+		for (auto i{0}; i < 1000; ++i)
 		{
-			this->quad_batch_.draw(position + glm::vec4{ 50.0f * i,0.0f,0.0f,0.0f }, uv, texture.id, 0.0f, color);
+			this->quad_batch_.draw(position + glm::vec4{50.0f * i,0.0f,0.0f,0.0f}, uv, texture.id, 0.0f, color);
 		}
 		this->quad_batch_.end();
 		this->quad_batch_.render();
@@ -212,11 +214,9 @@ namespace Dove {
 		this->text_batch.begin();
 		//TODO make it dynamic to prevent overflow
 		sprintf_s(buffer, "test text : %d", rand_test);
-		this->sprite_font->draw(this->text_batch, buffer, glm::vec2(0.0f, 100.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 }, Justification::MIDDLE);
+		this->sprite_font->draw(this->text_batch, buffer, glm::vec2(0.0f, 100.0f), glm::vec2(1.0f), 0.0f, Color{125,0,125,125}, Justification::MIDDLE);
 
 		this->text_batch.end();
 		this->text_batch.render();
-
-
 	}
 }

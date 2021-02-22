@@ -11,7 +11,7 @@ namespace Dove
 		ifstream file(filePath, ios::binary);
 		if (file.fail())
 		{
-			fatalError("failed to load binary");
+			output_error("failed to load binary");
 			return false;
 		}
 

@@ -51,22 +51,22 @@ namespace Dove
 
 		if (!this->window)
 		{
-			fatalError("sdl window failed");
+			output_error("sdl window failed");
 		}
 
 		auto glContext = SDL_GL_CreateContext(this->window);
 		if (!glContext)
 		{
-			fatalError("sdl context failed");
+			output_error("sdl context failed");
 		}
 
 		auto glError = glewInit();
 		if (glError != GLEW_OK)
 		{
-			fatalError("glew failed");
+			output_error("glew failed");
 		}
 
-		debugPrint("opengl version");
+		debug_print("opengl version");
 		printf("%s\n", reinterpret_cast<const char*>(glGetString(GL_VERSION)));
 
 		//background: color to clear to

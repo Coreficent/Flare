@@ -17,13 +17,13 @@ namespace Dove
 
 		if (!IOManager::readFileToBuffer(filePath, input))
 		{
-			fatalError("failed to load to buffer");
+			output_error("failed to load to buffer");
 		}
 
 		auto errorCode = decodePNG(output, width, height, &(input[0]), input.size(), true);
 		if (errorCode != 0)
 		{
-			fatalError("decode failed");
+			output_error("decode failed");
 		}
 
 		glGenTextures(1, &texture.id);

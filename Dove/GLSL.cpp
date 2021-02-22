@@ -22,13 +22,13 @@ namespace Dove
 		this->vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
 		if (!this->vertexShaderID)
 		{
-			fatalError("vertex shader failed");
+			output_error("vertex shader failed");
 		}
 
 		this->fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
 		if (!this->vertexShaderID)
 		{
-			fatalError("fragment shader failed");
+			output_error("fragment shader failed");
 		}
 
 		this->compileSource(vertexShaderPath, this->vertexShaderID);
@@ -50,7 +50,7 @@ namespace Dove
 			glDeleteShader(this->vertexShaderID);
 			glDeleteShader(this->fragmentShaderID);
 
-			fatalError("link failed");
+			output_error("link failed");
 
 			return;
 		}
@@ -67,7 +67,7 @@ namespace Dove
 		ifstream vertexFile(sourcePath);
 		if (vertexFile.fail())
 		{
-			fatalError("failed to open vertex shader");
+			output_error("failed to open vertex shader");
 		}
 
 		string fileContent{""};
@@ -90,7 +90,7 @@ namespace Dove
 		if (success == GL_FALSE)
 		{
 			glDeleteShader(shaderID);
-			fatalError("shader" + sourcePath + "compilation failed");
+			output_error("shader" + sourcePath + "compilation failed");
 		}
 	}
 
@@ -122,7 +122,7 @@ namespace Dove
 		auto location = glGetUniformLocation(this->programID, uniformName.c_str());
 		if (location == GL_INVALID_INDEX)
 		{
-			fatalError("uniform name not found");
+			output_error("uniform name not found");
 		}
 
 		return location;
