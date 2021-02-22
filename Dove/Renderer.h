@@ -7,11 +7,11 @@
 #include "Camera.h"
 #include "SpriteFont.h"
 #include "Vial.h"
-#include "Batch.h"
-#include <memory>
 
 namespace Dove
 {
+	
+
 	enum class GlyphSortType
 	{
 		NONE,
@@ -43,13 +43,17 @@ namespace Dove
 
 		void initialize();
 		void begin(GlyphSortType sortType = GlyphSortType::TEXTURE);
+		void end();
 		void draw(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color);
 		void render();
-		void end();
+
 		void renderNow();
 
 		//TODO temp public //
 		Camera camera;
+		Vial<Vertex> vtx{};
+		GLuint t_id{0};
+
 
 	private:
 
@@ -65,14 +69,16 @@ namespace Dove
 		std::vector<Glyph*> glyphs_pointers;
 
 		std::vector<RenderBatch> renderBatches;
-
+		
 		Vial<Glyph> glyphs_vial{};
 
 		//std::vector<Glyph> glyphs;
 
-		Batch* batch{};
+
 		GLSL colorProgram;
 
+
+		
 
 		SpriteFont sprite_font{};
 

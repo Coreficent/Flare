@@ -16,20 +16,9 @@ namespace Dove
 		{
 		}
 
-
 		T& operator[](unsigned int i)
 		{
 			return this->container[i];
-		}
-
-		const T* begin() const
-		{
-			return &this->container.front();
-		}
-
-		const T* end() const
-		{
-			return &this->container.front() + this->index;
 		}
 
 		T& next()
@@ -41,18 +30,7 @@ namespace Dove
 			return this->container[this->index++];
 		}
 
-		void push_back(T data)
-		{
-			if (this->index == this->container.size())
-			{
-				this->container.push_back(data);
-			}else{
-				this->container[this->index] = data;
-			}
-			++this->index;
-		}
-
-		const T* data() const noexcept
+		const T* data() const
 		{
 			return this->container.data();
 		}

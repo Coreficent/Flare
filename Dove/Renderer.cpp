@@ -4,7 +4,6 @@
 #include "ResourceManager.h"
 #include "Display.h"
 #include "mathematics.h"
-#include <iostream>
 #include "debug.h"
 
 using namespace std;
@@ -36,10 +35,6 @@ namespace Dove
 
 
 		this->sprite_font.initialize("font/disney.ttf", 64);
-
-		//TODO test
-		this->batch = new Batch{};
-		this->batch->texture = this->sprite_font._texID;
 	}
 
 	void Renderer::begin(GlyphSortType sortType)
@@ -47,10 +42,9 @@ namespace Dove
 		this->sortType = sortType;
 		this->renderBatches.clear();
 		this->glyphs_vial.refill();
+		this->vtx.refill();
 		//this->glyphs.clear();
 		//this->glyphs_pointers.clear();
-		//TODO test
-		this->batch->begin();
 	}
 
 	void Renderer::end()
@@ -66,29 +60,18 @@ namespace Dove
 		//this->sortGlyphs();
 
 		this->createRenderBatches();
-		//TODO test
-		this->batch->end();
 	}
 
 
 	void Renderer::render()
 	{
 		glBindVertexArray(this->vertexArrayID);
-		/*
 		for (auto& i : this->renderBatches)
 		{
 			glBindTexture(GL_TEXTURE_2D, i.texture);
 			glDrawArrays(GL_TRIANGLES, i.offset, i.vertexCount);
-
 		}
-		*/
-		auto& i = this->renderBatches.back();
-		glBindTexture(GL_TEXTURE_2D, i.texture);
-		glDrawArrays(GL_TRIANGLES, i.offset, i.vertexCount);
-		
 
-		//TODO test
-		this->batch->render();
 		glBindVertexArray(0);
 	}
 
@@ -122,26 +105,27 @@ namespace Dove
 		color.a = 255;
 		Display display_object{};
 		display_object.set_texture_id(texture.id);
+		this->t_id = texture.id;
 		display_object.set_width(100.0f);
 		display_object.set_height(100.0f);
 		display_object.scale(2.0f);
 		display_object.rotate(to_radian(0.0f));
-		for (auto i{0}; i < 3; ++i)
+		for (auto i{0}; i < 1500; ++i)
 		{
 			display_object.set_x(100.0f * i);
 			display_object.render();
 		}
+
+		
 		///////// stage renderer
 		//this->stage.render();
 
 		//////////
 
-		//TODO temp
-		//this->sprite_font.draw(*this, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{125,0,125,125});
+
+		this->sprite_font.draw(*this, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{125,0,125,125});
 
 		// ouput sprite sheet
-		//TODO temp
-		/*
 		Glyph& glyph = this->next_glyph();
 
 		glyph.top_left.color = color;
@@ -161,31 +145,6 @@ namespace Dove
 		glyph.down_right.setUV(1.0f, 1.0f);
 
 		glyph.texture = this->sprite_font._texID;
-		*/
-
-
-		//TODO test
-
-		auto t = Glyph{};
-		t.top_left.position.x = -500.f;
-		t.top_left.position.y = -0.f;
-		t.down_left.position.x = -500.f;
-		t.down_left.position.y = -500.f;
-		t.top_right.position.x = 0.f;
-		t.top_right.position.y = 0.f;
-
-		t.top_left.color.a = 255;
-		t.down_left.color.a = 255;
-		t.top_right.color.a = 255;
-
-		for (auto i{ 0 }; i < 3000; ++i)
-		{
-			this->batch->draw(t.top_left);
-			this->batch->draw(t.top_right);
-			this->batch->draw(t.down_left);
-
-		}
-
 
 		////////// out put sprite sheet
 		this->end();
@@ -254,8 +213,7 @@ namespace Dove
 			return;
 		}
 		vector<Vertex> vertices{};
-		
-		vertices.resize((this->glyphs_pointers.size() + this->batch->vertices.size())* 6);
+		vertices.resize(this->glyphs_pointers.size() * 6);
 
 		// TODO int size?
 
@@ -274,27 +232,23 @@ namespace Dove
 				{
 					this->renderBatches.back().vertexCount += 6;
 				}
-				
 				vertices[vertex++] = this->glyphs_pointers[glyph]->down_left;
 				vertices[vertex++] = this->glyphs_pointers[glyph]->top_left;
 				vertices[vertex++] = this->glyphs_pointers[glyph]->top_right;
 				vertices[vertex++] = this->glyphs_pointers[glyph]->top_right;
 				vertices[vertex++] = this->glyphs_pointers[glyph]->down_right;
 				vertices[vertex++] = this->glyphs_pointers[glyph]->down_left;
-				
 				offset += 6;
 				previous_texture = this->glyphs_pointers[glyph]->texture;
 			}
 			while (++glyph < length);
 		}
-		//dout << offset << endl;
-		this->renderBatches.emplace_back(offset, this->batch->vertices.size() * sizeof(Vertex), this->sprite_font._texID);
+		//dout << this->vtx.size() << endl;
+		this->renderBatches.emplace_back(offset, this->vtx.size() * sizeof(Vertex), this->t_id);
 		glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferID);
-
-		glBufferData(GL_ARRAY_BUFFER, ((vertices.size()+this->batch->vertices.size())) * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, (vertices.size() + this->vtx.size()) * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.size() * sizeof(Vertex), vertices.data());
-		glBufferSubData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), this->batch->vertices.size() * sizeof(Vertex), this->batch->vertices.data());
-		//glBufferSubData(GL_ARRAY_BUFFER, (vertices.size()-1) * sizeof(Vertex), this->batch->vertices.size() * sizeof(Vertex), this->batch->vertices.data());
+		glBufferSubData(GL_ARRAY_BUFFER,vertices.size() * sizeof(Vertex),this->vtx.size() * sizeof(Vertex), this->vtx.data());
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 

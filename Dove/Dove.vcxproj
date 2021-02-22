@@ -145,7 +145,6 @@
   <ItemGroup>
     <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioManager.h" />
-    <ClInclude Include="Batch.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Container.h" />
     <ClInclude Include="Display.h" />
@@ -182,7 +181,6 @@
   <ItemGroup>
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="AudioManager.cpp" />
-    <ClCompile Include="Batch.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Container.cpp" />
     <ClCompile Include="Display.cpp" />
