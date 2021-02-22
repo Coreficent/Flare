@@ -115,7 +115,7 @@ namespace Dove
 		display_cake.scale(2.0f);
 		display_cake.rotate(to_radian(0.0f));
 		auto addre = &this->hash[this->t_id];
-		for (auto i{0}; i < 100'000; ++i)
+		for (auto i{0}; i < 200'000; ++i)
 		{
 			display_cake.set_x(100.0f * i);
 			display_cake.dest = addre;
