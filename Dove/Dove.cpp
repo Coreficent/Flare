@@ -67,7 +67,7 @@ namespace Dove {
 		while (this->currentState != GameState::ended)
 		{
 
-			this->frame_manager.calculateFPS();
+			this->frame_manager.calculate_fps();
 			//this->timeTracker += 0.1f;
 			this->processInput();
 			this->camera.update();
@@ -175,7 +175,7 @@ namespace Dove {
 		color.g = 255;
 		color.b = 255;
 		color.a = 255;
-		for (auto i{ 0 }; i < 100; ++i)
+		for (auto i{ 0 }; i < 1000; ++i)
 		{
 			this->quad_batch_.draw(position + glm::vec4{ 50.0f * i,0.0f,0.0f,0.0f }, uv, texture.id, 0.0f, color);
 		}

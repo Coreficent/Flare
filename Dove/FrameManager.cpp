@@ -6,7 +6,7 @@
 
 namespace Dove
 {
-	FrameManager::FrameManager() : currentTicks{0}, budget{16}
+	FrameManager::FrameManager()
 	{
 	}
 
@@ -15,39 +15,31 @@ namespace Dove
 	{
 	}
 
-	void FrameManager::calculateFPS()
+	void FrameManager::calculate_fps()
 	{
-		static const auto SAMPLE_SIZE{50};
-		static std::array<Uint32, SAMPLE_SIZE> frameTimes{0,0,0};
-		static auto currentFrame{0};
-		static auto previousTicks = SDL_GetTicks();
+		this->current_ticks = SDL_GetTicks();
+		auto current_cost = this->current_ticks - previous_ticks;
+		previous_ticks = this->current_ticks;
 
-		this->currentTicks = SDL_GetTicks();
-		auto frameTime = this->currentTicks - previousTicks;
-		previousTicks = this->currentTicks;
+		samples[current_frame++ % samples.size()] = current_cost;
 
-		frameTimes[currentFrame++ % SAMPLE_SIZE] = frameTime;
-
-		auto averageFrameTime{0.0f};
-		for (auto& i : frameTimes)
+		Uint32 average_cost{0};
+		for (auto& i : samples)
 		{
-			averageFrameTime += i;
+			average_cost += i;
 		}
-		averageFrameTime = averageFrameTime / SAMPLE_SIZE + 0.0001f;
-		auto fps = 1000.0f / averageFrameTime;
+		auto fps = 1000.0f / ((average_cost + 0.0001f) / samples.size());
 
 
-	
-
-		if (this->budget > frameTime)
+		if (this->budget > current_cost)
 		{
-			//SDL_Delay(this->budget - frameTicks - 1);
+			SDL_Delay(this->budget - current_cost - 1);
 		}
 
-		if (!(currentFrame % 60))
+		if (!(current_frame % 60))
 		{
-			Dove::debugPrint("fps: ");
-			printf("%f :: budget %d\n", fps, (this->budget - frameTime - 1));
+			debugPrint("fps: ");
+			printf("%f :: budget %d\n", fps, (this->budget - current_cost - 1));
 		}
 	}
 }
