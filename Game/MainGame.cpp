@@ -10,7 +10,7 @@
 using namespace std;
 
 
-MainGame::MainGame(int windowWdith, int windowHeight) :window{}, camera { windowWdith, windowHeight }, quad_batch_{}, input_manager{}, frame_manager{}, currentState{ GameState::running }, currentTicks{ 0 }, timeTracker{ 0.0f }, windowWidth{ windowWdith }, windowHeight{ windowHeight }
+MainGame::MainGame(int windowWdith, int windowHeight) :window{}, camera { windowWdith, windowHeight }, quad_batch_{}, input_manager{}, frame_manager{}, currentState{ GameState::running }, currentTicks{ 0 },  windowWidth{ windowWdith }, windowHeight{ windowHeight }
 {
 }
 
@@ -54,7 +54,7 @@ void MainGame::gameLoop()
 	{
 		
 		this->frame_manager.calculateFPS();
-		this->timeTracker += 0.1f;
+		//this->timeTracker += 0.1f;
 		this->processInput();
 		this->camera.update();
 		this->render();
@@ -124,8 +124,8 @@ void MainGame::render()
 	glUniform1i(textureLocation, 0);
 
 	// update timeTracker
-	auto location = this->colorProgram.getUniform("timeTracker");
-	glUniform1f(location, this->timeTracker);
+	//auto location = this->colorProgram.getUniform("timeTracker");
+	//glUniform1f(location, this->timeTracker);
 
 	// camera location
 	auto locationCamera = this->colorProgram.getUniform("cameraPosition");
@@ -142,9 +142,9 @@ void MainGame::render()
 	color.g = 255;
 	color.b = 255;
 	color.a = 255;
-	for(auto i{0};i<50;++i)
+	for(auto i{0};i<5;++i)
 	{
-		this->quad_batch_.draw(position + glm::vec4{ 1.0f * i,0.0f,0.0f,0.0f }, uv, texture.id, 0.0f, color);
+		this->quad_batch_.draw(position + glm::vec4{ 50.0f * i,0.0f,0.0f,0.0f }, uv, texture.id, 0.0f, color);
 	}
 	this->quad_batch_.end();
 	this->quad_batch_.render();

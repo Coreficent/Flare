@@ -40,7 +40,7 @@ private:
 
 	Uint32 currentTicks;
 	
-	float timeTracker;
+	//float timeTracker;
 
 
 	int windowWidth;
