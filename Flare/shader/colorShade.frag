@@ -6,7 +6,7 @@ in vec2 fragmentUV;
 
 out vec4 color;
 
-uniform float time;
+uniform float timeTracker;
 uniform sampler2D cakeSampler;
 
 void main() {
@@ -16,5 +16,5 @@ void main() {
 	//color = textureColor * fragmentColor;
 	//color = textureColor;
 	
-    color = textureColor * vec4(fragmentColor.r * (cos(fragmentPosition.x * 4.0 + time) + 1.0) * 0.5, fragmentColor.g * (cos(fragmentPosition.y * 8.0 + time) + 1.0) * 0.5, fragmentColor.b * (cos(fragmentPosition.x * 2.0 + time) + 1.0) * 0.5, fragmentColor.a);
+    color = textureColor * vec4(fragmentColor.r * (cos(fragmentPosition.x * 4.0 + timeTracker) + 1.0) * 0.5, fragmentColor.g * (cos(fragmentPosition.y * 8.0 + timeTracker) + 1.0) * 0.5, fragmentColor.b * (cos(fragmentPosition.x * 2.0 + timeTracker) + 1.0) * 0.5, fragmentColor.a);
 }

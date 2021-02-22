@@ -14,6 +14,7 @@ public:
 	~Engine();
 
 	void run();
+	
 
 private:
 	const char* WINDOW_NAME{"Flare Engine"};
@@ -29,7 +30,10 @@ private:
 
 	GameState currentState;
 
-	float time;
+	float timeTracker;
+	
+	float frameTime;
+	float fps;
 
 	int windowWidth;
 	int windowHeight;
@@ -39,5 +43,6 @@ private:
 	void gameLoop();
 	void processInput();
 	void render();
+	void calculateFPS();
 };
 

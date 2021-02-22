@@ -3,11 +3,12 @@
 
 #include "Engine.h"
 #include "error.h"
+#include <array>
 
 using namespace std;
 
 
-Engine::Engine() : window{nullptr}, quads{}, currentState{GameState::running}, time{0.0f}, windowWidth{1024}, windowHeight{700}
+Engine::Engine() : window{nullptr}, quads{}, currentState{GameState::running}, timeTracker{0.0f}, windowWidth{1024}, windowHeight{700}
 {
 }
 
@@ -20,8 +21,8 @@ void Engine::run()
 	this->initialize();
 
 
-	this->quads.push_back(new Quad{ 0.0f, 0.0f, 1.0f, 1.0f});
-	this->quads.push_back(new Quad{ -1.0f, -1.0f, 1.0f, 1.0f});
+	this->quads.push_back(new Quad{0.0f, 0.0f, 1.0f, 1.0f});
+	this->quads.push_back(new Quad{-1.0f, -1.0f, 1.0f, 1.0f});
 	this->quads[0]->initialize("texture/cake.png");
 	this->quads[1]->initialize("texture/cake.png");
 
@@ -77,10 +78,12 @@ void Engine::gameLoop()
 {
 	while (this->currentState != GameState::ended)
 	{
-		this->time += 0.005;
+		this->timeTracker += 0.005;
 		this->processInput();
 		this->render();
+		this->calculateFPS();
 	}
+	
 }
 
 // process input
@@ -96,7 +99,7 @@ void Engine::processInput()
 			this->currentState = GameState::ended;
 			break;
 		case SDL_MOUSEMOTION:
-			cout << event.motion.x << " " << event.motion.y << endl;
+			//cout << event.motion.x << " " << event.motion.y << endl;
 			break;
 		}
 	}
@@ -107,25 +110,51 @@ void Engine::render()
 {
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+
 	this->colorProgram.use();
 	glActiveTexture(GL_TEXTURE0);
 
 	auto textureLocation = this->colorProgram.getUniform("cakeSampler");
 	glUniform1i(textureLocation, 0);
 
-	// update time
-	auto location = this->colorProgram.getUniform("time");
-	glUniform1f(location, this->time);
+	// update timeTracker
+	auto location = this->colorProgram.getUniform("timeTracker");
+	glUniform1f(location, this->timeTracker);
 
 
-	for(auto& i: this->quads)
+	for (auto& i: this->quads)
 	{
 		i->draw();
 	}
-	
+
 	glBindTexture(GL_TEXTURE_2D, 0);
 	this->colorProgram.unuse();
 
 	SDL_GL_SwapWindow(this->window);
+}
+
+void Engine::calculateFPS()
+{
+	static const auto SAMPLE_SIZE{ 50 };
+	static array<float, SAMPLE_SIZE> frameTimes{0,0,0};
+	static auto currentFrame{0};
+	static float previousTicks = SDL_GetTicks();
+
+	float currentTicks = SDL_GetTicks();
+	this->frameTime = currentTicks - previousTicks;
+	previousTicks = currentTicks;
+
+	frameTimes[currentFrame++%SAMPLE_SIZE] = frameTime;
+
+	auto averageFrameTime{ 0.0f };
+	for(auto& i : frameTimes)
+	{
+		averageFrameTime += i;
+	}
+	averageFrameTime = averageFrameTime/SAMPLE_SIZE+0.0001;
+	this->fps = 1000.0f / averageFrameTime;
+
+	if(!(currentFrame%60)){
+		debugPrint(this->fps);
+	}
 }
