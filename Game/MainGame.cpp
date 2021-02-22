@@ -153,7 +153,7 @@ void MainGame::render()
 	color.g = 255;
 	color.b = 255;
 	color.a = 255;
-	for(auto i{0};i<5;++i)
+	for(auto i{0};i<25;++i)
 	{
 		this->quad_batch_.draw(position + glm::vec4{ 50.0f * i,0.0f,0.0f,0.0f }, uv, texture.id, 0.0f, color);
 	}

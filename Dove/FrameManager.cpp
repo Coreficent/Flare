@@ -4,9 +4,9 @@
 #include <sdl/SDL.h>
 #include "error.h"
 
-namespace Dove {
-
-	FrameManager::FrameManager() :currentTicks{ 0 }, budget{ 16 }
+namespace Dove
+{
+	FrameManager::FrameManager() : currentTicks{0}, budget{16}
 	{
 	}
 
@@ -17,9 +17,9 @@ namespace Dove {
 
 	void FrameManager::calculateFPS()
 	{
-		static const auto SAMPLE_SIZE{ 50 };
-		static std::array<Uint32, SAMPLE_SIZE> frameTimes{ 0,0,0 };
-		static auto currentFrame{ 0 };
+		static const auto SAMPLE_SIZE{50};
+		static std::array<Uint32, SAMPLE_SIZE> frameTimes{0,0,0};
+		static auto currentFrame{0};
 		static auto previousTicks = SDL_GetTicks();
 
 		this->currentTicks = SDL_GetTicks();
@@ -28,7 +28,7 @@ namespace Dove {
 
 		frameTimes[currentFrame++ % SAMPLE_SIZE] = frameTime;
 
-		auto averageFrameTime{ 0.0f };
+		auto averageFrameTime{0.0f};
 		for (auto& i : frameTimes)
 		{
 			averageFrameTime += i;
@@ -44,8 +44,7 @@ namespace Dove {
 		auto frameTicks = SDL_GetTicks() - this->currentTicks;
 		if (this->budget > frameTicks)
 		{
-			SDL_Delay(this->budget - frameTicks - 1);
+			//SDL_Delay(this->budget - frameTicks - 1);
 		}
-	
 	}
 }

@@ -1,7 +1,8 @@
 #pragma once
 #include <sdl/SDL_stdinc.h>
 
-namespace Dove {
+namespace Dove
+{
 	class FrameManager
 	{
 	public:
@@ -12,5 +13,4 @@ namespace Dove {
 		Uint32 currentTicks;
 		unsigned int budget;
 	};
-
 }

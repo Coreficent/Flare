@@ -10,6 +10,7 @@ namespace Dove
 		FULLSCREEN = 0x2,
 		BORDERLESS = 0x4
 	};
+
 	class Window
 	{
 	public:

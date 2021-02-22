@@ -1,8 +1,8 @@
 #include "InputManager.h"
 
-namespace Dove {
-
-	InputManager::InputManager():keymap{},mouse_position{0.0f}
+namespace Dove
+{
+	InputManager::InputManager(): keymap{}, mouse_position{0.0f}
 	{
 	}
 
@@ -16,7 +16,7 @@ namespace Dove {
 		this->keymap[keyID] = true;
 	}
 
-	
+
 	void InputManager::releaseKey(unsigned int keyID)
 	{
 		this->keymap[keyID] = false;
@@ -36,9 +36,6 @@ namespace Dove {
 	bool InputManager::keyPressed(unsigned int keyID)
 	{
 		auto it = this->keymap.find(keyID);
-		return it!=this->keymap.end()?it->second:false;
+		return it != this->keymap.end() ? it->second : false;
 	}
-
-
-	
 }
