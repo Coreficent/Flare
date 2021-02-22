@@ -10,7 +10,7 @@ Quad::Quad(float x, float y, float width, float height):x{x},y{y},width{width},h
 
 Quad::~Quad()
 {
-	if(this->vertextBufferID!=0)
+	if(this->vertextBufferID)
 	{
 		glDeleteBuffers(1,&this->vertextBufferID);
 	}
@@ -19,7 +19,7 @@ Quad::~Quad()
 
 void Quad::initialize()
 {
-	if(this->vertextBufferID==0)
+	if(!this->vertextBufferID)
 	{
 		glGenBuffers(1,&this->vertextBufferID);
 	}

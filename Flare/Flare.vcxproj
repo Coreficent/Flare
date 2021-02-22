@@ -119,11 +119,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="error.cpp" />
+    <ClCompile Include="GLSL.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Quad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="error.h" />
+    <ClInclude Include="GLSL.h" />
     <ClInclude Include="Quad.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
