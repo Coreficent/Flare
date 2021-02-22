@@ -131,8 +131,7 @@ namespace Dove
 				int cp = glyphSurface->w * glyphSurface->h * 4;
 				for (int i = 0; i < cp; i += 4)
 				{
-					float a = sp[i + 3] / 255.0f;
-					sp[i] *= a;
+					sp[i] *= sp[i + 3] / 255;
 					sp[i + 1] = sp[i];
 					sp[i + 2] = sp[i];
 				}

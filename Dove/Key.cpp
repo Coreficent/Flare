@@ -25,7 +25,7 @@ namespace Dove
 				this->currentState = GameState::ended;
 				break;
 			case SDL_MOUSEMOTION:
-				this->input_manager.setMousePosition(this->event.motion.x, this->event.motion.y);
+				this->input_manager.setMousePosition((float)this->event.motion.x, (float)this->event.motion.y);
 				break;
 			case SDL_KEYDOWN:
 				this->input_manager.pressKey(this->event.key.keysym.sym);

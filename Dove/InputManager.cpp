@@ -2,7 +2,7 @@
 
 namespace Dove
 {
-	InputManager::InputManager(): keymap{}, mouse_position{0.0f}
+	InputManager::InputManager(): keymap{}, mouse_position{}
 	{
 	}
 
