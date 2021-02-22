@@ -288,7 +288,8 @@ namespace Dove
 				glm::vec4 uv = _glyphs[gi].uvRect;
 
 				//TODO implement render for text
-				//batch.draw(destRect, uv, _texID, depth, tint);
+				
+				batch.draw(destRect, uv, _texID, depth, tint);
 				tp.x += _glyphs[gi].size.x * scaling.x;
 			}
 		}

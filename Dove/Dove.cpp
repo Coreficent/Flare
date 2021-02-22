@@ -182,17 +182,37 @@ namespace Dove
 		Display display_object{ texture.id };
 		display_object.set_width(100.0f);
 		display_object.set_height(100.0f);
-		display_object.scale_x(2.0f);
-		display_object.scale_y(4.0f);
-		display_object.scale(0.5f);
-		display_object.rotate(to_radian(90.0f));
+		display_object.scale(2.0f);
+		display_object.rotate(to_radian(0.0f));
 		for (auto i{0}; i < 1500; ++i)
 		{
 			display_object.set_x(100.0f*i);
 			display_object.render(this->quad_batch_.next_glyph());
 		}
+		this->sprite_font->draw(this->quad_batch_, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
 		
-	
+		// ouput sprite sheet
+		Glyph& glyph= this->quad_batch_.next_glyph();
+		
+		glyph.top_left.color = color;
+		glyph.top_left.setPosition(0.0f, 0.0f);
+		glyph.top_left.setUV(0.0f, 0.0f);
+
+		glyph.top_right.color = color;
+		glyph.top_right.setPosition( 500.0f,0.0f);
+		glyph.top_right.setUV(1.0f, 0.0f);
+
+		glyph.down_left.color = color;
+		glyph.down_left.setPosition(0.0f,500.0f);
+		glyph.down_left.setUV(0.0f, 1.0f);
+
+		glyph.down_right.color = color;
+		glyph.down_right.setPosition(500.0f, 500.0f);
+		glyph.down_right.setUV(1.0f,1.0f);
+
+		glyph.texture = this->sprite_font->_texID;
+
+		////////// out put sprite sheet
 		this->quad_batch_.end();
 		this->quad_batch_.render();
 
@@ -203,7 +223,7 @@ namespace Dove
 
 		this->window.swapBuffer();
 	}
-
+	/*
 	void Dove::draw_text()
 	{
 		auto locationCamera = this->colorProgram.getUniform("cameraPosition");
@@ -232,4 +252,5 @@ namespace Dove
 		this->text_batch.end();
 		this->text_batch.render();
 	}
+	*/
 }
