@@ -72,6 +72,7 @@ void MainGame::gameLoop()
 		this->camera_interface.update();
 		this->render();
 	}
+	SDL_Quit();
 }
 
 // process input
@@ -200,7 +201,7 @@ void MainGame::draw_text()
 
 	if(count%1000==0)
 	{
-		rand_test = rand();
+		rand_test = rand()%9;
 	}
 
 	count++;
