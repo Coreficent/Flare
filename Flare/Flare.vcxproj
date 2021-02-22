@@ -126,6 +126,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="picoPNG.cpp" />
     <ClCompile Include="Quad.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="TextureCache.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
@@ -136,6 +138,8 @@
     <ClInclude Include="IOManager.h" />
     <ClInclude Include="picoPNG.h" />
     <ClInclude Include="Quad.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="TextureCache.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

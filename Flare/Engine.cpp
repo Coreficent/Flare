@@ -3,11 +3,11 @@
 
 #include "Engine.h"
 #include "error.h"
-#include "ImageLoader.h"
+
 using namespace std;
 
 
-Engine::Engine() : window{nullptr}, currentState{GameState::running}, quad{-1.0f,-1.0f,1.0f,1.0f}, time{0.0f}, windowWidth{1024}, windowHeight{700}
+Engine::Engine() : window{nullptr}, quads{}, currentState{GameState::running}, time{0.0f}, windowWidth{1024}, windowHeight{700}
 {
 }
 
@@ -19,9 +19,11 @@ void Engine::run()
 {
 	this->initialize();
 
-	quad.initialize();
 
-	this->cakeTexture = ImageLoader::loadPNG("texture/cake.png");
+	this->quads.push_back(new Quad{ 0.0f, 0.0f, 1.0f, 1.0f});
+	this->quads.push_back(new Quad{ -1.0f, -1.0f, 1.0f, 1.0f});
+	this->quads[0]->initialize("texture/cake.png");
+	this->quads[1]->initialize("texture/cake.png");
 
 	// running the game logic
 	this->gameLoop();
@@ -106,11 +108,8 @@ void Engine::render()
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
-	glBindTexture(GL_TEXTURE_2D, this->cakeTexture.id);
-
 	this->colorProgram.use();
 	glActiveTexture(GL_TEXTURE0);
-
 
 	auto textureLocation = this->colorProgram.getUniform("cakeSampler");
 	glUniform1i(textureLocation, 0);
@@ -120,8 +119,11 @@ void Engine::render()
 	glUniform1f(location, this->time);
 
 
-	quad.draw();
-
+	for(auto& i: this->quads)
+	{
+		i->draw();
+	}
+	
 	glBindTexture(GL_TEXTURE_2D, 0);
 	this->colorProgram.unuse();
 

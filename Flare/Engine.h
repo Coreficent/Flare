@@ -3,7 +3,9 @@
 #include <sdl/SDL.h>
 #include "Quad.h"
 #include "GLSL.h"
-#include "GlTexture.h"
+#include <vector>
+
+using namespace std;
 
 class Engine
 {
@@ -16,15 +18,16 @@ public:
 private:
 	const char* WINDOW_NAME{"Flare Engine"};
 
-	enum class GameState { running, ended };
-
+	
 	SDL_Window* window;
 
-	GameState currentState;
+	vector<Quad*> quads;
 
-	Quad quad;
 	GLSL colorProgram;
-	GLTexture cakeTexture;
+
+	enum class GameState { running, ended };
+
+	GameState currentState;
 
 	float time;
 
