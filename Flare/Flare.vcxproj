@@ -129,6 +129,7 @@
     <ClInclude Include="error.h" />
     <ClInclude Include="GLSL.h" />
     <ClInclude Include="Quad.h" />
+    <ClInclude Include="Vertext.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

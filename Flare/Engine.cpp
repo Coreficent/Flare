@@ -63,6 +63,7 @@ void Engine::initializeShader()
 {
 	this->colorProgram.compileShader("shader/colorShade.vert", "shader/colorShade.frag");
 	this->colorProgram.addAttribute("vertexPosition");
+	this->colorProgram.addAttribute("vertexColor");
 	this->colorProgram.linkShader();
 }
 

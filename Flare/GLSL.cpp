@@ -16,6 +16,7 @@ GLSL::~GLSL()
 
 void GLSL::compileShader(const string & vertexShaderPath, const string & fragmentShaderPath)
 {
+	this->programID = glCreateProgram();
 	this->vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
 	if(!this->vertexShaderID)
 	{
@@ -32,10 +33,8 @@ void GLSL::compileShader(const string & vertexShaderPath, const string & fragmen
 	this->compileSource(fragmentShaderPath, this->fragmentShaderID);
 }
 
-void GLSL::linkShader()
+void GLSL::linkShader() const
 {
-	this->programID = glCreateProgram();
-
 	glAttachShader(this->programID, this->vertexShaderID);
 	glAttachShader(this->programID, this->fragmentShaderID);
 

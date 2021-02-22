@@ -44,5 +44,8 @@
     <ClInclude Include="error.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Vertext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

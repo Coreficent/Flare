@@ -11,7 +11,7 @@ public:
 	~GLSL();
 
 	void compileShader(const string& vertexShaderPath, const string& fragmentShaderPath);
-	void linkShader();
+	void linkShader() const;
 	void addAttribute(const string& attributeName);
 
 	void use() const;
