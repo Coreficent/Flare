@@ -35,7 +35,7 @@ namespace Dove
 {
 	class Renderer;
 
-	class GLTexture;
+	struct GLTexture;
 	class Renderer;
 
 	struct CharGlyph

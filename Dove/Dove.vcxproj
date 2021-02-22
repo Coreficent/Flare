@@ -175,6 +175,7 @@
     <ClInclude Include="Stage.h" />
     <ClInclude Include="TextureCache.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="Vial.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

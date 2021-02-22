@@ -20,11 +20,7 @@ namespace Dove
 
 	Glyph& Renderer::next_glyph()
 	{
-		if (this->glyph_id >= this->glyphs.size())
-		{
-			this->glyphs.push_back(Glyph{});
-		}
-		return this->glyphs[this->glyph_id++];
+		return this->glyphs_vial.next();
 	}
 
 	void Renderer::initialize()
@@ -44,7 +40,7 @@ namespace Dove
 	{
 		this->sortType = sortType;
 		this->renderBatches.clear();
-		this->glyph_id = 0;
+		this->glyphs_vial.refill();
 		//this->glyphs.clear();
 		//this->glyphs_pointers.clear();
 	}
@@ -54,10 +50,10 @@ namespace Dove
 		//TODO temp delete comment
 
 
-		this->glyphs_pointers.resize(this->glyph_id);
-		for (unsigned __int64 i{0}, l{this->glyph_id}; i < l; ++i)
+		this->glyphs_pointers.resize(this->glyphs_vial.size());
+		for (unsigned int i{0}, l{ this->glyphs_vial.size() }; i < l; ++i)
 		{
-			this->glyphs_pointers[i] = &this->glyphs[i];
+			this->glyphs_pointers[i] = &this->glyphs_vial[i];
 		}
 		//this->sortGlyphs();
 
@@ -219,7 +215,7 @@ namespace Dove
 		unsigned long long glyph{0}, length{this->glyphs_pointers.size()};
 		auto offset{0}, vertex{0};
 		GLuint previous_texture{0};
-		if (this->glyph_id > 0)
+		if (this->glyphs_vial.size() > 0)
 		{
 			do
 			{

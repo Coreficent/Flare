@@ -6,9 +6,12 @@
 #include "GLSL.h"
 #include "Camera.h"
 #include "SpriteFont.h"
+#include "Vial.h"
 
 namespace Dove
 {
+	
+
 	enum class GlyphSortType
 	{
 		NONE,
@@ -46,10 +49,9 @@ namespace Dove
 
 		void renderNow();
 
-		//TODO temp public
-		std::vector<Glyph> glyphs;
-		Camera camera;
 		//TODO temp public //
+		Camera camera;
+		
 	private:
 
 
@@ -64,9 +66,16 @@ namespace Dove
 		std::vector<Glyph*> glyphs_pointers;
 
 		std::vector<RenderBatch> renderBatches;
+		
+		Vial<Glyph> glyphs_vial{};
+
+		//std::vector<Glyph> glyphs;
+
 
 		GLSL colorProgram;
 
+
+		
 
 		SpriteFont sprite_font{};
 
@@ -75,6 +84,6 @@ namespace Dove
 		GLuint vertexBufferID;
 		GLuint vertexArrayID;
 
-		unsigned int glyph_id{0};
+		//unsigned int glyph_id{0};
 	};
 }

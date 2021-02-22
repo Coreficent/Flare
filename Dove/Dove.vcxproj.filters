@@ -91,6 +91,9 @@
     <Filter Include="Header Files\logic">
       <UniqueIdentifier>{70c936c8-ea2e-417f-b44a-11a2698b5906}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\container">
+      <UniqueIdentifier>{0d746330-176d-4ea3-a606-702a119aca9d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -194,6 +197,9 @@
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Header Files\logic</Filter>
+    </ClInclude>
+    <ClInclude Include="Vial.h">
+      <Filter>Header Files\container</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
