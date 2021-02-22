@@ -179,16 +179,19 @@ namespace Dove
 		color.b = 255;
 		color.a = 255;
 		Display_object display_object{ texture.id };
-
+		display_object.set_width(100.0f);
+		display_object.set_height(100.0f);
+		display_object.scale_x(2.0f);
+		display_object.scale_y(4.0f);
+		display_object.scale_y(0.5f);
 		for (auto i{0}; i < 1000; ++i)
 		{
 			//this->quad_batch_.draw(position + glm::vec4{50.0f * i,0.0f,0.0f,0.0f}, uv, texture.id, 0.0f, color);
 			// TODO display object test
 
 			
-			display_object.set_x(50.0f*i);
-			display_object.set_width(50.0f);
-			display_object.set_height(100.0f);
+			display_object.set_x(100.0f*i);
+			
 
 			this->quad_batch_.glyphs.emplace_back();
 

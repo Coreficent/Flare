@@ -67,6 +67,26 @@ namespace Dove
 		this->texture_id = value;
 	}
 
+	void Display_object::scale_x(float value)
+	{
+		this->matrix.a *= value;
+		this->matrix.c *= value;
+		this->matrix.x *= value;
+	}
+
+	void Display_object::scale_y(float value)
+	{
+		this->matrix.b *= value;
+		this->matrix.d *= value;
+		this->matrix.y *= value;
+	}
+
+	void Display_object::scale(float value)
+	{
+		this->scale_x(value);
+		this->scale_y(value);
+	}
+
 	void Display_object::render(Glyph& glyph) const
 	{
 

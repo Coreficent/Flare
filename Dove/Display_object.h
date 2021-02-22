@@ -24,6 +24,10 @@ namespace Dove
 		void set_height(float value);
 		void set_texture_id(GLuint value);
 
+		void scale_x(float value);
+		void scale_y(float value);
+		void scale(float value);
+
 		void render(Glyph& glyph) const;
 
 	private:
