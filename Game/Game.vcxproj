@@ -118,11 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MainGame.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\colorShade.sf" />

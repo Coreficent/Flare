@@ -143,7 +143,6 @@
     <ClInclude Include="AudioEngine.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Dove.h" />
     <ClInclude Include="error.h" />
     <ClInclude Include="FrameManager.h" />
     <ClInclude Include="GLSL.h" />
@@ -151,6 +150,7 @@
     <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IOManager.h" />
+    <ClInclude Include="Dove.h" />
     <ClInclude Include="picoPNG.h" />
     <ClInclude Include="Quad.h" />
     <ClInclude Include="QuadBatch.h" />
@@ -164,13 +164,13 @@
     <ClCompile Include="AudioEngine.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Dove.cpp" />
     <ClCompile Include="error.cpp" />
     <ClCompile Include="FrameManager.cpp" />
     <ClCompile Include="GLSL.cpp" />
     <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IOManager.cpp" />
+    <ClCompile Include="Dove.cpp" />
     <ClCompile Include="picoPNG.cpp" />
     <ClCompile Include="Quad.cpp" />
     <ClCompile Include="QuadBatch.cpp" />

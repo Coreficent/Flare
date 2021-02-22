@@ -1,10 +1,10 @@
 #include <iostream>
-#include "MainGame.h"
+#include <dove/Dove.h>
 
 int main(int argc, char** argv)
 {
-	MainGame engine{1200,800};
-	engine.run();
+	Dove::Dove dove{1200,800};
+	dove.run();
 
 	return 0;
 }
