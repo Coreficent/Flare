@@ -10,7 +10,8 @@
 using namespace std;
 
 
-MainGame::MainGame(int windowWdith, int windowHeight) :window{}, camera { windowWdith, windowHeight }, quad_batch_{}, input_manager{}, frame_manager{}, currentState{ GameState::running }, currentTicks{ 0 },  windowWidth{ windowWdith }, windowHeight{ windowHeight }
+MainGame::MainGame(int windowWdith, int windowHeight) :sprite_font{nullptr}, window{}, camera { windowWdith, windowHeight }, camera_interface{ windowWdith, windowHeight }, quad_batch_{}, input_manager{}, frame_manager{},  text_batch{}, currentState{ GameState::running },currentTicks{ 0 },windowWidth{ windowWdith },windowHeight{ windowHeight }
+
 {
 }
 
@@ -36,6 +37,12 @@ void MainGame::initialize()
 
 	this->quad_batch_.initialize();
 	this->initializeShader();
+
+	this->text_batch.initialize();
+
+	this->sprite_font = new Dove::SpriteFont{"font/disney.ttf",64};
+	//
+	//this->camera.initialize();
 }
 
 void MainGame::initializeShader()
@@ -57,6 +64,7 @@ void MainGame::gameLoop()
 		//this->timeTracker += 0.1f;
 		this->processInput();
 		this->camera.update();
+		this->camera_interface.update();
 		this->render();
 	}
 }
@@ -160,8 +168,40 @@ void MainGame::render()
 	this->quad_batch_.end();
 	this->quad_batch_.render();
 
+	this->draw_text();
+
 	glBindTexture(GL_TEXTURE_2D, 0);
 	this->colorProgram.unuse();
 
 	this->window.swapBuffer();
+}
+
+void MainGame::draw_text()
+{
+	auto locationCamera = this->colorProgram.getUniform("cameraPosition");
+	auto cameraMatrix = this->camera_interface.getCameraMatrix();
+
+	glUniformMatrix4fv(locationCamera, 1, GL_FALSE, &(cameraMatrix[0][0]));
+
+	static int rand_test = 0;
+
+	static int count = 0;
+
+	if(count%1000==0)
+	{
+		rand_test = rand();
+	}
+
+	count++;
+
+	char buffer[256];
+	this->text_batch.begin();
+	//TODO make it dynamic to prevent overflow
+	sprintf_s(buffer, "test text : %d",rand_test);
+	this->sprite_font->draw(this->text_batch, buffer,glm::vec2(0,100),glm::vec2(2.0),0.0f, Dove::Color{255,255,255,255},Dove::Justification::MIDDLE);
+
+	this->text_batch.end();
+	this->text_batch.render();
+
+	
 }
