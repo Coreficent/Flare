@@ -1,9 +1,8 @@
 #include "Stage.h"
 
 
-
 Stage::Stage()
-	:Container{}
+	: Container{}
 {
 }
 

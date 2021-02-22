@@ -1,7 +1,7 @@
 #include "Matrix.h"
 
-namespace Dove {
-
+namespace Dove
+{
 	Matrix::Matrix()
 	{
 	}

@@ -2,9 +2,8 @@
 
 namespace Dove
 {
-
 	Container::Container()
-		:Display{}
+		: Display{}
 	{
 	}
 
@@ -20,21 +19,21 @@ namespace Dove
 
 	void Container::remove_child(std::shared_ptr<Display> child)
 	{
-		unsigned int i{ 0 };
-		for(auto& c : this->children)
+		unsigned int i{0};
+		for (auto& c : this->children)
 		{
-			if(c==child)
+			if (c == child)
 			{
 				break;
 			}
 			++i;
 		}
-		this->children.erase(this->children.begin()+i);
+		this->children.erase(this->children.begin() + i);
 	}
 
 	void Container::render() const
 	{
-		for(auto& c : this->children)
+		for (auto& c : this->children)
 		{
 			c->render();
 		}

@@ -88,8 +88,6 @@ namespace Dove
 		int _regStart, _regLength;
 		CharGlyph* _glyphs;
 		int _fontHeight;
-
-		
 	};
 }
 

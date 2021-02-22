@@ -9,8 +9,10 @@
 #include "AudioEngine.h"
 #include "QuadBatch.h"
 #include "Stage.h"
+#include "Media.h"
 
-namespace Dove {
+namespace Dove
+{
 	using namespace std;
 
 	class Dove
@@ -30,8 +32,9 @@ namespace Dove {
 
 		SpriteFont* sprite_font;
 
-		Window window;
-		
+		Media media{};
+		Window window{};
+
 		GLSL colorProgram;
 		Camera camera;
 		Camera camera_interface;
@@ -41,7 +44,11 @@ namespace Dove {
 		QuadBatch text_batch;
 		AudioEngine audio_engine;
 
-		enum class GameState { running, ended };
+		enum class GameState
+		{
+			running,
+			ended
+		};
 
 		GameState currentState;
 
@@ -55,7 +62,5 @@ namespace Dove {
 		void gameLoop();
 		void processInput();
 		void render();
-
 	};
-
 }

@@ -2,8 +2,8 @@
 
 namespace Dove
 {
-	Camera::Camera(int windowWidth, int windowHeight) 
-		: position{0.0f,0.0f}, cameraMatrix(1.0f), orthoMatrix{glm::ortho(0.0f, static_cast<float>(windowWidth), static_cast<float>(windowHeight),0.0f)}, identityMatrix{1.0f}, scale{1.0f}, window_width{windowWidth}, window_height{windowHeight}, updateRequired{true}
+	Camera::Camera(int windowWidth, int windowHeight)
+		: position{0.0f,0.0f}, cameraMatrix(1.0f), orthoMatrix{glm::ortho(0.0f, static_cast<float>(windowWidth), static_cast<float>(windowHeight), 0.0f)}, identityMatrix{1.0f}, scale{1.0f}, window_width{windowWidth}, window_height{windowHeight}, updateRequired{true}
 	{
 	}
 

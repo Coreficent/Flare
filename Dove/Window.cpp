@@ -1,6 +1,8 @@
 #include "Window.h"
 #include <gl/glew.h>
 #include "error.h"
+#include "Header.h"
+#include <iostream>
 
 namespace Dove
 {
@@ -8,6 +10,11 @@ namespace Dove
 
 	Window::Window() : window{nullptr}
 	{
+		//Use this function to set an OpenGL window attribute before window creation. 
+		if (SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1) != 0)
+		{
+			dout << "window set attribute failed: " << SDL_GetError() << endl;
+		}
 	}
 
 
@@ -15,43 +22,33 @@ namespace Dove
 	{
 	}
 
-	int Window::getScreenWidth()
-	{
-		return 0;
-	}
 
-	int Window::getScreenHeight()
-	{
-		return 0;
-	}
-
-	void Window::swapBuffer() const
+	void Window::swap_window() const
 	{
 		SDL_GL_SwapWindow(this->window);
 	}
 
-	int Window::createWindow(string windowName, int windowWidth, int windowHeight, unsigned int windowFlag)
+	void Window::open_window(string name, int width, int height)
 	{
 		Uint32 flag = SDL_WINDOW_OPENGL;
-		if (windowFlag & INVISIBLE)
-		{
-			flag |= SDL_WINDOW_HIDDEN;
-		}
-		if (windowFlag & FULLSCREEN)
+		if (this->full_screen)
 		{
 			flag |= SDL_WINDOW_FULLSCREEN_DESKTOP;
 		}
-		if (windowFlag & BORDERLESS)
+		if (this->hidden)
+		{
+			flag |= SDL_WINDOW_HIDDEN;
+		}
+		if (this->borderless)
 		{
 			flag |= SDL_WINDOW_BORDERLESS;
 		}
 
-		// window initialization
-		this->window = SDL_CreateWindow(windowName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowWidth, windowHeight, flag);
+		this->window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flag);
 
 		if (!this->window)
 		{
-			output_error("sdl window failed");
+			dout << "window failed to open" << endl;
 		}
 
 		auto glContext = SDL_GL_CreateContext(this->window);
@@ -79,7 +76,5 @@ namespace Dove
 		//blending
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-		return 0;
 	}
 }

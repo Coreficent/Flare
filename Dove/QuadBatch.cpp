@@ -17,7 +17,7 @@ namespace Dove
 
 	Glyph& QuadBatch::next_glyph()
 	{
-		if(this->glyph_id>=this->glyphs.size())
+		if (this->glyph_id >= this->glyphs.size())
 		{
 			this->glyphs.push_back(Glyph{});
 		}
@@ -44,7 +44,7 @@ namespace Dove
 
 
 		this->glyphs_pointers.resize(this->glyph_id);
-		for (unsigned __int64 i{0}, l{ this->glyph_id }; i < l; ++i)
+		for (unsigned __int64 i{0}, l{this->glyph_id}; i < l; ++i)
 		{
 			this->glyphs_pointers[i] = &this->glyphs[i];
 		}
@@ -166,7 +166,8 @@ namespace Dove
 		unsigned long long glyph{0}, length{this->glyphs_pointers.size()};
 		auto offset{0}, vertex{0};
 		GLuint previous_texture{0};
-		if(this->glyph_id>0){
+		if (this->glyph_id > 0)
+		{
 			do
 			{
 				if (this->glyphs_pointers[glyph]->texture != previous_texture)
@@ -194,10 +195,11 @@ namespace Dove
 		glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.size() * sizeof(Vertex), vertices.data());
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
+
 	void QuadBatch::draw(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color)
 	{
 		//this->glyphs.emplace_back(bound, uv, texture, depth, color, 5*0.7853f);
-		Glyph& glyph=this->next_glyph();
+		Glyph& glyph = this->next_glyph();
 		/**/
 		glyph.down_left.color = color;
 		glyph.down_left.setPosition(bound.x, bound.y + bound.w);
@@ -214,7 +216,7 @@ namespace Dove
 		glyph.down_right.color = color;
 		glyph.down_right.setPosition(bound.x + bound.z, bound.y + bound.w);
 		glyph.down_right.setUV(uv.x + uv.z, uv.y + uv.w);
-		
+
 		glyph.texture = texture;
 		//this->glyphs.push_back(glyph);
 	}

@@ -36,7 +36,7 @@ namespace Dove
 
 		Matrix matrix{};
 
-		Color color{ 255,255,255 ,255};
+		Color color{255,255,255 ,255};
 
 		GLuint texture_id{0};
 
@@ -50,6 +50,5 @@ namespace Dove
 		float v_end{1.0f};
 
 		Point locate_vertex(float x, float y) const;
-		
 	};
 }

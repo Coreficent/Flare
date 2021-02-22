@@ -11,17 +11,40 @@ namespace Dove
 {
 	using namespace std;
 
-	Dove* Dove::core{ nullptr };
+	Dove* Dove::core{nullptr};
 
-	Dove::Dove(int windowWdith, int windowHeight) : sprite_font{nullptr}, window{}, camera{windowWdith, windowHeight}, camera_interface{windowWdith, windowHeight}, quad_batch_{}, input_manager{}, frame_manager{}, text_batch{}, audio_engine{}, currentState{GameState::running}, currentTicks{0}, windowWidth{windowWdith}, windowHeight{windowHeight}
+	Dove::Dove(int windowWdith, int windowHeight) : sprite_font{nullptr},  camera{windowWdith, windowHeight}, camera_interface{windowWdith, windowHeight}, quad_batch_{}, input_manager{}, frame_manager{}, text_batch{}, audio_engine{}, currentState{GameState::running}, currentTicks{0}, windowWidth{windowWdith}, windowHeight{windowHeight}
 	{
 		dout << "<Debug Mode>" << endl;
+
+		
+
+		///////////////////
+
+		/////
+		//this->window.borderless = true;
+		//this->window.full_screen = true;
+		this->window.open_window("Dove", this->windowWidth, this->windowHeight);
+
+		this->quad_batch_.initialize();
+		this->initializeShader();
+
+		this->text_batch.initialize();
+
+		this->sprite_font = new SpriteFont{"font/disney.ttf",64};
+		//
+		//this->camera.initialize();
+		//
+		// initialize audio
+		this->audio_engine.initialize();
+
 		core = this;
 	}
 
 	Dove::~Dove()
 	{
 		delete this->sprite_font;
+		
 	}
 
 	void Dove::run()
@@ -37,25 +60,6 @@ namespace Dove
 
 	void Dove::initialize()
 	{
-		// sdl initialization
-		SDL_Init(SDL_INIT_EVERYTHING);
-
-		// have two alternating buffers to render to smooth the rendering
-		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
-		this->window.createWindow("Dove", this->windowWidth, this->windowHeight, 0);
-
-		this->quad_batch_.initialize();
-		this->initializeShader();
-
-		this->text_batch.initialize();
-
-		this->sprite_font = new SpriteFont{"font/disney.ttf",64};
-		//
-		//this->camera.initialize();
-		//
-		// initialize audio
-		this->audio_engine.initialize();
 	}
 
 	void Dove::initializeShader()
@@ -79,7 +83,6 @@ namespace Dove
 			this->camera_interface.update();
 			this->render();
 		}
-		SDL_Quit();
 	}
 
 	// process input
@@ -192,36 +195,35 @@ namespace Dove
 		display_object.rotate(to_radian(0.0f));
 		for (auto i{0}; i < 1500; ++i)
 		{
-			display_object.set_x(100.0f*i);
+			display_object.set_x(100.0f * i);
 			display_object.render();
 		}
 		///////// stage renderer
 		this->stage.render();
 
 		//////////
-		
-		
-		
-		this->sprite_font->draw(this->quad_batch_, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
-		
+
+
+		this->sprite_font->draw(this->quad_batch_, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{125,0,125,125});
+
 		// ouput sprite sheet
-		Glyph& glyph= this->quad_batch_.next_glyph();
-		
+		Glyph& glyph = this->quad_batch_.next_glyph();
+
 		glyph.top_left.color = color;
 		glyph.top_left.setPosition(0.0f, 0.0f);
 		glyph.top_left.setUV(0.0f, 0.0f);
 
 		glyph.top_right.color = color;
-		glyph.top_right.setPosition( 500.0f,0.0f);
+		glyph.top_right.setPosition(500.0f, 0.0f);
 		glyph.top_right.setUV(1.0f, 0.0f);
 
 		glyph.down_left.color = color;
-		glyph.down_left.setPosition(0.0f,500.0f);
+		glyph.down_left.setPosition(0.0f, 500.0f);
 		glyph.down_left.setUV(0.0f, 1.0f);
 
 		glyph.down_right.color = color;
 		glyph.down_right.setPosition(500.0f, 500.0f);
-		glyph.down_right.setUV(1.0f,1.0f);
+		glyph.down_right.setUV(1.0f, 1.0f);
 
 		glyph.texture = this->sprite_font->_texID;
 
@@ -234,6 +236,6 @@ namespace Dove
 		glBindTexture(GL_TEXTURE_2D, 0);
 		this->colorProgram.unuse();
 
-		this->window.swapBuffer();
+		this->window.swap_window();
 	}
 }

@@ -9,7 +9,7 @@ namespace Dove
 	public:
 		Container();
 		~Container();
-		
+
 		void add_child(std::shared_ptr<Display> child);
 		void remove_child(std::shared_ptr<Display> child);
 		void render() const override;
@@ -17,5 +17,4 @@ namespace Dove
 	private:
 		std::vector<std::shared_ptr<Display>> children;
 	};
-
 }

@@ -3,8 +3,8 @@
 #include <string>
 #include <map>
 
-namespace Dove {
-
+namespace Dove
+{
 	using namespace std;
 
 	class SoundEffect
@@ -18,13 +18,12 @@ namespace Dove {
 
 	class Music
 	{
-		
 	public:
 		friend class AudioEngine;
-		 void play(int loop = -1);
-		 void stop();
-		 void resume();
-		 void pause();
+		void play(int loop = -1);
+		void stop();
+		void resume();
+		void pause();
 	private:
 		Mix_Music* mix_music;
 	};
@@ -45,5 +44,4 @@ namespace Dove {
 		map<string, Mix_Chunk*> effect_map;
 		map<string, Mix_Music*> music_map;
 	};
-
 }

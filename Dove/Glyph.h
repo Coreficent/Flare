@@ -1,7 +1,8 @@
 #pragma once
 #include "Vertex.h"
 
-namespace Dove {
+namespace Dove
+{
 	class Glyph
 	{
 	public:
@@ -16,5 +17,4 @@ namespace Dove {
 		Vertex top_right;
 		Vertex down_right;
 	};
-
 }

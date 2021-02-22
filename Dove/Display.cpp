@@ -98,25 +98,25 @@ namespace Dove
 		auto d = this->matrix.d;
 		auto x = this->matrix.x;
 		auto y = this->matrix.y;
-		this->matrix.a = a*cosine - b*sine;
-		this->matrix.b = a*sine + b*cosine;
-		this->matrix.c = c*cosine - d*sine;
-		this->matrix.d = c*sine + d*cosine;
-		this->matrix.x = x*cosine - y*sine;
-		this->matrix.y = x*sine + y*cosine;
+		this->matrix.a = a * cosine - b * sine;
+		this->matrix.b = a * sine + b * cosine;
+		this->matrix.c = c * cosine - d * sine;
+		this->matrix.d = c * sine + d * cosine;
+		this->matrix.x = x * cosine - y * sine;
+		this->matrix.y = x * sine + y * cosine;
 	}
 
 	void Display::render() const
 	{
-		auto& glyph=Dove::core->quad_batch_.next_glyph();
+		auto& glyph = Dove::core->quad_batch_.next_glyph();
 
 		auto top_left = this->locate_vertex(0.0f, 0.0f);
-		auto top_right = this->locate_vertex(this->width,0.0f);
-		auto down_left = this->locate_vertex(0.0f,this->height);
-		auto down_right = this->locate_vertex(this->width,this->height);
+		auto top_right = this->locate_vertex(this->width, 0.0f);
+		auto down_left = this->locate_vertex(0.0f, this->height);
+		auto down_right = this->locate_vertex(this->width, this->height);
 
 		glyph.top_left.color = this->color;
-		glyph.top_left.setPosition(top_left.x,top_left.y);
+		glyph.top_left.setPosition(top_left.x, top_left.y);
 		glyph.top_left.setUV(this->u_start, this->v_start);
 
 		glyph.top_right.color = this->color;
@@ -124,7 +124,7 @@ namespace Dove
 		glyph.top_right.setUV(this->u_end, this->v_start);
 
 		glyph.down_left.color = this->color;
-		glyph.down_left.setPosition(down_left.x,down_left.y);
+		glyph.down_left.setPosition(down_left.x, down_left.y);
 		glyph.down_left.setUV(this->u_start, this->v_end);
 
 		glyph.down_right.color = this->color;
@@ -133,10 +133,9 @@ namespace Dove
 
 		glyph.texture = this->texture_id;
 	}
-	
+
 	Point Display::locate_vertex(float x, float y) const
 	{
-		return Point{ x*this->matrix.a + y*this->matrix.c + this->matrix.x,x*this->matrix.b + y*this->matrix.d + this->matrix.y };
+		return Point{x * this->matrix.a + y * this->matrix.c + this->matrix.x,x * this->matrix.b + y * this->matrix.d + this->matrix.y};
 	}
-
 }

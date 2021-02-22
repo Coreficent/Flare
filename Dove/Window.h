@@ -17,11 +17,13 @@ namespace Dove
 		Window();
 		~Window();
 
-		int createWindow(std::string windowName, int windowWidth, int windowHeight, unsigned int windowFlag);
-		int getScreenWidth();
-		int getScreenHeight();
+		void open_window(std::string name, int width, int height);
+		void swap_window() const;
 
-		void swapBuffer() const;
+		bool full_screen{false};
+		bool hidden{false};
+		bool borderless{false};
+
 	private:
 		SDL_Window* window;
 	};

@@ -102,7 +102,7 @@ namespace Dove
 		glGenTextures(1, &_texID);
 		glBindTexture(GL_TEXTURE_2D, _texID);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, bestWidth, bestHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
-		
+
 		// Now draw all the glyphs
 		SDL_Color fg = {255, 255, 255, 255};
 		int ly = padding;
@@ -167,7 +167,6 @@ namespace Dove
 				(float)glyphRects[i].z / (float)bestWidth,
 				(float)glyphRects[i].w / (float)bestHeight
 			);
-
 		}
 		_glyphs[_regLength].character = ' ';
 		_glyphs[_regLength].size = _glyphs[0].size;
@@ -275,7 +274,7 @@ namespace Dove
 			if (s[si] == '\n')
 			{
 				tp.y += _fontHeight * scaling.y;
-				
+
 				tp.x = position.x;
 			}
 			else
@@ -288,7 +287,7 @@ namespace Dove
 				glm::vec4 uv = _glyphs[gi].uvRect;
 
 				//TODO implement render for text
-				
+
 				batch.draw(destRect, uv, _texID, depth, tint);
 				tp.x += _glyphs[gi].size.x * scaling.x;
 			}

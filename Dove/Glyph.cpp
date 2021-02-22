@@ -1,7 +1,8 @@
 #include "Glyph.h"
 
 
-namespace Dove {
+namespace Dove
+{
 	Glyph::Glyph()
 	{
 	}

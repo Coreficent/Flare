@@ -61,6 +61,12 @@
     <Filter Include="Source Files\window">
       <UniqueIdentifier>{6014e4d8-3fe8-4ff9-a602-e865dee3623d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\media">
+      <UniqueIdentifier>{541493b6-019f-4001-a746-918fe1955bf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\media">
+      <UniqueIdentifier>{5394d912-3d7f-429f-b612-f24923484d5a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -117,9 +123,6 @@
     <ClInclude Include="Vertex.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Header Files\unsorted</Filter>
-    </ClInclude>
     <ClInclude Include="Matrix.h">
       <Filter>Header Files\geometry</Filter>
     </ClInclude>
@@ -146,6 +149,12 @@
     </ClInclude>
     <ClInclude Include="Header.h">
       <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Header Files\window</Filter>
+    </ClInclude>
+    <ClInclude Include="Media.h">
+      <Filter>Header Files\media</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -194,9 +203,6 @@
     <ClCompile Include="TextureCache.cpp">
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Source Files\unsorted</Filter>
-    </ClCompile>
     <ClCompile Include="Matrix.cpp">
       <Filter>Source Files\geometry</Filter>
     </ClCompile>
@@ -220,6 +226,12 @@
     </ClCompile>
     <ClCompile Include="Dove.cpp">
       <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Source Files\window</Filter>
+    </ClCompile>
+    <ClCompile Include="Media.cpp">
+      <Filter>Source Files\media</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

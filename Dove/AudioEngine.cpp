@@ -1,12 +1,14 @@
 #include "AudioEngine.h"
 #include <sdl/SDL_mixer.h>
 
-namespace Dove {
+namespace Dove
+{
 	void SoundEffect::play(int loop)
 	{
-		if(Mix_PlayChannel(-1, this->mix_chunk, loop)==-1)
+		if (Mix_PlayChannel(-1, this->mix_chunk, loop) == -1)
 		{
-			if (Mix_PlayChannel(rand()%8, this->mix_chunk, loop) == -1){
+			if (Mix_PlayChannel(rand()%8, this->mix_chunk, loop) == -1)
+			{
 				printf("no channel left");
 			}
 		}
@@ -14,7 +16,7 @@ namespace Dove {
 
 	void Music::play(int loop)
 	{
-		Mix_PlayMusic(this->mix_music,loop);
+		Mix_PlayMusic(this->mix_music, loop);
 	}
 
 	void Music::stop()
@@ -34,7 +36,6 @@ namespace Dove {
 
 	AudioEngine::AudioEngine()
 	{
-
 	}
 
 
@@ -45,17 +46,16 @@ namespace Dove {
 
 	void AudioEngine::initialize()
 	{
-		if(Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG)==-1)
+		if (Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG) == -1)
 		{
 			// TODO 
 			printf("mixer initilization failed");
 		}
-		if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY,MIX_DEFAULT_FORMAT,2,1024))
+		if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY,MIX_DEFAULT_FORMAT, 2, 1024))
 		{
 			//TODO
 			printf("audio failed to open");
 		}
-
 	}
 
 	void AudioEngine::finalize()
@@ -69,16 +69,17 @@ namespace Dove {
 
 		SoundEffect effect;
 
-		if(it == this->effect_map.end())
+		if (it == this->effect_map.end())
 		{
 			Mix_Chunk* chunk = Mix_LoadWAV(file_path.c_str());
-			if(chunk == nullptr)
+			if (chunk == nullptr)
 			{
 				printf("load sound filed");
 			}
 			effect.mix_chunk = chunk;
 			this->effect_map[file_path] = chunk;
-		}else
+		}
+		else
 		{
 			effect.mix_chunk = it->second;
 		}

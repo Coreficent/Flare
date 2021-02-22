@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+
 namespace Dove
 {
 	const float PI = 3.14159265;

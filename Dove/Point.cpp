@@ -1,13 +1,13 @@
 #include "Point.h"
 
-namespace Dove {
-
+namespace Dove
+{
 	Point::Point()
 	{
 	}
 
 	Point::Point(float x, float y)
-		:x{ x }, y{ y }
+		: x{x}, y{y}
 	{
 	}
 
