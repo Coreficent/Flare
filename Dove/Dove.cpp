@@ -5,6 +5,7 @@
 #include "ResourceManager.h"
 #include "Display.h"
 #include "mathematics.h"
+#include "Header.h"
 
 namespace Dove
 {
@@ -14,11 +15,13 @@ namespace Dove
 
 	Dove::Dove(int windowWdith, int windowHeight) : sprite_font{nullptr}, window{}, camera{windowWdith, windowHeight}, camera_interface{windowWdith, windowHeight}, quad_batch_{}, input_manager{}, frame_manager{}, text_batch{}, audio_engine{}, currentState{GameState::running}, currentTicks{0}, windowWidth{windowWdith}, windowHeight{windowHeight}
 	{
+		dout << "<Debug Mode>" << endl;
 		core = this;
 	}
 
 	Dove::~Dove()
 	{
+		delete this->sprite_font;
 	}
 
 	void Dove::run()

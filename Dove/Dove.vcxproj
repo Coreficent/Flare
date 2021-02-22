@@ -152,6 +152,7 @@
     <ClInclude Include="FrameManager.h" />
     <ClInclude Include="GLSL.h" />
     <ClInclude Include="GLTexture.h" />
+    <ClInclude Include="Header.h" />
     <ClInclude Include="mathematics.h" />
     <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="InputManager.h" />

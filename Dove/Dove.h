@@ -23,13 +23,15 @@ namespace Dove {
 
 		friend class Display;
 
+		Stage stage{};
+
 	private:
 		static Dove* core;
 
 		SpriteFont* sprite_font;
 
 		Window window;
-		Stage stage{};
+		
 		GLSL colorProgram;
 		Camera camera;
 		Camera camera_interface;

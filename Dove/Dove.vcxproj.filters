@@ -55,6 +55,12 @@
     <Filter Include="Source Files\core">
       <UniqueIdentifier>{66f860b7-228a-4d1a-96cb-d1055deea03a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\window">
+      <UniqueIdentifier>{655530dd-ad4c-4fc2-8ef2-987aeebf7536}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\window">
+      <UniqueIdentifier>{6014e4d8-3fe8-4ff9-a602-e865dee3623d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -137,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="Dove.h">
       <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Header.h">
+      <Filter>Header Files\utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
