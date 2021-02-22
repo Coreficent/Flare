@@ -151,6 +151,7 @@
     <ClInclude Include="FrameManager.h" />
     <ClInclude Include="GLSL.h" />
     <ClInclude Include="GLTexture.h" />
+    <ClInclude Include="mathematics.h" />
     <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IOManager.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="Quad.cpp" />
     <ClCompile Include="QuadBatch.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="mathematics.cpp" />
     <ClCompile Include="SpriteFont.cpp" />
     <ClCompile Include="TextureCache.cpp" />
     <ClCompile Include="Window.cpp" />

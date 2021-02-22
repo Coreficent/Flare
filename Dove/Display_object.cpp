@@ -2,6 +2,8 @@
 #include "QuadBatch.h"
 #include <glm/gtc/matrix_transform.inl>
 #include "Point.h"
+#include "mathematics.h"
+
 
 namespace Dove
 {
@@ -85,6 +87,24 @@ namespace Dove
 	{
 		this->scale_x(value);
 		this->scale_y(value);
+	}
+
+	void Display_object::rotate(float value)
+	{
+		auto sine = sin(value);
+		auto cosine = cos(value);
+		auto a = this->matrix.a;
+		auto b = this->matrix.b;
+		auto c = this->matrix.c;
+		auto d = this->matrix.d;
+		auto x = this->matrix.x;
+		auto y = this->matrix.y;
+		this->matrix.a = a*cosine - b*sine;
+		this->matrix.b = a*sine + b*cosine;
+		this->matrix.c = c*cosine - d*sine;
+		this->matrix.d = c*sine + d*cosine;
+		this->matrix.x = x*cosine - y*sine;
+		this->matrix.y = x*sine + y*cosine;
 	}
 
 	void Display_object::render(Glyph& glyph) const

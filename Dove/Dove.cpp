@@ -4,6 +4,7 @@
 #include "Dove.h"
 #include "ResourceManager.h"
 #include "display_object.h"
+#include "mathematics.h"
 
 namespace Dove
 {
@@ -183,8 +184,9 @@ namespace Dove
 		display_object.set_height(100.0f);
 		display_object.scale_x(2.0f);
 		display_object.scale_y(4.0f);
-		display_object.scale_y(0.5f);
-		for (auto i{0}; i < 1000; ++i)
+		display_object.scale(0.5f);
+		display_object.rotate(to_radian(90.0f));
+		for (auto i{0}; i < 1; ++i)
 		{
 			//this->quad_batch_.draw(position + glm::vec4{50.0f * i,0.0f,0.0f,0.0f}, uv, texture.id, 0.0f, color);
 			// TODO display object test

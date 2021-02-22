@@ -1,5 +1,6 @@
 #pragma once
-namespace Dove {
+namespace Dove
+{
 	class Point
 	{
 	public:
@@ -7,8 +8,7 @@ namespace Dove {
 		Point(float x, float y);
 		~Point();
 
-		float x{ 0.0f };
-		float y{ 0.0f };
+		float x{0.0f};
+		float y{0.0f};
 	};
-
 }

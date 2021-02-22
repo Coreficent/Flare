@@ -114,6 +114,9 @@
     <ClInclude Include="Point.h">
       <Filter>Header Files\geometry</Filter>
     </ClInclude>
+    <ClInclude Include="mathematics.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="error.cpp">
@@ -175,6 +178,9 @@
     </ClCompile>
     <ClCompile Include="Point.cpp">
       <Filter>Source Files\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="mathematics.cpp">
+      <Filter>Source Files\utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
