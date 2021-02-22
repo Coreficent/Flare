@@ -9,7 +9,7 @@
 using namespace std;
 
 
-MainGame::MainGame(int windowWdith, int windowHeight) : quads{}, window{}, camera{ windowWdith, windowHeight }, currentState{GameState::running}, timeTracker{0.0f}, fps{0}, frameTime{0}, budget{16}, windowWidth{ windowWdith },windowHeight{ windowHeight }
+MainGame::MainGame(int windowWdith, int windowHeight) : quads{}, window{}, camera{windowWdith, windowHeight}, currentState{GameState::running}, timeTracker{0.0f}, fps{0}, frameTime{0}, budget{16}, windowWidth{windowWdith}, windowHeight{windowHeight}
 {
 }
 
@@ -63,7 +63,6 @@ void MainGame::gameLoop()
 		this->calculateFPS();
 		auto frameTicks = SDL_GetTicks() - startTick;
 
-		
 
 		if (this->budget > frameTicks)
 		{
@@ -86,6 +85,33 @@ void MainGame::processInput()
 			break;
 		case SDL_MOUSEMOTION:
 			//cout << event.motion.x << " " << event.motion.y << endl;
+			break;
+
+		case SDL_KEYDOWN:
+			switch (event.key.keysym.sym)
+			{
+			case SDLK_w:
+				this->camera.setPosition(this->camera.getPosition() + glm::vec2(0.0, -5.0));
+				break;
+			case SDLK_s:
+				this->camera.setPosition(this->camera.getPosition() + glm::vec2(0.0, 5.0));
+				break;
+
+			case SDLK_a:
+				this->camera.setPosition(this->camera.getPosition() + glm::vec2(5.0, 0.0));
+				break;
+			case SDLK_d:
+				this->camera.setPosition(this->camera.getPosition() + glm::vec2(-5.0, 0.0));
+				break;
+
+			case SDLK_q:
+				this->camera.setScale(this->camera.getScale() + 0.1);
+				break;
+			case SDLK_e:
+				this->camera.setScale(this->camera.getScale() - 0.1);
+				break;
+			}
+
 			break;
 		}
 	}
