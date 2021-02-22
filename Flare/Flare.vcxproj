@@ -131,12 +131,12 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="error.h" />
     <ClInclude Include="GLSL.h" />
-    <ClInclude Include="glTexture.h" />
+    <ClInclude Include="GLTexture.h" />
     <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="IOManager.h" />
     <ClInclude Include="picoPNG.h" />
     <ClInclude Include="Quad.h" />
-    <ClInclude Include="Vertext.h" />
+    <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

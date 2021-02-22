@@ -53,19 +53,19 @@
     <ClInclude Include="error.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vertext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IOManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="picoPNG.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="glTexture.h">
+    <ClInclude Include="ImageLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ImageLoader.h">
+    <ClInclude Include="GLTexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

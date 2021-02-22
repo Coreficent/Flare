@@ -3,6 +3,7 @@
 #include <sdl/SDL.h>
 #include "Quad.h"
 #include "GLSL.h"
+#include "GlTexture.h"
 
 class Engine
 {
@@ -23,6 +24,7 @@ private:
 
 	Quad quad;
 	GLSL colorProgram;
+	GLTexture cakeTexture;
 
 	float time;
 

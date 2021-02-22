@@ -1,5 +1,5 @@
 #pragma once
-#include "glTexture.h"
+#include "GLTexture.h"
 #include <string>
 
 using namespace std;

@@ -3,7 +3,7 @@
 
 #include "Engine.h"
 #include "error.h"
-
+#include "ImageLoader.h"
 using namespace std;
 
 
@@ -20,6 +20,8 @@ void Engine::run()
 	this->initialize();
 
 	quad.initialize();
+
+	this->cakeTexture = ImageLoader::loadPNG("texture/cake.png");
 
 	// running the game logic
 	this->gameLoop();
@@ -64,6 +66,7 @@ void Engine::initializeShader()
 	this->colorProgram.compileShader("shader/colorShade.vert", "shader/colorShade.frag");
 	this->colorProgram.addAttribute("vertexPosition");
 	this->colorProgram.addAttribute("vertexColor");
+	this->colorProgram.addAttribute("vertexUV");
 	this->colorProgram.linkShader();
 }
 
@@ -102,8 +105,15 @@ void Engine::render()
 {
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+	glBindTexture(GL_TEXTURE_2D, this->cakeTexture.id);
 
 	this->colorProgram.use();
+	glActiveTexture(GL_TEXTURE0);
+
+
+	auto textureLocation = this->colorProgram.getUniform("cakeSampler");
+	glUniform1i(textureLocation, 0);
 
 	// update time
 	auto location = this->colorProgram.getUniform("time");
@@ -111,6 +121,8 @@ void Engine::render()
 
 
 	quad.draw();
+
+	glBindTexture(GL_TEXTURE_2D, 0);
 	this->colorProgram.unuse();
 
 	SDL_GL_SwapWindow(this->window);
