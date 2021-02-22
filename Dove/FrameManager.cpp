@@ -37,9 +37,9 @@ namespace Dove
 		auto fps = 1000.0f / averageFrameTime;
 
 
-		auto frameTicks = SDL_GetTicks() - this->currentTicks;
+	
 
-		if (this->budget > frameTicks)
+		if (this->budget > frameTime)
 		{
 			//SDL_Delay(this->budget - frameTicks - 1);
 		}
@@ -47,7 +47,7 @@ namespace Dove
 		if (!(currentFrame % 60))
 		{
 			Dove::debugPrint("fps: ");
-			printf("%f :: budget %d\n", fps, (this->budget - frameTicks - 1));
+			printf("%f :: budget %d\n", fps, (this->budget - frameTime - 1));
 		}
 	}
 }
