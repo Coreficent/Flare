@@ -17,7 +17,7 @@ public:
 	void use() const;
 	void unuse() const;
 
-	GLuint getUniform(const string& uniformName);
+	GLint getUniform(const string& uniformName) const;
 private:
 	
 

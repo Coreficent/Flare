@@ -116,9 +116,9 @@ void GLSL::unuse () const
 	}
 }
 
-GLuint GLSL::getUniform(const string& uniformName)
+GLint GLSL::getUniform(const string& uniformName) const
 {
-	GLuint location = glGetUniformLocation(this->programID, uniformName.c_str());
+	auto location = glGetUniformLocation(this->programID, uniformName.c_str());
 	if(location == GL_INVALID_INDEX)
 	{
 		fatalError("uniform name not found");

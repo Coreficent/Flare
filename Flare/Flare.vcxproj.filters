@@ -30,6 +30,9 @@
     <ClCompile Include="error.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IOManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vertext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IOManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
