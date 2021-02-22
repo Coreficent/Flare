@@ -66,7 +66,7 @@ void Engine::initialize()
 
 
 	// vertical synch 0 off 1 on
-	SDL_GL_SetSwapInterval(1);
+	SDL_GL_SetSwapInterval(0);
 
 	this->initializeShader();
 }
@@ -93,7 +93,7 @@ void Engine::gameLoop()
 		auto frameTicks = SDL_GetTicks() - startTick;
 		if (this->budget > frameTicks)
 		{
-			SDL_Delay(this->budget - frameTicks);
+			//SDL_Delay(this->budget - frameTicks);
 		}
 	}
 }
