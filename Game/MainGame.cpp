@@ -10,7 +10,7 @@
 using namespace std;
 
 
-MainGame::MainGame(int windowWdith, int windowHeight) :sprite_font{nullptr}, window{}, camera { windowWdith, windowHeight }, camera_interface{ windowWdith, windowHeight }, quad_batch_{}, input_manager{}, frame_manager{},  text_batch{}, audio_manager{},currentState{ GameState::running },currentTicks{ 0 },windowWidth{ windowWdith },windowHeight{ windowHeight }
+MainGame::MainGame(int windowWdith, int windowHeight) :sprite_font { nullptr },window{}, camera{ windowWdith, windowHeight }, camera_interface{ windowWdith, windowHeight }, quad_batch_{}, input_manager{}, frame_manager{}, text_batch{}, audio_engine{}, currentState{ GameState::running }, currentTicks{ 0 }, windowWidth{ windowWdith }, windowHeight{ windowHeight }
 {
 }
 
@@ -22,7 +22,8 @@ void MainGame::run()
 {
 	this->initialize();
 
-
+	Dove::Music music = this->audio_engine.load_music("music/x.ogg");
+	music.play(-1);
 
 	// running the game logic
 	this->gameLoop();
@@ -44,7 +45,9 @@ void MainGame::initialize()
 	//this->camera.initialize();
 	//
 	// initialize audio
-	this->audio_manager.load("audio/bounce.wav");
+	this->audio_engine.initialize();
+
+
 }
 
 void MainGame::initializeShader()
@@ -94,9 +97,15 @@ void MainGame::processInput()
 			break;
 		case SDL_MOUSEBUTTONDOWN:
 			this->input_manager.pressKey(event.button.button);
+			//TODO use member var
+			Dove::SoundEffect sound = this->audio_engine.load_sound_effect("sound/shotgun.wav");
+			sound.play();
+
 			break;
 		case SDL_MOUSEBUTTONUP:
 			this->input_manager.releaseKey(event.button.button);
+			Dove::SoundEffect sound2 = this->audio_engine.load_sound_effect("sound/cg1.wav");
+			sound2.play();
 			break;
 		
 		}
