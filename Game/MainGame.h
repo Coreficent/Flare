@@ -7,6 +7,7 @@
 #include <dove/Window.h>
 #include <dove/Camera.h>
 #include <dove/QuadBatch.h>
+#include <dove/InputManager.h>
 using namespace std;
 
 class MainGame
@@ -28,6 +29,7 @@ private:
 	Dove::GLSL colorProgram;
 	Dove::Camera camera;
 	Dove::QuadBatch quad_batch_;
+	Dove::InputManager input_manager;
 
 	enum class GameState { running, ended };
 

@@ -10,7 +10,7 @@
 using namespace std;
 
 
-MainGame::MainGame(int windowWdith, int windowHeight) : window {}, camera{ windowWdith, windowHeight }, quad_batch_{}, currentState{ GameState::running }, currentTicks{ 0 }, timeTracker{ 0.0f }, fps{ 0 }, frameTime{ 0 }, budget{ 16 }, windowWidth{ windowWdith }, windowHeight{ windowHeight }
+MainGame::MainGame(int windowWdith, int windowHeight) :window {}, camera{ windowWdith, windowHeight }, quad_batch_{}, input_manager{}, currentState{ GameState::running }, currentTicks{ 0 }, timeTracker{ 0.0f }, fps{ 0 }, frameTime{ 0 }, budget{ 16 }, windowWidth{ windowWdith }, windowHeight{ windowHeight }
 {
 }
 
@@ -78,33 +78,37 @@ void MainGame::processInput()
 			break;
 
 		case SDL_KEYDOWN:
-			switch (event.key.keysym.sym)
-			{
-			case SDLK_w:
-				this->camera.setPosition(this->camera.getPosition() + glm::vec2(0.0, -5.0));
-				break;
-			case SDLK_s:
-				this->camera.setPosition(this->camera.getPosition() + glm::vec2(0.0, 5.0));
-				break;
-
-			case SDLK_a:
-				this->camera.setPosition(this->camera.getPosition() + glm::vec2(5.0, 0.0));
-				break;
-			case SDLK_d:
-				this->camera.setPosition(this->camera.getPosition() + glm::vec2(-5.0, 0.0));
-				break;
-
-			case SDLK_q:
-				this->camera.setScale(this->camera.getScale() + 0.1f);
-				break;
-			case SDLK_e:
-				this->camera.setScale(this->camera.getScale() - 0.1f);
-				break;
-			}
-
+			this->input_manager.pressKey(event.key.keysym.sym);
+			break;
+		case SDL_KEYUP:
+			this->input_manager.releaseKey(event.key.keysym.sym);
 			break;
 		}
 	}
+
+
+	
+	if (this->input_manager.keyPressed(SDLK_w)) {
+		this->camera.setPosition(this->camera.getPosition() + glm::vec2(0.0, -5.0));
+	}
+	if (this->input_manager.keyPressed(SDLK_s)) {
+		this->camera.setPosition(this->camera.getPosition() + glm::vec2(0.0, 5.0));
+	}
+
+	if (this->input_manager.keyPressed(SDLK_a)) {
+		this->camera.setPosition(this->camera.getPosition() + glm::vec2(5.0, 0.0));
+	}
+	if (this->input_manager.keyPressed(SDLK_d)) {
+		this->camera.setPosition(this->camera.getPosition() + glm::vec2(-5.0, 0.0));
+	}
+
+	if (this->input_manager.keyPressed(SDLK_q)) {
+		this->camera.setScale(this->camera.getScale() + 0.1f);
+	}
+	if (this->input_manager.keyPressed(SDLK_e)) {
+		this->camera.setScale(this->camera.getScale() - 0.1f);
+	}
+	
 }
 
 // render
@@ -138,7 +142,7 @@ void MainGame::render()
 	color.g = 255;
 	color.b = 255;
 	color.a = 255;
-	for(auto i{0};i<20000;++i)
+	for(auto i{0};i<50;++i)
 	{
 		this->quad_batch_.draw(position + glm::vec4{ 1.0f * i,0.0f,0.0f,0.0f }, uv, texture.id, 0.0f, color);
 	}
@@ -180,6 +184,6 @@ void MainGame::calculateFPS()
 	auto frameTicks = SDL_GetTicks() - this->currentTicks;
 	if (this->budget > frameTicks)
 	{
-		//SDL_Delay(this->budget - frameTicks);
+		SDL_Delay(this->budget - frameTicks-1);
 	}
 }
