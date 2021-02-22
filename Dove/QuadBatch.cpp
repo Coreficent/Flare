@@ -197,6 +197,6 @@ namespace Dove
 
 	bool QuadBatch::compareTexture(Glyph* a, Glyph* b)
 	{
-		return a->texture < b->texture;
+		return a->texture > b->texture;
 	}
 }

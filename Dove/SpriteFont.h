@@ -77,6 +77,8 @@ namespace Dove
 		/// Measures the dimensions of the text
 		glm::vec2 measure(const char* s);
 
+		unsigned int _texID;
+
 		/// Draws using a QuadBatch
 		void draw(QuadBatch& batch, const char* s, glm::vec2 position, glm::vec2 scaling,
 		          float depth, Color tint, Justification just = Justification::LEFT);
@@ -87,7 +89,7 @@ namespace Dove
 		CharGlyph* _glyphs;
 		int _fontHeight;
 
-		unsigned int _texID;
+		
 	};
 }
 

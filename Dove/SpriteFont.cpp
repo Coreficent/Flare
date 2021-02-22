@@ -3,6 +3,7 @@
 #include "QuadBatch.h"
 
 #include <sdl/SDL.h>
+#include <glm/gtc/matrix_transform.inl>
 
 int closestPow2(int i)
 {
@@ -101,7 +102,7 @@ namespace Dove
 		glGenTextures(1, &_texID);
 		glBindTexture(GL_TEXTURE_2D, _texID);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, bestWidth, bestHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
-
+		
 		// Now draw all the glyphs
 		SDL_Color fg = {255, 255, 255, 255};
 		int ly = padding;
@@ -283,7 +284,13 @@ namespace Dove
 				if (gi < 0 || gi >= _regLength)
 					gi = _regLength;
 				glm::vec4 destRect(tp, _glyphs[gi].size * scaling);
-				batch.draw(destRect, _glyphs[gi].uvRect, _texID, depth, tint);
+				glm::vec4 uv = _glyphs[gi].uvRect;
+
+				//TODO find correct coordinates
+				uv.y = -uv.y;
+				uv.w = -uv.w;
+				//TODO fix sprite generation
+				batch.draw(destRect, uv, _texID, depth, tint);
 				tp.x += _glyphs[gi].size.x * scaling.x;
 			}
 		}
