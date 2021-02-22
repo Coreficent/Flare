@@ -99,6 +99,9 @@
     <ClInclude Include="Window.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
+    <ClInclude Include="Display_object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="error.cpp">
@@ -151,6 +154,9 @@
     </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>Source Files\unsorted</Filter>
+    </ClCompile>
+    <ClCompile Include="Display_object.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

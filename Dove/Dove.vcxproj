@@ -146,6 +146,7 @@
     <ClInclude Include="AudioEngine.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Display_object.h" />
     <ClInclude Include="error.h" />
     <ClInclude Include="FrameManager.h" />
     <ClInclude Include="GLSL.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="AudioEngine.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Display_object.cpp" />
     <ClCompile Include="error.cpp" />
     <ClCompile Include="FrameManager.cpp" />
     <ClCompile Include="GLSL.cpp" />

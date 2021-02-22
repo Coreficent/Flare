@@ -30,12 +30,16 @@ namespace Dove
 
 	void QuadBatch::end()
 	{
+		//TODO temp delete comment
+		
+		
 		this->glyphs_pointers.resize(this->glyphs.size());
 		for (unsigned __int64 i{0}, l{(this->glyphs.size())}; i < l; ++i)
 		{
 			this->glyphs_pointers[i] = &this->glyphs[i];
 		}
-		this->sortGlyphs();
+		//this->sortGlyphs();
+		
 		this->createRenderBatches();
 	}
 

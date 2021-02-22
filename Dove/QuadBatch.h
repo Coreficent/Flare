@@ -20,7 +20,15 @@ namespace Dove
 	class Glyph
 	{
 	public:
-		Glyph(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color) : texture{texture}, depth{depth}
+
+		Glyph()
+			:texture{0},depth{0.0f}
+		{
+			
+		}
+
+		Glyph(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color)
+			: texture{texture}, depth{depth}
 		{
 			this->topLeft.color = color;
 			this->topLeft.setPosition(bound.x, bound.y + bound.w);
@@ -133,9 +141,12 @@ namespace Dove
 		void draw(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color);
 		void render();
 
+		//TODO temp public
+		std::vector<Glyph> glyphs;
+
 	private:
 		std::vector<Glyph*> glyphs_pointers;
-		std::vector<Glyph> glyphs;
+		
 		std::vector<RenderBatch> renderBatches;
 
 		GlyphSortType sortType;
