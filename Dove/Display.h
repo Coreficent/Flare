@@ -9,8 +9,8 @@ namespace Dove
 	class Display
 	{
 	public:
-		explicit Display(GLuint texture_id);
-		~Display();
+		Display();
+		virtual ~Display();
 
 		float get_x() const;
 		float get_y() const;
@@ -29,7 +29,7 @@ namespace Dove
 		void scale(float value);
 		void rotate(float value);
 
-		void render() const;
+		virtual void render() const;
 
 	private:
 

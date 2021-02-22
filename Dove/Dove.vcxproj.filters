@@ -49,6 +49,12 @@
     <Filter Include="Source Files\render">
       <UniqueIdentifier>{925f0ec6-eb17-48b8-a117-497623f42927}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\core">
+      <UniqueIdentifier>{90700f4e-1059-462d-b7ae-970980caf820}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core">
+      <UniqueIdentifier>{66f860b7-228a-4d1a-96cb-d1055deea03a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -67,9 +73,6 @@
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Header Files\unsorted</Filter>
-    </ClInclude>
-    <ClInclude Include="Dove.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
     <ClInclude Include="GLSL.h">
@@ -126,6 +129,15 @@
     <ClInclude Include="Glyph.h">
       <Filter>Header Files\render</Filter>
     </ClInclude>
+    <ClInclude Include="Container.h">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="Dove.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="error.cpp">
@@ -141,9 +153,6 @@
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Source Files\unsorted</Filter>
-    </ClCompile>
-    <ClCompile Include="Dove.cpp">
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
     <ClCompile Include="GLSL.cpp">
@@ -193,6 +202,15 @@
     </ClCompile>
     <ClCompile Include="Glyph.cpp">
       <Filter>Source Files\render</Filter>
+    </ClCompile>
+    <ClCompile Include="Container.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="Dove.cpp">
+      <Filter>Source Files\core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -181,7 +181,8 @@ namespace Dove
 		color.g = 255;
 		color.b = 255;
 		color.a = 255;
-		Display display_object{ texture.id };
+		Display display_object{};
+		display_object.set_texture_id(texture.id);
 		display_object.set_width(100.0f);
 		display_object.set_height(100.0f);
 		display_object.scale(2.0f);
@@ -191,6 +192,13 @@ namespace Dove
 			display_object.set_x(100.0f*i);
 			display_object.render();
 		}
+		///////// stage renderer
+		this->stage.render();
+
+		//////////
+		
+		
+		
 		this->sprite_font->draw(this->quad_batch_, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
 		
 		// ouput sprite sheet
@@ -225,34 +233,4 @@ namespace Dove
 
 		this->window.swapBuffer();
 	}
-	/*
-	void Dove::draw_text()
-	{
-		auto locationCamera = this->colorProgram.getUniform("cameraPosition");
-		auto cameraMatrix = this->camera_interface.getCameraMatrix();
-
-		glUniformMatrix4fv(locationCamera, 1, GL_FALSE, &(cameraMatrix[0][0]));
-
-		static int rand_test = 0;
-
-		static int count = 0;
-
-		if (count % 1000 == 0)
-		{
-			rand_test = rand() % 9;
-		}
-
-		count++;
-
-		char buffer[256];
-		this->text_batch.begin();
-		//TODO make it dynamic to prevent overflow
-		sprintf_s(buffer, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z");
-		this->sprite_font->draw(this->text_batch, buffer, glm::vec2(0.0f, 0.0f), glm::vec2(1.0f), 0.0f, Color{125,0,125,125}, Justification::LEFT);
-		
-
-		this->text_batch.end();
-		this->text_batch.render();
-	}
-	*/
 }

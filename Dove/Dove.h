@@ -8,6 +8,7 @@
 #include "FrameManager.h"
 #include "AudioEngine.h"
 #include "QuadBatch.h"
+#include "Stage.h"
 
 namespace Dove {
 	using namespace std;
@@ -28,6 +29,7 @@ namespace Dove {
 		SpriteFont* sprite_font;
 
 		Window window;
+		Stage stage{};
 		GLSL colorProgram;
 		Camera camera;
 		Camera camera_interface;
@@ -43,9 +45,6 @@ namespace Dove {
 
 		Uint32 currentTicks;
 
-		//float timeTracker;
-
-
 		int windowWidth;
 		int windowHeight;
 
@@ -54,7 +53,7 @@ namespace Dove {
 		void gameLoop();
 		void processInput();
 		void render();
-		void draw_text();
+
 	};
 
 }

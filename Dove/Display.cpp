@@ -7,8 +7,7 @@
 
 namespace Dove
 {
-	Display::Display(GLuint texture_id)
-		: texture_id{texture_id}
+	Display::Display()
 	{
 	}
 

@@ -146,6 +146,7 @@
     <ClInclude Include="AudioEngine.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Container.h" />
     <ClInclude Include="Display.h" />
     <ClInclude Include="error.h" />
     <ClInclude Include="FrameManager.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SpriteFont.h" />
     <ClInclude Include="Glyph.h" />
+    <ClInclude Include="Stage.h" />
     <ClInclude Include="TextureCache.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Window.h" />
@@ -172,6 +174,7 @@
     <ClCompile Include="AudioEngine.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Container.cpp" />
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="error.cpp" />
     <ClCompile Include="FrameManager.cpp" />
@@ -189,6 +192,7 @@
     <ClCompile Include="mathematics.cpp" />
     <ClCompile Include="SpriteFont.cpp" />
     <ClCompile Include="Glyph.cpp" />
+    <ClCompile Include="Stage.cpp" />
     <ClCompile Include="TextureCache.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
