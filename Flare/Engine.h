@@ -1,7 +1,6 @@
 #pragma once
 
 #include <sdl/SDL.h>
-#include <gl/glew.h>
 #include "Quad.h"
 #include "GLSL.h"
 
@@ -12,7 +11,6 @@ public:
 	~Engine();
 
 	void run();
-	
 
 private:
 	const char* WINDOW_NAME{"Flare Engine"};
@@ -23,6 +21,9 @@ private:
 
 	GameState currentState;
 
+	Quad quad;
+	GLSL colorProgram;
+
 	int windowWidth;
 	int windowHeight;
 
@@ -31,9 +32,5 @@ private:
 	void gameLoop();
 	void processInput();
 	void render();
-
-	Quad quad;
-
-	GLSL colorProgram;
 };
 

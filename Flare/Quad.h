@@ -13,7 +13,8 @@ public:
 	void draw();
 	
 private:
-	float x, y, width, height;
 	GLuint vertextBufferID;
+
+	float x, y, width, height;
 };
 

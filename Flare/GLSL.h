@@ -14,18 +14,19 @@ public:
 	void linkShader();
 	void addAttribute(const string& attributeName);
 
-	void use();
-	void unuse();
+	void use() const;
+	void unuse() const;
 
 
 private:
-	int attributeCount;
-	void compileSource(const string& sourcePath, GLuint shaderID);
-
-
+	
 
 	GLuint programID;
 	GLuint vertexShaderID;
 	GLuint fragmentShaderID;
+
+	int attributeCount;
+
+	void compileSource(const string& sourcePath, GLuint shaderID) const;
 };
 

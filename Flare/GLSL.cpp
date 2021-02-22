@@ -5,7 +5,7 @@
 
 using namespace std;
 
-GLSL::GLSL() :attributeCount{0},programID { 0 }, vertexShaderID{ 0 }, fragmentShaderID{ 0 }
+GLSL::GLSL() :programID { 0 }, vertexShaderID{ 0 }, fragmentShaderID{ 0 },attributeCount { 0 }
 {
 }
 
@@ -61,7 +61,7 @@ void GLSL::linkShader()
 }
 
 
-void GLSL::compileSource(const string& sourcePath, GLuint shaderID)
+void GLSL::compileSource(const string& sourcePath, GLuint shaderID) const
 {
 
 	ifstream vertexFile(sourcePath);
@@ -99,7 +99,7 @@ void GLSL::addAttribute(const string& attributeName)
 	glBindAttribLocation(this->programID, this->attributeCount++, attributeName.c_str());
 }
 
-void GLSL::use()
+void GLSL::use() const
 {
 	glUseProgram(this->programID);
 	for (auto i = 0;i<this->attributeCount;++i)
@@ -108,7 +108,7 @@ void GLSL::use()
 	}
 }
 
-void GLSL::unuse()
+void GLSL::unuse () const
 {
 	glUseProgram(0);
 	for (auto i = 0; i<this->attributeCount; ++i)

@@ -7,8 +7,7 @@
 using namespace std;
 
 
-
-Engine::Engine() : window{ nullptr }, currentState{GameState::running}, windowWidth{ 1024 }, windowHeight{ 700 },quad{ -1.0f,-1.0f,1.0f,1.0f}
+Engine::Engine() : window{nullptr}, currentState{GameState::running}, quad{-1.0f,-1.0f,1.0f,1.0f}, windowWidth{1024}, windowHeight{700}
 {
 }
 
@@ -34,20 +33,19 @@ void Engine::initialize()
 	// window initialization
 	this->window = SDL_CreateWindow(this->WINDOW_NAME, SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, this->windowWidth, this->windowHeight, SDL_WINDOW_OPENGL);
 
-
-	if(!this->window)
+	if (!this->window)
 	{
 		fatalError("sdl window failed");
 	}
 
-	SDL_GLContext glContext = SDL_GL_CreateContext(this->window);
-	if(!glContext)
+	auto glContext = SDL_GL_CreateContext(this->window);
+	if (!glContext)
 	{
 		fatalError("sdl context failed");
 	}
 
-	GLenum glError = glewInit();
-	if(glError != GLEW_OK)
+	auto glError = glewInit();
+	if (glError != GLEW_OK)
 	{
 		fatalError("glew failed");
 	}
@@ -71,7 +69,7 @@ void Engine::initializeShader()
 // main loop
 void Engine::gameLoop()
 {
-	while(this->currentState!=GameState::ended)
+	while (this->currentState != GameState::ended)
 	{
 		this->processInput();
 		this->render();
@@ -83,7 +81,7 @@ void Engine::processInput()
 {
 	SDL_Event event{};
 
-	while(SDL_PollEvent(&event))
+	while (SDL_PollEvent(&event))
 	{
 		switch (event.type)
 		{
@@ -102,7 +100,7 @@ void Engine::render()
 {
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+
 	this->colorProgram.use();
 	quad.draw();
 	this->colorProgram.unuse();

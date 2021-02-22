@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Quad::Quad(float x, float y, float width, float height):x{x},y{y},width{width},height{height},vertextBufferID{0}
+Quad::Quad(float x, float y, float width, float height):vertextBufferID{0},x{x},y{y},width{width},height{height}
 {
 }
 
