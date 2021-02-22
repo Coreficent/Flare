@@ -51,6 +51,5 @@ private:
 	void gameLoop();
 	void processInput();
 	void render();
-
 };
 

@@ -2,7 +2,7 @@
 
 namespace Dove {
 
-	InputManager::InputManager()
+	InputManager::InputManager():keymap{},mouse_position{0.0f}
 	{
 	}
 
@@ -20,6 +20,17 @@ namespace Dove {
 	void InputManager::releaseKey(unsigned int keyID)
 	{
 		this->keymap[keyID] = false;
+	}
+
+	void InputManager::setMousePosition(float x, float y)
+	{
+		this->mouse_position.x = x;
+		this->mouse_position.y = y;
+	}
+
+	glm::vec2 InputManager::get_mouse_position() const
+	{
+		return this->mouse_position;
 	}
 
 	bool InputManager::keyPressed(unsigned int keyID)

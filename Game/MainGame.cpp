@@ -74,15 +74,21 @@ void MainGame::processInput()
 			this->currentState = GameState::ended;
 			break;
 		case SDL_MOUSEMOTION:
-			//cout << event.motion.x << " " << event.motion.y << endl;
+			this->input_manager.setMousePosition(event.motion.x, event.motion.y);
 			break;
-
 		case SDL_KEYDOWN:
 			this->input_manager.pressKey(event.key.keysym.sym);
 			break;
 		case SDL_KEYUP:
 			this->input_manager.releaseKey(event.key.keysym.sym);
 			break;
+		case SDL_MOUSEBUTTONDOWN:
+			this->input_manager.pressKey(event.button.button);
+			break;
+		case SDL_MOUSEBUTTONUP:
+			this->input_manager.releaseKey(event.button.button);
+			break;
+		
 		}
 	}
 
@@ -108,7 +114,12 @@ void MainGame::processInput()
 	if (this->input_manager.keyPressed(SDLK_e)) {
 		this->camera.setScale(this->camera.getScale() - 0.1f);
 	}
-	
+	if(this->input_manager.keyPressed(SDL_BUTTON_LEFT))
+	{
+		glm::vec2 mouse_position = this->input_manager.get_mouse_position();
+		mouse_position = this->camera.global_to_local(mouse_position);
+		cout << mouse_position.x << " :: " << mouse_position.y << endl;
+	}
 }
 
 // render
