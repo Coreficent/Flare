@@ -20,7 +20,11 @@ namespace Dove {
 
 		void run();
 
+		friend class Display;
+
 	private:
+		static Dove* core;
+
 		SpriteFont* sprite_font;
 
 		Window window;

@@ -29,6 +29,7 @@
 /// @date 2009-04-29 / 2011-06-15
 /// @author Christophe Riccio
 ///////////////////////////////////////////////////////////////////////////////////
+#pragma once
 
 #include "../geometric.hpp"
 #include "../trigonometric.hpp"

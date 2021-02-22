@@ -29,7 +29,7 @@ namespace Dove
 		void scale(float value);
 		void rotate(float value);
 
-		void render(Glyph& glyph) const;
+		void render() const;
 
 	private:
 

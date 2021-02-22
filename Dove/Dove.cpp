@@ -10,9 +10,11 @@ namespace Dove
 {
 	using namespace std;
 
+	Dove* Dove::core{ nullptr };
 
 	Dove::Dove(int windowWdith, int windowHeight) : sprite_font{nullptr}, window{}, camera{windowWdith, windowHeight}, camera_interface{windowWdith, windowHeight}, quad_batch_{}, input_manager{}, frame_manager{}, text_batch{}, audio_engine{}, currentState{GameState::running}, currentTicks{0}, windowWidth{windowWdith}, windowHeight{windowHeight}
 	{
+		core = this;
 	}
 
 	Dove::~Dove()
@@ -187,7 +189,7 @@ namespace Dove
 		for (auto i{0}; i < 1500; ++i)
 		{
 			display_object.set_x(100.0f*i);
-			display_object.render(this->quad_batch_.next_glyph());
+			display_object.render();
 		}
 		this->sprite_font->draw(this->quad_batch_, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
 		
