@@ -46,7 +46,7 @@ namespace Dove
 
 			this->game.run();
 
-			this->renderer.renderNow();
+			//this->renderer.render();
 
 			this->window.swap_window();
 		}

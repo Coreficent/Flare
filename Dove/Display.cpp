@@ -108,7 +108,7 @@ namespace Dove
 
 	void Display::render() const
 	{
-		auto& glyph = Core::core->renderer.next_glyph();
+		auto& glyph = Core::core->renderer.next_glyph(this->texture_id);
 
 		auto top_left = this->locate_vertex(0.0f, 0.0f);
 		auto top_right = this->locate_vertex(this->width, 0.0f);

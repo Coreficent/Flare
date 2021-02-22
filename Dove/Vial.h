@@ -5,6 +5,9 @@
 namespace Dove
 {
 	template <typename T>
+
+	
+
 	class Vial
 	{
 	public:
@@ -16,10 +19,19 @@ namespace Dove
 		{
 		}
 
+
+
+
+
 		T& operator[](unsigned int i)
 		{
 			return this->container[i];
 		}
+
+
+
+
+
 
 		T& next()
 		{
@@ -46,6 +58,9 @@ namespace Dove
 			this->index = 0;
 		}
 
+		class IType
+		{
+		};
 
 	private:
 		std::vector<T> container{};
