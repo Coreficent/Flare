@@ -7,7 +7,7 @@
 using namespace std;
 
 
-Engine::Engine() : window{nullptr}, currentState{GameState::running}, quad{-1.0f,-1.0f,1.0f,1.0f}, windowWidth{1024}, windowHeight{700}
+Engine::Engine() : window{nullptr}, currentState{GameState::running}, quad{-1.0f,-1.0f,1.0f,1.0f}, time{0.0f}, windowWidth{1024}, windowHeight{700}
 {
 }
 
@@ -72,6 +72,7 @@ void Engine::gameLoop()
 {
 	while (this->currentState != GameState::ended)
 	{
+		this->time += 0.005;
 		this->processInput();
 		this->render();
 	}
@@ -103,6 +104,12 @@ void Engine::render()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	this->colorProgram.use();
+
+	// update time
+	auto location = this->colorProgram.getUniform("time");
+	glUniform1f(location, this->time);
+
+
 	quad.draw();
 	this->colorProgram.unuse();
 

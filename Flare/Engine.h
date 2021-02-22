@@ -24,6 +24,8 @@ private:
 	Quad quad;
 	GLSL colorProgram;
 
+	float time;
+
 	int windowWidth;
 	int windowHeight;
 
