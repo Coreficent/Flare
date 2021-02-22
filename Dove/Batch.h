@@ -17,9 +17,9 @@ namespace Dove
 		void render() const;
 		//TODO temp public
 		GLuint texture{ 0 };
+		Vial <Vertex> vertices{};
 	private:
 
-		Vial <Vertex> vertices{};
 
 		GLuint buffer_id{0};
 
