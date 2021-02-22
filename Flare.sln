@@ -8,7 +8,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "game\Game.vcxproj",
 		{71F65EDD-D5AB-4F73-A3AA-F60F1365519B} = {71F65EDD-D5AB-4F73-A3AA-F60F1365519B}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dove", "dove\Dove.vcxproj", "{71F65EDD-D5AB-4F73-A3AA-F60F1365519B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Flare", "flare\Flare.vcxproj", "{71F65EDD-D5AB-4F73-A3AA-F60F1365519B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

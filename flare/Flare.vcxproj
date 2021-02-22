@@ -22,8 +22,9 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{71F65EDD-D5AB-4F73-A3AA-F60F1365519B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Dove</RootNamespace>
+    <RootNamespace>Flare</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Flare</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

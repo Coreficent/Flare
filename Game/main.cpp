@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "dove/Core.h"
+#include "flare/Core.h"
 #include "gsl/gsl"
 
 int main(int argc, char** argv)
