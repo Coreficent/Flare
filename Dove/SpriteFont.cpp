@@ -127,7 +127,7 @@ namespace Dove
 				}
 
 				// Save glyph image and update coordinates
-				glTexSubImage2D(GL_TEXTURE_2D, 0, lx, bestHeight - ly - 1 - glyphSurface->h, glyphSurface->w, glyphSurface->h, GL_BGRA, GL_UNSIGNED_BYTE, glyphSurface->pixels);
+				glTexSubImage2D(GL_TEXTURE_2D, 0, lx, ly, glyphSurface->w, glyphSurface->h, GL_BGRA, GL_UNSIGNED_BYTE, glyphSurface->pixels);
 				glyphRects[gi].x = lx;
 				glyphRects[gi].y = ly;
 				glyphRects[gi].z = glyphSurface->w;
@@ -167,6 +167,7 @@ namespace Dove
 				(float)glyphRects[i].z / (float)bestWidth,
 				(float)glyphRects[i].w / (float)bestHeight
 			);
+
 		}
 		_glyphs[_regLength].character = ' ';
 		_glyphs[_regLength].size = _glyphs[0].size;
@@ -287,8 +288,8 @@ namespace Dove
 				glm::vec4 uv = _glyphs[gi].uvRect;
 
 				//TODO find correct coordinates
-				uv.y = -uv.y;
-				uv.w = -uv.w;
+				//uv.y = -uv.y;
+				//uv.w = -uv.w;
 				//TODO fix sprite generation
 				batch.draw(destRect, uv, _texID, depth, tint);
 				tp.x += _glyphs[gi].size.x * scaling.x;

@@ -216,7 +216,7 @@ namespace Dove
 		char buffer[256];
 		this->text_batch.begin();
 		//TODO make it dynamic to prevent overflow
-		sprintf_s(buffer, "a b c d e f g \n h i j k l n m \n o p q r s t \n u v w x y z");
+		sprintf_s(buffer, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z");
 		this->sprite_font->draw(this->text_batch, buffer, glm::vec2(0.0f, 0.0f), glm::vec2(1.0f), 0.0f, Color{125,0,125,125}, Justification::LEFT);
 		
 
