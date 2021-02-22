@@ -32,8 +32,10 @@ private:
 
 	float timeTracker;
 	
-	float frameTime;
+	
 	float fps;
+	unsigned int frameTime;
+	unsigned int budget;
 
 	int windowWidth;
 	int windowHeight;

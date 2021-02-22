@@ -8,7 +8,7 @@
 using namespace std;
 
 
-Engine::Engine() : window{nullptr}, quads{}, currentState{GameState::running}, timeTracker{0.0f}, windowWidth{1024}, windowHeight{700}
+Engine::Engine() : window{nullptr}, quads{}, currentState{GameState::running}, timeTracker{0.0f}, fps{0}, frameTime{0}, budget{16}, windowWidth{1024}, windowHeight{700}
 {
 }
 
@@ -78,12 +78,17 @@ void Engine::gameLoop()
 {
 	while (this->currentState != GameState::ended)
 	{
-		this->timeTracker += 0.005;
+		auto startTick = SDL_GetTicks();
+		this->timeTracker += 0.1f;
 		this->processInput();
 		this->render();
 		this->calculateFPS();
+		auto frameTicks = SDL_GetTicks() - startTick;
+		if (this->budget > frameTicks)
+		{
+			SDL_Delay(this->budget - frameTicks);
+		}
 	}
-	
 }
 
 // process input
@@ -135,26 +140,27 @@ void Engine::render()
 
 void Engine::calculateFPS()
 {
-	static const auto SAMPLE_SIZE{ 50 };
+	static const auto SAMPLE_SIZE{50};
 	static array<float, SAMPLE_SIZE> frameTimes{0,0,0};
 	static auto currentFrame{0};
-	static float previousTicks = SDL_GetTicks();
+	static auto previousTicks = SDL_GetTicks();
 
-	float currentTicks = SDL_GetTicks();
+	auto currentTicks = SDL_GetTicks();
 	this->frameTime = currentTicks - previousTicks;
 	previousTicks = currentTicks;
 
-	frameTimes[currentFrame++%SAMPLE_SIZE] = frameTime;
+	frameTimes[currentFrame++ % SAMPLE_SIZE] = this->frameTime;
 
-	auto averageFrameTime{ 0.0f };
-	for(auto& i : frameTimes)
+	auto averageFrameTime{0.0f};
+	for (auto& i : frameTimes)
 	{
 		averageFrameTime += i;
 	}
-	averageFrameTime = averageFrameTime/SAMPLE_SIZE+0.0001;
+	averageFrameTime = averageFrameTime / SAMPLE_SIZE + 0.0001f;
 	this->fps = 1000.0f / averageFrameTime;
 
-	if(!(currentFrame%60)){
+	if (!(currentFrame % 60))
+	{
 		debugPrint(this->fps);
 	}
 }
