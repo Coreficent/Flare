@@ -3,7 +3,7 @@ namespace Dove
 {
 
 
-	Camera::Camera(int windowWidth, int windowHeight) :position{ 0.0f,0.0f }, cameraMatrix(1.0f), orthoMatrix{ glm::ortho(0.0f,static_cast<float>(windowWidth),0.0f,static_cast<float>(windowHeight)) }, scale{ 1.0f }, windowWidth{ windowWidth }, windowHeight{ windowHeight }, updateRequired{ true }
+	Camera::Camera(int windowWidth, int windowHeight) :position{ 0.0f,0.0f }, cameraMatrix(1.0f), orthoMatrix{ glm::ortho(0.0f,static_cast<float>(windowWidth),0.0f,static_cast<float>(windowHeight)) }, identityMatrix{1.0f}, scale{ 1.0f }, windowWidth{ windowWidth }, windowHeight{ windowHeight },updateRequired{ true }
 	{
 	}
 
@@ -18,7 +18,7 @@ namespace Dove
 		this->updateRequired = true;
 	}
 
-	glm::vec2 Camera::getPosition()
+	glm::vec2 Camera::getPosition() const
 	{
 		return this->position;
 	}
@@ -29,12 +29,12 @@ namespace Dove
 		this->updateRequired = true;
 	}
 
-	float Camera::getScale()
+	float Camera::getScale() const
 	{
 		return this->scale;
 	}
 
-	glm::mat4 Camera::getCameraMatrix()
+	glm::mat4 Camera::getCameraMatrix() const
 	{
 		return this->cameraMatrix;
 	}
@@ -43,12 +43,10 @@ namespace Dove
 	{
 		if (this->updateRequired)
 		{
-			glm::vec3 translate{ -this->position.x + this->windowWidth/2, -this->position.y+this->windowHeight/2, 0.0f };
+			glm::vec3 translate{ -this->position.x + this->windowWidth / 2, -this->position.y + this->windowHeight / 2, 0.0f };
 			this->cameraMatrix = glm::translate(this->orthoMatrix, translate);
-
 			glm::vec3 scale{ this->scale,this->scale,0.0f };
-			this->cameraMatrix = glm::scale(glm::mat4(1.0f), scale)*this->cameraMatrix;
-
+			this->cameraMatrix = glm::scale(this->identityMatrix, scale)*this->cameraMatrix;
 			this->updateRequired = false;
 		}
 	}

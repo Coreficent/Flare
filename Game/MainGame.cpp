@@ -22,8 +22,8 @@ void MainGame::run()
 	this->initialize();
 
 
-	this->quads.push_back(new Dove::Quad{0.0f, 0.0f, 100.0f, 100.0f});
-	this->quads.push_back(new Dove::Quad{250.0f, 250.0f, 250.0f, 250.0f});
+	this->quads.push_back(new Dove::Quad{0.0f, 0.0f, 300.0f, 300.0f});
+	this->quads.push_back(new Dove::Quad{200.0f, 200.0f, 250.0f, 250.0f});
 	this->quads[0]->initialize("texture/cake.png");
 	this->quads[1]->initialize("texture/cake.png");
 
@@ -57,19 +57,10 @@ void MainGame::gameLoop()
 	{
 		
 		this->calculateFPS();
-		//auto startTick = SDL_GetTicks();
 		this->timeTracker += 0.1f;
 		this->processInput();
 		this->camera.update();
 		this->render();
-		
-		//auto frameTicks = SDL_GetTicks() - startTick;
-
-
-		//if (this->budget > frameTicks)
-		//{
-		//	SDL_Delay(this->budget - frameTicks);
-		//}
 	}
 }
 
