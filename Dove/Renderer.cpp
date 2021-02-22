@@ -42,7 +42,9 @@ namespace Dove
 		this->sortType = sortType;
 		this->renderBatches.clear();
 		this->glyphs_vial.refill();
-		this->vtx.refill();
+		//this->vtx.refill();
+		this->hash[this->t_id].refill();
+		this->hash[this->a_id].refill();
 		//this->glyphs.clear();
 		//this->glyphs_pointers.clear();
 	}
@@ -71,7 +73,7 @@ namespace Dove
 			glBindTexture(GL_TEXTURE_2D, i.texture);
 			glDrawArrays(GL_TRIANGLES, i.offset, i.vertexCount);
 		}
-
+		
 		glBindVertexArray(0);
 	}
 
@@ -97,26 +99,47 @@ namespace Dove
 		this->begin();
 		glm::vec4 position{0.0f,0.0f,50.0f,50.0f};
 		glm::vec4 uv{0.0f,0.0f,1.0f,1.0f};
-		static auto texture = ResourceManager::getTexture("texture/cake.png");
+		static auto texture_cake = ResourceManager::getTexture("texture/cake.png");
+		static auto texture_arrow = ResourceManager::getTexture("texture/arrow.png");
+		
 		Color color;
 		color.r = 255;
 		color.g = 255;
 		color.b = 255;
 		color.a = 255;
-		Display display_object{};
-		display_object.set_texture_id(texture.id);
-		this->t_id = texture.id;
-		display_object.set_width(100.0f);
-		display_object.set_height(100.0f);
-		display_object.scale(2.0f);
-		display_object.rotate(to_radian(0.0f));
+		Display display_cake{};
+		display_cake.set_texture_id(texture_cake.id);
+		this->t_id = texture_cake.id;
+		display_cake.set_width(100.0f);
+		display_cake.set_height(100.0f);
+		display_cake.scale(2.0f);
+		display_cake.rotate(to_radian(0.0f));
+		auto addre = &this->hash[this->t_id];
 		for (auto i{0}; i < 1500; ++i)
 		{
-			display_object.set_x(100.0f * i);
-			display_object.render();
+			display_cake.set_x(100.0f * i);
+			display_cake.dest = addre;
+			display_cake.render();
 		}
 
-		
+		Display display_arrow{};
+		display_arrow.set_texture_id(texture_arrow.id);
+		this->a_id = texture_arrow.id;
+		display_arrow.set_y(200.f);
+		display_arrow.set_width(10.0f);
+		display_arrow.set_height(10.0f);
+		display_arrow.scale(2.0f);
+		display_arrow.rotate(to_radian(45.0f));
+		auto addre_arrow = &this->hash[this->a_id];
+		for (auto i{ 0 }; i < 1500; ++i)
+		{
+			display_arrow.set_x(15.0f * i);
+			display_arrow.set_y(15.0f * i-100.f);
+			display_arrow.dest = addre_arrow;
+			display_arrow.render();
+		}
+
+
 		///////// stage renderer
 		//this->stage.render();
 
@@ -244,11 +267,14 @@ namespace Dove
 			while (++glyph < length);
 		}
 		//dout << this->vtx.size() << endl;
-		this->renderBatches.emplace_back(offset, this->vtx.size() * sizeof(Vertex), this->t_id);
+		this->renderBatches.emplace_back(offset, this->hash[this->t_id].size() , this->t_id);
+		this->renderBatches.emplace_back(offset + this->hash[this->t_id].size() , this->hash[this->a_id].size() , this->a_id);
 		glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferID);
-		glBufferData(GL_ARRAY_BUFFER, (vertices.size() + this->vtx.size()) * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, (vertices.size() + this->hash[this->t_id].size() + this->hash[this->a_id].size()) * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.size() * sizeof(Vertex), vertices.data());
-		glBufferSubData(GL_ARRAY_BUFFER,vertices.size() * sizeof(Vertex),this->vtx.size() * sizeof(Vertex), this->vtx.data());
+		glBufferSubData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), this->hash[this->t_id].size() * sizeof(Vertex), this->hash[this->t_id].data());
+
+		glBufferSubData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex) + this->hash[this->t_id].size() * sizeof(Vertex), this->hash[this->a_id].size() * sizeof(Vertex), this->hash[this->a_id].data());
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 

@@ -26,7 +26,7 @@ namespace Dove
 
 		friend class Render;
 
-		friend class Display;
+		//friend class Display;
 
 	private:
 		static Core* core;

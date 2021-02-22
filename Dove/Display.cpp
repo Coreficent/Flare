@@ -137,38 +137,41 @@ namespace Dove
 
 		*/
 
+		// 85 fps to 55 fps
+		//Core::core->renderer.hash[this->texture_id];
 
+		
 		auto top_left = this->locate_vertex(0.0f, 0.0f);
 		auto top_right = this->locate_vertex(this->width, 0.0f);
 		auto down_left = this->locate_vertex(0.0f, this->height);
 		auto down_right = this->locate_vertex(this->width, this->height);
-
-		auto& vertex1 = Core::core->renderer.vtx.next();
+		
+		auto& vertex1 = this->dest->next();
 		vertex1.color = this->color;
 		vertex1.setPosition(top_left.x, top_left.y);
 		vertex1.setUV(this->u_start, this->v_start);
 
-		auto& vertex2 = Core::core->renderer.vtx.next();
+		auto& vertex2 = this->dest->next();
 		vertex2.color = this->color;
 		vertex2.setPosition(top_right.x, top_right.y);
 		vertex2.setUV(this->u_end, this->v_start);
 
-		auto& vertex3 = Core::core->renderer.vtx.next();
+		auto& vertex3 = this->dest->next();
 		vertex3.color = this->color;
 		vertex3.setPosition(down_left.x, down_left.y);
 		vertex3.setUV(this->u_start, this->v_end);
 
-		auto& vertex4 = Core::core->renderer.vtx.next();
+		auto& vertex4 = this->dest->next();
 		vertex4.color = this->color;
 		vertex4.setPosition(down_left.x, down_left.y);
 		vertex4.setUV(this->u_start, this->v_end);
 
-		auto& vertex5 = Core::core->renderer.vtx.next();
+		auto& vertex5 = this->dest->next();
 		vertex5.color = this->color;
 		vertex5.setPosition(top_right.x, top_right.y);
 		vertex5.setUV(this->u_end, this->v_start);
 
-		auto& vertex6 = Core::core->renderer.vtx.next();
+		auto& vertex6 = this->dest->next();
 		vertex6.color = this->color;
 		vertex6.setPosition(down_right.x, down_right.y);
 		vertex6.setUV(this->u_end, this->v_end);

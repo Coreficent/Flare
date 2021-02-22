@@ -14,7 +14,7 @@ namespace Dove
 	{
 	}
 
-	GLTexture TextureCache::getTexture(string filePath)
+	GLTexture TextureCache::getTexture(string& filePath)
 	{
 		auto it = this->textureMap.find(filePath);
 		if (it == this->textureMap.end())

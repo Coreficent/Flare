@@ -7,6 +7,8 @@
 #include "Camera.h"
 #include "SpriteFont.h"
 #include "Vial.h"
+#include <unordered_map>
+#include <memory>
 
 namespace Dove
 {
@@ -49,10 +51,16 @@ namespace Dove
 
 		void renderNow();
 
+
+		
 		//TODO temp public //
 		Camera camera;
-		Vial<Vertex> vtx{};
+		//Vial<Vertex> vtx{};
 		GLuint t_id{0};
+		GLuint a_id{ 0 };
+		std::unordered_map<GLuint, Vial<Vertex>> hash{};
+		//std::vector<GLuint> key{};
+		//std::vector<std::unique_ptr<Vial<Vertex>>> holder{std::make_unique<Vial<Vertex>>()};
 
 
 	private:

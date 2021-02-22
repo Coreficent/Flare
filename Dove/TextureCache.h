@@ -10,7 +10,7 @@ namespace Dove
 		TextureCache();
 		~TextureCache();
 
-		GLTexture getTexture(std::string filePath);
+		GLTexture getTexture(std::string& filePath);
 
 	private:
 		std::map<std::string, GLTexture> textureMap;

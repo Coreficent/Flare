@@ -31,6 +31,8 @@ namespace Dove
 
 		virtual void render() const;
 
+		Vial<Vertex>* dest{nullptr};
+
 	private:
 
 
