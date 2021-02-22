@@ -40,7 +40,6 @@ namespace Dove
 
 	struct CharGlyph
 	{
-	public:
 		char character;
 		glm::vec4 uvRect;
 		glm::vec2 size;

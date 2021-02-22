@@ -41,7 +41,8 @@ namespace Dove
 
 	void QuadBatch::draw(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color)
 	{
-		this->glyphs.emplace_back(bound, uv, texture, depth, color, 5*0.7853f);
+		//this->glyphs.emplace_back(bound, uv, texture, depth, color, 5*0.7853f);
+		this->glyphs.emplace_back(bound, uv, texture, depth, color, 0.0*0.7853f);
 	}
 
 	void QuadBatch::render()

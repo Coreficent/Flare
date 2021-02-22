@@ -273,6 +273,7 @@ namespace Dove
 			if (s[si] == '\n')
 			{
 				tp.y += _fontHeight * scaling.y;
+				
 				tp.x = position.x;
 			}
 			else

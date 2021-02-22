@@ -1,4 +1,4 @@
-#version 130
+#version 400
 
 in vec2 vertexPosition;
 in vec4 vertexColor;
@@ -19,5 +19,5 @@ void main() {
     
     fragmentColor = vertexColor;
 	
-	fragmentUV = vec2(vertexUV.x, -vertexUV.y);
+	fragmentUV = vec2(vertexUV.x, vertexUV.y);
 }

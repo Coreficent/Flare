@@ -14,7 +14,7 @@ namespace Dove
 		float getScale() const;
 		glm::mat4 getCameraMatrix() const;
 		void update();
-		glm::vec2 global_to_local(glm::vec2 global_position);
+		glm::vec2 global_to_local(glm::vec2 global_position) const;
 	private:
 		glm::vec2 position;
 		glm::mat4 cameraMatrix;
