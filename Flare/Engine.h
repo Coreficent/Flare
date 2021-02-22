@@ -2,6 +2,8 @@
 
 #include <sdl/SDL.h>
 #include <gl/glew.h>
+#include "Quad.h"
+
 
 class Engine
 {
@@ -28,5 +30,7 @@ private:
 	void gameLoop();
 	void processInput();
 	void render();
+
+	Quad quad;
 };
 
