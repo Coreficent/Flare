@@ -37,6 +37,12 @@
     <Filter Include="Header Files\unsorted">
       <UniqueIdentifier>{a4af31e8-8b8e-4832-ae6b-904baf07d35b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\geometry">
+      <UniqueIdentifier>{5da9e2f8-3407-458c-8eb5-b843a6e212c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\geometry">
+      <UniqueIdentifier>{42e5ce9f-14c8-40ba-b5c4-55dc393afacf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -100,7 +106,13 @@
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
     <ClInclude Include="Display_object.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Header Files\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Header Files\geometry</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -156,7 +168,13 @@
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
     <ClCompile Include="Display_object.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>Source Files\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>Source Files\geometry</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

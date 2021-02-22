@@ -155,7 +155,9 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IOManager.h" />
     <ClInclude Include="Dove.h" />
+    <ClInclude Include="Matrix.h" />
     <ClInclude Include="picoPNG.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="Quad.h" />
     <ClInclude Include="QuadBatch.h" />
     <ClInclude Include="ResourceManager.h" />
@@ -176,7 +178,9 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IOManager.cpp" />
     <ClCompile Include="Dove.cpp" />
+    <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="picoPNG.cpp" />
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="Quad.cpp" />
     <ClCompile Include="QuadBatch.cpp" />
     <ClCompile Include="ResourceManager.cpp" />

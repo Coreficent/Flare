@@ -127,12 +127,12 @@ namespace Dove
 		int vertex{ 0 };
 		int offset{ 0 };
 		this->renderBatches.emplace_back(offset, 6, this->glyphs_pointers[0]->texture);
-		vertices[vertex++] = this->glyphs_pointers[0]->topLeft;
-		vertices[vertex++] = this->glyphs_pointers[0]->bottomLeft;
-		vertices[vertex++] = this->glyphs_pointers[0]->bottomRight;
-		vertices[vertex++] = this->glyphs_pointers[0]->bottomRight;
-		vertices[vertex++] = this->glyphs_pointers[0]->topRight;
-		vertices[vertex++] = this->glyphs_pointers[0]->topLeft;
+		vertices[vertex++] = this->glyphs_pointers[0]->down_left;
+		vertices[vertex++] = this->glyphs_pointers[0]->top_left;
+		vertices[vertex++] = this->glyphs_pointers[0]->top_right;
+		vertices[vertex++] = this->glyphs_pointers[0]->top_right;
+		vertices[vertex++] = this->glyphs_pointers[0]->down_right;
+		vertices[vertex++] = this->glyphs_pointers[0]->down_left;
 		offset += 6;
 
 		for (auto glyph = 1; glyph < this->glyphs_pointers.size(); ++glyph)
@@ -145,12 +145,12 @@ namespace Dove
 			{
 				this->renderBatches.back().vertexCount += 6;
 			}
-			vertices[vertex++] = this->glyphs_pointers[glyph]->topLeft;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->bottomLeft;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->bottomRight;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->bottomRight;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->topRight;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->topLeft;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->down_left;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->top_left;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->top_right;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->top_right;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->down_right;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->down_left;
 			offset += 6;
 		}
 		*/
@@ -170,12 +170,12 @@ namespace Dove
 			{
 				this->renderBatches.back().vertexCount += 6;
 			}
-			vertices[vertex++] = this->glyphs_pointers[glyph]->topLeft;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->bottomLeft;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->bottomRight;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->bottomRight;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->topRight;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->topLeft;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->down_left;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->top_left;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->top_right;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->top_right;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->down_right;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->down_left;
 			offset += 6;
 			previous_texture = this->glyphs_pointers[glyph]->texture;
 		}

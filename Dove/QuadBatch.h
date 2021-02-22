@@ -30,39 +30,39 @@ namespace Dove
 		Glyph(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color)
 			: texture{texture}, depth{depth}
 		{
-			this->topLeft.color = color;
-			this->topLeft.setPosition(bound.x, bound.y + bound.w);
-			this->topLeft.setUV(uv.x, uv.y + uv.w);
+			this->down_left.color = color;
+			this->down_left.setPosition(bound.x, bound.y + bound.w);
+			this->down_left.setUV(uv.x, uv.y + uv.w);
 
-			this->bottomLeft.color = color;
-			this->bottomLeft.setPosition(bound.x, bound.y);
-			this->bottomLeft.setUV(uv.x, uv.y);
+			this->top_left.color = color;
+			this->top_left.setPosition(bound.x, bound.y);
+			this->top_left.setUV(uv.x, uv.y);
 
-			this->bottomRight.color = color;
-			this->bottomRight.setPosition(bound.x + bound.z, bound.y);
-			this->bottomRight.setUV(uv.x + uv.z, uv.y);
+			this->top_right.color = color;
+			this->top_right.setPosition(bound.x + bound.z, bound.y);
+			this->top_right.setUV(uv.x + uv.z, uv.y);
 
-			this->topRight.color = color;
-			this->topRight.setPosition(bound.x + bound.z, bound.y + bound.w);
-			this->topRight.setUV(uv.x + uv.z, uv.y + uv.w);
+			this->down_right.color = color;
+			this->down_right.setPosition(bound.x + bound.z, bound.y + bound.w);
+			this->down_right.setUV(uv.x + uv.z, uv.y + uv.w);
 
 			/////////////////////////////
 			/*
-			this->bottomLeft.color = color;
-			this->bottomLeft.setPosition(bound.x, bound.y + bound.w);
-			this->bottomLeft.setUV(uv.x, uv.y + uv.w);
+			this->top_left.color = color;
+			this->top_left.setPosition(bound.x, bound.y + bound.w);
+			this->top_left.setUV(uv.x, uv.y + uv.w);
 
-			this->bottomRight.color = color;
-			this->bottomRight.setPosition(bound.x, bound.y);
-			this->bottomRight.setUV(uv.x, uv.y);
+			this->top_right.color = color;
+			this->top_right.setPosition(bound.x, bound.y);
+			this->top_right.setUV(uv.x, uv.y);
 
-			this->topRight.color = color;
-			this->topRight.setPosition(bound.x + bound.z, bound.y);
-			this->topRight.setUV(uv.x + uv.z, uv.y);
+			this->down_right.color = color;
+			this->down_right.setPosition(bound.x + bound.z, bound.y);
+			this->down_right.setUV(uv.x + uv.z, uv.y);
 
-			this->topLeft.color = color;
-			this->topLeft.setPosition(bound.x + bound.z, bound.y + bound.w);
-			this->topLeft.setUV(uv.x + uv.z, uv.y + uv.w);
+			this->down_left.color = color;
+			this->down_left.setPosition(bound.x + bound.z, bound.y + bound.w);
+			this->down_left.setUV(uv.x + uv.z, uv.y + uv.w);
 			*/
 		}
 
@@ -83,21 +83,21 @@ namespace Dove
 			br = rotatePoint(br, angle) + halfDims;
 			tr = rotatePoint(tr, angle) + halfDims;
 
-			topLeft.color = color;
-			topLeft.setPosition(destRect.x + tl.x, destRect.y + tl.y);
-			topLeft.setUV(uvRect.x, uvRect.y + uvRect.w);
+			down_left.color = color;
+			down_left.setPosition(destRect.x + tl.x, destRect.y + tl.y);
+			down_left.setUV(uvRect.x, uvRect.y + uvRect.w);
 
-			bottomLeft.color = color;
-			bottomLeft.setPosition(destRect.x + bl.x, destRect.y + bl.y);
-			bottomLeft.setUV(uvRect.x, uvRect.y);
+			top_left.color = color;
+			top_left.setPosition(destRect.x + bl.x, destRect.y + bl.y);
+			top_left.setUV(uvRect.x, uvRect.y);
 
-			bottomRight.color = color;
-			bottomRight.setPosition(destRect.x + br.x, destRect.y + br.y);
-			bottomRight.setUV(uvRect.x + uvRect.z, uvRect.y);
+			top_right.color = color;
+			top_right.setPosition(destRect.x + br.x, destRect.y + br.y);
+			top_right.setUV(uvRect.x + uvRect.z, uvRect.y);
 
-			topRight.color = color;
-			topRight.setPosition(destRect.x + tr.x, destRect.y + tr.y);
-			topRight.setUV(uvRect.x + uvRect.z, uvRect.y + uvRect.w);
+			down_right.color = color;
+			down_right.setPosition(destRect.x + tr.x, destRect.y + tr.y);
+			down_right.setUV(uvRect.x + uvRect.z, uvRect.y + uvRect.w);
 		}
 
 		glm::vec2 rotatePoint(const glm::vec2& pos, float angle)
@@ -111,10 +111,10 @@ namespace Dove
 		GLuint texture;
 		float depth;
 
-		Vertex topLeft;
-		Vertex bottomLeft;
-		Vertex bottomRight;
-		Vertex topRight;
+		Vertex down_left;
+		Vertex top_left;
+		Vertex top_right;
+		Vertex down_right;
 	};
 
 	class RenderBatch
