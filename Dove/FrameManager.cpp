@@ -40,7 +40,7 @@ namespace Dove
 
 		if (!(this->current_frame % 60))
 		{
-			dout << "fps: " << fps << " budget " << remaining_budget << endl;
+			cout << "fps: " << fps << " budget " << remaining_budget << endl;
 		}
 	}
 }

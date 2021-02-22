@@ -2,7 +2,7 @@
 #include <iostream>
 
 #ifdef _DEBUG
-#define dout cout
+#define dout std::cout
 #else
-#define dout 0 && cout
+#define dout 0 && std::cout
 #endif

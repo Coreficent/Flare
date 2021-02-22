@@ -2,14 +2,14 @@
 
 #include "SpriteFont.h"
 #include "Window.h"
-#include "GLSL.h"
-#include "Camera.h"
-#include "InputManager.h"
 #include "FrameManager.h"
 #include "Audio.h"
 #include "Renderer.h"
 #include "Stage.h"
 #include "Media.h"
+#include "Key.h"
+#include "Program.h"
+#include "Game.h"
 
 
 namespace Dove
@@ -19,7 +19,7 @@ namespace Dove
 	class Core
 	{
 	public:
-		Core(int windowWdith, int windowHeight);
+		Core(int windowWidth, int windowHeight);
 		~Core();
 
 		void run();
@@ -28,9 +28,6 @@ namespace Dove
 
 		friend class Display;
 
-
-		//Stage stage{};
-
 	private:
 		static Core* core;
 
@@ -38,27 +35,13 @@ namespace Dove
 		Window window{};
 		Audio audio{};
 
+		Key key{};
+		Program program{};
+		Game game{};
 
-		Renderer quad_batch_;
-		InputManager input_manager;
-		FrameManager frame_manager;
+		Renderer renderer;
 
+		FrameManager frame_manager{};
 
-		enum class GameState
-		{
-			running,
-			ended
-		};
-
-		GameState currentState;
-
-		Uint32 currentTicks;
-
-		int windowWidth;
-		int windowHeight;
-
-
-		void gameLoop();
-		void processInput();
 	};
 }

@@ -79,6 +79,18 @@
     <Filter Include="Source Files\audio">
       <UniqueIdentifier>{1e914441-13b8-4ac4-90b1-dcafd0b7cf09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\key">
+      <UniqueIdentifier>{e1cf5159-6d5d-44f8-be75-2b54848e74e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\key">
+      <UniqueIdentifier>{80265441-a1b5-4f32-bcf1-4e3f99dba7e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\logic">
+      <UniqueIdentifier>{21f6b1b4-2d35-45b0-b652-1bc25f1f70d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\logic">
+      <UniqueIdentifier>{70c936c8-ea2e-417f-b44a-11a2698b5906}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -174,6 +186,15 @@
     <ClInclude Include="Renderer.h">
       <Filter>Header Files\render</Filter>
     </ClInclude>
+    <ClInclude Include="Key.h">
+      <Filter>Header Files\key</Filter>
+    </ClInclude>
+    <ClInclude Include="Program.h">
+      <Filter>Header Files\logic</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\logic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="error.cpp">
@@ -256,6 +277,15 @@
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>Source Files\render</Filter>
+    </ClCompile>
+    <ClCompile Include="Key.cpp">
+      <Filter>Source Files\key</Filter>
+    </ClCompile>
+    <ClCompile Include="Program.cpp">
+      <Filter>Source Files\logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\logic</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

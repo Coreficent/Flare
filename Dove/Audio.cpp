@@ -21,7 +21,7 @@ namespace Dove
 
 	void Musice::stop()
 	{
-		Mix_PauseMusic();
+		Mix_HaltMusic();
 	}
 
 	void Musice::resume()
@@ -42,7 +42,8 @@ namespace Dove
 	Audio::~Audio()
 	{
 		//used sdl quit else where
-		//Mix_Quit();
+		Mix_CloseAudio();
+		Mix_Quit();
 	}
 
 	void Audio::initialize()

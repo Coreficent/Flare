@@ -11,7 +11,7 @@ namespace Dove
 		~FrameManager();
 		void calculate_fps();
 	private:
-		std::array<Uint32, 20> samples{};
+		std::array<Uint32, 60> samples{};
 
 		Uint32 current_ticks{0};
 		Uint32 current_frame{0};
