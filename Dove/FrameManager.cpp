@@ -41,13 +41,13 @@ namespace Dove
 
 		if (this->budget > frameTicks)
 		{
-			SDL_Delay(this->budget - frameTicks - 1);
+			//SDL_Delay(this->budget - frameTicks - 1);
 		}
 
 		if (!(currentFrame % 60))
 		{
 			Dove::debugPrint("fps: ");
-			printf("%f :: budget %d\n", fps, this->budget - frameTicks - 1);
+			printf("%f :: budget %d\n", fps, (this->budget - frameTicks - 1));
 		}
 	}
 }

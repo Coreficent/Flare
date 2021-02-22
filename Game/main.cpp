@@ -3,7 +3,7 @@
 
 int main(int argc, char** argv)
 {
-	Dove::Dove dove{1200,800};
+	Dove::Dove dove{1600,900};
 	dove.run();
 
 	return 0;
