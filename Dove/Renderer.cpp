@@ -55,7 +55,7 @@ namespace Dove
 
 
 		this->glyphs_pointers.resize(this->glyphs_vial.size());
-		for (unsigned int i{0}, l{ this->glyphs_vial.size() }; i < l; ++i)
+		for (unsigned int i{0}, l{this->glyphs_vial.size()}; i < l; ++i)
 		{
 			this->glyphs_pointers[i] = &this->glyphs_vial[i];
 		}
@@ -73,7 +73,7 @@ namespace Dove
 			glBindTexture(GL_TEXTURE_2D, i.texture);
 			glDrawArrays(GL_TRIANGLES, i.offset, i.vertexCount);
 		}
-		
+
 		glBindVertexArray(0);
 	}
 
@@ -101,7 +101,7 @@ namespace Dove
 		glm::vec4 uv{0.0f,0.0f,1.0f,1.0f};
 		static auto texture_cake = ResourceManager::getTexture("texture/cake.png");
 		static auto texture_arrow = ResourceManager::getTexture("texture/arrow.png");
-		
+
 		Color color;
 		color.r = 255;
 		color.g = 255;
@@ -115,7 +115,7 @@ namespace Dove
 		display_cake.scale(2.0f);
 		display_cake.rotate(to_radian(0.0f));
 		auto addre = &this->hash[this->t_id];
-		for (auto i{0}; i < 1500; ++i)
+		for (auto i{0}; i < 100'000; ++i)
 		{
 			display_cake.set_x(100.0f * i);
 			display_cake.dest = addre;
@@ -131,10 +131,10 @@ namespace Dove
 		display_arrow.scale(2.0f);
 		display_arrow.rotate(to_radian(45.0f));
 		auto addre_arrow = &this->hash[this->a_id];
-		for (auto i{ 0 }; i < 1500; ++i)
+		for (auto i{0}; i < 1500; ++i)
 		{
 			display_arrow.set_x(15.0f * i);
-			display_arrow.set_y(15.0f * i-100.f);
+			display_arrow.set_y(15.0f * i - 100.f);
 			display_arrow.dest = addre_arrow;
 			display_arrow.render();
 		}
@@ -267,8 +267,8 @@ namespace Dove
 			while (++glyph < length);
 		}
 		//dout << this->vtx.size() << endl;
-		this->renderBatches.emplace_back(offset, this->hash[this->t_id].size() , this->t_id);
-		this->renderBatches.emplace_back(offset + this->hash[this->t_id].size() , this->hash[this->a_id].size() , this->a_id);
+		this->renderBatches.emplace_back(offset, this->hash[this->t_id].size(), this->t_id);
+		this->renderBatches.emplace_back(offset + this->hash[this->t_id].size(), this->hash[this->a_id].size(), this->a_id);
 		glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferID);
 		glBufferData(GL_ARRAY_BUFFER, (vertices.size() + this->hash[this->t_id].size() + this->hash[this->a_id].size()) * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.size() * sizeof(Vertex), vertices.data());

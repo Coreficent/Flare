@@ -6,7 +6,7 @@
 #include "Audio.h"
 #include "Renderer.h"
 #include "Stage.h"
-#include "Media.h"
+#include "Context.h"
 #include "Key.h"
 #include "Program.h"
 #include "Game.h"
@@ -31,7 +31,7 @@ namespace Dove
 	private:
 		static Core* core;
 
-		Media media{};
+		Context context{};
 		Window window{};
 		Audio audio{};
 
@@ -42,6 +42,5 @@ namespace Dove
 		Renderer renderer;
 
 		FrameManager frame_manager{};
-
 	};
 }

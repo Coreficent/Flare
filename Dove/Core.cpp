@@ -10,7 +10,7 @@ namespace Dove
 	Core* Core::core{nullptr};
 
 	Core::Core(int windowWidth, int windowHeight)
-		: renderer{ windowWidth ,windowHeight}
+		: renderer{windowWidth ,windowHeight}
 	{
 		dout << "Debug Mode" << endl;
 
@@ -52,6 +52,4 @@ namespace Dove
 		}
 		music.stop();
 	}
-
-
 }

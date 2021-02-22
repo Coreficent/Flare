@@ -26,5 +26,6 @@
     <None Include="shader\colorShade.sv">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

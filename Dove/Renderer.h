@@ -8,12 +8,9 @@
 #include "SpriteFont.h"
 #include "Vial.h"
 #include <unordered_map>
-#include <memory>
 
 namespace Dove
 {
-	
-
 	enum class GlyphSortType
 	{
 		NONE,
@@ -52,12 +49,11 @@ namespace Dove
 		void renderNow();
 
 
-		
 		//TODO temp public //
 		Camera camera;
 		//Vial<Vertex> vtx{};
 		GLuint t_id{0};
-		GLuint a_id{ 0 };
+		GLuint a_id{0};
 		std::unordered_map<GLuint, Vial<Vertex>> hash{};
 		//std::vector<GLuint> key{};
 		//std::vector<std::unique_ptr<Vial<Vertex>>> holder{std::make_unique<Vial<Vertex>>()};
@@ -77,7 +73,7 @@ namespace Dove
 		std::vector<Glyph*> glyphs_pointers;
 
 		std::vector<RenderBatch> renderBatches;
-		
+
 		Vial<Glyph> glyphs_vial{};
 
 		//std::vector<Glyph> glyphs;
@@ -85,8 +81,6 @@ namespace Dove
 
 		GLSL colorProgram;
 
-
-		
 
 		SpriteFont sprite_font{};
 

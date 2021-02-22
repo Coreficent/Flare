@@ -1,14 +1,14 @@
-#include "Media.h"
+#include "Context.h"
 #include <sdl/SDL.h>
 
 
-Media::Media()
+Context::Context()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 }
 
 
-Media::~Media()
+Context::~Context()
 {
 	SDL_Quit();
 }

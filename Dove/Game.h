@@ -9,5 +9,4 @@ namespace Dove
 
 		void run();
 	};
-
 }
