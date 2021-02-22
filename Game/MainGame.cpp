@@ -9,7 +9,7 @@
 using namespace std;
 
 
-MainGame::MainGame(int windowWdith, int windowHeight) : quads{}, window{}, camera{windowWdith, windowHeight}, currentState{GameState::running}, timeTracker{0.0f}, fps{0}, frameTime{0}, budget{16}, windowWidth{windowWdith}, windowHeight{windowHeight}
+MainGame::MainGame(int windowWdith, int windowHeight) : quads{}, window{}, camera{windowWdith, windowHeight}, currentState{GameState::running}, currentTicks{0}, timeTracker{0.0f}, fps{0}, frameTime{0}, budget{16}, windowWidth{windowWdith},windowHeight{windowHeight}
 {
 }
 
@@ -55,19 +55,21 @@ void MainGame::gameLoop()
 {
 	while (this->currentState != GameState::ended)
 	{
-		auto startTick = SDL_GetTicks();
+		
+		this->calculateFPS();
+		//auto startTick = SDL_GetTicks();
 		this->timeTracker += 0.1f;
 		this->processInput();
 		this->camera.update();
 		this->render();
-		this->calculateFPS();
-		auto frameTicks = SDL_GetTicks() - startTick;
+		
+		//auto frameTicks = SDL_GetTicks() - startTick;
 
 
-		if (this->budget > frameTicks)
-		{
-			SDL_Delay(this->budget - frameTicks);
-		}
+		//if (this->budget > frameTicks)
+		//{
+		//	SDL_Delay(this->budget - frameTicks);
+		//}
 	}
 }
 
@@ -105,10 +107,10 @@ void MainGame::processInput()
 				break;
 
 			case SDLK_q:
-				this->camera.setScale(this->camera.getScale() + 0.1);
+				this->camera.setScale(this->camera.getScale() + 0.1f);
 				break;
 			case SDLK_e:
-				this->camera.setScale(this->camera.getScale() - 0.1);
+				this->camera.setScale(this->camera.getScale() - 0.1f);
 				break;
 			}
 
@@ -157,10 +159,10 @@ void MainGame::calculateFPS()
 	static auto currentFrame{0};
 	static auto previousTicks = SDL_GetTicks();
 
-	auto currentTicks = SDL_GetTicks();
-	this->frameTime = currentTicks - previousTicks;
-	previousTicks = currentTicks;
-
+	this->currentTicks = SDL_GetTicks();
+	this->frameTime = this->currentTicks - previousTicks;
+	previousTicks = this->currentTicks;
+	
 	frameTimes[currentFrame++ % SAMPLE_SIZE] = this->frameTime;
 
 	auto averageFrameTime{0.0f};
@@ -175,5 +177,10 @@ void MainGame::calculateFPS()
 	{
 		Dove::debugPrint("fps: ");
 		printf("%f\n", this->fps);
+	}
+	auto frameTicks = SDL_GetTicks() - this->currentTicks;
+	if (this->budget > frameTicks)
+	{
+		SDL_Delay(this->budget - frameTicks);
 	}
 }

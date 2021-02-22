@@ -510,8 +510,8 @@ namespace Dove
 				}
 				unsigned long bpp = getBpp(info);
 				std::vector<unsigned char> scanlines(((info.width * (info.height * bpp + 7)) / 8) + info.height); //now the out buffer will be filled
-				Zlib zlib; //decompress with the Zlib decompressor
-				error = zlib.decompress(scanlines, idat);
+
+				error = Zlib::decompress(scanlines, idat);
 				if (error) return; //stop if the zlib decompressor returned an error
 				size_t bytewidth = (bpp + 7) / 8, outlength = (info.height * info.width * bpp + 7) / 8;
 				out.resize(outlength); //time to fill the out buffer

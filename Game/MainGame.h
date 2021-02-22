@@ -33,12 +33,17 @@ private:
 
 	GameState currentState;
 
+	Uint32 currentTicks;
+	
 	float timeTracker;
 	
 	
 	float fps;
+
 	unsigned int frameTime;
 	unsigned int budget;
+
+
 
 	int windowWidth;
 	int windowHeight;

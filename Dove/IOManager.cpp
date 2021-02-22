@@ -16,7 +16,7 @@ namespace Dove
 		}
 
 		file.seekg(0, ios::end);
-		int fileSize = file.tellg();
+		auto fileSize = file.tellg();
 		file.seekg(0, ios::beg);
 
 		fileSize -= file.tellg();
