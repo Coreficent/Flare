@@ -10,7 +10,7 @@
 using namespace std;
 
 
-MainGame::MainGame(int windowWdith, int windowHeight) :window {}, camera{ windowWdith, windowHeight }, quad_batch_{}, input_manager{}, currentState{ GameState::running }, currentTicks{ 0 }, timeTracker{ 0.0f }, fps{ 0 }, frameTime{ 0 }, budget{ 16 }, windowWidth{ windowWdith }, windowHeight{ windowHeight }
+MainGame::MainGame(int windowWdith, int windowHeight) :window{}, camera { windowWdith, windowHeight }, quad_batch_{}, input_manager{}, frame_manager{}, currentState{ GameState::running }, currentTicks{ 0 }, timeTracker{ 0.0f }, windowWidth{ windowWdith }, windowHeight{ windowHeight }
 {
 }
 
@@ -53,7 +53,7 @@ void MainGame::gameLoop()
 	while (this->currentState != GameState::ended)
 	{
 		
-		this->calculateFPS();
+		this->frame_manager.calculateFPS();
 		this->timeTracker += 0.1f;
 		this->processInput();
 		this->camera.update();
@@ -153,37 +153,4 @@ void MainGame::render()
 	this->colorProgram.unuse();
 
 	this->window.swapBuffer();
-}
-
-void MainGame::calculateFPS()
-{
-	static const auto SAMPLE_SIZE{50};
-	static array<Uint32, SAMPLE_SIZE> frameTimes{0,0,0};
-	static auto currentFrame{0};
-	static auto previousTicks = SDL_GetTicks();
-
-	this->currentTicks = SDL_GetTicks();
-	this->frameTime = this->currentTicks - previousTicks;
-	previousTicks = this->currentTicks;
-	
-	frameTimes[currentFrame++ % SAMPLE_SIZE] = this->frameTime;
-
-	auto averageFrameTime{0.0f};
-	for (auto& i : frameTimes)
-	{
-		averageFrameTime += i;
-	}
-	averageFrameTime = averageFrameTime / SAMPLE_SIZE + 0.0001f;
-	this->fps = 1000.0f / averageFrameTime;
-
-	if (!(currentFrame % 60))
-	{
-		Dove::debugPrint("fps: ");
-		printf("%f\n", this->fps);
-	}
-	auto frameTicks = SDL_GetTicks() - this->currentTicks;
-	if (this->budget > frameTicks)
-	{
-		SDL_Delay(this->budget - frameTicks-1);
-	}
 }

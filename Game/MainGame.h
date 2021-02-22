@@ -8,6 +8,7 @@
 #include <dove/Camera.h>
 #include <dove/QuadBatch.h>
 #include <dove/InputManager.h>
+#include <dove/FrameManager.h>
 using namespace std;
 
 class MainGame
@@ -30,6 +31,8 @@ private:
 	Dove::Camera camera;
 	Dove::QuadBatch quad_batch_;
 	Dove::InputManager input_manager;
+	Dove::FrameManager frame_manager;
+
 
 	enum class GameState { running, ended };
 
@@ -38,13 +41,6 @@ private:
 	Uint32 currentTicks;
 	
 	float timeTracker;
-	
-	
-	float fps;
-
-	unsigned int frameTime;
-	unsigned int budget;
-
 
 
 	int windowWidth;
@@ -55,6 +51,6 @@ private:
 	void gameLoop();
 	void processInput();
 	void render();
-	void calculateFPS();
+
 };
 
