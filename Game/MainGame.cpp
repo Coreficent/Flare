@@ -3,7 +3,6 @@
 #include <dove/error.h>
 #include <array>
 
-
 #include "MainGame.h"
 
 #include <dove/Dove.h>
@@ -64,7 +63,8 @@ void MainGame::gameLoop()
 		auto frameTicks = SDL_GetTicks() - startTick;
 		if (this->budget > frameTicks)
 		{
-			SDL_Delay(this->budget - frameTicks);
+			//SDL_Delay(this->budget - frameTicks);
+			cout << this->budget-frameTicks << endl;
 		}
 	}
 }
