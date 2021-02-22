@@ -8,8 +8,5 @@ int main(int argc, char ** argv)
 	Engine engine{};
 	engine.run();
 
-	int a;
-	std::cin >> a;
-
 	return 0;
 }
