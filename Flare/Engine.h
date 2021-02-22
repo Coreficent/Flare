@@ -27,5 +27,6 @@ private:
 	void initialize();
 	void gameLoop();
 	void processInput();
+	void render();
 };
 
