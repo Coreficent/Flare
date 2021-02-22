@@ -140,6 +140,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dove.h" />
     <ClInclude Include="error.h" />
     <ClInclude Include="GLSL.h" />
     <ClInclude Include="GLTexture.h" />
@@ -150,8 +151,10 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="TextureCache.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Dove.cpp" />
     <ClCompile Include="error.cpp" />
     <ClCompile Include="GLSL.cpp" />
     <ClCompile Include="ImageLoader.cpp" />
@@ -160,6 +163,7 @@
     <ClCompile Include="Quad.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="TextureCache.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

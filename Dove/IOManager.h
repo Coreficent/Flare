@@ -1,11 +1,11 @@
 #pragma once
 #include <vector>
 
-using namespace std;
-
-class IOManager
+namespace Dove
 {
-public:
-	static bool readFileToBuffer(string filePath, vector<unsigned char>& buffer);
-};
-
+	class IOManager
+	{
+	public:
+		static bool readFileToBuffer(std::string filePath, std::vector<unsigned char>& buffer);
+	};
+}

@@ -4,24 +4,23 @@
 #include "GlTexture.h"
 #include <string>
 
-using namespace std;
 
-class Quad
+namespace Dove
 {
-public:
-	Quad(float x, float y, float width, float height);
-	~Quad();
+	class Quad
+	{
+	public:
+		Quad(float x, float y, float width, float height);
+		~Quad();
 
-	void initialize(string texturePath);
-	void draw();
-	
-private:
-	GLTexture quadTexture;
+		void initialize(std::string texturePath);
+		void draw();
 
-	GLuint vertextBufferID;
+	private:
+		GLTexture quadTexture;
 
-	float x, y, width, height;
+		GLuint vertextBufferID;
 
-	
-};
-
+		float x, y, width, height;
+	};
+}

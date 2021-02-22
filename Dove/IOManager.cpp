@@ -2,26 +2,29 @@
 #include <fstream>
 #include "error.h"
 
-using namespace std;
-
-bool IOManager::readFileToBuffer(string filePath, vector<unsigned char>& buffer)
+namespace Dove
 {
-	ifstream file(filePath, ios::binary);
-	if(file.fail())
+	using namespace std;
+
+	bool IOManager::readFileToBuffer(string filePath, vector<unsigned char>& buffer)
 	{
-		fatalError("failed to load binary");
-		return false;
+		ifstream file(filePath, ios::binary);
+		if (file.fail())
+		{
+			fatalError("failed to load binary");
+			return false;
+		}
+
+		file.seekg(0, ios::end);
+		int fileSize = file.tellg();
+		file.seekg(0, ios::beg);
+
+		fileSize -= file.tellg();
+
+		buffer.resize(fileSize);
+		file.read(reinterpret_cast<char*>(&buffer[0]), fileSize);
+		file.close();
+
+		return true;
 	}
-
-	file.seekg(0, ios::end);
-	int fileSize = file.tellg();
-	file.seekg(0, ios::beg);
-
-	fileSize -= file.tellg();
-
-	buffer.resize(fileSize);
-	file.read(reinterpret_cast<char*>(&buffer[0]), fileSize);
-	file.close();
-
-	return true;
 }

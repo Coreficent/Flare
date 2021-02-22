@@ -5,124 +5,126 @@
 
 using namespace std;
 
-GLSL::GLSL() :programID { 0 }, vertexShaderID{ 0 }, fragmentShaderID{ 0 },attributeCount { 0 }
+namespace Dove
 {
-}
-
-
-GLSL::~GLSL()
-{
-}
-
-void GLSL::compileShader(const string & vertexShaderPath, const string & fragmentShaderPath)
-{
-	this->programID = glCreateProgram();
-	this->vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
-	if(!this->vertexShaderID)
+	GLSL::GLSL() : programID{0}, vertexShaderID{0}, fragmentShaderID{0}, attributeCount{0}
 	{
-		fatalError("vertex shader failed");
 	}
 
-	this->fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
-	if (!this->vertexShaderID)
+
+	GLSL::~GLSL()
 	{
-		fatalError("fragment shader failed");
 	}
 
-	this->compileSource(vertexShaderPath, this->vertexShaderID);
-	this->compileSource(fragmentShaderPath, this->fragmentShaderID);
-}
-
-void GLSL::linkShader() const
-{
-	glAttachShader(this->programID, this->vertexShaderID);
-	glAttachShader(this->programID, this->fragmentShaderID);
-
-	glLinkProgram(this->programID);
-
-	GLint isLinked;
-	glGetProgramiv(this->programID, GL_LINK_STATUS, &isLinked);
-	if(isLinked == GL_FALSE)
+	void GLSL::compileShader(const string& vertexShaderPath, const string& fragmentShaderPath)
 	{
-		glDeleteProgram(this->programID);
+		this->programID = glCreateProgram();
+		this->vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
+		if (!this->vertexShaderID)
+		{
+			fatalError("vertex shader failed");
+		}
+
+		this->fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
+		if (!this->vertexShaderID)
+		{
+			fatalError("fragment shader failed");
+		}
+
+		this->compileSource(vertexShaderPath, this->vertexShaderID);
+		this->compileSource(fragmentShaderPath, this->fragmentShaderID);
+	}
+
+	void GLSL::linkShader() const
+	{
+		glAttachShader(this->programID, this->vertexShaderID);
+		glAttachShader(this->programID, this->fragmentShaderID);
+
+		glLinkProgram(this->programID);
+
+		GLint isLinked;
+		glGetProgramiv(this->programID, GL_LINK_STATUS, &isLinked);
+		if (isLinked == GL_FALSE)
+		{
+			glDeleteProgram(this->programID);
+			glDeleteShader(this->vertexShaderID);
+			glDeleteShader(this->fragmentShaderID);
+
+			fatalError("link failed");
+
+			return;
+		}
+
+		glDetachShader(this->programID, this->vertexShaderID);
+		glDetachShader(this->programID, this->fragmentShaderID);
 		glDeleteShader(this->vertexShaderID);
 		glDeleteShader(this->fragmentShaderID);
-		
-		fatalError("link failed");
-
-		return;
 	}
 
-	glDetachShader(this->programID, this->vertexShaderID);
-	glDetachShader(this->programID, this->fragmentShaderID);
-	glDeleteShader(this->vertexShaderID);
-	glDeleteShader(this->fragmentShaderID);
-}
 
-
-void GLSL::compileSource(const string& sourcePath, GLuint shaderID) const
-{
-
-	ifstream vertexFile(sourcePath);
-	if (vertexFile.fail())
+	void GLSL::compileSource(const string& sourcePath, GLuint shaderID) const
 	{
-		fatalError("failed to open vertex shader");
+		ifstream vertexFile(sourcePath);
+		if (vertexFile.fail())
+		{
+			fatalError("failed to open vertex shader");
+		}
+
+		string fileContent{""};
+		string line{""};
+
+		while (getline(vertexFile, line))
+		{
+			fileContent += line + "\n";
+		}
+
+		vertexFile.close();
+		auto poi = fileContent.c_str();
+		glShaderSource(shaderID, 1, &poi, nullptr);
+
+		glCompileShader(shaderID);
+
+		GLint success;
+		glGetShaderiv(shaderID, GL_COMPILE_STATUS, &success);
+
+		if (success == GL_FALSE)
+		{
+			glDeleteShader(shaderID);
+			fatalError("shader" + sourcePath + "compilation failed");
+		}
 	}
 
-	string fileContent{ "" };
-	string line{ "" };
-
-	while (getline(vertexFile, line))
+	void GLSL::addAttribute(const string& attributeName)
 	{
-		fileContent += line + "\n";
+		glBindAttribLocation(this->programID, this->attributeCount++, attributeName.c_str());
 	}
 
-	vertexFile.close();
-	auto poi = fileContent.c_str();
-	glShaderSource(shaderID, 1, &poi, nullptr);
-
-	glCompileShader(shaderID);
-
-	GLint success;
-	glGetShaderiv(shaderID, GL_COMPILE_STATUS, &success);
-
-	if (success == GL_FALSE)
+	void GLSL::use() const
 	{
-		glDeleteShader(shaderID);
-		fatalError("shader" + sourcePath + "compilation failed");
+		glUseProgram(this->programID);
+		for (auto i = 0; i < this->attributeCount; ++i)
+		{
+			glEnableVertexAttribArray(i);
+		}
 	}
-}
 
-void GLSL::addAttribute(const string& attributeName)
-{
-	glBindAttribLocation(this->programID, this->attributeCount++, attributeName.c_str());
-}
-
-void GLSL::use() const
-{
-	glUseProgram(this->programID);
-	for (auto i = 0;i<this->attributeCount;++i)
+	void GLSL::unuse() const
 	{
-		glEnableVertexAttribArray(i);
+		glUseProgram(0);
+		for (auto i = 0; i < this->attributeCount; ++i)
+		{
+			glDisableVertexAttribArray(i);
+		}
 	}
-}
 
-void GLSL::unuse () const
-{
-	glUseProgram(0);
-	for (auto i = 0; i<this->attributeCount; ++i)
+	GLint GLSL::getUniform(const string& uniformName) const
 	{
-		glDisableVertexAttribArray(i);
-	}
-}
+		auto location = glGetUniformLocation(this->programID, uniformName.c_str());
+		if (location == GL_INVALID_INDEX)
+		{
+			fatalError("uniform name not found");
+		}
 
-GLint GLSL::getUniform(const string& uniformName) const
-{
-	auto location = glGetUniformLocation(this->programID, uniformName.c_str());
-	if(location == GL_INVALID_INDEX)
-	{
-		fatalError("uniform name not found");
+		return location;
 	}
-
-	return location;
 }

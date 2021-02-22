@@ -1,24 +1,28 @@
 #include "TextureCache.h"
 #include "ImageLoader.h"
 
-
-TextureCache::TextureCache()
+namespace Dove
 {
-}
+	using namespace std;
 
-
-TextureCache::~TextureCache()
-{
-}
-
-GLTexture TextureCache::getTexture(string filePath)
-{
-	auto it = this->textureMap.find(filePath);
-	if(it == this->textureMap.end())
+	TextureCache::TextureCache()
 	{
-		auto texture = ImageLoader::loadPNG(filePath);
-		this->textureMap.insert({ filePath,texture });
-		return texture;
 	}
-	return it->second;
+
+
+	TextureCache::~TextureCache()
+	{
+	}
+
+	GLTexture TextureCache::getTexture(string filePath)
+	{
+		auto it = this->textureMap.find(filePath);
+		if (it == this->textureMap.end())
+		{
+			auto texture = ImageLoader::loadPNG(filePath);
+			this->textureMap.insert({filePath,texture});
+			return texture;
+		}
+		return it->second;
+	}
 }

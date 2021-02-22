@@ -2,9 +2,12 @@
 
 #include <gl/glew.h>
 
-struct GLTexture
+namespace Dove
 {
-	GLuint id;
-	int width;
-	int height;
-};
+	struct GLTexture
+	{
+		GLuint id;
+		int width;
+		int height;
+	};
+}

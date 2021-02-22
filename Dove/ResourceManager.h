@@ -1,11 +1,14 @@
 #pragma once
 #include "TextureCache.h"
 
-class ResourceManager
+namespace Dove
 {
-public:
-	static GLTexture getTexture(string filePath);
+	class ResourceManager
+	{
+	public:
+		static GLTexture getTexture(std::string filePath);
 
-private:
-	static TextureCache textureCache;
-};
+	private:
+		static TextureCache textureCache;
+	};
+}

@@ -1,8 +1,12 @@
 #include "ResourceManager.h"
+using namespace std;
 
-TextureCache ResourceManager::textureCache;
-
-GLTexture ResourceManager::getTexture(string filePath)
+namespace Dove
 {
-	return textureCache.getTexture(filePath);
+	TextureCache ResourceManager::textureCache;
+
+	GLTexture ResourceManager::getTexture(string filePath)
+	{
+		return textureCache.getTexture(filePath);
+	}
 }

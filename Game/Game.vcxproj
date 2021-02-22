@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)/Dove/;$(SolutionDir)/dependency/include/;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)/;$(SolutionDir)/dependency/include/;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)dependency/library/;$(SolutionDir)/x64/Debug/;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -118,11 +118,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine.h" />
+    <ClInclude Include="MainGame.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\colorShade.frag" />

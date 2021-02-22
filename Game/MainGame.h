@@ -1,30 +1,30 @@
 #pragma once
 
-#include <sdl/SDL.h>
-#include "Quad.h"
-#include "GLSL.h"
+
+#include <dove/Quad.h>
+#include <dove/GLSL.h>
 #include <vector>
+#include <Dove/Window.h>
 
 using namespace std;
 
-class Engine
+class MainGame
 {
 public:
-	Engine();
-	~Engine();
+	MainGame();
+	~MainGame();
 
 	void run();
 	
 
 private:
-	const char* WINDOW_NAME{"Flare Engine"};
 
 	
-	SDL_Window* window;
+	Dove::Window window;
 
-	vector<Quad*> quads;
+	vector<Dove::Quad*> quads;
 
-	GLSL colorProgram;
+	Dove::GLSL colorProgram;
 
 	enum class GameState { running, ended };
 

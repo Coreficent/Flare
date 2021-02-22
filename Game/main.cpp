@@ -1,9 +1,9 @@
 #include <iostream>
-#include "Engine.h"
+#include "MainGame.h"
 
 int main(int argc, char** argv)
 {
-	Engine engine{};
+	MainGame engine{};
 	engine.run();
 
 	return 0;

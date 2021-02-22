@@ -2,17 +2,17 @@
 #include "GlTexture.h"
 #include <map>
 
-using namespace std;
-
-class TextureCache
+namespace Dove
 {
-public:
-	TextureCache();
-	~TextureCache();
+	class TextureCache
+	{
+	public:
+		TextureCache();
+		~TextureCache();
 
-	GLTexture getTexture(string filePath);
+		GLTexture getTexture(std::string filePath);
 
-private:
-	map<string, GLTexture> textureMap;
-
-};
+	private:
+		std::map<std::string, GLTexture> textureMap;
+	};
+}

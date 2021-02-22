@@ -2,31 +2,32 @@
 #include <string>
 #include <gl/glew.h>
 
-using namespace std;
 
-class GLSL
+namespace Dove
 {
-public:
-	GLSL();
-	~GLSL();
+	class GLSL
+	{
+	public:
+		GLSL();
+		~GLSL();
 
-	void compileShader(const string& vertexShaderPath, const string& fragmentShaderPath);
-	void linkShader() const;
-	void addAttribute(const string& attributeName);
+		void compileShader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
+		void linkShader() const;
+		void addAttribute(const std::string& attributeName);
 
-	void use() const;
-	void unuse() const;
+		void use() const;
+		void unuse() const;
 
-	GLint getUniform(const string& uniformName) const;
-private:
-	
+		GLint getUniform(const std::string& uniformName) const;
+	private:
 
-	GLuint programID;
-	GLuint vertexShaderID;
-	GLuint fragmentShaderID;
 
-	int attributeCount;
+		GLuint programID;
+		GLuint vertexShaderID;
+		GLuint fragmentShaderID;
 
-	void compileSource(const string& sourcePath, GLuint shaderID) const;
-};
+		int attributeCount;
 
+		void compileSource(const std::string& sourcePath, GLuint shaderID) const;
+	};
+}

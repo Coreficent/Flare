@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
 
-using namespace std;
-
-extern void fatalError(string errorString);
-extern void debugPrint(string value);
+namespace Dove
+{
+	extern void fatalError(std::string errorString);
+	extern void debugPrint(std::string value);
+}

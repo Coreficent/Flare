@@ -2,11 +2,11 @@
 #include "GLTexture.h"
 #include <string>
 
-using namespace std;
-
-class ImageLoader
+namespace Dove
 {
-public:
-	static GLTexture loadPNG(string filePath);
-};
-
+	class ImageLoader
+	{
+	public:
+		static GLTexture loadPNG(std::string filePath);
+	};
+}
