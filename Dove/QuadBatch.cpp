@@ -31,7 +31,7 @@ namespace Dove
 	void QuadBatch::end()
 	{
 		this->glyphs_pointers.resize(this->glyphs.size());
-		for(int i{0},l{static_cast<int>(this->glyphs.size())};i<l;++i)
+		for(unsigned __int64 i{0},l{(this->glyphs.size())};i<l;++i)
 		{
 			this->glyphs_pointers[i] = &this->glyphs[i];
 		}
@@ -108,13 +108,17 @@ namespace Dove
 
 	void QuadBatch::createRenderBatches()
 	{
-		vector<Vertex> vertices;
-		vertices.resize(this->glyphs_pointers.size() * 6);
-		//TODO clean up
 		if (this->glyphs_pointers.empty())
 		{
 			return;
 		}
+		vector<Vertex> vertices{};
+		vertices.resize(this->glyphs_pointers.size() * 6);
+		//TODO clean up
+		
+
+		/////////
+		/*
 		int vertex{ 0 };
 		int offset{ 0 };
 		this->renderBatches.emplace_back(offset, 6, this->glyphs_pointers[0]->texture);
@@ -126,11 +130,11 @@ namespace Dove
 		vertices[vertex++] = this->glyphs_pointers[0]->topLeft;
 		offset += 6;
 
-		for (int glyph = 1; glyph < this->glyphs_pointers.size(); ++glyph)
+		for (auto glyph = 1; glyph < this->glyphs_pointers.size(); ++glyph)
 		{
 			if (this->glyphs_pointers[glyph]->texture != this->glyphs_pointers[glyph - 1]->texture)
 			{
-				this->renderBatches.emplace_back(offset, 6, this->glyphs_pointers[0]->texture);
+				this->renderBatches.emplace_back(offset, 6, this->glyphs_pointers[glyph]->texture);
 			}
 			else
 			{
@@ -144,6 +148,35 @@ namespace Dove
 			vertices[vertex++] = this->glyphs_pointers[glyph]->topLeft;
 			offset += 6;
 		}
+		*/
+		///////
+		// TODO int size?
+		
+		unsigned long long glyph{ 0 }, length{ this->glyphs_pointers.size() };
+		auto offset{ 0 }, vertex{ 0 };
+		GLuint previous_texture{ 0 };
+		do
+		{
+			if (this->glyphs_pointers[glyph]->texture != previous_texture)
+			{
+				this->renderBatches.emplace_back(offset, 6, this->glyphs_pointers[glyph]->texture);
+			}
+			else
+			{
+				this->renderBatches.back().vertexCount += 6;
+			}
+			vertices[vertex++] = this->glyphs_pointers[glyph]->topLeft;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->bottomLeft;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->bottomRight;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->bottomRight;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->topRight;
+			vertices[vertex++] = this->glyphs_pointers[glyph]->topLeft;
+			offset += 6;
+			previous_texture = this->glyphs_pointers[glyph]->texture;
+		} while (++glyph<length);
+		
+		
+
 
 		glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferID);
 		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);

@@ -44,7 +44,7 @@ namespace Dove
 		auto frameTicks = SDL_GetTicks() - this->currentTicks;
 		if (this->budget > frameTicks)
 		{
-			//SDL_Delay(this->budget - frameTicks - 1);
+			SDL_Delay(this->budget - frameTicks - 1);
 		}
 	}
 }
