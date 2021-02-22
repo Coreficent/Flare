@@ -31,13 +31,15 @@ Modified By: Benjamin Arnold
 
 #include "Vertex.h"
 
-namespace Dove {
+namespace Dove
+{
 	class QuadBatch;
 
 	class GLTexture;
 	class QuadBatch;
 
-	struct CharGlyph {
+	struct CharGlyph
+	{
 	public:
 		char character;
 		glm::vec4 uvRect;
@@ -48,20 +50,28 @@ namespace Dove {
 #define LAST_PRINTABLE_CHAR ((char)126)
 
 	/// For text justification
-	enum class Justification {
-		LEFT, MIDDLE, RIGHT
+	enum class Justification
+	{
+		LEFT,
+		MIDDLE,
+		RIGHT
 	};
 
-	class SpriteFont {
+	class SpriteFont
+	{
 	public:
 		SpriteFont(const char* font, int size, char cs, char ce);
+
 		SpriteFont(const char* font, int size) :
-			SpriteFont(font, size, FIRST_PRINTABLE_CHAR, LAST_PRINTABLE_CHAR) {
+			SpriteFont(font, size, FIRST_PRINTABLE_CHAR, LAST_PRINTABLE_CHAR)
+		{
 		}
+
 		/// Destroys the font resources
 		void dispose();
 
-		int getFontHeight() const {
+		int getFontHeight() const
+		{
 			return _fontHeight;
 		}
 
@@ -70,7 +80,7 @@ namespace Dove {
 
 		/// Draws using a QuadBatch
 		void draw(QuadBatch& batch, const char* s, glm::vec2 position, glm::vec2 scaling,
-			float depth, Color tint, Justification just = Justification::LEFT);
+		          float depth, Color tint, Justification just = Justification::LEFT);
 	private:
 		static std::vector<int>* createRows(glm::ivec4* rects, int rectsLength, int r, int padding, int& w);
 
@@ -80,7 +90,6 @@ namespace Dove {
 
 		unsigned int _texID;
 	};
-
 }
 
 #endif // SpriteFont_h__

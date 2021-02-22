@@ -31,7 +31,7 @@ namespace Dove
 	void QuadBatch::end()
 	{
 		this->glyphs_pointers.resize(this->glyphs.size());
-		for(unsigned __int64 i{0},l{(this->glyphs.size())};i<l;++i)
+		for (unsigned __int64 i{0}, l{(this->glyphs.size())}; i < l; ++i)
 		{
 			this->glyphs_pointers[i] = &this->glyphs[i];
 		}
@@ -115,7 +115,7 @@ namespace Dove
 		vector<Vertex> vertices{};
 		vertices.resize(this->glyphs_pointers.size() * 6);
 		//TODO clean up
-		
+
 
 		/////////
 		/*
@@ -151,10 +151,10 @@ namespace Dove
 		*/
 		///////
 		// TODO int size?
-		
-		unsigned long long glyph{ 0 }, length{ this->glyphs_pointers.size() };
-		auto offset{ 0 }, vertex{ 0 };
-		GLuint previous_texture{ 0 };
+
+		unsigned long long glyph{0}, length{this->glyphs_pointers.size()};
+		auto offset{0}, vertex{0};
+		GLuint previous_texture{0};
 		do
 		{
 			if (this->glyphs_pointers[glyph]->texture != previous_texture)
@@ -173,9 +173,8 @@ namespace Dove
 			vertices[vertex++] = this->glyphs_pointers[glyph]->topLeft;
 			offset += 6;
 			previous_texture = this->glyphs_pointers[glyph]->texture;
-		} while (++glyph<length);
-		
-		
+		}
+		while (++glyph < length);
 
 
 		glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferID);

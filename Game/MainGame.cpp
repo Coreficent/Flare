@@ -10,8 +10,7 @@
 using namespace std;
 
 
-MainGame::MainGame(int windowWdith, int windowHeight) :sprite_font{nullptr}, window{}, camera { windowWdith, windowHeight }, camera_interface{ windowWdith, windowHeight }, quad_batch_{}, input_manager{}, frame_manager{},  text_batch{}, currentState{ GameState::running },currentTicks{ 0 },windowWidth{ windowWdith },windowHeight{ windowHeight }
-
+MainGame::MainGame(int windowWdith, int windowHeight) :sprite_font{nullptr}, window{}, camera { windowWdith, windowHeight }, camera_interface{ windowWdith, windowHeight }, quad_batch_{}, input_manager{}, frame_manager{},  text_batch{}, audio_manager{},currentState{ GameState::running },currentTicks{ 0 },windowWidth{ windowWdith },windowHeight{ windowHeight }
 {
 }
 
@@ -43,6 +42,9 @@ void MainGame::initialize()
 	this->sprite_font = new Dove::SpriteFont{"font/disney.ttf",64};
 	//
 	//this->camera.initialize();
+	//
+	// initialize audio
+	this->audio_manager.load("audio/bounce.wav");
 }
 
 void MainGame::initializeShader()
@@ -198,7 +200,7 @@ void MainGame::draw_text()
 	this->text_batch.begin();
 	//TODO make it dynamic to prevent overflow
 	sprintf_s(buffer, "test text : %d",rand_test);
-	this->sprite_font->draw(this->text_batch, buffer,glm::vec2(0,100),glm::vec2(2.0),0.0f, Dove::Color{255,255,255,255},Dove::Justification::MIDDLE);
+	this->sprite_font->draw(this->text_batch, buffer,glm::vec2(0.0f,100.0f),glm::vec2(1.0f),0.0f, Dove::Color{125,0,125,125},Dove::Justification::MIDDLE);
 
 	this->text_batch.end();
 	this->text_batch.render();

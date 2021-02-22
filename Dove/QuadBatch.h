@@ -19,7 +19,7 @@ namespace Dove
 	class Glyph
 	{
 	public:
-		Glyph(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color) : texture{ texture }, depth{ depth }
+		Glyph(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color) : texture{texture}, depth{depth}
 		{
 			this->topLeft.color = color;
 			this->topLeft.setPosition(bound.x, bound.y + bound.w);

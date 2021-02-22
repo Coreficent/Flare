@@ -10,6 +10,7 @@
 #include <dove/InputManager.h>
 #include <dove/FrameManager.h>
 #include <dove/SpriteFont.h>
+#include <dove/AudioManager.h>
 using namespace std;
 
 class MainGame
@@ -31,6 +32,7 @@ private:
 	Dove::InputManager input_manager;
 	Dove::FrameManager frame_manager;
 	Dove::QuadBatch text_batch;
+	Dove::AudioManager audio_manager;
 
 	enum class GameState { running, ended };
 
