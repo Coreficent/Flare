@@ -2,8 +2,10 @@
 #include <gl/glew.h>
 #include "Vertex.h"
 #include <vector>
-#include <glm/detail/type_vec4.hpp>
 #include "Glyph.h"
+#include "GLSL.h"
+#include "Camera.h"
+#include "SpriteFont.h"
 
 namespace Dove
 {
@@ -28,11 +30,11 @@ namespace Dove
 		GLuint texture;
 	};
 
-	class QuadBatch
+	class Renderer
 	{
 	public:
-		QuadBatch();
-		~QuadBatch();
+		Renderer(int width, int height);
+		~Renderer();
 
 		Glyph& next_glyph();
 
@@ -42,10 +44,12 @@ namespace Dove
 		void draw(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color);
 		void render();
 
+		void renderNow();
 
 		//TODO temp public
 		std::vector<Glyph> glyphs;
-
+		Camera camera;
+		//TODO temp public //
 	private:
 
 
@@ -60,6 +64,11 @@ namespace Dove
 		std::vector<Glyph*> glyphs_pointers;
 
 		std::vector<RenderBatch> renderBatches;
+
+		GLSL colorProgram;
+
+
+		SpriteFont sprite_font{};
 
 		GlyphSortType sortType;
 

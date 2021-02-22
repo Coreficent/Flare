@@ -7,7 +7,7 @@
 #include "InputManager.h"
 #include "FrameManager.h"
 #include "Audio.h"
-#include "QuadBatch.h"
+#include "Renderer.h"
 #include "Stage.h"
 #include "Media.h"
 
@@ -27,9 +27,9 @@ namespace Dove
 		friend class Render;
 
 		friend class Display;
-		
 
-		Stage stage{};
+
+		//Stage stage{};
 
 	private:
 		static Core* core;
@@ -37,15 +37,12 @@ namespace Dove
 		Media media{};
 		Window window{};
 		Audio audio{};
-		SpriteFont sprite_font{};
 
-		GLSL colorProgram;
-		Camera camera;
-		QuadBatch quad_batch_;
+
+		Renderer quad_batch_;
 		InputManager input_manager;
 		FrameManager frame_manager;
-		QuadBatch text_batch;
-		
+
 
 		enum class GameState
 		{
@@ -60,9 +57,8 @@ namespace Dove
 		int windowWidth;
 		int windowHeight;
 
-	
+
 		void gameLoop();
 		void processInput();
-		void renderLoop();
 	};
 }

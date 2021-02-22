@@ -1,5 +1,5 @@
 #include "Display.h"
-#include "QuadBatch.h"
+#include "Renderer.h"
 #include <glm/gtc/matrix_transform.inl>
 #include "Point.h"
 #include "mathematics.h"

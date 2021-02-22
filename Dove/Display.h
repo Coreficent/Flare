@@ -2,7 +2,7 @@
 #include <gl/glew.h>
 #include "Matrix.h"
 #include "Point.h"
-#include "QuadBatch.h"
+#include "Renderer.h"
 
 namespace Dove
 {

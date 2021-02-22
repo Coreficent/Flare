@@ -59,7 +59,6 @@ namespace Dove
 		}
 	}
 
-	
 
 	SoundEffect Audio::load_sound_effect(const std::string& file_path)
 	{

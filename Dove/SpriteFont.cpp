@@ -1,6 +1,6 @@
 #include "SpriteFont.h"
 
-#include "QuadBatch.h"
+#include "Renderer.h"
 
 #include <sdl/SDL.h>
 #include <glm/gtc/matrix_transform.inl>
@@ -27,7 +27,7 @@ namespace Dove
 
 	SpriteFont::SpriteFont(const char* font, int size, char cs, char ce)
 	{
-		this->initialize(font,size);
+		this->initialize(font, size);
 	}
 
 	void SpriteFont::initialize(const char* font, int size)
@@ -115,7 +115,7 @@ namespace Dove
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, bestWidth, bestHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
 
 		// Now draw all the glyphs
-		SDL_Color fg = { 255, 255, 255, 255 };
+		SDL_Color fg = {255, 255, 255, 255};
 		int ly = padding;
 		for (int ri = 0; ri < bestRows; ri++)
 		{
@@ -266,7 +266,7 @@ namespace Dove
 		return size;
 	}
 
-	void SpriteFont::draw(QuadBatch& batch, const char* s, glm::vec2 position, glm::vec2 scaling,
+	void SpriteFont::draw(Renderer& batch, const char* s, glm::vec2 position, glm::vec2 scaling,
 	                      float depth, Color tint, Justification just /* = Justification::LEFT */)
 	{
 		glm::vec2 tp = position;

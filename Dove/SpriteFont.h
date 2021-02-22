@@ -33,10 +33,10 @@ Modified By: Benjamin Arnold
 
 namespace Dove
 {
-	class QuadBatch;
+	class Renderer;
 
 	class GLTexture;
-	class QuadBatch;
+	class Renderer;
 
 	struct CharGlyph
 	{
@@ -82,7 +82,7 @@ namespace Dove
 		unsigned int _texID;
 
 		/// Draws using a QuadBatch
-		void draw(QuadBatch& batch, const char* s, glm::vec2 position, glm::vec2 scaling,
+		void draw(Renderer& batch, const char* s, glm::vec2 position, glm::vec2 scaling,
 		          float depth, Color tint, Justification just = Justification::LEFT);
 	private:
 		static std::vector<int>* createRows(glm::ivec4* rects, int rectsLength, int r, int padding, int& w);

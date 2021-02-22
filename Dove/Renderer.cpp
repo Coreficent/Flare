@@ -1,21 +1,24 @@
-#include "QuadBatch.h"
+#include "Renderer.h"
 #include <glm/detail/type_vec4.hpp>
 #include <algorithm>
+#include "ResourceManager.h"
+#include "Display.h"
+#include "mathematics.h"
 
 using namespace std;
 
 namespace Dove
 {
-	QuadBatch::QuadBatch(): glyphs{}, sortType{GlyphSortType::NONE}, vertexBufferID{0}, vertexArrayID{0}
+	Renderer::Renderer(int width, int height):
+		camera{width,height}, sortType{GlyphSortType::NONE}, vertexBufferID{0}, vertexArrayID{0}
 	{
 	}
 
-
-	QuadBatch::~QuadBatch()
+	Renderer::~Renderer()
 	{
 	}
 
-	Glyph& QuadBatch::next_glyph()
+	Glyph& Renderer::next_glyph()
 	{
 		if (this->glyph_id >= this->glyphs.size())
 		{
@@ -24,12 +27,20 @@ namespace Dove
 		return this->glyphs[this->glyph_id++];
 	}
 
-	void QuadBatch::initialize()
+	void Renderer::initialize()
 	{
+		this->colorProgram.compileShader("shader/colorShade.sv", "shader/colorShade.sf");
+		this->colorProgram.addAttribute("vertexPosition");
+		this->colorProgram.addAttribute("vertexColor");
+		this->colorProgram.addAttribute("vertexUV");
+		this->colorProgram.linkShader();
 		this->createVertexArray();
+
+
+		this->sprite_font.initialize("font/disney.ttf", 64);
 	}
 
-	void QuadBatch::begin(GlyphSortType sortType)
+	void Renderer::begin(GlyphSortType sortType)
 	{
 		this->sortType = sortType;
 		this->renderBatches.clear();
@@ -38,7 +49,7 @@ namespace Dove
 		//this->glyphs_pointers.clear();
 	}
 
-	void QuadBatch::end()
+	void Renderer::end()
 	{
 		//TODO temp delete comment
 
@@ -54,7 +65,7 @@ namespace Dove
 	}
 
 
-	void QuadBatch::render()
+	void Renderer::render()
 	{
 		glBindVertexArray(this->vertexArrayID);
 		for (auto& i : this->renderBatches)
@@ -66,8 +77,85 @@ namespace Dove
 		glBindVertexArray(0);
 	}
 
+	void Renderer::renderNow()
+	{
+		this->camera.update();
 
-	void QuadBatch::createVertexArray()
+		glClearDepth(1.0);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		this->colorProgram.use();
+		glActiveTexture(GL_TEXTURE0);
+
+		auto textureLocation = this->colorProgram.getUniform("cakeSampler");
+		glUniform1i(textureLocation, 0);
+
+		// camera location
+		auto locationCamera = this->colorProgram.getUniform("cameraPosition");
+		auto cameraMatrix = this->camera.getCameraMatrix();
+
+		glUniformMatrix4fv(locationCamera, 1, GL_FALSE, &(cameraMatrix[0][0]));
+
+		this->begin();
+		glm::vec4 position{0.0f,0.0f,50.0f,50.0f};
+		glm::vec4 uv{0.0f,0.0f,1.0f,1.0f};
+		static auto texture = ResourceManager::getTexture("texture/cake.png");
+		Color color;
+		color.r = 255;
+		color.g = 255;
+		color.b = 255;
+		color.a = 255;
+		Display display_object{};
+		display_object.set_texture_id(texture.id);
+		display_object.set_width(100.0f);
+		display_object.set_height(100.0f);
+		display_object.scale(2.0f);
+		display_object.rotate(to_radian(0.0f));
+		for (auto i{0}; i < 1500; ++i)
+		{
+			display_object.set_x(100.0f * i);
+			display_object.render();
+		}
+		///////// stage renderer
+		//this->stage.render();
+
+		//////////
+
+
+		this->sprite_font.draw(*this, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{125,0,125,125});
+
+		// ouput sprite sheet
+		Glyph& glyph = this->next_glyph();
+
+		glyph.top_left.color = color;
+		glyph.top_left.setPosition(0.0f, 0.0f);
+		glyph.top_left.setUV(0.0f, 0.0f);
+
+		glyph.top_right.color = color;
+		glyph.top_right.setPosition(500.0f, 0.0f);
+		glyph.top_right.setUV(1.0f, 0.0f);
+
+		glyph.down_left.color = color;
+		glyph.down_left.setPosition(0.0f, 500.0f);
+		glyph.down_left.setUV(0.0f, 1.0f);
+
+		glyph.down_right.color = color;
+		glyph.down_right.setPosition(500.0f, 500.0f);
+		glyph.down_right.setUV(1.0f, 1.0f);
+
+		glyph.texture = this->sprite_font._texID;
+
+		////////// out put sprite sheet
+		this->end();
+		this->render();
+
+		//this->draw_text();
+
+		glBindTexture(GL_TEXTURE_2D, 0);
+		this->colorProgram.unuse();
+	}
+
+	void Renderer::createVertexArray()
 	{
 		if (!this->vertexArrayID)
 		{
@@ -95,7 +183,7 @@ namespace Dove
 		// TODO where is unbind for verex buffer
 	}
 
-	void QuadBatch::sortGlyphs()
+	void Renderer::sortGlyphs()
 	{
 		//TODO use sort?
 		switch (this->sortType)
@@ -117,7 +205,7 @@ namespace Dove
 		}
 	}
 
-	void QuadBatch::createRenderBatches()
+	void Renderer::createRenderBatches()
 	{
 		if (this->glyphs_pointers.empty())
 		{
@@ -125,42 +213,7 @@ namespace Dove
 		}
 		vector<Vertex> vertices{};
 		vertices.resize(this->glyphs_pointers.size() * 6);
-		//TODO clean up
 
-
-		/////////
-		/*
-		int vertex{ 0 };
-		int offset{ 0 };
-		this->renderBatches.emplace_back(offset, 6, this->glyphs_pointers[0]->texture);
-		vertices[vertex++] = this->glyphs_pointers[0]->down_left;
-		vertices[vertex++] = this->glyphs_pointers[0]->top_left;
-		vertices[vertex++] = this->glyphs_pointers[0]->top_right;
-		vertices[vertex++] = this->glyphs_pointers[0]->top_right;
-		vertices[vertex++] = this->glyphs_pointers[0]->down_right;
-		vertices[vertex++] = this->glyphs_pointers[0]->down_left;
-		offset += 6;
-
-		for (auto glyph = 1; glyph < this->glyphs_pointers.size(); ++glyph)
-		{
-			if (this->glyphs_pointers[glyph]->texture != this->glyphs_pointers[glyph - 1]->texture)
-			{
-				this->renderBatches.emplace_back(offset, 6, this->glyphs_pointers[glyph]->texture);
-			}
-			else
-			{
-				this->renderBatches.back().vertexCount += 6;
-			}
-			vertices[vertex++] = this->glyphs_pointers[glyph]->down_left;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->top_left;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->top_right;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->top_right;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->down_right;
-			vertices[vertex++] = this->glyphs_pointers[glyph]->down_left;
-			offset += 6;
-		}
-		*/
-		///////
 		// TODO int size?
 
 		unsigned long long glyph{0}, length{this->glyphs_pointers.size()};
@@ -196,7 +249,7 @@ namespace Dove
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
-	void QuadBatch::draw(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color)
+	void Renderer::draw(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color)
 	{
 		//this->glyphs.emplace_back(bound, uv, texture, depth, color, 5*0.7853f);
 		Glyph& glyph = this->next_glyph();
@@ -221,17 +274,17 @@ namespace Dove
 		//this->glyphs.push_back(glyph);
 	}
 
-	bool QuadBatch::compareFrontBack(Glyph* a, Glyph* b)
+	bool Renderer::compareFrontBack(Glyph* a, Glyph* b)
 	{
 		return a->depth < b->depth;
 	}
 
-	bool QuadBatch::compareBackFront(Glyph* a, Glyph* b)
+	bool Renderer::compareBackFront(Glyph* a, Glyph* b)
 	{
 		return a->depth > b->depth;
 	}
 
-	bool QuadBatch::compareTexture(Glyph* a, Glyph* b)
+	bool Renderer::compareTexture(Glyph* a, Glyph* b)
 	{
 		return a->texture > b->texture;
 	}

@@ -7,6 +7,7 @@
 namespace Dove
 {
 	using namespace std;
+
 	FrameManager::FrameManager()
 	{
 	}
@@ -39,7 +40,7 @@ namespace Dove
 
 		if (!(this->current_frame % 60))
 		{
-			dout << "fps: " << fps << " budget "<< remaining_budget<< endl;
+			dout << "fps: " << fps << " budget " << remaining_budget << endl;
 		}
 	}
 }

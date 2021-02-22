@@ -164,7 +164,7 @@
     <ClInclude Include="picoPNG.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Quad.h" />
-    <ClInclude Include="QuadBatch.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="SpriteFont.h" />
@@ -193,7 +193,7 @@
     <ClCompile Include="picoPNG.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Quad.cpp" />
-    <ClCompile Include="QuadBatch.cpp" />
+    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="mathematics.cpp" />
     <ClCompile Include="Sound.cpp" />

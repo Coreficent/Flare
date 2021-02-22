@@ -117,9 +117,6 @@
     <ClInclude Include="Quad.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
-    <ClInclude Include="QuadBatch.h">
-      <Filter>Header Files\unsorted</Filter>
-    </ClInclude>
     <ClInclude Include="ResourceManager.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
@@ -174,6 +171,9 @@
     <ClInclude Include="Core.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Header Files\render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="error.cpp">
@@ -204,9 +204,6 @@
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
     <ClCompile Include="Quad.cpp">
-      <Filter>Source Files\unsorted</Filter>
-    </ClCompile>
-    <ClCompile Include="QuadBatch.cpp">
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
@@ -256,6 +253,9 @@
     </ClCompile>
     <ClCompile Include="Core.cpp">
       <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files\render</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
