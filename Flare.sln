@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "game\Game.vcxproj", "{44028A38-6C62-47DE-883A-EF500DE076EB}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -9,6 +9,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "game\Game.vcxproj",
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Flare", "flare\Flare.vcxproj", "{71F65EDD-D5AB-4F73-A3AA-F60F1365519B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Benchmark", "Benchmark\Benchmark.vcxproj", "{C4933249-1FE1-4C57-B6FA-AAB93F80A132}"
+	ProjectSection(ProjectDependencies) = postProject
+		{71F65EDD-D5AB-4F73-A3AA-F60F1365519B} = {71F65EDD-D5AB-4F73-A3AA-F60F1365519B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ripple", "ripple\Ripple.vcxproj", "{E8C003B0-ACED-4A5E-8A50-0E0BDE19520C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{71F65EDD-D5AB-4F73-A3AA-F60F1365519B} = {71F65EDD-D5AB-4F73-A3AA-F60F1365519B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,8 +44,27 @@ Global
 		{71F65EDD-D5AB-4F73-A3AA-F60F1365519B}.Release|x64.Build.0 = Release|x64
 		{71F65EDD-D5AB-4F73-A3AA-F60F1365519B}.Release|x86.ActiveCfg = Release|Win32
 		{71F65EDD-D5AB-4F73-A3AA-F60F1365519B}.Release|x86.Build.0 = Release|Win32
+		{C4933249-1FE1-4C57-B6FA-AAB93F80A132}.Debug|x64.ActiveCfg = Debug|x64
+		{C4933249-1FE1-4C57-B6FA-AAB93F80A132}.Debug|x64.Build.0 = Debug|x64
+		{C4933249-1FE1-4C57-B6FA-AAB93F80A132}.Debug|x86.ActiveCfg = Debug|Win32
+		{C4933249-1FE1-4C57-B6FA-AAB93F80A132}.Debug|x86.Build.0 = Debug|Win32
+		{C4933249-1FE1-4C57-B6FA-AAB93F80A132}.Release|x64.ActiveCfg = Release|x64
+		{C4933249-1FE1-4C57-B6FA-AAB93F80A132}.Release|x64.Build.0 = Release|x64
+		{C4933249-1FE1-4C57-B6FA-AAB93F80A132}.Release|x86.ActiveCfg = Release|Win32
+		{C4933249-1FE1-4C57-B6FA-AAB93F80A132}.Release|x86.Build.0 = Release|Win32
+		{E8C003B0-ACED-4A5E-8A50-0E0BDE19520C}.Debug|x64.ActiveCfg = Debug|x64
+		{E8C003B0-ACED-4A5E-8A50-0E0BDE19520C}.Debug|x64.Build.0 = Debug|x64
+		{E8C003B0-ACED-4A5E-8A50-0E0BDE19520C}.Debug|x86.ActiveCfg = Debug|Win32
+		{E8C003B0-ACED-4A5E-8A50-0E0BDE19520C}.Debug|x86.Build.0 = Debug|Win32
+		{E8C003B0-ACED-4A5E-8A50-0E0BDE19520C}.Release|x64.ActiveCfg = Release|x64
+		{E8C003B0-ACED-4A5E-8A50-0E0BDE19520C}.Release|x64.Build.0 = Release|x64
+		{E8C003B0-ACED-4A5E-8A50-0E0BDE19520C}.Release|x86.ActiveCfg = Release|Win32
+		{E8C003B0-ACED-4A5E-8A50-0E0BDE19520C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {497ECDD2-91B2-41E9-BC2F-8196D5ECEA38}
 	EndGlobalSection
 EndGlobal
