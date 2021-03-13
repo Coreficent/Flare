@@ -1,14 +1,15 @@
 #pragma once
 
-#include <gl/glew.h>
-#include "Vertex.h"
-#include <vector>
-#include "Glyph.h"
-#include "GLSL.h"
 #include "Camera.h"
+#include "GLSL.h"
+#include "Glyph.h"
 #include "SpriteFont.h"
+#include "Vertex.h"
 #include "Vial.h"
+
+#include <gl/glew.h>
 #include <unordered_map>
+#include <vector>
 
 namespace Flare
 {

@@ -1,10 +1,11 @@
-#include "Renderer.h"
-#include <glm/detail/type_vec4.hpp>
-#include <algorithm>
-#include "ResourceManager.h"
 #include "Display.h"
-#include "mathematics.h"
+#include "Renderer.h"
+#include "ResourceManager.h"
 #include "debug.h"
+#include "mathematics.h"
+
+#include <algorithm>
+#include <glm/detail/type_vec4.hpp>
 
 using namespace std;
 
