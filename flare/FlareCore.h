@@ -24,12 +24,7 @@ namespace Flare::Core
 		void run();
 
 		friend class Render;
-
-		//friend class Display;
-
 	private:
-		// static FlareCore* core;
-
 		Context context{};
 		Window window{};
 		Audio audio{};

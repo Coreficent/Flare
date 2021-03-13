@@ -8,8 +8,6 @@ namespace Flare::Core
 	using namespace Flare::Core;
 	using namespace std;
 
-	// Flare::Core::FlareCore* core{ nullptr };
-
 	FlareCore::FlareCore(int windowWidth, int windowHeight)
 		: renderer{ windowWidth ,windowHeight }
 	{
@@ -18,12 +16,6 @@ namespace Flare::Core
 		this->window.initialize("Flare", windowWidth, windowHeight);
 		this->audio.initialize();
 		this->renderer.initialize();
-
-		// core = this;
-	}
-
-	FlareCore::~FlareCore()
-	{
 	}
 
 	void FlareCore::run()
