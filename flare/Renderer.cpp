@@ -96,7 +96,7 @@ namespace Flare
 		this->begin();
 		glm::vec4 position{ 0.0f,0.0f,50.0f,50.0f };
 		glm::vec4 uv{ 0.0f,0.0f,1.0f,1.0f };
-		static auto texture_cake = ResourceManager::getTexture("texture/cake.png");
+
 		static auto texture_arrow = ResourceManager::getTexture("texture/arrow.png");
 
 		Color color;
@@ -106,20 +106,7 @@ namespace Flare
 		color.a = 255;
 
 
-		Display display_cake{};
-		display_cake.set_texture_id(texture_cake.id);
-		this->t_id = texture_cake.id;
-		display_cake.set_width(100.0f);
-		display_cake.set_height(100.0f);
-		display_cake.scale(2.0f);
-		display_cake.rotate(to_radian(0.0f));
-		auto addre = &this->hash[this->t_id];
-		for (auto i{ 0 }; i < 200; ++i)
-		{
-			display_cake.set_x(100.0f * i);
-			display_cake.dest = addre;
-			display_cake.render();
-		}
+		_____renderCake();
 
 
 
@@ -150,6 +137,9 @@ namespace Flare
 		this->sprite_font.draw(*this, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
 
 		// ouput sprite sheet
+
+
+
 		Glyph& glyph = this->next_glyph();
 
 		glyph.top_left.color = color;
@@ -179,6 +169,8 @@ namespace Flare
 		glBindTexture(GL_TEXTURE_2D, 0);
 		this->colorProgram.unuse();
 	}
+
+
 
 	void Renderer::createVertexArray()
 	{
@@ -234,7 +226,7 @@ namespace Flare
 	{
 		if (this->glyphs_pointers.empty())
 		{
-			return;
+			// return;
 		}
 		vector<Vertex> vertices{};
 		vertices.resize(this->glyphs_pointers.size() * 6);
@@ -264,17 +256,22 @@ namespace Flare
 				vertices[vertex++] = this->glyphs_pointers[glyph]->down_left;
 				offset += 6;
 				previous_texture = this->glyphs_pointers[glyph]->texture;
-			} 			while (++glyph < length);
+			} while (++glyph < length);
 		}
 		//dout << this->vtx.size() << endl;
 		this->renderBatches.emplace_back(offset, this->hash[this->t_id].size(), this->t_id);
 		this->renderBatches.emplace_back(offset + this->hash[this->t_id].size(), this->hash[this->a_id].size(), this->a_id);
+
 		glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferID);
+
+		dout << "vertices" << vertices.size() << endl;
+
 		glBufferData(GL_ARRAY_BUFFER, (vertices.size() + this->hash[this->t_id].size() + this->hash[this->a_id].size()) * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
+
 		glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.size() * sizeof(Vertex), vertices.data());
 		glBufferSubData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), this->hash[this->t_id].size() * sizeof(Vertex), this->hash[this->t_id].data());
-
 		glBufferSubData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex) + this->hash[this->t_id].size() * sizeof(Vertex), this->hash[this->a_id].size() * sizeof(Vertex), this->hash[this->a_id].data());
+
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
@@ -316,5 +313,24 @@ namespace Flare
 	bool Renderer::compareTexture(Glyph* a, Glyph* b)
 	{
 		return a->texture > b->texture;
+	}
+
+	void Renderer::_____renderCake() {
+		static auto texture_cake = ResourceManager::getTexture("texture/cake.png");
+
+		Display display_cake{};
+		display_cake.set_texture_id(texture_cake.id);
+		this->t_id = texture_cake.id;
+		display_cake.set_width(100.0f);
+		display_cake.set_height(100.0f);
+		display_cake.scale(2.0f);
+		display_cake.rotate(to_radian(0.0f));
+		auto addre = &this->hash[this->t_id];
+		for (auto i{ 0 }; i < 200; ++i)
+		{
+			display_cake.set_x(100.0f * i);
+			display_cake.dest = addre;
+			display_cake.render();
+		}
 	}
 }
