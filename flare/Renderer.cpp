@@ -11,8 +11,8 @@ using namespace std;
 
 namespace Flare
 {
-	Renderer::Renderer(int width, int height):
-		camera{width,height}, sortType{GlyphSortType::NONE}, vertexBufferID{0}, vertexArrayID{0}
+	Renderer::Renderer(int width, int height) :
+		camera{ width,height }, sortType{ GlyphSortType::NONE }, vertexBufferID{ 0 }, vertexArrayID{ 0 }
 	{
 	}
 
@@ -52,7 +52,7 @@ namespace Flare
 
 
 		this->glyphs_pointers.resize(this->glyphs_vial.size());
-		for (unsigned int i{0}, l{this->glyphs_vial.size()}; i < l; ++i)
+		for (unsigned int i{ 0 }, l{ this->glyphs_vial.size() }; i < l; ++i)
 		{
 			this->glyphs_pointers[i] = &this->glyphs_vial[i];
 		}
@@ -94,8 +94,8 @@ namespace Flare
 		glUniformMatrix4fv(locationCamera, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
 		this->begin();
-		glm::vec4 position{0.0f,0.0f,50.0f,50.0f};
-		glm::vec4 uv{0.0f,0.0f,1.0f,1.0f};
+		glm::vec4 position{ 0.0f,0.0f,50.0f,50.0f };
+		glm::vec4 uv{ 0.0f,0.0f,1.0f,1.0f };
 		static auto texture_cake = ResourceManager::getTexture("texture/cake.png");
 		static auto texture_arrow = ResourceManager::getTexture("texture/arrow.png");
 
@@ -104,6 +104,8 @@ namespace Flare
 		color.g = 255;
 		color.b = 255;
 		color.a = 255;
+
+
 		Display display_cake{};
 		display_cake.set_texture_id(texture_cake.id);
 		this->t_id = texture_cake.id;
@@ -112,12 +114,14 @@ namespace Flare
 		display_cake.scale(2.0f);
 		display_cake.rotate(to_radian(0.0f));
 		auto addre = &this->hash[this->t_id];
-		for (auto i{0}; i < 200; ++i)
+		for (auto i{ 0 }; i < 200; ++i)
 		{
 			display_cake.set_x(100.0f * i);
 			display_cake.dest = addre;
 			display_cake.render();
 		}
+
+
 
 		Display display_arrow{};
 		display_arrow.set_texture_id(texture_arrow.id);
@@ -128,7 +132,7 @@ namespace Flare
 		display_arrow.scale(2.0f);
 		display_arrow.rotate(to_radian(45.0f));
 		auto addre_arrow = &this->hash[this->a_id];
-		for (auto i{0}; i < 1500; ++i)
+		for (auto i{ 0 }; i < 1500; ++i)
 		{
 			display_arrow.set_x(15.0f * i);
 			display_arrow.set_y(15.0f * i - 100.f);
@@ -143,7 +147,7 @@ namespace Flare
 		//////////
 
 
-		this->sprite_font.draw(*this, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{125,0,125,125});
+		this->sprite_font.draw(*this, "a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
 
 		// ouput sprite sheet
 		Glyph& glyph = this->next_glyph();
@@ -237,9 +241,9 @@ namespace Flare
 
 		// TODO int size?
 
-		unsigned long long glyph{0}, length{this->glyphs_pointers.size()};
-		auto offset{0}, vertex{0};
-		GLuint previous_texture{0};
+		unsigned long long glyph{ 0 }, length{ this->glyphs_pointers.size() };
+		auto offset{ 0 }, vertex{ 0 };
+		GLuint previous_texture{ 0 };
 		if (this->glyphs_vial.size() > 0)
 		{
 			do
@@ -260,8 +264,7 @@ namespace Flare
 				vertices[vertex++] = this->glyphs_pointers[glyph]->down_left;
 				offset += 6;
 				previous_texture = this->glyphs_pointers[glyph]->texture;
-			}
-			while (++glyph < length);
+			} 			while (++glyph < length);
 		}
 		//dout << this->vtx.size() << endl;
 		this->renderBatches.emplace_back(offset, this->hash[this->t_id].size(), this->t_id);
