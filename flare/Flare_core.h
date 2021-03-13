@@ -1,15 +1,15 @@
 #pragma once
 
-#include "SpriteFont.h"
-#include "Window.h"
-#include "FrameManager.h"
 #include "Audio.h"
-#include "Renderer.h"
-#include "Stage.h"
 #include "Context.h"
+#include "FrameManager.h"
+#include "Game.h"
 #include "Key.h"
 #include "Program.h"
-#include "Game.h"
+#include "Renderer.h"
+#include "SpriteFont.h"
+#include "Stage.h"
+#include "Window.h"
 
 namespace Flare::Core
 {
