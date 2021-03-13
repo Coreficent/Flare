@@ -3,7 +3,7 @@
 #include <glm/gtc/matrix_transform.inl>
 #include "Point.h"
 #include "mathematics.h"
-#include "Core.h"
+#include "FlareCore.h"
 
 namespace Flare
 {

@@ -166,7 +166,7 @@
     <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IOManager.h" />
-    <ClInclude Include="Core.h" />
+    <ClInclude Include="FlareCore.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Context.h" />
     <ClInclude Include="Music.h" />
@@ -198,7 +198,7 @@
     <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IOManager.cpp" />
-    <ClCompile Include="Core.cpp" />
+    <ClCompile Include="FlareCore.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Context.cpp" />

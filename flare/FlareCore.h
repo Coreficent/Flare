@@ -16,11 +16,11 @@ namespace Flare
 {
 	using namespace std;
 
-	class Core
+	class FlareCore
 	{
 	public:
-		Core(int windowWidth, int windowHeight);
-		~Core();
+		FlareCore(int windowWidth, int windowHeight);
+		~FlareCore();
 
 		void run();
 
@@ -29,7 +29,7 @@ namespace Flare
 		//friend class Display;
 
 	private:
-		static Core* core;
+		static FlareCore* core;
 
 		Context context{};
 		Window window{};

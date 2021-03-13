@@ -180,7 +180,7 @@
     <ClInclude Include="Audio.h">
       <Filter>Header Files\audio</Filter>
     </ClInclude>
-    <ClInclude Include="Core.h">
+    <ClInclude Include="FlareCore.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
@@ -275,7 +275,7 @@
     <ClCompile Include="Audio.cpp">
       <Filter>Source Files\audio</Filter>
     </ClCompile>
-    <ClCompile Include="Core.cpp">
+    <ClCompile Include="FlareCore.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">

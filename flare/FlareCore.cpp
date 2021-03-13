@@ -1,4 +1,4 @@
-#include "Core.h"
+#include "FlareCore.h"
 #include "debug.h"
 #include <iostream>
 #include <string>
@@ -7,9 +7,9 @@ namespace Flare
 {
 	using namespace std;
 
-	Core* Core::core{ nullptr };
+	FlareCore* FlareCore::core{ nullptr };
 
-	Core::Core(int windowWidth, int windowHeight)
+	FlareCore::FlareCore(int windowWidth, int windowHeight)
 		: renderer{ windowWidth ,windowHeight }
 	{
 		dout << "Debug Mode" << endl;
@@ -21,11 +21,11 @@ namespace Flare
 		core = this;
 	}
 
-	Core::~Core()
+	FlareCore::~FlareCore()
 	{
 	}
 
-	void Core::run()
+	void FlareCore::run()
 	{
 		Musice music = this->audio.load_music("music/x.ogg");
 		music.play(-1);
