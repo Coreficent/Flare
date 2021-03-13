@@ -19,7 +19,6 @@ namespace Flare::Core
 	{
 	public:
 		FlareCore(int windowWidth, int windowHeight);
-		~FlareCore();
 
 		void run();
 
