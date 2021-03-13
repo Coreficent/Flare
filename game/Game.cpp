@@ -4,7 +4,9 @@
 
 int main(int argc, char** argv)
 {
-	Flare::FlareCore core{1600,900};
+	using namespace Flare::Core;
+
+	FlareCore core{1600,900};
 	core.run();
 
 	return 0;

@@ -4,9 +4,11 @@
 
 int main(int argc, char** argv)
 {
+	using namespace Flare::Core;
+
 	std::cout << "Hello World from Ripple!\n";
 
-	Flare::FlareCore core{ 500,500 };
+	FlareCore core{ 500,500 };
 	core.run();
 
 	return 0;

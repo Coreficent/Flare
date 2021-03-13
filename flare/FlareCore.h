@@ -11,8 +11,7 @@
 #include "Program.h"
 #include "Game.h"
 
-
-namespace Flare
+namespace Flare::Core
 {
 	using namespace std;
 
@@ -29,7 +28,7 @@ namespace Flare
 		//friend class Display;
 
 	private:
-		static FlareCore* core;
+		// static FlareCore* core;
 
 		Context context{};
 		Window window{};

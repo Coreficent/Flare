@@ -3,11 +3,12 @@
 #include <iostream>
 #include <string>
 
-namespace Flare
+namespace Flare::Core
 {
+	using namespace Flare::Core;
 	using namespace std;
 
-	FlareCore* FlareCore::core{ nullptr };
+	// Flare::Core::FlareCore* core{ nullptr };
 
 	FlareCore::FlareCore(int windowWidth, int windowHeight)
 		: renderer{ windowWidth ,windowHeight }
@@ -18,7 +19,7 @@ namespace Flare
 		this->audio.initialize();
 		this->renderer.initialize();
 
-		core = this;
+		// core = this;
 	}
 
 	FlareCore::~FlareCore()
