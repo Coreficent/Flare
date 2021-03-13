@@ -1,4 +1,5 @@
 #pragma once
+
 #include <gl/glew.h>
 #include "Vertex.h"
 #include <vector>
@@ -23,9 +24,7 @@ namespace Flare
 	class RenderBatch
 	{
 	public:
-		RenderBatch(GLuint offset, GLuint vertexCount, GLuint texture) : offset{offset}, vertexCount{vertexCount}, texture{texture}
-		{
-		}
+		RenderBatch(GLuint offset, GLuint vertexCount, GLuint texture) : offset{ offset }, vertexCount{ vertexCount }, texture{ texture } {};
 
 		GLuint offset;
 		GLuint vertexCount;
@@ -36,7 +35,6 @@ namespace Flare
 	{
 	public:
 		Renderer(int width, int height);
-		~Renderer();
 
 		Glyph& next_glyph();
 
@@ -52,8 +50,8 @@ namespace Flare
 		//TODO temp public //
 		Camera camera;
 		//Vial<Vertex> vtx{};
-		GLuint t_id{0};
-		GLuint a_id{0};
+		GLuint t_id{ 0 };
+		GLuint a_id{ 0 };
 		std::unordered_map<GLuint, Vial<Vertex>> hash{};
 		//std::vector<GLuint> key{};
 		//std::vector<std::unique_ptr<Vial<Vertex>>> holder{std::make_unique<Vial<Vertex>>()};

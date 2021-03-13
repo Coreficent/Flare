@@ -15,10 +15,6 @@ namespace Flare
 	{
 	}
 
-	Renderer::~Renderer()
-	{
-	}
-
 	Glyph& Renderer::next_glyph()
 	{
 		return this->glyphs_vial.next();
