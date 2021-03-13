@@ -1,4 +1,4 @@
-#include "flare/FlareCore.h"
+#include "flare/Flare_core.h"
 #include "gsl/gsl"
 #include <iostream>
 
@@ -8,7 +8,7 @@ int main(int argc, char** argv)
 
 	std::cout << "Hello World from Ripple!\n";
 
-	FlareCore core{ 500,500 };
+	Flare_core core{ 500,500 };
 	core.run();
 
 	return 0;

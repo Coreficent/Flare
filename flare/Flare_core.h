@@ -15,10 +15,10 @@ namespace Flare::Core
 {
 	using namespace std;
 
-	class FlareCore
+	class Flare_core
 	{
 	public:
-		FlareCore(int windowWidth, int windowHeight);
+		Flare_core(int windowWidth, int windowHeight);
 
 		void run();
 
