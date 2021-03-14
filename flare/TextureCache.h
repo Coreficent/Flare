@@ -11,9 +11,6 @@ namespace Flare::Texture
 	{
 
 	public:
-		TextureCache();
-		~TextureCache();
-
 		GLTexture getTexture(std::string& filePath);
 
 	private:
