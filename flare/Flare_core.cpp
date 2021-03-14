@@ -34,4 +34,9 @@ namespace Flare::Core
 
 		music.stop();
 	}
+
+	Container& Flare_core::get_stage() noexcept
+	{
+		return this->renderer.stage;
+	}
 }

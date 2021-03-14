@@ -13,12 +13,14 @@
 namespace Flare::Core
 {
 	using namespace std;
+	using namespace Flare::Display;
 
 	class Flare_core
 	{
 	public:
 		Flare_core(int windowWidth, int windowHeight);
 		void run();
+		Container& get_stage() noexcept;
 
 	private:
 		Context context{};

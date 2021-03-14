@@ -12,7 +12,6 @@
 #include <unordered_map>
 #include <vector>
 
-
 namespace Flare::Render
 {
 	using namespace Flare::Display;
