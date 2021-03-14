@@ -1,4 +1,4 @@
-#include "Display.h"
+#include "Sprite.h"
 #include "Flare_core.h"
 #include "Point.h"
 #include "Renderer.h"

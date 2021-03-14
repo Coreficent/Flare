@@ -154,7 +154,7 @@
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Container.h" />
-    <ClInclude Include="Display.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="error.h" />
     <ClInclude Include="FrameManager.h" />
     <ClInclude Include="Game.h" />

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Display.h"
+#include "Sprite.h"
 #include <memory>
 
 namespace Flare

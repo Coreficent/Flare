@@ -153,7 +153,7 @@
     <ClInclude Include="mathematics.h">
       <Filter>Header Files\utility</Filter>
     </ClInclude>
-    <ClInclude Include="Display.h">
+    <ClInclude Include="Sprite.h">
       <Filter>Header Files\display</Filter>
     </ClInclude>
     <ClInclude Include="Container.h">
