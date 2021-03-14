@@ -22,7 +22,7 @@ namespace Flare::Render
 
 	void Renderer::initialize()
 	{
-		this->colorProgram.compileShader("shader/colorShade.sv", "shader/colorShade.sf");
+		this->colorProgram.compileShader("shader/vertex.shader", "shader/fragment.shader");
 		this->colorProgram.addAttribute("vertexPosition");
 		this->colorProgram.addAttribute("vertexColor");
 		this->colorProgram.addAttribute("vertexUV");
