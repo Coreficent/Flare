@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 
 	core.run();
 
-	cout << "Bye World from Benchmark!" << endl;
+	cout << "Bye from Benchmark!" << endl;
 
 	return 0;
 }
