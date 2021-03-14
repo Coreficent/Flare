@@ -32,6 +32,8 @@ namespace Flare::Display
 
 		void render() const;
 
+		void buffer(Renderer& renderer);
+
 		Vial<Vertex>* dest{ nullptr };
 
 	private:

@@ -7,6 +7,8 @@
 
 namespace Flare::Display
 {
+	using namespace glm;
+
 	Sprite::Sprite() noexcept {}
 
 	float Sprite::get_x() const noexcept
@@ -104,8 +106,8 @@ namespace Flare::Display
 	{
 		auto top_left = this->locate_vertex(0.0f, 0.0f);
 		auto top_right = this->locate_vertex(this->width, 0.0f);
-		auto down_left = this->locate_vertex(0.0f, this->height);
-		auto down_right = this->locate_vertex(this->width, this->height);
+		auto bottom_left = this->locate_vertex(0.0f, this->height);
+		auto bottom_right = this->locate_vertex(this->width, this->height);
 
 		auto& vertex1 = this->dest->next();
 		vertex1.color = this->color;
@@ -119,12 +121,12 @@ namespace Flare::Display
 
 		auto& vertex3 = this->dest->next();
 		vertex3.color = this->color;
-		vertex3.setPosition(down_left.x, down_left.y);
+		vertex3.setPosition(bottom_left.x, bottom_left.y);
 		vertex3.setUV(this->u_start, this->v_end);
 
 		auto& vertex4 = this->dest->next();
 		vertex4.color = this->color;
-		vertex4.setPosition(down_left.x, down_left.y);
+		vertex4.setPosition(bottom_left.x, bottom_left.y);
 		vertex4.setUV(this->u_start, this->v_end);
 
 		auto& vertex5 = this->dest->next();
@@ -134,8 +136,15 @@ namespace Flare::Display
 
 		auto& vertex6 = this->dest->next();
 		vertex6.color = this->color;
-		vertex6.setPosition(down_right.x, down_right.y);
+		vertex6.setPosition(bottom_right.x, bottom_right.y);
 		vertex6.setUV(this->u_end, this->v_end);
+	}
+
+	void Sprite::buffer(Renderer& renderer)
+	{
+		const vec4 bound{ this->x, this->y, this->width , this->height };
+		const vec4 uv{ this->u_start,this->v_start,this->u_end,this->v_end };
+		renderer.draw(bound, uv, get_texture_id(), 0.0f, Color{ 255,255,255,255 });
 	}
 
 	Point Sprite::locate_vertex(float x, float y) const
