@@ -38,11 +38,6 @@ namespace Flare::Render
 		this->sortType = sortType;
 		this->renderBatches.clear();
 		this->glyphs_vial.refill();
-		//this->vtx.refill();
-		this->hash[this->t_id].refill();
-		this->hash[this->a_id].refill();
-		//this->glyphs.clear();
-		//this->glyphs_pointers.clear();
 	}
 
 	void Renderer::end()
@@ -94,7 +89,7 @@ namespace Flare::Render
 
 		this->begin();
 
-		
+
 
 		for (auto& quad : this->stage.get_quads())
 		{
@@ -201,19 +196,14 @@ namespace Flare::Render
 				previous_texture = this->glyphs_pointers[glyph]->texture;
 			} while (++glyph < length);
 		}
-		//dout << this->vtx.size() << endl;
-		this->renderBatches.emplace_back(offset, this->hash[this->t_id].size(), this->t_id);
-		this->renderBatches.emplace_back(offset + this->hash[this->t_id].size(), this->hash[this->a_id].size(), this->a_id);
 
 		glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferID);
 
 		dout << "vertices" << vertices.size() << endl;
 
-		glBufferData(GL_ARRAY_BUFFER, (vertices.size() + this->hash[this->t_id].size() + this->hash[this->a_id].size()) * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
 
 		glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.size() * sizeof(Vertex), vertices.data());
-		glBufferSubData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), this->hash[this->t_id].size() * sizeof(Vertex), this->hash[this->t_id].data());
-		glBufferSubData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex) + this->hash[this->t_id].size() * sizeof(Vertex), this->hash[this->a_id].size() * sizeof(Vertex), this->hash[this->a_id].data());
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}

@@ -50,12 +50,6 @@ namespace Flare::Render
 		void renderNow();
 
 		Camera camera;
-
-		GLuint t_id{ 0 };
-		GLuint a_id{ 0 };
-
-		std::unordered_map<GLuint, Vial<Vertex>> hash{};
-
 		Container stage{};
 
 	private:
