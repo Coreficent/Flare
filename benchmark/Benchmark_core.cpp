@@ -5,15 +5,12 @@
 #include <iostream>
 
 namespace Benchmark::Core {
-
+	
 	using namespace Benchmark::Core;
 	using namespace Benchmark::Display;
 	using namespace Flare::Display;
 
-	Benchmark_core::Benchmark_core(int window_width, int window_height) :Flare_core{ window_width ,window_height }
-	{
-
-	}
+	Benchmark_core::Benchmark_core(int window_width, int window_height) :Flare_core{ window_width ,window_height } {}
 
 	void Benchmark_core::enter_frame() noexcept
 	{
@@ -36,5 +33,4 @@ namespace Benchmark::Core {
 			this->get_stage().add_child(bunny);
 		}
 	}
-
 }
