@@ -96,7 +96,6 @@ namespace Flare::Render
 		glm::vec4 position{ 0.0f,0.0f,50.0f,50.0f };
 		glm::vec4 uv{ 0.0f,0.0f,1.0f,1.0f };
 
-		static auto texture_arrow = ResourceManager::getTexture("texture/arrow.png");
 
 		Color color;
 		color.r = 255;
@@ -104,30 +103,9 @@ namespace Flare::Render
 		color.b = 255;
 		color.a = 255;
 
-
-		_____renderCake();
-
 		for (auto& quad : this->stage.get_quads())
 		{
 			this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
-		}
-
-
-		Flare::Display::Sprite display_arrow{};
-		display_arrow.set_texture_id(texture_arrow.id);
-		this->a_id = texture_arrow.id;
-		display_arrow.set_y(200.f);
-		display_arrow.set_width(10.0f);
-		display_arrow.set_height(10.0f);
-		display_arrow.scale(2.0f);
-		display_arrow.rotate(to_radian(45.0f));
-		auto addre_arrow = &this->hash[this->a_id];
-		for (auto i{ 0 }; i < 1500; ++i)
-		{
-			display_arrow.set_x(15.0f * i);
-			display_arrow.set_y(15.0f * i - 100.f);
-			display_arrow.dest = addre_arrow;
-			display_arrow.render();
 		}
 
 
@@ -327,42 +305,5 @@ namespace Flare::Render
 	bool Renderer::compareTexture(Glyph* a, Glyph* b)
 	{
 		return a->texture > b->texture;
-	}
-
-	void Renderer::_____renderCake() {
-		static auto texture_cake = ResourceManager::getTexture("texture/cake.png");
-
-		Flare::Display::Sprite display_cake{};
-		display_cake.set_texture_id(texture_cake.id);
-		this->t_id = texture_cake.id;
-		display_cake.set_width(100.0f);
-		display_cake.set_height(100.0f);
-		display_cake.scale(2.0f);
-		display_cake.rotate(to_radian(90.0f));
-		auto addre = &this->hash[this->t_id];
-
-
-		for (auto i{ 0 }; i < 200; ++i)
-		{
-			display_cake.set_x(100.0f * i);
-			display_cake.dest = addre;
-			//display_cake.render();
-			//display_cake.buffer(*this);
-			Quad quad = display_cake.get_quad();
-
-			this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
-		}
-
-
-
-		//display_cake.set_x(0.0f);
-
-		//display_cake.set_y(100.0f);
-
-		//this->stage.add_child(display_cake);
-
-		//display_cake.set_y(200.0f);
-
-		//this->stage.add_child(display_cake);
 	}
 }

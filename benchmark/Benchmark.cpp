@@ -33,7 +33,16 @@ int main(int argc, char** argv)
 
 
 
+	static auto texture_arrow = Flare::ResourceManager::getTexture("texture/arrow.png");
 
+	Flare::Display::Sprite arrow{};
+	arrow.set_texture_id(texture_arrow.id);
+	arrow.set_width(200.0f);
+	arrow.set_height(200.0f);
+	arrow.set_x(200.0f);
+	arrow.set_y(200.0f);
+
+	core.get_stage().add_child(arrow);
 
 
 
