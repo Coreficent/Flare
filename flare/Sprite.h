@@ -50,17 +50,18 @@ namespace Flare::Display
 
 		virtual void enter_frame() noexcept;
 
-	private:
-		Matrix matrix{};
-
-		Color color{ 255,255,255 ,255 };
-
 		GLuint texture_id{ 0 };
 
 		float x{ 0.0f };
 		float y{ 0.0f };
 		float width{ 0.0f };
 		float height{ 0.0f };
+
+	private:
+		Matrix matrix{};
+
+		Color color{ 255,255,255 ,255 };
+
 		float u_start{ 0.0f };
 		float u_end{ 1.0f };
 		float v_start{ 0.0f };

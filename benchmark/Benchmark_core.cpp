@@ -27,12 +27,9 @@ namespace Benchmark::Core {
 		if (this->frame_manager.frames_per_second > 60.0f) {
 			Sprite bunny{};
 
-			bunny.set_texture_id(bunny_texture.id);
-
-			bunny.set_width(100.0f);
-			bunny.set_height(100.0f);
-
-			bunny.set_x(x++);
+			bunny.texture_id = bunny_texture.id;
+			bunny.width = bunny.height = 100.0f;
+			bunny.x = x++;
 
 			this->get_stage().add_child(bunny);
 		}
@@ -41,7 +38,7 @@ namespace Benchmark::Core {
 	void Benchmark_core::animate() noexcept
 	{
 		for (auto& child : this->get_stage().children) {
-			child.set_y(child.get_y() + 1.0f);
+			++child.y;
 		}
 	}
 
