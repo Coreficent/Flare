@@ -94,6 +94,12 @@
     <Filter Include="Header Files\container">
       <UniqueIdentifier>{0d746330-176d-4ea3-a606-702a119aca9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\texture">
+      <UniqueIdentifier>{7ffe1e7c-dd1e-444d-aca4-f9733e5a188d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\texture">
+      <UniqueIdentifier>{a1667ce4-e54a-416b-b1d7-0f99a6c6494f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -127,12 +133,6 @@
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
     <ClInclude Include="picoPNG.h">
-      <Filter>Header Files\unsorted</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>Header Files\unsorted</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureCache.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
     <ClInclude Include="Vertex.h">
@@ -198,6 +198,12 @@
     <ClInclude Include="Quad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Header Files\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureCache.h">
+      <Filter>Header Files\texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="error.cpp">
@@ -225,12 +231,6 @@
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
     <ClCompile Include="picoPNG.cpp">
-      <Filter>Source Files\unsorted</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
-      <Filter>Source Files\unsorted</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureCache.cpp">
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
     <ClCompile Include="Matrix.cpp">
@@ -283,6 +283,12 @@
     </ClCompile>
     <ClCompile Include="SpriteFont.cpp">
       <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureCache.cpp">
+      <Filter>Source Files\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Source Files\texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

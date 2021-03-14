@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 
 	Benchmark_core core{ 500,1000 };
 
-	static auto cake_texture = Flare::ResourceManager::getTexture("texture/cake.png");
+	static auto cake_texture = Flare::Texture::ResourceManager::getTexture("texture/cake.png");
 
 	Benchmark::Display::Bunny cake1{};
 	cake1.set_texture_id(cake_texture.id);
@@ -30,7 +30,7 @@ int main(int argc, char** argv)
 
 	core.get_stage().add_child(cake2);
 
-	static auto texture_arrow = Flare::ResourceManager::getTexture("texture/arrow.png");
+	static auto texture_arrow = Flare::Texture::ResourceManager::getTexture("texture/arrow.png");
 
 	Flare::Display::Sprite arrow{};
 	arrow.set_texture_id(texture_arrow.id);

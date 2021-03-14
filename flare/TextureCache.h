@@ -5,10 +5,11 @@
 
 #include "GlTexture.h"
 
-namespace Flare
+namespace Flare::Texture
 {
 	class TextureCache
 	{
+
 	public:
 		TextureCache();
 		~TextureCache();
@@ -18,4 +19,5 @@ namespace Flare
 	private:
 		std::map<std::string, GLTexture> textureMap;
 	};
+
 }
