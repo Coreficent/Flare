@@ -24,7 +24,7 @@ namespace Flare::Frame
 		}
 
 		const auto fps = 1000.0f / ((average_cost + 0.0001f) / this->samples.size());
-		const auto remaining_budget = this->budget - current_cost;
+		const int remaining_budget = this->budget - current_cost;
 
 		if (this->budget > current_cost)
 		{

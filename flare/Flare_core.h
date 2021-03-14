@@ -19,6 +19,7 @@ namespace Flare::Core
 
 	class Flare_core
 	{
+
 	public:
 		Flare_core(int windowWidth, int windowHeight);
 

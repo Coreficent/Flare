@@ -12,6 +12,7 @@ namespace Flare::Display
 
 	class Container
 	{
+
 	public:
 		Container() noexcept;
 		Container(const Container& value) = default;
@@ -29,4 +30,5 @@ namespace Flare::Display
 	private:
 		vector<Sprite> children{};
 	};
+
 }
