@@ -16,7 +16,6 @@ namespace Benchmark::Core {
 
 	private:
 		void add_bunny() noexcept;
-		void animate() noexcept;
 
 	};
 }

@@ -18,7 +18,6 @@ namespace Benchmark::Core {
 	void Benchmark_core::enter_frame() noexcept
 	{
 		this->add_bunny();
-		this->animate();
 	}
 
 	void Benchmark_core::add_bunny() noexcept
@@ -35,13 +34,6 @@ namespace Benchmark::Core {
 			bunny->x = x++;
 
 			this->get_stage().add_child(bunny);
-		}
-	}
-
-	void Benchmark_core::animate() noexcept
-	{
-		for (auto& child : this->get_stage().children) {
-			++child->y;
 		}
 	}
 
