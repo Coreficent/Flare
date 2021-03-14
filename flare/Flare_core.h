@@ -14,6 +14,7 @@ namespace Flare::Core
 {
 	using namespace std;
 	using namespace Flare::Display;
+	using namespace Flare::Frame;
 	using namespace Flare::Render;
 
 	class Flare_core

@@ -4,7 +4,7 @@
 #include <sdl/SDL.h>
 #include "debug.h"
 
-namespace Flare
+namespace Flare::Frame
 {
 	using namespace std;
 
@@ -16,7 +16,7 @@ namespace Flare
 
 		this->samples.at(this->current_frame++ % this->samples.size()) = current_cost;
 
-		Uint32 average_cost{0};
+		Uint32 average_cost{ 0 };
 		for (auto& i : this->samples)
 		{
 			average_cost += i;
