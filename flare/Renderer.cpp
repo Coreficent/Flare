@@ -128,31 +128,6 @@ namespace Flare::Render
 			this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
 		}
 
-		// ouput sprite sheet
-
-
-
-		Glyph& glyph = this->next_glyph();
-
-		glyph.top_left.color = color;
-		glyph.top_left.setPosition(0.0f, 0.0f);
-		glyph.top_left.setUV(0.0f, 0.0f);
-
-		glyph.top_right.color = color;
-		glyph.top_right.setPosition(500.0f, 0.0f);
-		glyph.top_right.setUV(1.0f, 0.0f);
-
-		glyph.down_left.color = color;
-		glyph.down_left.setPosition(0.0f, 500.0f);
-		glyph.down_left.setUV(0.0f, 1.0f);
-
-		glyph.down_right.color = color;
-		glyph.down_right.setPosition(500.0f, 500.0f);
-		glyph.down_right.setUV(1.0f, 1.0f);
-
-		glyph.texture = this->sprite_font._texID;
-
-		////////// out put sprite sheet
 		this->end();
 		this->render();
 
