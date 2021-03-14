@@ -1,6 +1,6 @@
 #include "Bunny.h"
 #include "Benchmark_core.h"
-#include "flare/ResourceManager.h"
+#include "flare/Resource_manager.h"
 #include "gsl/gsl"
 #include <iostream>
 

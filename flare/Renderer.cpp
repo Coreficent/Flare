@@ -1,6 +1,6 @@
 #include "Sprite.h"
 #include "Renderer.h"
-#include "ResourceManager.h"
+#include "Resource_manager.h"
 #include "debug.h"
 #include "mathematics.h"
 #include "Quad.h"
