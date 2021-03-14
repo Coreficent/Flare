@@ -2,16 +2,17 @@
 
 #include "Sprite.h"
 #include <memory>
+#include <vector>
 
 namespace Flare::Display
 {
-	class Container 
+	class Container
 	{
 	public:
 		Container() noexcept;
 
 		void add_child(std::shared_ptr<Flare::Display::Sprite> child);
-		void remove_child (std::shared_ptr<Flare::Display::Sprite> child) noexcept;
+		void remove_child(std::shared_ptr<Flare::Display::Sprite> child) noexcept;
 		void render() const;
 
 	private:

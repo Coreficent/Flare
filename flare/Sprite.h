@@ -2,9 +2,10 @@
 
 #include "Matrix.h"
 #include "Point.h"
-#include "Renderer.h"
-
+#include "Vertex.h"
+#include "Vial.h"
 #include <gl/glew.h>
+#include <glm/gtc/matrix_transform.inl>
 
 namespace Flare::Display
 {

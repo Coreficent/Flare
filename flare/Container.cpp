@@ -11,7 +11,7 @@ namespace Flare::Display
 
 	void Container::remove_child(std::shared_ptr<Flare::Display::Sprite> child) noexcept
 	{
-		unsigned int i{0};
+		unsigned int i{ 0 };
 		for (auto& c : this->children)
 		{
 			if (c == child)

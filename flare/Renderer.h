@@ -6,13 +6,17 @@
 #include "SpriteFont.h"
 #include "Vertex.h"
 #include "Vial.h"
+#include "Container.h"
 
 #include <gl/glew.h>
 #include <unordered_map>
 #include <vector>
 
+
 namespace Flare
 {
+	using namespace Flare::Display;
+
 	enum class GlyphSortType
 	{
 		NONE,
@@ -47,10 +51,13 @@ namespace Flare
 		void renderNow();
 
 		Camera camera;
+
 		GLuint t_id{ 0 };
 		GLuint a_id{ 0 };
 
 		std::unordered_map<GLuint, Vial<Vertex>> hash{};
+
+		Container stage{};
 
 	private:
 		void createVertexArray();
