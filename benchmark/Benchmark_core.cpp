@@ -15,6 +15,12 @@ namespace Benchmark::Core {
 
 	void Benchmark_core::enter_frame() noexcept
 	{
+		this->add_bunny();
+		this->animate();
+	}
+
+	void Benchmark_core::add_bunny() noexcept
+	{
 		static auto bunny_texture = Flare::Texture::Resource_manager::get_texture("texture/cake.png");
 		static auto x{ 0.0f };
 
@@ -31,4 +37,12 @@ namespace Benchmark::Core {
 			this->get_stage().add_child(bunny);
 		}
 	}
+
+	void Benchmark_core::animate() noexcept
+	{
+		for (auto& child : this->get_stage().children) {
+			child.set_y(child.get_y() + 1.0f);
+		}
+	}
+
 }
