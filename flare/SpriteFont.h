@@ -30,9 +30,12 @@ Modified By: Benjamin Arnold
 #include <vector>
 
 #include "Vertex.h"
+#include "Quad.h"
 
 namespace Flare
 {
+	using namespace Flare::Display;
+
 	struct GLTexture;
 
 	struct CharGlyph
@@ -79,7 +82,7 @@ namespace Flare
 		unsigned int _texID;
 
 		/// Draws using a QuadBatch
-		std::vector< glm::vec4> draw(const char* s, glm::vec2 position, glm::vec2 scaling, float depth, Color tint, Justification just = Justification::LEFT);
+		std::vector<Quad> draw(const char* s, glm::vec2 position, glm::vec2 scaling, float depth, Color tint, Justification just = Justification::LEFT);
 
 	private:
 		static std::vector<int>* createRows(glm::ivec4* rects, int rectsLength, int r, int padding, int& w);

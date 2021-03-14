@@ -3,6 +3,7 @@
 #include "ResourceManager.h"
 #include "debug.h"
 #include "mathematics.h"
+#include "Quad.h"
 
 #include <algorithm>
 #include <glm/detail/type_vec4.hpp>
@@ -10,6 +11,7 @@
 namespace Flare::Render
 {
 	using namespace std;
+	using namespace Flare::Display;
 
 	Renderer::Renderer(int width, int height) : camera{ width,height }, sortType{ GlyphSortType::NONE }, vertexBufferID{ 0 }, vertexArrayID{ 0 }{}
 
@@ -131,12 +133,17 @@ namespace Flare::Render
 		//////////
 
 
-		vector<vec4> result = this->sprite_font.draw("a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
+		vector<Quad> quads = this->sprite_font.draw("a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
 
 		// TODO clean this up by returning higher level data structure
 
-		for (auto i{ 0 }; i < result.size(); i = i + 2) {
+		/*for (auto i{ 0 }; i < result.size(); i = i + 2) {
 			this->draw(result[i], result[i + 1], this->sprite_font._texID, 0.0f, Color{ 255,255,255,255 });
+		}*/
+
+		for (auto& quad : quads)
+		{
+			this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
 		}
 
 		// ouput sprite sheet

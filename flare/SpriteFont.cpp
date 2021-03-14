@@ -1,6 +1,8 @@
 #include "SpriteFont.h"
+#include "Quad.h"
 #include <sdl/SDL.h>
 #include <glm/gtc/matrix_transform.inl>
+
 
 int closestPow2(int i)
 {
@@ -18,6 +20,8 @@ int closestPow2(int i)
 
 namespace Flare
 {
+	using namespace Flare::Display;
+
 	SpriteFont::SpriteFont()
 	{
 	}
@@ -262,9 +266,9 @@ namespace Flare
 		return size;
 	}
 
-	std::vector<glm::vec4> SpriteFont::draw(const char* s, glm::vec2 position, glm::vec2 scaling, float depth, Color tint, Justification just /* = Justification::LEFT */)
+	std::vector<Quad> SpriteFont::draw(const char* s, glm::vec2 position, glm::vec2 scaling, float depth, Color tint, Justification just /* = Justification::LEFT */)
 	{
-		std::vector<glm::vec4> result{};
+		std::vector<Quad> result{};
 
 		glm::vec2 tp = position;
 		// Apply justification
@@ -298,8 +302,11 @@ namespace Flare
 
 				// batch.draw(destRect, uv, _texID, depth, tint);
 
-				result.push_back(destRect);
-				result.push_back(uv);
+				//result.push_back(destRect);
+				//result.push_back(uv);
+
+
+				result.push_back(Quad{_texID, destRect ,uv});
 
 				tp.x += _glyphs[gi].size.x * scaling.x;
 			}
