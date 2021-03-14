@@ -1,4 +1,5 @@
 #pragma once
+
 #include <sdl/SDL_stdinc.h>
 #include <array>
 
@@ -6,10 +7,10 @@ namespace Flare
 {
 	class FrameManager
 	{
+
 	public:
-		FrameManager();
-		~FrameManager();
 		void calculate_fps();
+
 	private:
 		std::array<Uint32, 60> samples{};
 
