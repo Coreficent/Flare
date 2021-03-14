@@ -159,7 +159,7 @@ namespace Flare::Display
 
 	void Sprite::enter_frame() noexcept
 	{
-		std::cout << "sprite class" << std::endl;
+		// std::cout << "sprite class" << std::endl;
 	}
 
 	Point Sprite::locate_vertex(float x, float y) const

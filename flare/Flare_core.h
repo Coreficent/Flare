@@ -20,8 +20,11 @@ namespace Flare::Core
 	{
 	public:
 		Flare_core(int windowWidth, int windowHeight);
-		void run();
+
 		Container& get_stage() noexcept;
+
+		void run();
+		virtual void enter_frame() noexcept;
 
 	private:
 		Context context{};

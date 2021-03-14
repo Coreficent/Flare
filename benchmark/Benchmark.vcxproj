@@ -148,9 +148,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Benchmark.cpp" />
+    <ClCompile Include="Benchmark_core.cpp" />
     <ClCompile Include="Bunny.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Benchmark_core.h" />
     <ClInclude Include="Bunny.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

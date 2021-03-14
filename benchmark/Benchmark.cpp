@@ -1,22 +1,18 @@
 #include "Bunny.h"
-#include "flare/Flare_core.h"
+#include "Benchmark_core.h"
 #include "flare/ResourceManager.h"
 #include "gsl/gsl"
 #include <iostream>
 
 int main(int argc, char** argv)
 {
-	using namespace Flare::Core;
+	using namespace Benchmark::Core;
 
 	std::cout << "Hello World from Benchmark!\n";
 
-	Flare_core core{ 500,1000 };
-
-
+	Benchmark_core core{ 500,1000 };
 
 	static auto cake_texture = Flare::ResourceManager::getTexture("texture/cake.png");
-
-	
 
 	Benchmark::Display::Bunny cake1{};
 	cake1.set_texture_id(cake_texture.id);
@@ -34,8 +30,6 @@ int main(int argc, char** argv)
 
 	core.get_stage().add_child(cake2);
 
-
-
 	static auto texture_arrow = Flare::ResourceManager::getTexture("texture/arrow.png");
 
 	Flare::Display::Sprite arrow{};
@@ -46,8 +40,6 @@ int main(int argc, char** argv)
 	arrow.set_y(200.0f);
 
 	core.get_stage().add_child(arrow);
-
-
 
 	core.run();
 

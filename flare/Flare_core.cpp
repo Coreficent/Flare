@@ -24,6 +24,7 @@ namespace Flare::Core
 
 		while (this->key.currentState != Key::GameState::ended)
 		{
+			this->enter_frame();
 			this->frame_manager.calculate_fps();
 			this->key.process();
 			this->program.run(this->key, this->renderer, this->audio);
@@ -33,6 +34,10 @@ namespace Flare::Core
 		}
 
 		music.stop();
+	}
+
+	void Flare_core::enter_frame() noexcept
+	{
 	}
 
 	Container& Flare_core::get_stage() noexcept
