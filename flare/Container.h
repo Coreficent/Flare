@@ -1,11 +1,13 @@
 #pragma once
 
+#include "Quad.h"
 #include "Sprite.h"
-#include <memory>
+
 #include <vector>
 
 namespace Flare::Display
 {
+	using namespace std;
 	using namespace Flare::Display;
 
 	class Container
@@ -15,9 +17,9 @@ namespace Flare::Display
 
 		void add_child(Sprite child);
 		
-		void render() const;
+		vector<Quad> get_quads();
 
 	private:
-		std::vector<Sprite> children;
+		vector<Sprite> children;
 	};
 }

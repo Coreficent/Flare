@@ -9,8 +9,14 @@ namespace Flare::Display
 		this->children.push_back(child);
 	}
 
-	void Container::render() const
+	vector<Quad> Container::get_quads()
 	{
-		
+		vector<Quad> result{};
+
+		for (auto& child : this->children) {
+			result.push_back(child.get_quad());
+		}
+
+		return result;
 	}
 }
