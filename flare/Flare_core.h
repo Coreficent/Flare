@@ -18,10 +18,8 @@ namespace Flare::Core
 	{
 	public:
 		Flare_core(int windowWidth, int windowHeight);
-
 		void run();
 
-		friend class Render;
 	private:
 		Context context{};
 		Window window{};
