@@ -102,38 +102,6 @@ namespace Flare::Display
 
 	void Sprite::render() const
 	{
-		/*
-		auto& glyph = Core::core->renderer.next_glyph();
-
-		auto top_left = this->locate_vertex(0.0f, 0.0f);
-		auto top_right = this->locate_vertex(this->width, 0.0f);
-		auto down_left = this->locate_vertex(0.0f, this->height);
-		auto down_right = this->locate_vertex(this->width, this->height);
-
-		glyph.top_left.color = this->color;
-		glyph.top_left.setPosition(top_left.x, top_left.y);
-		glyph.top_left.setUV(this->u_start, this->v_start);
-
-		glyph.top_right.color = this->color;
-		glyph.top_right.setPosition(top_right.x, top_right.y);
-		glyph.top_right.setUV(this->u_end, this->v_start);
-
-		glyph.down_left.color = this->color;
-		glyph.down_left.setPosition(down_left.x, down_left.y);
-		glyph.down_left.setUV(this->u_start, this->v_end);
-
-		glyph.down_right.color = this->color;
-		glyph.down_right.setPosition(down_right.x, down_right.y);
-		glyph.down_right.setUV(this->u_end, this->v_end);
-
-		glyph.texture = this->texture_id;
-
-		*/
-
-		// 85 fps to 55 fps
-		//Core::core->renderer.hash[this->texture_id];
-
-
 		auto top_left = this->locate_vertex(0.0f, 0.0f);
 		auto top_right = this->locate_vertex(this->width, 0.0f);
 		auto down_left = this->locate_vertex(0.0f, this->height);
