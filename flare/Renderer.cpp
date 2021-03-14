@@ -1,4 +1,4 @@
-#include "Display.h"
+#include "Sprite.h"
 #include "Renderer.h"
 #include "ResourceManager.h"
 #include "debug.h"
