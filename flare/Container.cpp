@@ -3,16 +3,16 @@
 namespace Flare
 {
 	Container::Container() noexcept
-		: Display{}
+		: Sprite{}
 	{
 	}
 
-	void Container::add_child(std::shared_ptr<Display> child)
+	void Container::add_child(std::shared_ptr<Sprite> child)
 	{
 		this->children.push_back(child);
 	}
 
-	void Container::remove_child(std::shared_ptr<Display> child) noexcept
+	void Container::remove_child(std::shared_ptr<Sprite> child) noexcept
 	{
 		unsigned int i{0};
 		for (auto& c : this->children)

@@ -6,11 +6,11 @@
 
 namespace Flare
 {
-	class Display
+	class Sprite
 	{
 	public:
-		Display();
-		virtual ~Display();
+		Sprite();
+		virtual ~Sprite();
 
 		float get_x() const;
 		float get_y() const;

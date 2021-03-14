@@ -110,7 +110,7 @@ namespace Flare
 
 
 
-		Display display_arrow{};
+		Sprite display_arrow{};
 		display_arrow.set_texture_id(texture_arrow.id);
 		this->a_id = texture_arrow.id;
 		display_arrow.set_y(200.f);
@@ -318,7 +318,7 @@ namespace Flare
 	void Renderer::_____renderCake() {
 		static auto texture_cake = ResourceManager::getTexture("texture/cake.png");
 
-		Display display_cake{};
+		Sprite display_cake{};
 		display_cake.set_texture_id(texture_cake.id);
 		this->t_id = texture_cake.id;
 		display_cake.set_width(100.0f);

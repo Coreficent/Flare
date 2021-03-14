@@ -7,88 +7,88 @@
 
 namespace Flare
 {
-	Display::Display()
+	Sprite::Sprite()
 	{
 	}
 
 
-	Display::~Display()
+	Sprite::~Sprite()
 	{
 	}
 
-	float Display::get_x() const
+	float Sprite::get_x() const
 	{
 		return this->x;
 	}
 
-	float Display::get_y() const
+	float Sprite::get_y() const
 	{
 		return this->y;
 	}
 
-	float Display::get_width() const
+	float Sprite::get_width() const
 	{
 		return this->width;
 	}
 
-	float Display::get_height() const
+	float Sprite::get_height() const
 	{
 		return this->height;
 	}
 
-	GLuint Display::get_texture_id() const
+	GLuint Sprite::get_texture_id() const
 	{
 		return this->texture_id;
 	}
 
-	void Display::set_x(float value)
+	void Sprite::set_x(float value)
 	{
 		this->x = value;
 		this->matrix.x = value;
 	}
 
-	void Display::set_y(float value)
+	void Sprite::set_y(float value)
 	{
 		this->y = value;
 		this->matrix.y = value;
 	}
 
-	void Display::set_width(float value)
+	void Sprite::set_width(float value)
 	{
 		this->width = value;
 	}
 
-	void Display::set_height(float value)
+	void Sprite::set_height(float value)
 	{
 		this->height = value;
 	}
 
-	void Display::set_texture_id(GLuint value)
+	void Sprite::set_texture_id(GLuint value)
 	{
 		this->texture_id = value;
 	}
 
-	void Display::scale_x(float value)
+	void Sprite::scale_x(float value)
 	{
 		this->matrix.a *= value;
 		this->matrix.c *= value;
 		this->matrix.x *= value;
 	}
 
-	void Display::scale_y(float value)
+	void Sprite::scale_y(float value)
 	{
 		this->matrix.b *= value;
 		this->matrix.d *= value;
 		this->matrix.y *= value;
 	}
 
-	void Display::scale(float value)
+	void Sprite::scale(float value)
 	{
 		this->scale_x(value);
 		this->scale_y(value);
 	}
 
-	void Display::rotate(float value)
+	void Sprite::rotate(float value)
 	{
 		auto sine = sin(value);
 		auto cosine = cos(value);
@@ -106,7 +106,7 @@ namespace Flare
 		this->matrix.y = x * sine + y * cosine;
 	}
 
-	void Display::render() const
+	void Sprite::render() const
 	{
 		/*
 		auto& glyph = Core::core->renderer.next_glyph();
@@ -176,7 +176,7 @@ namespace Flare
 		vertex6.setUV(this->u_end, this->v_end);
 	}
 
-	Point Display::locate_vertex(float x, float y) const
+	Point Sprite::locate_vertex(float x, float y) const
 	{
 		return Point{x * this->matrix.a + y * this->matrix.c + this->matrix.x,x * this->matrix.b + y * this->matrix.d + this->matrix.y};
 	}
