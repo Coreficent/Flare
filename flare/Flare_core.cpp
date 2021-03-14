@@ -7,12 +7,12 @@ namespace Flare::Core
 {
 	using namespace std;
 
-	Flare_core::Flare_core(int windowWidth, int windowHeight)
-		: renderer{ windowWidth ,windowHeight }
+	Flare_core::Flare_core(int window_width, int window_height)
+		: renderer{ window_width ,window_height }, window_width{ window_width }, window_height{ window_height }
 	{
 		dout << "Debug Mode" << endl;
 
-		this->window.initialize("Flare", windowWidth, windowHeight);
+		this->window.initialize("Flare", window_width, window_height);
 		this->audio.initialize();
 		this->renderer.initialize();
 	}
