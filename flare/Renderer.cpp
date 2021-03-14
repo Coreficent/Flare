@@ -107,6 +107,10 @@ namespace Flare::Render
 
 		_____renderCake();
 
+		for (auto& quad : this->stage.get_quads())
+		{
+			this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
+		}
 
 
 		Flare::Display::Sprite display_arrow{};

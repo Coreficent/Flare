@@ -65,6 +65,7 @@ namespace Flare::Render
 
 		void _____renderCake();
 
+
 		static bool compareFrontBack(Glyph* a, Glyph* b);
 		static bool compareBackFront(Glyph* a, Glyph* b);
 		static bool compareTexture(Glyph* a, Glyph* b);
