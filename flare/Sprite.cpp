@@ -155,6 +155,11 @@ namespace Flare::Display
 		return vec4{ this->u_start,this->v_start,this->u_end,this->v_end };
 	}
 
+	Quad Sprite::get_quad()
+	{
+		return Quad{ texture_id, get_bound(),get_uv() };
+	}
+
 
 
 	Point Sprite::locate_vertex(float x, float y) const

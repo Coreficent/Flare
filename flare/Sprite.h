@@ -4,6 +4,7 @@
 #include "Point.h"
 #include "Vertex.h"
 #include "Vial.h"
+#include "Quad.h"
 #include <gl/glew.h>
 #include <glm/gtc/matrix_transform.inl>
 
@@ -39,10 +40,9 @@ namespace Flare::Display
 
 		vec4 get_bound();
 		vec4 get_uv();
+		Quad get_quad();
 
 		Vial<Vertex>* dest{ nullptr };
-
-
 
 	private:
 		Matrix matrix{};
