@@ -340,6 +340,8 @@ namespace Flare::Render
 		display_cake.scale(2.0f);
 		display_cake.rotate(to_radian(90.0f));
 		auto addre = &this->hash[this->t_id];
+
+
 		for (auto i{ 0 }; i < 200; ++i)
 		{
 			display_cake.set_x(100.0f * i);
@@ -350,5 +352,17 @@ namespace Flare::Render
 
 			this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
 		}
+
+
+
+		//display_cake.set_x(0.0f);
+
+		//display_cake.set_y(100.0f);
+
+		//this->stage.add_child(display_cake);
+
+		//display_cake.set_y(200.0f);
+
+		//this->stage.add_child(display_cake);
 	}
 }
