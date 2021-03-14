@@ -109,19 +109,7 @@ namespace Flare::Render
 		}
 
 
-		///////// stage renderer
-		//this->stage.render();
-
-		//////////
-
-
 		vector<Quad> quads = this->sprite_font.draw("a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
-
-		// TODO clean this up by returning higher level data structure
-
-		/*for (auto i{ 0 }; i < result.size(); i = i + 2) {
-			this->draw(result[i], result[i + 1], this->sprite_font._texID, 0.0f, Color{ 255,255,255,255 });
-		}*/
 
 		for (auto& quad : quads)
 		{
@@ -130,8 +118,6 @@ namespace Flare::Render
 
 		this->end();
 		this->render();
-
-		//this->draw_text();
 
 		glBindTexture(GL_TEXTURE_2D, 0);
 		this->colorProgram.unuse();
