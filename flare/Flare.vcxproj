@@ -154,6 +154,7 @@
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Container.h" />
+    <ClInclude Include="Quad.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="error.h" />
     <ClInclude Include="FrameManager.h" />
@@ -173,7 +174,6 @@
     <ClInclude Include="picoPNG.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Program.h" />
-    <ClInclude Include="Quad.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Sound.h" />
@@ -205,7 +205,6 @@
     <ClCompile Include="picoPNG.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Program.cpp" />
-    <ClCompile Include="Quad.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="mathematics.cpp" />

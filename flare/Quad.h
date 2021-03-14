@@ -1,26 +1,15 @@
 #pragma once
 
-#include <gl/glew.h>
-#include "GlTexture.h"
-#include <string>
+#include <glm/glm.hpp>
 
-
-namespace Flare
+namespace Flare::Display
 {
-	class Quad
+	using namespace glm;
+
+	struct Quad
 	{
-	public:
-		Quad(float x, float y, float width, float height);
-		~Quad();
-
-		void initialize(std::string texturePath);
-		void draw();
-
-	private:
-		GLTexture quadTexture;
-
-		GLuint vertextBufferID;
-
-		float x, y, width, height;
+		unsigned int texture_id;
+		vec4 bound;
+		vec4 uv;
 	};
 }

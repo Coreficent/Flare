@@ -129,9 +129,6 @@
     <ClInclude Include="picoPNG.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
-    <ClInclude Include="Quad.h">
-      <Filter>Header Files\unsorted</Filter>
-    </ClInclude>
     <ClInclude Include="ResourceManager.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
@@ -225,9 +222,6 @@
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
     <ClCompile Include="picoPNG.cpp">
-      <Filter>Source Files\unsorted</Filter>
-    </ClCompile>
-    <ClCompile Include="Quad.cpp">
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
