@@ -6,7 +6,6 @@
 #include "Vial.h"
 #include "Quad.h"
 #include <gl/glew.h>
-#include <glm/gtc/matrix_transform.inl>
 
 namespace Flare::Display
 {

@@ -1,12 +1,8 @@
 #include "Point.h"
 #include "Sprite.h"
-#include "mathematics.h"
-#include <glm/gtc/matrix_transform.inl>
 
 namespace Flare::Display
 {
-	using namespace glm;
-
 	Sprite::Sprite() noexcept {}
 
 	float Sprite::get_x() const noexcept
@@ -163,8 +159,6 @@ namespace Flare::Display
 	void Sprite::enter_frame() noexcept
 	{
 	}
-
-
 
 	Point Sprite::locate_vertex(float x, float y) const
 	{
