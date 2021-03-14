@@ -328,7 +328,8 @@ namespace Flare
 			display_cake.set_x(100.0f * i);
 			display_cake.dest = addre;
 			//display_cake.render();
-			display_cake.buffer(*this);
+			//display_cake.buffer(*this);
+			this->draw(display_cake.get_bound(), display_cake.get_uv(), display_cake.get_texture_id(), 0.0f, Color{ 255,255,255,255 });
 		}
 	}
 }

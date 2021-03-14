@@ -8,6 +8,8 @@
 
 namespace Flare::Display
 {
+	using namespace glm;
+
 	class Sprite
 	{
 	public:
@@ -32,25 +34,30 @@ namespace Flare::Display
 
 		void render() const;
 
-		void buffer(Renderer& renderer);
+		// void buffer(Renderer& renderer);
+
+		vec4 get_bound();
+		vec4 get_uv();
 
 		Vial<Vertex>* dest{ nullptr };
+
+
 
 	private:
 		Matrix matrix{};
 
-		Color color{255,255,255 ,255};
+		Color color{ 255,255,255 ,255 };
 
-		GLuint texture_id{0};
+		GLuint texture_id{ 0 };
 
-		float x{0.0f};
-		float y{0.0f};
-		float width{0.0f};
-		float height{0.0f};
-		float u_start{0.0f};
-		float u_end{1.0f};
-		float v_start{0.0f};
-		float v_end{1.0f};
+		float x{ 0.0f };
+		float y{ 0.0f };
+		float width{ 0.0f };
+		float height{ 0.0f };
+		float u_start{ 0.0f };
+		float u_end{ 1.0f };
+		float v_start{ 0.0f };
+		float v_end{ 1.0f };
 
 		Point locate_vertex(float x, float y) const;
 	};
