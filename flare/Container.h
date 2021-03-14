@@ -23,6 +23,7 @@ namespace Flare::Display
 		virtual ~Container();
 
 		void add_child(shared_ptr<Sprite> child);
+		void reomve_last_child() noexcept;
 		virtual void enter_frame() noexcept;
 
 		vector<Quad> get_quads();

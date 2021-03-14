@@ -15,7 +15,7 @@ namespace Benchmark::Core {
 		void enter_frame() noexcept override;
 
 	private:
-		void add_bunny() noexcept;
+		void adjust_bunny() noexcept;
 
 	};
 }

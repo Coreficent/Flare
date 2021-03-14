@@ -14,10 +14,10 @@ namespace Benchmark::Core {
 
 	void Benchmark_core::enter_frame() noexcept
 	{
-		this->add_bunny();
+		this->adjust_bunny();
 	}
 
-	void Benchmark_core::add_bunny() noexcept
+	void Benchmark_core::adjust_bunny() noexcept
 	{
 		static auto bunny_texture = Flare::Texture::Resource_manager::get_texture("texture/cake.png");
 
@@ -37,6 +37,9 @@ namespace Benchmark::Core {
 			bunny->y = bunny->minimum_y;
 
 			this->get_stage().add_child(bunny);
+		}
+		else if (this->frame_manager.frames_per_second < 55.0f) {
+			this->get_stage().reomve_last_child();
 		}
 	}
 }

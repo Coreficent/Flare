@@ -15,6 +15,13 @@ namespace Flare::Display
 		this->children.push_back(child);
 	}
 
+	void Container::reomve_last_child() noexcept
+	{
+		if (!this->children.empty()) {
+			this->children.pop_back();
+		}
+	}
+
 	vector<Quad> Container::get_quads()
 	{
 		vector<Quad> result{};
