@@ -8,10 +8,10 @@ namespace Flare::Texture
 	{
 
 	public:
-		static GLTexture getTexture(std::string filePath);
+		static GLTexture get_texture(std::string file_path);
 
 	private:
-		static Texture_cache textureCache;
+		static Texture_cache texture_cache;
 	};
 
 }

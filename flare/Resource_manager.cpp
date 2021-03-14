@@ -4,10 +4,10 @@ namespace Flare::Texture
 {
 	using namespace std;
 
-	Texture_cache Resource_manager::textureCache;
+	Texture_cache Resource_manager::texture_cache;
 
-	GLTexture Resource_manager::getTexture(string filePath)
+	GLTexture Resource_manager::get_texture(string file_path)
 	{
-		return textureCache.getTexture(filePath);
+		return texture_cache.getTexture(file_path);
 	}
 }
