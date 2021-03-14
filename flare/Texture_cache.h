@@ -12,10 +12,10 @@ namespace Flare::Texture
 	{
 
 	public:
-		GLTexture getTexture(string& filePath);
+		GLTexture get_texture(string& file_path);
 
 	private:
-		map<string, GLTexture> textureMap;
+		map<string, GLTexture> texture_map;
 	};
 
 }

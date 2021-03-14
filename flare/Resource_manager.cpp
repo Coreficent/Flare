@@ -8,6 +8,6 @@ namespace Flare::Texture
 
 	GLTexture Resource_manager::get_texture(string file_path)
 	{
-		return texture_cache.getTexture(file_path);
+		return texture_cache.get_texture(file_path);
 	}
 }

@@ -5,13 +5,13 @@ namespace Flare::Texture
 {
 	using namespace std;
 
-	GLTexture Texture_cache::getTexture(string& filePath)
+	GLTexture Texture_cache::get_texture(string& file_path)
 	{
-		auto it = this->textureMap.find(filePath);
-		if (it == this->textureMap.end())
+		auto it = this->texture_map.find(file_path);
+		if (it == this->texture_map.end())
 		{
-			auto texture = ImageLoader::loadPNG(filePath);
-			this->textureMap.insert({filePath,texture});
+			auto texture = ImageLoader::loadPNG(file_path);
+			this->texture_map.insert({ file_path,texture });
 			return texture;
 		}
 		return it->second;
