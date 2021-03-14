@@ -9,6 +9,12 @@ namespace Flare::Frame
 	using namespace std;
 	using namespace std::chrono;
 
+	Frame_manager::Frame_manager() {
+		for (auto i{ 0 }; i < 100; ++i) {
+			this->frame_rates.push(0.0);
+		}
+	}
+
 	void Frame_manager::calculate_fps()
 	{
 		this->time_before_sleep = system_clock::now();
@@ -27,8 +33,23 @@ namespace Flare::Frame
 		}
 
 		this->time_after_sleep = system_clock::now();
-		const duration<double, std::milli> sleep_time = this->time_after_sleep - this->time_before_sleep;
 
-		this->frames_per_second = second / (run_time + sleep_time).count();
+		const duration<double, std::milli> sleep_time = this->time_after_sleep - this->time_before_sleep;
+		const double current_frame_rate = second / (run_time + sleep_time).count();
+
+		this->frame_rates.push(current_frame_rate);
+		this->frame_rates.pop();
+
+		double total_frame_rate{};
+
+		queue <double> rates = this->frame_rates;
+
+		while (!rates.empty())
+		{
+			total_frame_rate += rates.front();
+			rates.pop();
+		}
+
+		this->frames_per_second = total_frame_rate / this->frame_rates.size();
 	}
 }

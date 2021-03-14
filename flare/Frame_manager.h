@@ -1,7 +1,7 @@
 #pragma once
 
 #include <sdl/SDL_stdinc.h>
-#include <array>
+#include <queue>
 #include <chrono>
 #include <thread>
 
@@ -14,13 +14,15 @@ namespace Flare::Frame
 	{
 
 	public:
+		Frame_manager();
+
 		void calculate_fps();
 
 		double frames_per_second{ 0.0 };
 		double remaining_budget{ 0.0 };
 
 	private:
-		array<Uint32, 60> samples{};
+		queue <double> frame_rates{};
 
 		system_clock::time_point time_before_sleep = system_clock::now();
 		system_clock::time_point time_after_sleep = system_clock::now();
