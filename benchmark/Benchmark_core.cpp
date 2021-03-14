@@ -12,7 +12,8 @@ namespace Benchmark::Core {
 
 	void Benchmark_core::enter_frame() noexcept
 	{
-		std::cout << "entering frame from benchmark" << std::endl;
-		this->get_stage();
+		if (this->frame_manager.frames_per_second > 60.0f) {
+
+		}
 	}
 }

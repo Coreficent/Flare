@@ -27,7 +27,7 @@ namespace Flare::Core
 		void run();
 		virtual void enter_frame() noexcept;
 
-	private:
+	protected:
 		Context context{};
 		Window window{};
 		Audio audio{};
