@@ -35,5 +35,7 @@ namespace Flare::Frame
 		{
 			cout << "fps: " << fps << " budget " << remaining_budget << endl;
 		}
+
+		this->frames_per_second = fps;
 	}
 }

@@ -11,6 +11,8 @@ namespace Flare::Frame
 	public:
 		void calculate_fps();
 
+		float frames_per_second{};
+
 	private:
 		std::array<Uint32, 60> samples{};
 
