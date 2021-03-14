@@ -20,7 +20,7 @@ namespace Benchmark::Core {
 	void Benchmark_core::add_bunny() noexcept
 	{
 		static auto bunny_texture = Flare::Texture::Resource_manager::get_texture("texture/cake.png");
-		static auto x{ 0.0f };
+		//static auto x{ 0.0f };
 
 		if (this->frame_manager.frames_per_second > 60.0f) {
 
@@ -28,7 +28,7 @@ namespace Benchmark::Core {
 
 			bunny->texture_id = bunny_texture.id;
 			bunny->width = bunny->height = 100.0f;
-			bunny->x = x++;
+			//bunny->x = x++;
 
 			this->get_stage().add_child(bunny);
 		}
