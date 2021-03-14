@@ -8,7 +8,7 @@ namespace Flare::Frame
 {
 	using namespace std;
 
-	void FrameManager::calculate_fps()
+	void Frame_manager::calculate_fps()
 	{
 		this->current_ticks = SDL_GetTicks();
 		auto current_cost = this->current_ticks - this->previous_ticks;

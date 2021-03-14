@@ -5,7 +5,7 @@
 
 namespace Flare::Frame
 {
-	class FrameManager
+	class Frame_manager
 	{
 
 	public:

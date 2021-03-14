@@ -38,6 +38,6 @@ namespace Flare::Core
 
 		Renderer renderer;
 
-		FrameManager frame_manager{};
+		Frame_manager frame_manager{};
 	};
 }
