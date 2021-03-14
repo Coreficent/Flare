@@ -251,7 +251,7 @@
     <ClCompile Include="mathematics.cpp">
       <Filter>Source Files\utility</Filter>
     </ClCompile>
-    <ClCompile Include="Display.cpp">
+    <ClCompile Include="Sprite.cpp">
       <Filter>Source Files\display</Filter>
     </ClCompile>
     <ClCompile Include="Container.cpp">
