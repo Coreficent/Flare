@@ -3,7 +3,7 @@ using namespace std;
 
 namespace Flare::Texture
 {
-	TextureCache ResourceManager::textureCache;
+	Texture_cache ResourceManager::textureCache;
 
 	GLTexture ResourceManager::getTexture(string filePath)
 	{

@@ -5,7 +5,7 @@ namespace Flare::Texture
 {
 	using namespace std;
 
-	GLTexture TextureCache::getTexture(string& filePath)
+	GLTexture Texture_cache::getTexture(string& filePath)
 	{
 		auto it = this->textureMap.find(filePath);
 		if (it == this->textureMap.end())

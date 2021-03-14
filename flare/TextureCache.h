@@ -6,7 +6,7 @@
 
 namespace Flare::Texture
 {
-	class TextureCache
+	class Texture_cache
 	{
 
 	public:
