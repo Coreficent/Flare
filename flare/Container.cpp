@@ -2,13 +2,15 @@
 
 namespace Flare::Display
 {
+	using namespace std;
+
 	Container::Container() noexcept {}
 
 	Container::~Container()
 	{
 	}
 
-	void Container::add_child(Sprite child)
+	void Container::add_child(shared_ptr<Sprite> child)
 	{
 		this->children.push_back(child);
 	}
@@ -18,7 +20,7 @@ namespace Flare::Display
 		vector<Quad> result{};
 
 		for (auto& child : this->children) {
-			result.push_back(child.get_quad());
+			result.push_back(child->get_quad());
 		}
 
 		return result;
@@ -27,7 +29,7 @@ namespace Flare::Display
 	void Container::enter_frame() noexcept
 	{
 		for (auto& child : this->children) {
-			child.enter_frame();
+			child->enter_frame();
 		}
 	}
 }

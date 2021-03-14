@@ -3,6 +3,7 @@
 #include "Quad.h"
 #include "Sprite.h"
 
+#include <memory>
 #include <vector>
 
 namespace Flare::Display
@@ -21,11 +22,11 @@ namespace Flare::Display
 		Container& operator=(Container&& value) = default;
 		virtual ~Container();
 
-		void add_child(Sprite child);
+		void add_child(shared_ptr<Sprite> child);
 		virtual void enter_frame() noexcept;
 
 		vector<Quad> get_quads();
-		vector<Sprite> children{};
+		vector<shared_ptr<Sprite>> children{};
 
 	};
 
