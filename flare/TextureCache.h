@@ -1,9 +1,8 @@
 #pragma once
 
+#include "GlTexture.h"
 #include <map>
 #include <string>
-
-#include "GlTexture.h"
 
 namespace Flare::Texture
 {

@@ -1,5 +1,5 @@
-#include "TextureCache.h"
 #include "ImageLoader.h"
+#include "TextureCache.h"
 
 namespace Flare::Texture
 {
