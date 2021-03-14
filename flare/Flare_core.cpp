@@ -29,6 +29,7 @@ namespace Flare::Core
 			this->key.process();
 			this->program.run(this->key, this->renderer, this->audio);
 			this->game.run();
+			this->renderer.stage.enter_frame();
 			this->renderer.renderNow();
 			this->window.swap_window();
 		}

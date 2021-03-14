@@ -94,7 +94,7 @@ namespace Flare::Render
 
 		this->begin();
 
-		this->stage.enter_frame();
+		
 
 		for (auto& quad : this->stage.get_quads())
 		{
