@@ -1,9 +1,10 @@
 #include "Display.h"
-#include "Renderer.h"
-#include <glm/gtc/matrix_transform.inl>
-#include "Point.h"
-#include "mathematics.h"
 #include "Flare_core.h"
+#include "Point.h"
+#include "Renderer.h"
+
+#include "mathematics.h"
+#include <glm/gtc/matrix_transform.inl>
 
 namespace Flare
 {

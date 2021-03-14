@@ -1,8 +1,10 @@
 #pragma once
-#include <gl/glew.h>
+
 #include "Matrix.h"
 #include "Point.h"
 #include "Renderer.h"
+
+#include <gl/glew.h>
 
 namespace Flare
 {
