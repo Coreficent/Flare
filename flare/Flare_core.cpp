@@ -5,7 +5,6 @@
 
 namespace Flare::Core
 {
-	using namespace Flare::Core;
 	using namespace std;
 
 	Flare_core::Flare_core(int windowWidth, int windowHeight)
