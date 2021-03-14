@@ -2,7 +2,7 @@
 
 #include "Audio.h"
 #include "Context.h"
-#include "FrameManager.h"
+#include "Frame_manager.h"
 #include "Game.h"
 #include "Key.h"
 #include "Program.h"

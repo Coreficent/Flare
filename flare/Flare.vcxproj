@@ -157,7 +157,7 @@
     <ClInclude Include="Quad.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="error.h" />
-    <ClInclude Include="FrameManager.h" />
+    <ClInclude Include="Frame_manager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GLSL.h" />
     <ClInclude Include="GLTexture.h" />
@@ -191,7 +191,7 @@
     <ClCompile Include="Container.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="error.cpp" />
-    <ClCompile Include="FrameManager.cpp" />
+    <ClCompile Include="Frame_manager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GLSL.cpp" />
     <ClCompile Include="ImageLoader.cpp" />

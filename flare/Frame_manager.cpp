@@ -1,4 +1,4 @@
-#include "FrameManager.h"
+#include "Frame_manager.h"
 #include <array>
 #include <sdl/SDL_stdinc.h>
 #include <sdl/SDL.h>
