@@ -14,10 +14,17 @@ namespace Flare::Display
 	{
 	public:
 		Container() noexcept;
+		Container(const Container& value) = default;
+		Container(Container && value) = default;
+		Container& operator=(const Container & value) = default;
+		Container& operator=(Container && value) = default;
+		virtual ~Container();
 
 		void add_child(Sprite child);
-		
+
 		vector<Quad> get_quads();
+
+		virtual void enter_frame() noexcept;
 
 	private:
 		vector<Sprite> children;

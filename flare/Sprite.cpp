@@ -160,6 +160,10 @@ namespace Flare::Display
 		return Quad{ texture_id, get_bound(),get_uv() };
 	}
 
+	void Sprite::enter_frame() noexcept
+	{
+	}
+
 
 
 	Point Sprite::locate_vertex(float x, float y) const

@@ -16,6 +16,11 @@ namespace Flare::Display
 	{
 	public:
 		Sprite() noexcept;
+		Sprite(const Sprite& value) = default;
+		Sprite(Sprite && value) = default;
+		Sprite& operator=(const Sprite & value) = default;
+		Sprite& operator=(Sprite && value) = default;
+		virtual ~Sprite() = default;
 
 		float get_x() const noexcept;
 		float get_y() const noexcept;
@@ -43,6 +48,8 @@ namespace Flare::Display
 		Quad get_quad();
 
 		Vial<Vertex>* dest{ nullptr };
+
+		virtual void enter_frame() noexcept;
 
 	private:
 		Matrix matrix{};

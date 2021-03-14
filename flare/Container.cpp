@@ -4,6 +4,10 @@ namespace Flare::Display
 {
 	Container::Container() noexcept {}
 
+	Container::~Container()
+	{
+	}
+
 	void Container::add_child(Sprite child)
 	{
 		this->children.push_back(child);
@@ -18,5 +22,9 @@ namespace Flare::Display
 		}
 
 		return result;
+	}
+
+	void Container::enter_frame() noexcept
+	{
 	}
 }
