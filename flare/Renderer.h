@@ -24,7 +24,7 @@ namespace Flare
 	class RenderBatch
 	{
 	public:
-		RenderBatch(GLuint offset, GLuint vertexCount, GLuint texture) noexcept : offset{ offset }, vertexCount{ vertexCount }, texture{ texture } {};
+		RenderBatch(GLuint offset, GLuint vertexCount, GLuint texture) : offset{ offset }, vertexCount{ vertexCount }, texture{ texture } {};
 
 		GLuint offset;
 		GLuint vertexCount;
@@ -34,7 +34,7 @@ namespace Flare
 	class Renderer
 	{
 	public:
-		Renderer(int width, int height) noexcept;
+		Renderer(int width, int height);
 
 		Glyph& next_glyph();
 

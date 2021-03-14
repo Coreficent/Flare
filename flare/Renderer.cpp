@@ -11,7 +11,7 @@ namespace Flare
 {
 	using namespace std;
 
-	Renderer::Renderer(int width, int height) noexcept : camera{ width,height }, sortType{ GlyphSortType::NONE }, vertexBufferID{ 0 }, vertexArrayID{ 0 }{}
+	Renderer::Renderer(int width, int height) : camera{ width,height }, sortType{ GlyphSortType::NONE }, vertexBufferID{ 0 }, vertexArrayID{ 0 }{}
 
 	Glyph& Renderer::next_glyph()
 	{
