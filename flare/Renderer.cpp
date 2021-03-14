@@ -1,16 +1,16 @@
-#include "Sprite.h"
+#include "Quad.h"
 #include "Renderer.h"
 #include "Resource_manager.h"
+#include "Sprite.h"
 #include "debug.h"
 #include "mathematics.h"
-#include "Quad.h"
-
 #include <algorithm>
 #include <glm/detail/type_vec4.hpp>
 
 namespace Flare::Render
 {
 	using namespace std;
+	using namespace glm;
 	using namespace Flare::Display;
 
 	Renderer::Renderer(int width, int height) : camera{ width,height }, sortType{ GlyphSortType::NONE }, vertexBufferID{ 0 }, vertexArrayID{ 0 }{}
@@ -89,7 +89,7 @@ namespace Flare::Render
 			this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
 		}
 
-		vector<Quad> quads = this->sprite_font.draw("a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z \n 1 2 3 4 5 6 7 8 9 0", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
+		vector<Quad> quads = this->sprite_font.draw(this->text.c_str(), vec2(-400.0f, -200.0f), vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
 
 		for (auto& quad : quads)
 		{
@@ -183,6 +183,8 @@ namespace Flare::Render
 				previous_texture = this->glyphs_pointers[glyph]->texture;
 			} while (++glyph < length);
 		}
+
+		this->vertex_count = vertices.size();
 
 		glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferID);
 

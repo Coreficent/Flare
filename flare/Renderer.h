@@ -1,13 +1,12 @@
 #pragma once
 
 #include "Camera.h"
+#include "Container.h"
 #include "GLSL.h"
 #include "Glyph.h"
 #include "SpriteFont.h"
 #include "Vertex.h"
 #include "Vial.h"
-#include "Container.h"
-
 #include <gl/glew.h>
 #include <unordered_map>
 #include <vector>
@@ -51,6 +50,9 @@ namespace Flare::Render
 
 		Camera camera;
 		Container stage{};
+
+		string text{};
+		int vertex_count{};
 
 	private:
 		void createVertexArray();

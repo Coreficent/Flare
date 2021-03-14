@@ -22,6 +22,8 @@ namespace Flare::Core
 		Musice music = this->audio.load_music("music/x.ogg");
 		music.play(-1);
 
+		string delimiter{ " " };
+
 		while (this->key.currentState != Key::GameState::ended)
 		{
 			this->enter_frame();
@@ -30,6 +32,7 @@ namespace Flare::Core
 			this->program.run(this->key, this->renderer, this->audio);
 			this->game.run();
 			this->renderer.stage.enter_frame();
+			this->renderer.text = "fps:" + delimiter + to_string(static_cast <int>(this->frame_manager.frames_per_second) + 1) + "\n" + "vertices:" + delimiter + to_string(this->renderer.vertex_count);
 			this->renderer.renderNow();
 			this->window.swap_window();
 		}
