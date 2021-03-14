@@ -17,6 +17,7 @@ namespace Flare::Frame
 		this->samples.at(this->current_frame++ % this->samples.size()) = current_cost;
 
 		Uint32 average_cost{ 0 };
+
 		for (auto& i : this->samples)
 		{
 			average_cost += i;
