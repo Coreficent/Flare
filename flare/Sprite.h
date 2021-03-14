@@ -6,7 +6,7 @@
 
 #include <gl/glew.h>
 
-namespace Flare
+namespace Flare::Display
 {
 	class Sprite
 	{

@@ -5,16 +5,16 @@
 
 namespace Flare
 {
-	class Container : public Sprite
+	class Container 
 	{
 	public:
 		Container() noexcept;
 
-		void add_child(std::shared_ptr<Sprite> child);
-		void remove_child (std::shared_ptr<Sprite> child) noexcept;
-		void render() const override;
+		void add_child(std::shared_ptr<Flare::Display::Sprite> child);
+		void remove_child (std::shared_ptr<Flare::Display::Sprite> child) noexcept;
+		void render() const;
 
 	private:
-		std::vector<std::shared_ptr<Sprite>> children;
+		std::vector<std::shared_ptr<Flare::Display::Sprite>> children;
 	};
 }

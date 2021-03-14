@@ -1,12 +1,11 @@
-#include "Sprite.h"
 #include "Flare_core.h"
 #include "Point.h"
 #include "Renderer.h"
-
+#include "Sprite.h"
 #include "mathematics.h"
 #include <glm/gtc/matrix_transform.inl>
 
-namespace Flare
+namespace Flare::Display
 {
 	Sprite::Sprite()
 	{
