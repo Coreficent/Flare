@@ -8,7 +8,7 @@ int main(int argc, char** argv)
 
 	cout << "Hello from Benchmark!" << endl;
 
-	Benchmark_core core{ 500,1000 };
+	Benchmark_core core{ 1000,500 };
 
 	core.run();
 
