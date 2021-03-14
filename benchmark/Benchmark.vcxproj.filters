@@ -48,4 +48,12 @@
       <Filter>Header Files\core</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="shader\colorShade.sf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shader\colorShade.sv">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

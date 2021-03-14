@@ -73,7 +73,7 @@ namespace Flare::Render
 		this->colorProgram.use();
 		glActiveTexture(GL_TEXTURE0);
 
-		auto textureLocation = this->colorProgram.getUniform("cakeSampler");
+		auto textureLocation = this->colorProgram.getUniform("imageSampler");
 		glUniform1i(textureLocation, 0);
 
 		auto locationCamera = this->colorProgram.getUniform("cameraPosition");

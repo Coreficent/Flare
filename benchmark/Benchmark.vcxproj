@@ -155,6 +155,10 @@
     <ClInclude Include="Benchmark_core.h" />
     <ClInclude Include="Bunny.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="shader\colorShade.sf" />
+    <None Include="shader\colorShade.sv" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
