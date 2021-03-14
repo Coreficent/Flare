@@ -23,5 +23,7 @@ namespace Flare::Frame
 
 		system_clock::time_point a = system_clock::now();
 		system_clock::time_point b = system_clock::now();
+
+		double remaining_budget{ 0.0 };
 	};
 }

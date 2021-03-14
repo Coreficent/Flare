@@ -19,10 +19,9 @@ namespace Flare::Frame
 		constexpr double budget{ second / 60.0 };
 
 
+		this->remaining_budget = budget - work_time.count();
 
-
-
-		if (work_time.count() < budget)
+		if (this->remaining_budget > 0.0)
 		{
 			const duration<double, milli> delta_ms(budget - work_time.count());
 			auto delta_ms_duration = duration_cast<milliseconds>(delta_ms);
