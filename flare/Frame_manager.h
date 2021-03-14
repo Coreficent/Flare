@@ -22,7 +22,7 @@ namespace Flare::Frame
 	private:
 		array<Uint32, 60> samples{};
 
-		system_clock::time_point a = system_clock::now();
-		system_clock::time_point b = system_clock::now();
+		system_clock::time_point time_before_sleep = system_clock::now();
+		system_clock::time_point time_after_sleep = system_clock::now();
 	};
 }
