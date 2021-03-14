@@ -16,14 +16,13 @@ namespace Flare::Frame
 	public:
 		void calculate_fps();
 
-		float frames_per_second{};
+		double frames_per_second{ 0.0 };
+		double remaining_budget{ 0.0 };
 
 	private:
 		array<Uint32, 60> samples{};
 
 		system_clock::time_point a = system_clock::now();
 		system_clock::time_point b = system_clock::now();
-
-		double remaining_budget{ 0.0 };
 	};
 }
