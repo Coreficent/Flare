@@ -275,7 +275,7 @@ namespace Flare
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
-	void Renderer::draw(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color)
+	void Renderer::draw(const glm::vec4 bound, const glm::vec4 uv, GLuint texture, float depth, const Color color)
 	{
 		//this->glyphs.emplace_back(bound, uv, texture, depth, color, 5*0.7853f);
 		Glyph& glyph = this->next_glyph();

@@ -42,7 +42,7 @@ namespace Flare
 		void initialize();
 		void begin(GlyphSortType sortType = GlyphSortType::TEXTURE);
 		void end();
-		void draw(const glm::vec4& bound, const glm::vec4& uv, GLuint texture, float depth, const Color& color);
+		void draw(const glm::vec4 bound, const glm::vec4 uv, GLuint texture, float depth, const Color color);
 		void render();
 
 		void renderNow();
