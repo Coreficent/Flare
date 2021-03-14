@@ -8,7 +8,6 @@
 #include "Program.h"
 #include "Renderer.h"
 #include "SpriteFont.h"
-#include "Stage.h"
 #include "Window.h"
 
 namespace Flare::Core

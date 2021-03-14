@@ -135,9 +135,6 @@
     <ClInclude Include="ResourceManager.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteFont.h">
-      <Filter>Header Files\unsorted</Filter>
-    </ClInclude>
     <ClInclude Include="TextureCache.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
@@ -157,9 +154,6 @@
       <Filter>Header Files\display</Filter>
     </ClInclude>
     <ClInclude Include="Container.h">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="Stage.h">
       <Filter>Header Files\display</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
@@ -201,6 +195,9 @@
     <ClInclude Include="Context.h">
       <Filter>Header Files\media</Filter>
     </ClInclude>
+    <ClInclude Include="SpriteFont.h">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="error.cpp">
@@ -236,9 +233,6 @@
     <ClCompile Include="ResourceManager.cpp">
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteFont.cpp">
-      <Filter>Source Files\unsorted</Filter>
-    </ClCompile>
     <ClCompile Include="TextureCache.cpp">
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
@@ -255,9 +249,6 @@
       <Filter>Source Files\display</Filter>
     </ClCompile>
     <ClCompile Include="Container.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="Stage.cpp">
       <Filter>Source Files\display</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp">
@@ -292,6 +283,9 @@
     </ClCompile>
     <ClCompile Include="Context.cpp">
       <Filter>Source Files\media</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteFont.cpp">
+      <Filter>Source Files\display</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

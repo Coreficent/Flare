@@ -1,6 +1,6 @@
 #include "Container.h"
 
-namespace Flare
+namespace Flare::Display
 {
 	Container::Container() noexcept {}
 

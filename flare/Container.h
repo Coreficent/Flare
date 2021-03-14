@@ -3,7 +3,7 @@
 #include "Sprite.h"
 #include <memory>
 
-namespace Flare
+namespace Flare::Display
 {
 	class Container 
 	{

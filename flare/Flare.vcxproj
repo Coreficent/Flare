@@ -179,7 +179,6 @@
     <ClInclude Include="Sound.h" />
     <ClInclude Include="SpriteFont.h" />
     <ClInclude Include="Glyph.h" />
-    <ClInclude Include="Stage.h" />
     <ClInclude Include="TextureCache.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Vial.h" />
@@ -213,7 +212,6 @@
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="SpriteFont.cpp" />
     <ClCompile Include="Glyph.cpp" />
-    <ClCompile Include="Stage.cpp" />
     <ClCompile Include="TextureCache.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
