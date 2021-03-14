@@ -1,7 +1,8 @@
+#include "Bunny.h"
 #include "flare/Flare_core.h"
+#include "flare/ResourceManager.h"
 #include "gsl/gsl"
 #include <iostream>
-#include "flare/ResourceManager.h"
 
 int main(int argc, char** argv)
 {
@@ -15,7 +16,9 @@ int main(int argc, char** argv)
 
 	static auto cake_texture = Flare::ResourceManager::getTexture("texture/cake.png");
 
-	Flare::Display::Sprite cake1{};
+	
+
+	Benchmark::Display::Bunny cake1{};
 	cake1.set_texture_id(cake_texture.id);
 	cake1.set_width(200.0f);
 	cake1.set_height(200.0f);
@@ -27,7 +30,7 @@ int main(int argc, char** argv)
 	cake2.set_texture_id(cake_texture.id);
 	cake2.set_width(150.0f);
 	cake2.set_height(150.0f);
-	cake1.set_y(400.0f);
+	cake2.set_y(400.0f);
 
 	core.get_stage().add_child(cake2);
 

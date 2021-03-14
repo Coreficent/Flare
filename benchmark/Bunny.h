@@ -4,7 +4,10 @@
 
 namespace Benchmark::Display
 {
-	class Bunny
+	using namespace Flare::Display;
+
+	class Bunny : public Sprite
 	{
+		virtual void enter_frame() noexcept override;
 	};
 }

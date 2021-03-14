@@ -27,6 +27,6 @@ namespace Flare::Display
 		virtual void enter_frame() noexcept;
 
 	private:
-		vector<Sprite> children;
+		vector<Sprite> children{};
 	};
 }

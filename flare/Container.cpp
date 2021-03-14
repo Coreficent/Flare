@@ -26,5 +26,8 @@ namespace Flare::Display
 
 	void Container::enter_frame() noexcept
 	{
+		for (auto& child : this->children) {
+			child.enter_frame();
+		}
 	}
 }

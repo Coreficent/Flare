@@ -94,6 +94,8 @@ namespace Flare::Render
 
 		this->begin();
 
+		this->stage.enter_frame();
+
 		for (auto& quad : this->stage.get_quads())
 		{
 			this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
