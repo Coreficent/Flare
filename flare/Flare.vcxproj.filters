@@ -201,7 +201,7 @@
     <ClInclude Include="ResourceManager.h">
       <Filter>Header Files\texture</Filter>
     </ClInclude>
-    <ClInclude Include="TextureCache.h">
+    <ClInclude Include="Texture_cache.h">
       <Filter>Header Files\texture</Filter>
     </ClInclude>
   </ItemGroup>
@@ -284,7 +284,7 @@
     <ClCompile Include="SpriteFont.cpp">
       <Filter>Source Files\display</Filter>
     </ClCompile>
-    <ClCompile Include="TextureCache.cpp">
+    <ClCompile Include="Texture_cache.cpp">
       <Filter>Source Files\texture</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
