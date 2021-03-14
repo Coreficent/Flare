@@ -13,7 +13,7 @@
 #include <vector>
 
 
-namespace Flare
+namespace Flare::Render
 {
 	using namespace Flare::Display;
 

@@ -29,7 +29,7 @@ namespace Flare::Core
 		Program program{};
 		Game game{};
 
-		Renderer renderer;
+		Flare::Render::Renderer renderer;
 
 		FrameManager frame_manager{};
 	};

@@ -11,6 +11,6 @@ namespace Flare
 		Program();
 		~Program();
 
-		void run(Key& key, Renderer& renderer, Audio& audio);
+		void run(Key& key, Flare::Render::Renderer& renderer, Audio& audio);
 	};
 }

@@ -33,10 +33,7 @@ Modified By: Benjamin Arnold
 
 namespace Flare
 {
-	class Renderer;
-
 	struct GLTexture;
-	class Renderer;
 
 	struct CharGlyph
 	{
@@ -82,8 +79,8 @@ namespace Flare
 		unsigned int _texID;
 
 		/// Draws using a QuadBatch
-		void draw(Renderer& batch, const char* s, glm::vec2 position, glm::vec2 scaling,
-		          float depth, Color tint, Justification just = Justification::LEFT);
+		std::vector< glm::vec4> draw(const char* s, glm::vec2 position, glm::vec2 scaling, float depth, Color tint, Justification just = Justification::LEFT);
+
 	private:
 		static std::vector<int>* createRows(glm::ivec4* rects, int rectsLength, int r, int padding, int& w);
 

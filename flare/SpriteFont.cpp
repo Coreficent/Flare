@@ -1,7 +1,4 @@
 #include "SpriteFont.h"
-
-#include "Renderer.h"
-
 #include <sdl/SDL.h>
 #include <glm/gtc/matrix_transform.inl>
 
@@ -115,7 +112,7 @@ namespace Flare
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, bestWidth, bestHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
 
 		// Now draw all the glyphs
-		SDL_Color fg = {255, 255, 255, 255};
+		SDL_Color fg = { 255, 255, 255, 255 };
 		int ly = padding;
 		for (int ri = 0; ri < bestRows; ri++)
 		{
@@ -265,9 +262,10 @@ namespace Flare
 		return size;
 	}
 
-	void SpriteFont::draw(Renderer& batch, const char* s, glm::vec2 position, glm::vec2 scaling,
-	                      float depth, Color tint, Justification just /* = Justification::LEFT */)
+	std::vector<glm::vec4> SpriteFont::draw(const char* s, glm::vec2 position, glm::vec2 scaling, float depth, Color tint, Justification just /* = Justification::LEFT */)
 	{
+		std::vector<glm::vec4> result{};
+
 		glm::vec2 tp = position;
 		// Apply justification
 		if (just == Justification::MIDDLE)
@@ -298,9 +296,15 @@ namespace Flare
 
 				//TODO implement render for text
 
-				batch.draw(destRect, uv, _texID, depth, tint);
+				// batch.draw(destRect, uv, _texID, depth, tint);
+
+				result.push_back(destRect);
+				result.push_back(uv);
+
 				tp.x += _glyphs[gi].size.x * scaling.x;
 			}
 		}
+
+		return result;
 	}
 }
