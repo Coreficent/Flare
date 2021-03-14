@@ -7,25 +7,30 @@
 namespace Flare::Frame
 {
 	using namespace std;
+	using namespace std::chrono;
+
 
 	void Frame_manager::calculate_fps()
 	{
-		this->a = std::chrono::system_clock::now();
-		std::chrono::duration<double, std::milli> work_time = this->a - this->b;
+		this->a = system_clock::now();
+		const duration<double, std::milli> work_time = this->a - this->b;
 
-		double second{ 1000.0 };
-		double budget{ second / 60.0 };
+		constexpr double second{ 1000.0 };
+		constexpr double budget{ second / 60.0 };
+
+
+
 
 
 		if (work_time.count() < budget)
 		{
-			std::chrono::duration<double, std::milli> delta_ms(budget - work_time.count());
-			auto delta_ms_duration = std::chrono::duration_cast<std::chrono::milliseconds>(delta_ms);
-			std::this_thread::sleep_for(std::chrono::milliseconds(delta_ms_duration.count()));
+			const duration<double, milli> delta_ms(budget - work_time.count());
+			auto delta_ms_duration = duration_cast<milliseconds>(delta_ms);
+			this_thread::sleep_for(milliseconds(delta_ms_duration.count()));
 		}
 
-		this->b = std::chrono::system_clock::now();
-		std::chrono::duration<double, std::milli> sleep_time = this->b - this->a;
+		this->b = system_clock::now();
+		const duration<double, std::milli> sleep_time = this->b - this->a;
 
 		// Your code here
 
@@ -33,7 +38,7 @@ namespace Flare::Frame
 
 		this->frames_per_second = second / (work_time + sleep_time).count();
 
-		
+
 
 
 
