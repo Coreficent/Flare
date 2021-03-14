@@ -99,7 +99,7 @@ namespace Flare::Render
 			this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
 		}
 
-		vector<Quad> quads = this->sprite_font.draw("a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
+		vector<Quad> quads = this->sprite_font.draw("a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z \n 1 2 3 4 5 6 7 8 9 0", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
 
 		for (auto& quad : quads)
 		{
