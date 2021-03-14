@@ -29,7 +29,6 @@ namespace Flare::Render
 		this->colorProgram.linkShader();
 		this->createVertexArray();
 
-
 		this->sprite_font.initialize("font/disney.ttf", 64);
 	}
 
@@ -42,15 +41,11 @@ namespace Flare::Render
 
 	void Renderer::end()
 	{
-		//TODO temp delete comment
-
-
 		this->glyphs_pointers.resize(this->glyphs_vial.size());
 		for (unsigned int i{ 0 }, l{ this->glyphs_vial.size() }; i < l; ++i)
 		{
 			this->glyphs_pointers[i] = &this->glyphs_vial[i];
 		}
-		//this->sortGlyphs();
 
 		this->createRenderBatches();
 	}
@@ -81,14 +76,12 @@ namespace Flare::Render
 		auto textureLocation = this->colorProgram.getUniform("cakeSampler");
 		glUniform1i(textureLocation, 0);
 
-		// camera location
 		auto locationCamera = this->colorProgram.getUniform("cameraPosition");
 		auto cameraMatrix = this->camera.getCameraMatrix();
 
 		glUniformMatrix4fv(locationCamera, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
 		this->begin();
-
 
 
 		for (auto& quad : this->stage.get_quads())
@@ -140,21 +133,17 @@ namespace Flare::Render
 
 	void Renderer::sortGlyphs()
 	{
-		//TODO use sort?
 		switch (this->sortType)
 		{
 		case GlyphSortType::NONE:
-
 			break;
 		case GlyphSortType::FRONT_BACK:
 			stable_sort(this->glyphs_pointers.begin(), this->glyphs_pointers.end(), this->compareFrontBack);
 			break;
 		case GlyphSortType::BACK_FRONT:
-
 			stable_sort(this->glyphs_pointers.begin(), this->glyphs_pointers.end(), this->compareBackFront);
 			break;
 		case GlyphSortType::TEXTURE:
-
 			stable_sort(this->glyphs_pointers.begin(), this->glyphs_pointers.end(), this->compareTexture);
 			break;
 		}
@@ -164,12 +153,10 @@ namespace Flare::Render
 	{
 		if (this->glyphs_pointers.empty())
 		{
-			// return;
+			return;
 		}
 		vector<Vertex> vertices{};
 		vertices.resize(this->glyphs_pointers.size() * 6);
-
-		// TODO int size?
 
 		unsigned long long glyph{ 0 }, length{ this->glyphs_pointers.size() };
 		auto offset{ 0 }, vertex{ 0 };
@@ -210,9 +197,8 @@ namespace Flare::Render
 
 	void Renderer::draw(const glm::vec4 bound, const glm::vec4 uv, GLuint texture, float depth, const Color color)
 	{
-		//this->glyphs.emplace_back(bound, uv, texture, depth, color, 5*0.7853f);
 		Glyph& glyph = this->next_glyph();
-		/**/
+
 		glyph.down_left.color = color;
 		glyph.down_left.setPosition(bound.x, bound.y + bound.w);
 		glyph.down_left.setUV(uv.x, uv.y + uv.w);
@@ -230,7 +216,6 @@ namespace Flare::Render
 		glyph.down_right.setUV(uv.x + uv.z, uv.y + uv.w);
 
 		glyph.texture = texture;
-		//this->glyphs.push_back(glyph);
 	}
 
 	bool Renderer::compareFrontBack(Glyph* a, Glyph* b)
