@@ -93,21 +93,11 @@ namespace Flare::Render
 		glUniformMatrix4fv(locationCamera, 1, GL_FALSE, &(cameraMatrix[0][0]));
 
 		this->begin();
-		glm::vec4 position{ 0.0f,0.0f,50.0f,50.0f };
-		glm::vec4 uv{ 0.0f,0.0f,1.0f,1.0f };
-
-
-		Color color;
-		color.r = 255;
-		color.g = 255;
-		color.b = 255;
-		color.a = 255;
 
 		for (auto& quad : this->stage.get_quads())
 		{
 			this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
 		}
-
 
 		vector<Quad> quads = this->sprite_font.draw("a b c d e f g \nh i j k l n m \no p q r s t \nu v w x y z", glm::vec2(1.0f), glm::vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
 
@@ -122,8 +112,6 @@ namespace Flare::Render
 		glBindTexture(GL_TEXTURE_2D, 0);
 		this->colorProgram.unuse();
 	}
-
-
 
 	void Renderer::createVertexArray()
 	{
