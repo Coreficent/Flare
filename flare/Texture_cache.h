@@ -6,14 +6,16 @@
 
 namespace Flare::Texture
 {
+	using namespace std;
+
 	class Texture_cache
 	{
 
 	public:
-		GLTexture getTexture(std::string& filePath);
+		GLTexture getTexture(string& filePath);
 
 	private:
-		std::map<std::string, GLTexture> textureMap;
+		map<string, GLTexture> textureMap;
 	};
 
 }

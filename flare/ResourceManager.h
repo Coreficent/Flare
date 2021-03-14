@@ -4,7 +4,7 @@
 
 namespace Flare::Texture
 {
-	class ResourceManager
+	class Resource_manager
 	{
 
 	public:

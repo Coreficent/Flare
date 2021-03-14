@@ -3,9 +3,9 @@ using namespace std;
 
 namespace Flare::Texture
 {
-	Texture_cache ResourceManager::textureCache;
+	Texture_cache Resource_manager::textureCache;
 
-	GLTexture ResourceManager::getTexture(string filePath)
+	GLTexture Resource_manager::getTexture(string filePath)
 	{
 		return textureCache.getTexture(filePath);
 	}
