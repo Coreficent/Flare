@@ -11,33 +11,30 @@ namespace Flare::Display
 	class Sprite
 	{
 	public:
-		Sprite();
-		virtual ~Sprite();
+		Sprite() noexcept;
 
-		float get_x() const;
-		float get_y() const;
-		float get_width() const;
-		float get_height() const;
-		GLuint get_texture_id() const;
+		float get_x() const noexcept;
+		float get_y() const noexcept;
+		float get_width() const noexcept;
+		float get_height() const noexcept;
+		GLuint get_texture_id() const noexcept;
 
-		void set_x(float value);
-		void set_y(float value);
-		void set_width(float value);
-		void set_height(float value);
-		void set_texture_id(GLuint value);
+		void set_x(float value) noexcept;
+		void set_y(float value) noexcept;
+		void set_width(float value) noexcept;
+		void set_height(float value) noexcept;
+		void set_texture_id(GLuint value) noexcept;
 
-		void scale_x(float value);
-		void scale_y(float value);
-		void scale(float value);
-		void rotate(float value);
+		void scale_x(float value) noexcept;
+		void scale_y(float value) noexcept;
+		void scale(float value) noexcept;
+		void rotate(float value) noexcept;
 
-		virtual void render() const;
+		void render() const;
 
-		Vial<Vertex>* dest{nullptr};
+		Vial<Vertex>* dest{ nullptr };
 
 	private:
-
-
 		Matrix matrix{};
 
 		Color color{255,255,255 ,255};

@@ -7,97 +7,91 @@
 
 namespace Flare::Display
 {
-	Sprite::Sprite()
-	{
-	}
+	Sprite::Sprite() noexcept {}
 
-
-	Sprite::~Sprite()
-	{
-	}
-
-	float Sprite::get_x() const
+	float Sprite::get_x() const noexcept
 	{
 		return this->x;
 	}
 
-	float Sprite::get_y() const
+	float Sprite::get_y() const noexcept
 	{
 		return this->y;
 	}
 
-	float Sprite::get_width() const
+	float Sprite::get_width() const noexcept
 	{
 		return this->width;
 	}
 
-	float Sprite::get_height() const
+	float Sprite::get_height() const noexcept
 	{
 		return this->height;
 	}
 
-	GLuint Sprite::get_texture_id() const
+	GLuint Sprite::get_texture_id() const noexcept
 	{
 		return this->texture_id;
 	}
 
-	void Sprite::set_x(float value)
+	void Sprite::set_x(float value) noexcept
 	{
 		this->x = value;
 		this->matrix.x = value;
 	}
 
-	void Sprite::set_y(float value)
+	void Sprite::set_y(float value) noexcept
 	{
 		this->y = value;
 		this->matrix.y = value;
 	}
 
-	void Sprite::set_width(float value)
+	void Sprite::set_width(float value) noexcept
 	{
 		this->width = value;
 	}
 
-	void Sprite::set_height(float value)
+	void Sprite::set_height(float value) noexcept
 	{
 		this->height = value;
 	}
 
-	void Sprite::set_texture_id(GLuint value)
+	void Sprite::set_texture_id(GLuint value) noexcept
 	{
 		this->texture_id = value;
 	}
 
-	void Sprite::scale_x(float value)
+	void Sprite::scale_x(float value) noexcept
 	{
 		this->matrix.a *= value;
 		this->matrix.c *= value;
 		this->matrix.x *= value;
 	}
 
-	void Sprite::scale_y(float value)
+	void Sprite::scale_y(float value) noexcept
 	{
 		this->matrix.b *= value;
 		this->matrix.d *= value;
 		this->matrix.y *= value;
 	}
 
-	void Sprite::scale(float value)
+	void Sprite::scale(float value) noexcept
 	{
 		this->scale_x(value);
 		this->scale_y(value);
 	}
 
-	void Sprite::rotate(float value)
+	void Sprite::rotate(float value) noexcept
 	{
-		auto sine = sin(value);
-		auto cosine = cos(value);
-		auto a = this->matrix.a;
-		auto b = this->matrix.b;
-		auto c = this->matrix.c;
-		auto d = this->matrix.d;
-		auto x = this->matrix.x;
-		auto y = this->matrix.y;
+		const auto sine = sin(value);
+		const auto cosine = cos(value);
+		const auto a = this->matrix.a;
+		const auto b = this->matrix.b;
+		const auto c = this->matrix.c;
+		const auto d = this->matrix.d;
+		const auto x = this->matrix.x;
+		const auto y = this->matrix.y;
+
 		this->matrix.a = a * cosine - b * sine;
 		this->matrix.b = a * sine + b * cosine;
 		this->matrix.c = c * cosine - d * sine;
@@ -178,6 +172,6 @@ namespace Flare::Display
 
 	Point Sprite::locate_vertex(float x, float y) const
 	{
-		return Point{x * this->matrix.a + y * this->matrix.c + this->matrix.x,x * this->matrix.b + y * this->matrix.d + this->matrix.y};
+		return Point{ x * this->matrix.a + y * this->matrix.c + this->matrix.x,x * this->matrix.b + y * this->matrix.d + this->matrix.y };
 	}
 }
