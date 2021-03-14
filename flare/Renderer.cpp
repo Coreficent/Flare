@@ -188,8 +188,6 @@ namespace Flare::Render
 
 		glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferID);
 
-		dout << "vertices" << vertices.size() << endl;
-
 		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
 
 		glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.size() * sizeof(Vertex), vertices.data());
