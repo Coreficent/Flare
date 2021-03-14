@@ -14,6 +14,7 @@ namespace Flare::Core
 {
 	using namespace std;
 	using namespace Flare::Display;
+	using namespace Flare::Render;
 
 	class Flare_core
 	{
@@ -31,7 +32,7 @@ namespace Flare::Core
 		Program program{};
 		Game game{};
 
-		Flare::Render::Renderer renderer;
+		Renderer renderer;
 
 		FrameManager frame_manager{};
 	};
