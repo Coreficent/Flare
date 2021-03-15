@@ -38,8 +38,6 @@ namespace Flare::Render
 	public:
 		Renderer(int width, int height);
 
-		Glyph& next_glyph();
-
 		void initialize();
 		void begin(GlyphSortType sortType = GlyphSortType::TEXTURE);
 		void end();
@@ -63,7 +61,9 @@ namespace Flare::Render
 
 		std::vector<RenderBatch> renderBatches;
 
-		Vial<Glyph> glyphs_vial{};
+		Vial<Vertex> vertex_buffer{};
+
+		Vial<Glyph> glyphs_vialxxx{};
 
 		GLSL colorProgram;
 
@@ -73,5 +73,7 @@ namespace Flare::Render
 
 		GLuint vertexBufferID;
 		GLuint vertexArrayID;
+
+		GLuint previous_texture{0};
 	};
 }

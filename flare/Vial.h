@@ -53,12 +53,16 @@ namespace Flare
 
 		bool empty()
 		{
-			return this->container.empty();
+			return this->index == 0;
 		}
 
 		T& at(int index)
 		{
 			return this->container.at(index);
+		}
+
+		int get_index() {
+			return this->index;
 		}
 
 	private:

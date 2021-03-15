@@ -15,11 +15,6 @@ namespace Flare::Render
 
 	Renderer::Renderer(int width, int height) : camera{ width,height }, sortType{ GlyphSortType::NONE }, vertexBufferID{ 0 }, vertexArrayID{ 0 }{}
 
-	Glyph& Renderer::next_glyph()
-	{
-		return this->glyphs_vial.next();
-	}
-
 	void Renderer::initialize()
 	{
 		this->colorProgram.compileShader("shader/vertex.shader", "shader/fragment.shader");
@@ -36,7 +31,8 @@ namespace Flare::Render
 	{
 		this->sortType = sortType;
 		this->renderBatches.clear();
-		this->glyphs_vial.refill();
+		this->vertex_buffer.refill();
+		this->previous_texture = 0;
 	}
 
 	void Renderer::end()
@@ -128,74 +124,43 @@ namespace Flare::Render
 
 	void Renderer::createRenderBatches()
 	{
-		if (this->glyphs_vial.empty())
-		{
+		if (this->vertex_buffer.empty()) {
 			return;
-		}
-		vector<Vertex> vertices{};
-		vertices.resize(this->glyphs_vial.size() * 6);
-
-		auto glyph{ 0 };
-		auto length{ this->glyphs_vial.size() };
-		auto offset{ 0 }, vertex{ 0 };
-		GLuint previous_texture{ 0 };
-		if (this->glyphs_vial.size() > 0)
-		{
-			do
-			{
-				auto& current = this->glyphs_vial.at(glyph);
-
-				if (current.texture != previous_texture)
-				{
-					this->renderBatches.emplace_back(offset, 6, current.texture);
-				}
-				else
-				{
-					this->renderBatches.back().vertexCount += 6;
-				}
-
-				vertices.at(vertex++) = current.down_left;
-				vertices.at(vertex++) = current.top_left;
-				vertices.at(vertex++) = current.top_right;
-				vertices.at(vertex++) = current.top_right;
-				vertices.at(vertex++) = current.down_right;
-				vertices.at(vertex++) = current.down_left;
-
-				offset += 6;
-				previous_texture = this->glyphs_vial.at(glyph).texture;
-			} while (++glyph < length);
 		}
 
 		glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferID);
 
-		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, this->vertex_buffer.size() * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
 
-		glBufferSubData(GL_ARRAY_BUFFER, 0, vertices.size() * sizeof(Vertex), vertices.data());
+		glBufferSubData(GL_ARRAY_BUFFER, 0, this->vertex_buffer.size() * sizeof(Vertex), this->vertex_buffer.data());
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
 	void Renderer::draw(const glm::vec4 bound, const glm::vec4 uv, GLuint texture, float depth, const Color color)
 	{
-		Glyph& glyph = this->next_glyph();
+		if (texture != this->previous_texture)
+		{
+			this->renderBatches.emplace_back(this->vertex_buffer.get_index(), 6, texture);
+		}
+		else
+		{
+			this->renderBatches.back().vertexCount += 6;
+		}
 
-		glyph.down_left.color = color;
-		glyph.down_left.setPosition(bound.x, bound.y + bound.w);
-		glyph.down_left.setUV(uv.x, uv.y + uv.w);
+		this->previous_texture = texture;
 
-		glyph.top_left.color = color;
-		glyph.top_left.setPosition(bound.x, bound.y);
-		glyph.top_left.setUV(uv.x, uv.y);
+		const Vertex top_left{ Position{bound.x, bound.y}, color, UV{ uv.x, uv.y } };
+		const Vertex top_right{ Position{bound.x + bound.z, bound.y}, color, UV{ uv.x + uv.z, uv.y } };
+		const Vertex bottom_left{ Position{bound.x, bound.y + bound.w}, color, UV{uv.x, uv.y + uv.w } };
+		const Vertex bottom_right{ Position{bound.x + bound.z, bound.y + bound.w}, color, UV{ uv.x + uv.z, uv.y + uv.w } };
 
-		glyph.top_right.color = color;
-		glyph.top_right.setPosition(bound.x + bound.z, bound.y);
-		glyph.top_right.setUV(uv.x + uv.z, uv.y);
-
-		glyph.down_right.color = color;
-		glyph.down_right.setPosition(bound.x + bound.z, bound.y + bound.w);
-		glyph.down_right.setUV(uv.x + uv.z, uv.y + uv.w);
-
-		glyph.texture = texture;
+		this->vertex_buffer.next() = bottom_left;
+		this->vertex_buffer.next() = top_left;
+		this->vertex_buffer.next() = top_right;
+		this->vertex_buffer.next() = top_right;
+		this->vertex_buffer.next() = bottom_right;
+		this->vertex_buffer.next() = bottom_left;
 	}
 
 	bool Renderer::compareFrontBack(Glyph* a, Glyph* b)
