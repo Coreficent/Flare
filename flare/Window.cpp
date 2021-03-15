@@ -66,7 +66,7 @@ namespace Flare
 		dout << "OpenGL version: " << glGetString(GL_VERSION) << endl;
 
 		//background: color to clear to
-		glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+		glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 
 		// vertical synch 0 off 1 on
 		SDL_GL_SetSwapInterval(0);
