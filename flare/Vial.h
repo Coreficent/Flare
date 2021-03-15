@@ -7,14 +7,6 @@ namespace Flare
 	class Vial
 	{
 	public:
-		Vial()
-		{
-		}
-
-		~Vial()
-		{
-		}
-
 		T& operator[](unsigned int i)
 		{
 			return this->container[i];
