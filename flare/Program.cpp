@@ -4,15 +4,6 @@
 
 namespace Flare
 {
-	Program::Program()
-	{
-	}
-
-
-	Program::~Program()
-	{
-	}
-
 	void Program::run(Key& key, Flare::Render::Renderer& renderer, Audio& audio)
 	{
 		if (key.input_manager.keyPressed(SDLK_w))
