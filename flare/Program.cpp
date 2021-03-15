@@ -40,7 +40,7 @@ namespace Flare
 		}
 		if (key.input_manager.keyPressed(SDL_BUTTON_LEFT))
 		{
-			SoundEffect sound2 = audio.load_sound_effect("sound/cg1.wav");
+			SoundEffect sound2 = audio.load_sound_effect("sound/bounce.wav");
 			sound2.play();
 		}
 	}
