@@ -38,7 +38,7 @@ namespace Flare::Render
 		void draw(const vec4 bound, const vec4 uv, GLuint texture, float depth, const Color color);
 		void finalize() noexcept;
 
-		void renderNow();
+		void render();
 
 		Camera camera;
 		Container stage{};

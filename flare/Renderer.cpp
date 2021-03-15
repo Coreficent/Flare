@@ -65,7 +65,7 @@ namespace Flare::Render
 		glBindVertexArray(0);
 	}
 
-	void Renderer::renderNow()
+	void Renderer::render()
 	{
 		this->camera.update();
 
