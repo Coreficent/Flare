@@ -27,6 +27,7 @@ namespace Flare::Display
 		virtual void enter_frame() noexcept;
 
 		vector<Quad> get_quads();
+		int get_size() noexcept;
 
 	private:
 		vector<shared_ptr<Sprite>> children{};

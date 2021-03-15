@@ -32,7 +32,7 @@ namespace Flare::Core
 			this->program.run(this->key, this->renderer, this->audio);
 			this->game.run();
 			this->renderer.stage.enter_frame();
-			this->renderer.text = "fps:" + delimiter + to_string(static_cast <int>(this->frame_manager.frames_per_second) + 1) + "\n" + "vertices:" + delimiter + to_string(this->renderer.vertex_count);
+			this->renderer.text = "fps:" + delimiter + to_string(static_cast <int>(this->frame_manager.frames_per_second) + 1) + "\n" + "object:" + delimiter + to_string(this->renderer.stage.get_size());
 			this->renderer.renderNow();
 			this->window.swap_window();
 		}

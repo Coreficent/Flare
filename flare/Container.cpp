@@ -39,4 +39,9 @@ namespace Flare::Display
 			child->enter_frame();
 		}
 	}
+
+	int Container::get_size() noexcept
+	{
+		return this->children.size();
+	}
 }

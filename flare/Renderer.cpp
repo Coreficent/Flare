@@ -184,8 +184,6 @@ namespace Flare::Render
 			} while (++glyph < length);
 		}
 
-		this->vertex_count = vertices.size();
-
 		glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferID);
 
 		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);

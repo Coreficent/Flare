@@ -19,7 +19,7 @@ namespace Benchmark::Core {
 
 	void Benchmark_core::adjust_bunny() noexcept
 	{
-		static auto bunny_texture = Flare::Texture::Resource_manager::get_texture("texture/cake.png");
+		static auto bunny_texture = Flare::Texture::Resource_manager::get_texture("texture/wabbit.png");
 
 		if (this->frame_manager.frames_per_second > 59.5) {
 
@@ -28,7 +28,8 @@ namespace Benchmark::Core {
 				shared_ptr<Bunny> bunny{ new Bunny{} };
 
 				bunny->texture_id = bunny_texture.id;
-				bunny->width = bunny->height = 100.0f;
+				bunny->width = 26.0f;
+				bunny->height = 37.0f;
 
 				bunny->minimum_x = this->window_width / -2.0f;
 				bunny->minimum_y = this->window_height / -2.0f;

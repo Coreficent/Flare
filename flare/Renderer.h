@@ -52,7 +52,6 @@ namespace Flare::Render
 		Container stage{};
 
 		string text{};
-		int vertex_count{};
 
 	private:
 		void createVertexArray();
