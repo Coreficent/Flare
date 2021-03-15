@@ -10,7 +10,7 @@ namespace Flare::Frame
 	using namespace std::chrono;
 
 	Frame_manager::Frame_manager() {
-		for (auto i{ 0 }; i < 100; ++i) {
+		for (auto i{ 0 }; i < 1000; ++i) {
 			this->frame_rates.push(0.0);
 		}
 	}
