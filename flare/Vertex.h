@@ -30,13 +30,13 @@ namespace Flare
 		Color color;
 		UV uv;
 
-		void setPosition(float x, float y)
+		void set_position(float x, float y) noexcept
 		{
 			position.x = x;
 			position.y = y;
 		}
 
-		void setColor(GLubyte r, GLubyte g, GLubyte b, GLubyte a)
+		void set_color(GLubyte r, GLubyte g, GLubyte b, GLubyte a) noexcept
 		{
 			color.r = r;
 			color.g = g;
@@ -44,7 +44,7 @@ namespace Flare
 			color.a = a;
 		}
 
-		void setUV(float u, float v)
+		void set_uv(float u, float v) noexcept
 		{
 			uv.u = u;
 			uv.v = v;

@@ -106,33 +106,33 @@ namespace Flare::Display
 
 		auto& vertex1 = this->dest->next();
 		vertex1.color = this->color;
-		vertex1.setPosition(top_left.x, top_left.y);
-		vertex1.setUV(this->u_start, this->v_start);
+		vertex1.set_position(top_left.x, top_left.y);
+		vertex1.set_uv(this->u_start, this->v_start);
 
 		auto& vertex2 = this->dest->next();
 		vertex2.color = this->color;
-		vertex2.setPosition(top_right.x, top_right.y);
-		vertex2.setUV(this->u_end, this->v_start);
+		vertex2.set_position(top_right.x, top_right.y);
+		vertex2.set_uv(this->u_end, this->v_start);
 
 		auto& vertex3 = this->dest->next();
 		vertex3.color = this->color;
-		vertex3.setPosition(bottom_left.x, bottom_left.y);
-		vertex3.setUV(this->u_start, this->v_end);
+		vertex3.set_position(bottom_left.x, bottom_left.y);
+		vertex3.set_uv(this->u_start, this->v_end);
 
 		auto& vertex4 = this->dest->next();
 		vertex4.color = this->color;
-		vertex4.setPosition(bottom_left.x, bottom_left.y);
-		vertex4.setUV(this->u_start, this->v_end);
+		vertex4.set_position(bottom_left.x, bottom_left.y);
+		vertex4.set_uv(this->u_start, this->v_end);
 
 		auto& vertex5 = this->dest->next();
 		vertex5.color = this->color;
-		vertex5.setPosition(top_right.x, top_right.y);
-		vertex5.setUV(this->u_end, this->v_start);
+		vertex5.set_position(top_right.x, top_right.y);
+		vertex5.set_uv(this->u_end, this->v_start);
 
 		auto& vertex6 = this->dest->next();
 		vertex6.color = this->color;
-		vertex6.setPosition(bottom_right.x, bottom_right.y);
-		vertex6.setUV(this->u_end, this->v_end);
+		vertex6.set_position(bottom_right.x, bottom_right.y);
+		vertex6.set_uv(this->u_end, this->v_end);
 	}
 
 	/*void Sprite::buffer(Renderer& renderer)
