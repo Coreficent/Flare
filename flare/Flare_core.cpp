@@ -39,9 +39,7 @@ namespace Flare::Core
 		music.stop();
 	}
 
-	void Flare_core::enter_frame() noexcept
-	{
-	}
+	void Flare_core::enter_frame() noexcept {}
 
 	Container& Flare_core::get_stage() noexcept
 	{

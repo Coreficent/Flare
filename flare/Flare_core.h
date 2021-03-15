@@ -22,6 +22,11 @@ namespace Flare::Core
 
 	public:
 		Flare_core(int window_width, int window_height);
+		Flare_core(const Flare_core& value) = default;
+		Flare_core(Flare_core && value) = default;
+		Flare_core& operator=(const Flare_core & value) = default;
+		Flare_core& operator=(Flare_core && value) = default;
+		virtual ~Flare_core() = default;
 
 		Container& get_stage() noexcept;
 
