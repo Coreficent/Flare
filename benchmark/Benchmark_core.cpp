@@ -23,7 +23,7 @@ namespace Benchmark::Core {
 
 		if (this->frame_manager.frames_per_second > 59.5) {
 
-			for (auto i{ 0 }; i < this->frame_manager.remaining_budget; ++i) {
+			for (auto i{ 0 }; i < this->frame_manager.remaining_budget * this->frame_manager.remaining_budget; ++i) {
 
 				shared_ptr<Bunny> bunny{ new Bunny{} };
 
