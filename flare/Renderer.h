@@ -13,15 +13,8 @@
 
 namespace Flare::Render
 {
+	using namespace glm;
 	using namespace Flare::Display;
-
-	enum class GlyphSortType
-	{
-		NONE,
-		FRONT_BACK,
-		BACK_FRONT,
-		TEXTURE
-	};
 
 	class RenderBatch
 	{
@@ -39,9 +32,9 @@ namespace Flare::Render
 		Renderer(int width, int height);
 
 		void initialize();
-		void begin(GlyphSortType sortType = GlyphSortType::TEXTURE);
+		void begin();
 		void end();
-		void draw(const glm::vec4 bound, const glm::vec4 uv, GLuint texture, float depth, const Color color);
+		void draw(const vec4 bound, const vec4 uv, GLuint texture, float depth, const Color color);
 		void render();
 
 		void renderNow();
@@ -55,10 +48,6 @@ namespace Flare::Render
 		void createVertexArray();
 		void createRenderBatches();
 
-		static bool compareFrontBack(Glyph* a, Glyph* b);
-		static bool compareBackFront(Glyph* a, Glyph* b);
-		static bool compareTexture(Glyph* a, Glyph* b);
-
 		std::vector<RenderBatch> renderBatches;
 
 		Vial<Vertex> vertex_buffer{};
@@ -69,11 +58,8 @@ namespace Flare::Render
 
 		SpriteFont sprite_font{};
 
-		GlyphSortType sortType;
-
-		GLuint vertexBufferID;
-		GLuint vertexArrayID;
-
-		GLuint previous_texture{0};
+		GLuint vertexBufferID{};
+		GLuint vertexArrayID{};
+		GLuint previous_texture{};
 	};
 }

@@ -13,7 +13,7 @@ namespace Flare::Render
 	using namespace glm;
 	using namespace Flare::Display;
 
-	Renderer::Renderer(int width, int height) : camera{ width,height }, sortType{ GlyphSortType::NONE }, vertexBufferID{ 0 }, vertexArrayID{ 0 }{}
+	Renderer::Renderer(int width, int height) : camera{ width,height }, vertexBufferID{ 0 }, vertexArrayID{ 0 }{}
 
 	void Renderer::initialize()
 	{
@@ -23,13 +23,11 @@ namespace Flare::Render
 		this->colorProgram.addAttribute("vertexUV");
 		this->colorProgram.linkShader();
 		this->createVertexArray();
-
 		this->sprite_font.initialize("font/disney.ttf", 64);
 	}
 
-	void Renderer::begin(GlyphSortType sortType)
+	void Renderer::begin()
 	{
-		this->sortType = sortType;
 		this->renderBatches.clear();
 		this->vertex_buffer.refill();
 		this->previous_texture = 0;
@@ -39,7 +37,6 @@ namespace Flare::Render
 	{
 		this->createRenderBatches();
 	}
-
 
 	void Renderer::render()
 	{
@@ -161,20 +158,5 @@ namespace Flare::Render
 		this->vertex_buffer.next() = top_right;
 		this->vertex_buffer.next() = bottom_right;
 		this->vertex_buffer.next() = bottom_left;
-	}
-
-	bool Renderer::compareFrontBack(Glyph* a, Glyph* b)
-	{
-		return a->depth < b->depth;
-	}
-
-	bool Renderer::compareBackFront(Glyph* a, Glyph* b)
-	{
-		return a->depth > b->depth;
-	}
-
-	bool Renderer::compareTexture(Glyph* a, Glyph* b)
-	{
-		return a->texture > b->texture;
 	}
 }
