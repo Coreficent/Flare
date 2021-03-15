@@ -58,8 +58,8 @@ namespace Flare::Render
 
 		SpriteFont sprite_font{};
 
-		GLuint vertexBufferID{};
-		GLuint vertexArrayID{};
+		GLuint vertex_buffer_id{};
+		GLuint vertex_array_id{};
 		GLuint previous_texture{};
 	};
 }

@@ -13,7 +13,7 @@ namespace Flare::Render
 	using namespace glm;
 	using namespace Flare::Display;
 
-	Renderer::Renderer(int width, int height) : camera{ width,height }, vertexBufferID{ 0 }, vertexArrayID{ 0 }{}
+	Renderer::Renderer(int width, int height) : camera{ width,height }, vertex_buffer_id{ 0 }, vertex_array_id{ 0 }{}
 
 	void Renderer::initialize()
 	{
@@ -40,7 +40,7 @@ namespace Flare::Render
 
 	void Renderer::render()
 	{
-		glBindVertexArray(this->vertexArrayID);
+		glBindVertexArray(this->vertex_array_id);
 
 		for (auto& i : this->renderBatches)
 		{
@@ -93,16 +93,16 @@ namespace Flare::Render
 
 	void Renderer::createVertexArray()
 	{
-		if (!this->vertexArrayID)
+		if (!this->vertex_array_id)
 		{
-			glGenVertexArrays(1, &this->vertexArrayID);
+			glGenVertexArrays(1, &this->vertex_array_id);
 		}
-		glBindVertexArray(this->vertexArrayID);
-		if (!this->vertexBufferID)
+		glBindVertexArray(this->vertex_array_id);
+		if (!this->vertex_buffer_id)
 		{
-			glGenBuffers(1, &this->vertexBufferID);
+			glGenBuffers(1, &this->vertex_buffer_id);
 		}
-		glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferID);
+		glBindBuffer(GL_ARRAY_BUFFER, this->vertex_buffer_id);
 
 		glEnableVertexAttribArray(0);
 		glEnableVertexAttribArray(1);
@@ -125,7 +125,7 @@ namespace Flare::Render
 			return;
 		}
 
-		glBindBuffer(GL_ARRAY_BUFFER, this->vertexBufferID);
+		glBindBuffer(GL_ARRAY_BUFFER, this->vertex_buffer_id);
 
 		glBufferData(GL_ARRAY_BUFFER, this->vertex_buffer.size() * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
 
