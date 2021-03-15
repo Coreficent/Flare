@@ -96,11 +96,14 @@ namespace Flare::Render
 		{
 			glGenVertexArrays(1, &this->vertex_array_id);
 		}
+
 		glBindVertexArray(this->vertex_array_id);
+
 		if (!this->vertex_buffer_id)
 		{
 			glGenBuffers(1, &this->vertex_buffer_id);
 		}
+
 		glBindBuffer(GL_ARRAY_BUFFER, this->vertex_buffer_id);
 
 		glEnableVertexAttribArray(0);

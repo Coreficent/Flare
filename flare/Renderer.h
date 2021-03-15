@@ -21,7 +21,6 @@ namespace Flare::Render
 	{
 	public:
 		Render_batch(GLuint offset, GLuint vertex_count, GLuint texture) noexcept : offset{ offset }, vertex_count{ vertex_count }, texture{ texture } {};
-
 		GLuint offset;
 		GLuint vertex_count;
 		GLuint texture;
@@ -37,28 +36,21 @@ namespace Flare::Render
 		void end();
 		void draw(const vec4 bound, const vec4 uv, GLuint texture, float depth, const Color color);
 		void finalize() noexcept;
-
 		void render();
 
 		Camera camera;
 		Container stage{};
-
 		string text{};
 
 	private:
 		void create_vertex_array() noexcept;
 		void generate_batches();
 
-		vector<Render_batch> render_batches;
-
+		vector<Render_batch> render_batches{};
 		Vial<Vertex> vertex_buffer{};
-
 		Vial<Glyph> glyphs_vialxxx{};
-
-		GLSL color_program;
-
+		GLSL color_program{};
 		SpriteFont sprite_font{};
-
 		GLuint vertex_buffer_id{};
 		GLuint vertex_array_id{};
 		GLuint previous_texture{};
