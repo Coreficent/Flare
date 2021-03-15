@@ -14,7 +14,6 @@ namespace Flare
 		{
 			renderer.camera.setPosition(renderer.camera.getPosition() + glm::vec2(0.0, 5.0));
 		}
-
 		if (key.input_manager.keyPressed(SDLK_a))
 		{
 			renderer.camera.setPosition(renderer.camera.getPosition() + glm::vec2(-5.0, 0.0));
@@ -23,7 +22,6 @@ namespace Flare
 		{
 			renderer.camera.setPosition(renderer.camera.getPosition() + glm::vec2(5.0, 0.0));
 		}
-
 		if (key.input_manager.keyPressed(SDLK_q))
 		{
 			renderer.camera.setScale(renderer.camera.getScale() + 0.1f);

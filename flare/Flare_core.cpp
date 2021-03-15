@@ -18,8 +18,8 @@ namespace Flare::Core
 
 	void Flare_core::run()
 	{
-		Musice music = this->audio.load_music("music/x.ogg");
-		music.play(-1);
+		//Musice music = this->audio.load_music("music/x.ogg");
+		//music.play(-1);
 
 		string delimiter{ " " };
 
@@ -36,7 +36,7 @@ namespace Flare::Core
 			this->window.swap_window();
 		}
 
-		music.stop();
+		//music.stop();
 	}
 
 	void Flare_core::enter_frame() noexcept {}
