@@ -41,13 +41,6 @@ namespace Flare::Render
 
 	void Renderer::end()
 	{
-		this->glyphs_pointers.resize(this->glyphs_vial.size());
-
-		for (unsigned int i{ 0 }, const l{ this->glyphs_vial.size() }; i < l; ++i)
-		{
-			this->glyphs_pointers[i] = &this->glyphs_vial[i];
-		}
-
 		this->createRenderBatches();
 	}
 
@@ -133,57 +126,43 @@ namespace Flare::Render
 		// TODO where is unbind for verex buffer
 	}
 
-	void Renderer::sortGlyphs()
-	{
-		switch (this->sortType)
-		{
-		case GlyphSortType::NONE:
-			break;
-		case GlyphSortType::FRONT_BACK:
-			stable_sort(this->glyphs_pointers.begin(), this->glyphs_pointers.end(), this->compareFrontBack);
-			break;
-		case GlyphSortType::BACK_FRONT:
-			stable_sort(this->glyphs_pointers.begin(), this->glyphs_pointers.end(), this->compareBackFront);
-			break;
-		case GlyphSortType::TEXTURE:
-			stable_sort(this->glyphs_pointers.begin(), this->glyphs_pointers.end(), this->compareTexture);
-			break;
-		}
-	}
-
 	void Renderer::createRenderBatches()
 	{
-		if (this->glyphs_pointers.empty())
+		if (this->glyphs_vial.empty())
 		{
 			return;
 		}
 		vector<Vertex> vertices{};
-		vertices.resize(this->glyphs_pointers.size() * 6);
+		vertices.resize(this->glyphs_vial.size() * 6);
 
 		auto glyph{ 0 };
-		auto length{ this->glyphs_pointers.size() };
+		auto length{ this->glyphs_vial.size() };
 		auto offset{ 0 }, vertex{ 0 };
 		GLuint previous_texture{ 0 };
 		if (this->glyphs_vial.size() > 0)
 		{
 			do
 			{
-				if (this->glyphs_pointers.at(glyph)->texture != previous_texture)
+				auto& current = this->glyphs_vial.at(glyph);
+
+				if (current.texture != previous_texture)
 				{
-					this->renderBatches.emplace_back(offset, 6, this->glyphs_pointers.at(glyph)->texture);
+					this->renderBatches.emplace_back(offset, 6, current.texture);
 				}
 				else
 				{
 					this->renderBatches.back().vertexCount += 6;
 				}
-				vertices.at(vertex++) = this->glyphs_pointers.at(glyph)->down_left;
-				vertices.at(vertex++) = this->glyphs_pointers.at(glyph)->top_left;
-				vertices.at(vertex++) = this->glyphs_pointers.at(glyph)->top_right;
-				vertices.at(vertex++) = this->glyphs_pointers.at(glyph)->top_right;
-				vertices.at(vertex++) = this->glyphs_pointers.at(glyph)->down_right;
-				vertices.at(vertex++) = this->glyphs_pointers.at(glyph)->down_left;
+
+				vertices.at(vertex++) = current.down_left;
+				vertices.at(vertex++) = current.top_left;
+				vertices.at(vertex++) = current.top_right;
+				vertices.at(vertex++) = current.top_right;
+				vertices.at(vertex++) = current.down_right;
+				vertices.at(vertex++) = current.down_left;
+
 				offset += 6;
-				previous_texture = this->glyphs_pointers.at(glyph)->texture;
+				previous_texture = this->glyphs_vial.at(glyph).texture;
 			} while (++glyph < length);
 		}
 

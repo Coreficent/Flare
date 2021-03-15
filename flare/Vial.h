@@ -51,10 +51,19 @@ namespace Flare
 			this->index = 0;
 		}
 
+		bool empty()
+		{
+			return this->container.empty();
+		}
+
+		T& at(int index)
+		{
+			return this->container.at(index);
+		}
 
 	private:
 		std::vector<T> container{};
 
-		unsigned int index{0};
+		unsigned int index{ 0 };
 	};
 }

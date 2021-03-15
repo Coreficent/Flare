@@ -55,14 +55,11 @@ namespace Flare::Render
 
 	private:
 		void createVertexArray();
-		void sortGlyphs();
 		void createRenderBatches();
 
 		static bool compareFrontBack(Glyph* a, Glyph* b);
 		static bool compareBackFront(Glyph* a, Glyph* b);
 		static bool compareTexture(Glyph* a, Glyph* b);
-
-		std::vector<Glyph*> glyphs_pointers;
 
 		std::vector<RenderBatch> renderBatches;
 
