@@ -160,8 +160,8 @@ namespace Flare::Render
 		vector<Vertex> vertices{};
 		vertices.resize(this->glyphs_pointers.size() * 6);
 
-		unsigned long glyph{ 0 };
-		const unsigned long length{ this->glyphs_pointers.size() };
+		auto glyph{ 0 };
+		auto length{ this->glyphs_pointers.size() };
 		auto offset{ 0 }, vertex{ 0 };
 		GLuint previous_texture{ 0 };
 		if (this->glyphs_vial.size() > 0)
