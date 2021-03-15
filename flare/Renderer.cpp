@@ -17,17 +17,31 @@ namespace Flare::Render
 
 	void Renderer::initialize()
 	{
-		this->colorProgram.compileShader("shader/vertex.shader", "shader/fragment.shader");
-		this->colorProgram.addAttribute("vertexPosition");
-		this->colorProgram.addAttribute("vertexColor");
-		this->colorProgram.addAttribute("vertexUV");
-		this->colorProgram.linkShader();
-		this->createVertexArray();
+		this->color_program.compileShader("shader/vertex.shader", "shader/fragment.shader");
+		this->color_program.addAttribute("vertexPosition");
+		this->color_program.addAttribute("vertexColor");
+		this->color_program.addAttribute("vertexUV");
+		this->color_program.linkShader();
+		this->create_vertex_array();
 		this->sprite_font.initialize("font/disney.ttf", 64);
 	}
 
 	void Renderer::begin()
 	{
+		glClearDepth(1.0);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		this->color_program.use();
+		glActiveTexture(GL_TEXTURE0);
+
+		auto textureLocation = this->color_program.getUniform("imageSampler");
+		glUniform1i(textureLocation, 0);
+
+		auto locationCamera = this->color_program.getUniform("cameraPosition");
+		auto cameraMatrix = this->camera.getCameraMatrix();
+
+		glUniformMatrix4fv(locationCamera, 1, GL_FALSE, &(cameraMatrix[0][0]));
+
 		this->renderBatches.clear();
 		this->vertex_buffer.refill();
 		this->previous_texture = 0;
@@ -35,10 +49,10 @@ namespace Flare::Render
 
 	void Renderer::end()
 	{
-		this->createRenderBatches();
+		this->generate_batches();
 	}
 
-	void Renderer::render()
+	void Renderer::finalize() noexcept
 	{
 		glBindVertexArray(this->vertex_array_id);
 
@@ -55,22 +69,7 @@ namespace Flare::Render
 	{
 		this->camera.update();
 
-		glClearDepth(1.0);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		this->colorProgram.use();
-		glActiveTexture(GL_TEXTURE0);
-
-		auto textureLocation = this->colorProgram.getUniform("imageSampler");
-		glUniform1i(textureLocation, 0);
-
-		auto locationCamera = this->colorProgram.getUniform("cameraPosition");
-		auto cameraMatrix = this->camera.getCameraMatrix();
-
-		glUniformMatrix4fv(locationCamera, 1, GL_FALSE, &(cameraMatrix[0][0]));
-
 		this->begin();
-
 
 		for (auto& quad : this->stage.get_quads())
 		{
@@ -85,13 +84,13 @@ namespace Flare::Render
 		}
 
 		this->end();
-		this->render();
+		this->finalize();
 
 		glBindTexture(GL_TEXTURE_2D, 0);
-		this->colorProgram.unuse();
+		this->color_program.unuse();
 	}
 
-	void Renderer::createVertexArray()
+	void Renderer::create_vertex_array()
 	{
 		if (!this->vertex_array_id)
 		{
@@ -119,7 +118,7 @@ namespace Flare::Render
 		// TODO where is unbind for verex buffer
 	}
 
-	void Renderer::createRenderBatches()
+	void Renderer::generate_batches()
 	{
 		if (this->vertex_buffer.empty()) {
 			return;

@@ -35,7 +35,7 @@ namespace Flare::Render
 		void begin();
 		void end();
 		void draw(const vec4 bound, const vec4 uv, GLuint texture, float depth, const Color color);
-		void render();
+		void finalize() noexcept;
 
 		void renderNow();
 
@@ -45,8 +45,8 @@ namespace Flare::Render
 		string text{};
 
 	private:
-		void createVertexArray();
-		void createRenderBatches();
+		void create_vertex_array();
+		void generate_batches();
 
 		std::vector<RenderBatch> renderBatches;
 
@@ -54,7 +54,7 @@ namespace Flare::Render
 
 		Vial<Glyph> glyphs_vialxxx{};
 
-		GLSL colorProgram;
+		GLSL color_program;
 
 		SpriteFont sprite_font{};
 
