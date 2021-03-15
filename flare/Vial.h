@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 
-
 namespace Flare
 {
 	template <typename T>
