@@ -14,15 +14,16 @@
 namespace Flare::Render
 {
 	using namespace glm;
+	using namespace std;
 	using namespace Flare::Display;
 
-	class RenderBatch
+	class Render_batch
 	{
 	public:
-		RenderBatch(GLuint offset, GLuint vertexCount, GLuint texture) noexcept : offset{ offset }, vertexCount{ vertexCount }, texture{ texture } {};
+		Render_batch(GLuint offset, GLuint vertex_count, GLuint texture) noexcept : offset{ offset }, vertex_count{ vertex_count }, texture{ texture } {};
 
 		GLuint offset;
-		GLuint vertexCount;
+		GLuint vertex_count;
 		GLuint texture;
 	};
 
@@ -45,10 +46,10 @@ namespace Flare::Render
 		string text{};
 
 	private:
-		void create_vertex_array();
+		void create_vertex_array() noexcept;
 		void generate_batches();
 
-		std::vector<RenderBatch> renderBatches;
+		vector<Render_batch> render_batches;
 
 		Vial<Vertex> vertex_buffer{};
 

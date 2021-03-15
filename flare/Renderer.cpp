@@ -37,12 +37,12 @@ namespace Flare::Render
 		auto textureLocation = this->color_program.getUniform("imageSampler");
 		glUniform1i(textureLocation, 0);
 
-		auto locationCamera = this->color_program.getUniform("cameraPosition");
-		auto cameraMatrix = this->camera.getCameraMatrix();
+		auto local_camera = this->color_program.getUniform("cameraPosition");
+		auto camera_matrix = this->camera.getCameraMatrix();
 
-		glUniformMatrix4fv(locationCamera, 1, GL_FALSE, &(cameraMatrix[0][0]));
+		glUniformMatrix4fv(local_camera, 1, GL_FALSE, &(camera_matrix[0][0]));
 
-		this->renderBatches.clear();
+		this->render_batches.clear();
 		this->vertex_buffer.refill();
 		this->previous_texture = 0;
 	}
@@ -56,10 +56,10 @@ namespace Flare::Render
 	{
 		glBindVertexArray(this->vertex_array_id);
 
-		for (auto& i : this->renderBatches)
+		for (auto& i : this->render_batches)
 		{
 			glBindTexture(GL_TEXTURE_2D, i.texture);
-			glDrawArrays(GL_TRIANGLES, i.offset, i.vertexCount);
+			glDrawArrays(GL_TRIANGLES, i.offset, i.vertex_count);
 		}
 
 		glBindVertexArray(0);
@@ -90,7 +90,7 @@ namespace Flare::Render
 		this->color_program.unuse();
 	}
 
-	void Renderer::create_vertex_array()
+	void Renderer::create_vertex_array() noexcept
 	{
 		if (!this->vertex_array_id)
 		{
@@ -137,11 +137,11 @@ namespace Flare::Render
 	{
 		if (texture != this->previous_texture)
 		{
-			this->renderBatches.emplace_back(this->vertex_buffer.get_index(), 6, texture);
+			this->render_batches.emplace_back(this->vertex_buffer.get_index(), 6, texture);
 		}
 		else
 		{
-			this->renderBatches.back().vertexCount += 6;
+			this->render_batches.back().vertex_count += 6;
 		}
 
 		this->previous_texture = texture;
