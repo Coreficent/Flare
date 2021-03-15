@@ -135,13 +135,6 @@ namespace Flare::Display
 		vertex6.set_uv(this->u_end, this->v_end);
 	}
 
-	/*void Sprite::buffer(Renderer& renderer)
-	{
-		const vec4 bound{ this->x, this->y, this->width , this->height };
-		const vec4 uv{ this->u_start,this->v_start,this->u_end,this->v_end };
-		renderer.draw(bound, uv, get_texture_id(), 0.0f, Color{ 255,255,255,255 });
-	}*/
-
 	vec4 Sprite::get_bound()
 	{
 		return vec4{ this->x, this->y, this->width , this->height };

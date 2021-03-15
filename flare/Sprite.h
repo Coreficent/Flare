@@ -16,9 +16,9 @@ namespace Flare::Display
 	public:
 		Sprite() noexcept;
 		Sprite(const Sprite& value) = default;
-		Sprite(Sprite && value) = default;
-		Sprite& operator=(const Sprite & value) = default;
-		Sprite& operator=(Sprite && value) = default;
+		Sprite(Sprite&& value) = default;
+		Sprite& operator=(const Sprite& value) = default;
+		Sprite& operator=(Sprite&& value) = default;
 		virtual ~Sprite() = default;
 
 		float get_x() const noexcept;
@@ -39,8 +39,6 @@ namespace Flare::Display
 		void rotate(float value) noexcept;
 
 		void render() const;
-
-		// void buffer(Renderer& renderer);
 
 		vec4 get_bound();
 		vec4 get_uv();
