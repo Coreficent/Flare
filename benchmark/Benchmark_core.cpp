@@ -21,7 +21,7 @@ namespace Benchmark::Core {
 	{
 		static auto bunny_texture = Flare::Texture::Resource_manager::get_texture("texture/cake.png");
 
-		if (this->frame_manager.frames_per_second > 60.0) {
+		if (this->frame_manager.frames_per_second > 59.5) {
 
 			for (auto i{ 0 }; i < this->frame_manager.remaining_budget; ++i) {
 
