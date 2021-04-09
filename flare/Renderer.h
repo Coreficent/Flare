@@ -11,7 +11,7 @@
 #include <unordered_map>
 #include <vector>
 
-namespace Flare::Render
+namespace Flare
 {
 	using namespace glm;
 	using namespace std;

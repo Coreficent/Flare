@@ -4,7 +4,7 @@
 
 namespace Benchmark::Display
 {
-	using namespace Flare::Display;
+	using namespace Flare;
 
 	class Bunny : public Sprite
 	{

@@ -4,7 +4,7 @@
 #include <sdl/SDL.h>
 #include "debug.h"
 
-namespace Flare::Frame
+namespace Flare
 {
 	using namespace std;
 	using namespace std::chrono;

@@ -4,7 +4,7 @@
 
 namespace Benchmark::Core {
 
-	using namespace Flare::Core;
+	using namespace Flare;
 
 	class Benchmark_core : public Flare_core
 	{

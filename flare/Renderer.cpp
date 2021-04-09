@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <glm/detail/type_vec4.hpp>
 
-namespace Flare::Render
+namespace Flare
 {
 	using namespace std;
 	using namespace glm;

@@ -5,7 +5,7 @@
 #include <chrono>
 #include <thread>
 
-namespace Flare::Frame
+namespace Flare
 {
 	using namespace std;
 	using namespace std::chrono;

@@ -4,7 +4,7 @@
 
 int main(int argc, char** argv)
 {
-	using namespace Flare::Core;
+	using namespace Flare;
 
 	std::cout << "Hello World from Ripple!\n";
 
