@@ -22,7 +22,7 @@
     <ProjectGuid>{44028A38-6C62-47DE-883A-EF500DE076EB}</ProjectGuid>
     <RootNamespace>Flare</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Game</ProjectName>
+    <ProjectName>Evader</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -130,7 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Evader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
