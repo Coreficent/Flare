@@ -11,7 +11,7 @@ namespace Flare::Render
 {
 	using namespace std;
 	using namespace glm;
-	using namespace Flare::Display;
+	using namespace Flare;
 
 	Renderer::Renderer(int width, int height) : camera{ width,height }, vertex_buffer_id{ 0 }, vertex_array_id{ 0 }{}
 

@@ -7,7 +7,7 @@
 #include "Quad.h"
 #include <gl/glew.h>
 
-namespace Flare::Display
+namespace Flare
 {
 	using namespace glm;
 

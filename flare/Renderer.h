@@ -15,7 +15,7 @@ namespace Flare::Render
 {
 	using namespace glm;
 	using namespace std;
-	using namespace Flare::Display;
+	using namespace Flare;
 
 	class Render_batch
 	{

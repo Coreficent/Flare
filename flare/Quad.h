@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 
-namespace Flare::Display
+namespace Flare
 {
 	using namespace glm;
 

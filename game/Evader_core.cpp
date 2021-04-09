@@ -4,7 +4,7 @@
 
 namespace Evader {
 
-	using namespace Flare::Display;
+	using namespace Flare;
 
 	Evader_core::Evader_core(int window_width, int window_height) :Flare_core{ window_width ,window_height } {}
 

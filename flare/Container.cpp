@@ -1,6 +1,6 @@
 #include "Container.h"
 
-namespace Flare::Display
+namespace Flare
 {
 	using namespace std;
 

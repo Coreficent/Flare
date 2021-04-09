@@ -20,7 +20,7 @@ int closestPow2(int i)
 
 namespace Flare
 {
-	using namespace Flare::Display;
+	using namespace Flare;
 
 	SpriteFont::SpriteFont()
 	{

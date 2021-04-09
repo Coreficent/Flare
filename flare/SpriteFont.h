@@ -34,7 +34,7 @@ Modified By: Benjamin Arnold
 
 namespace Flare
 {
-	using namespace Flare::Display;
+	using namespace Flare;
 
 	struct GLTexture;
 

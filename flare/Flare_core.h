@@ -13,7 +13,7 @@
 namespace Flare
 {
 	using namespace std;
-	using namespace Flare::Display;
+	using namespace Flare;
 	using namespace Flare::Frame;
 	using namespace Flare::Render;
 

@@ -2,7 +2,7 @@
 #include "Sprite.h"
 #include <iostream>
 
-namespace Flare::Display
+namespace Flare
 {
 	Sprite::Sprite() noexcept {}
 

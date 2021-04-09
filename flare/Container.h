@@ -6,10 +6,10 @@
 #include <memory>
 #include <vector>
 
-namespace Flare::Display
+namespace Flare
 {
 	using namespace std;
-	using namespace Flare::Display;
+	using namespace Flare;
 
 	class Container
 	{
