@@ -12,10 +12,9 @@ namespace Evader {
 	public:
 		Evader_core(int windowWidth, int windowHeight);
 
+		void initialize() noexcept override;
 		void enter_frame() noexcept override;
 
 	private:
-		void adjust_bunny() noexcept;
-
 	};
 }

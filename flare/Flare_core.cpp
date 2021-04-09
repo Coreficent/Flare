@@ -1,5 +1,6 @@
 #include "Flare_core.h"
 #include "debug.h"
+
 #include <iostream>
 #include <string>
 
@@ -14,7 +15,6 @@ namespace Flare::Core
 		this->window.initialize("Flare", window_width, window_height);
 		this->audio.initialize();
 		this->renderer.initialize();
-		this->initialize();
 	}
 
 	void Flare_core::initialize() noexcept {}
@@ -24,6 +24,8 @@ namespace Flare::Core
 	{
 		//Musice music = this->audio.load_music("music/x.ogg");
 		//music.play(-1);
+
+		this->initialize();
 
 		string delimiter{ " " };
 
