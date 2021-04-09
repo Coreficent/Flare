@@ -8,7 +8,7 @@ namespace Benchmark::Core {
 
 	using namespace Benchmark::Core;
 	using namespace Benchmark::Display;
-	using namespace Flare::Display;
+	using namespace Flare;
 
 	Benchmark_core::Benchmark_core(int window_width, int window_height) :Flare_core{ window_width ,window_height } {}
 
@@ -19,7 +19,7 @@ namespace Benchmark::Core {
 
 	void Benchmark_core::adjust_bunny() noexcept
 	{
-		static auto bunny_texture = Flare::Texture::Resource_manager::get_texture("texture/wabbit.png");
+		static auto bunny_texture = Flare::Resource_manager::get_texture("texture/wabbit.png");
 
 		if (this->frame_manager.frames_per_second > 59.5) {
 

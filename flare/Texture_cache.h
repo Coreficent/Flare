@@ -4,7 +4,7 @@
 #include <map>
 #include <string>
 
-namespace Flare::Texture
+namespace Flare
 {
 	using namespace std;
 

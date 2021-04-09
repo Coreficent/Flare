@@ -1,7 +1,7 @@
 #include "ImageLoader.h"
 #include "Texture_cache.h"
 
-namespace Flare::Texture
+namespace Flare
 {
 	using namespace std;
 

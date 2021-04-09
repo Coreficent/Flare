@@ -1,6 +1,6 @@
 #include "Resource_manager.h"
 
-namespace Flare::Texture
+namespace Flare
 {
 	using namespace std;
 

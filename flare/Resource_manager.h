@@ -2,7 +2,7 @@
 
 #include "Texture_cache.h"
 
-namespace Flare::Texture
+namespace Flare
 {
 	class Resource_manager
 	{
