@@ -131,11 +131,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Evader.cpp" />
+    <ClCompile Include="Evader_core.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="shader\colorShade.sf" />
     <None Include="shader\colorShade.sv" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Evader_core.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

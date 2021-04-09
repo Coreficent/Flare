@@ -18,6 +18,9 @@
     <ClCompile Include="Evader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Evader_core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\colorShade.sf">
@@ -27,5 +30,10 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Evader_core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
