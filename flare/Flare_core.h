@@ -10,7 +10,7 @@
 #include "SpriteFont.h"
 #include "Window.h"
 
-namespace Flare::Core
+namespace Flare
 {
 	using namespace std;
 	using namespace Flare::Display;

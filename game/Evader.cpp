@@ -6,7 +6,6 @@
 
 int main(int argc, char** argv)
 {
-	using namespace Flare::Core;
 	using namespace Evader;
 
 	Evader_core core{1600,900};

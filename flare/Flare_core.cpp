@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-namespace Flare::Core
+namespace Flare
 {
 	using namespace std;
 

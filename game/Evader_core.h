@@ -4,7 +4,7 @@
 
 namespace Evader {
 
-	using namespace Flare::Core;
+	using namespace Flare;
 
 	class Evader_core : public Flare_core
 	{
