@@ -34,7 +34,11 @@ namespace Flare
 		void initialize();
 		void begin();
 		void end();
+
+		void draw(const vector<Quad>& quads);
+		void draw(const Quad& quad);
 		void draw(const vec4 bound, const vec4 uv, GLuint texture, float depth, const Color color);
+
 		void finalize() noexcept;
 		void render();
 

@@ -71,17 +71,8 @@ namespace Flare
 
 		this->begin();
 
-		for (auto& quad : this->stage.get_quads())
-		{
-			this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
-		}
-
-		vector<Quad> quads = this->sprite_font.draw(this->text.c_str(), vec2(-400.0f, -200.0f), vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
-
-		for (auto& quad : quads)
-		{
-			this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
-		}
+		this->draw(this->stage.get_quads());
+		this->draw(this->sprite_font.draw(this->text.c_str(), vec2(-400.0f, -200.0f), vec2(1.0f), 0.0f, Color{ 125,0,125,125 }));
 
 		this->end();
 		this->finalize();
@@ -134,6 +125,17 @@ namespace Flare
 		glBufferSubData(GL_ARRAY_BUFFER, 0, this->vertex_buffer.size() * sizeof(Vertex), this->vertex_buffer.data());
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
+
+	void Renderer::draw(const vector<Quad>& quads) {
+		for (auto& quad : quads)
+		{
+			this->draw(quad);
+		}
+	}
+
+	void Renderer::draw(const Quad& quad) {
+		this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
 	}
 
 	void Renderer::draw(const glm::vec4 bound, const glm::vec4 uv, GLuint texture, float depth, const Color color)
