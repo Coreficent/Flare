@@ -14,7 +14,11 @@ namespace Flare::Core
 		this->window.initialize("Flare", window_width, window_height);
 		this->audio.initialize();
 		this->renderer.initialize();
+		this->initialize();
 	}
+
+	void Flare_core::initialize() noexcept {}
+	void Flare_core::enter_frame() noexcept {}
 
 	void Flare_core::run()
 	{
@@ -38,8 +42,6 @@ namespace Flare::Core
 
 		//music.stop();
 	}
-
-	void Flare_core::enter_frame() noexcept {}
 
 	Container& Flare_core::get_stage() noexcept
 	{

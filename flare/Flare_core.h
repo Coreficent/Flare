@@ -31,6 +31,8 @@ namespace Flare::Core
 		Container& get_stage() noexcept;
 
 		void run();
+
+		virtual void initialize() noexcept;
 		virtual void enter_frame() noexcept;
 
 		int window_width;
