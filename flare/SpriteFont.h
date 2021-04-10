@@ -32,7 +32,7 @@ Modified By: Benjamin Arnold
 #include <map>
 #include <string>
 #include <ttf/SDL_ttf.h>
-#include <vector>>
+#include <vector>
 
 namespace Flare
 {
