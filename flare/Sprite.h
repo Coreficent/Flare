@@ -31,6 +31,7 @@ namespace Flare
 		float y{ 0.0f };
 		float width{ 0.0f };
 		float height{ 0.0f };
+		float rotation{ 0.0f };
 		vector<shared_ptr<Sprite>> children{};
 
 		void add_child(shared_ptr<Sprite> child);

@@ -73,7 +73,7 @@ namespace Flare
 
 	mat3 Sprite::calculate_matrix()
 	{
-		return translate(mat3{}, vec2{ this->x, this->y });
+		return rotate(translate(mat3{}, vec2{ this->x, this->y }), radians(this->rotation));
 	}
 
 	vec4 Sprite::get_bound()
