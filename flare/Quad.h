@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Vertex.h"
+
 #include <glm/glm.hpp>
 
 namespace Flare
@@ -9,7 +11,12 @@ namespace Flare
 	struct Quad
 	{
 		unsigned int texture_id;
-		vec4 bound;
+
+		Position top_left;
+		Position top_right;
+		Position bottom_left;
+		Position bottom_right;
+
 		vec4 uv;
 	};
 }

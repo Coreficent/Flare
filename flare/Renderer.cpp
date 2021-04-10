@@ -134,10 +134,10 @@ namespace Flare
 	}
 
 	void Renderer::draw(const Quad& quad) {
-		this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
+		this->draw(quad, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
 	}
 
-	void Renderer::draw(const vec4 bound, const vec4 uv, GLuint texture, float depth, const Color color)
+	void Renderer::draw(const Quad& quad, const vec4 uv, GLuint texture, float depth, const Color color)
 	{
 		if (texture != this->previous_texture)
 		{
@@ -150,10 +150,10 @@ namespace Flare
 
 		this->previous_texture = texture;
 
-		const Vertex top_left{ Position{bound.x, bound.y}, color, UV{ uv.x, uv.y } };
-		const Vertex top_right{ Position{ bound.z, bound.y}, color, UV{ uv.x + uv.z, uv.y } };
-		const Vertex bottom_left{ Position{bound.x,  bound.w}, color, UV{uv.x, uv.y + uv.w } };
-		const Vertex bottom_right{ Position{ bound.z,  bound.w}, color, UV{ uv.x + uv.z, uv.y + uv.w } };
+		const Vertex top_left{ quad.top_left, color, UV{ uv.x, uv.y } };
+		const Vertex top_right{ quad.top_right, color, UV{ uv.x + uv.z, uv.y } };
+		const Vertex bottom_left{ quad.bottom_left, color, UV{uv.x, uv.y + uv.w } };
+		const Vertex bottom_right{ quad.bottom_right, color, UV{ uv.x + uv.z, uv.y + uv.w } };
 
 		this->vertex_buffer.next() = bottom_left;
 		this->vertex_buffer.next() = top_left;

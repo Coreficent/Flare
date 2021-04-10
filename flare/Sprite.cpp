@@ -36,7 +36,23 @@ namespace Flare
 	{
 		vector<Quad> result{};
 
-		result.push_back(Quad{ texture_id, get_bound(), get_uv() });
+		const float half_width = this->width / 2.0f;
+		const float half_height = this->height / 2.0f;
+
+		vec3 top_left{ -half_width, -half_height, 1.0f };
+		vec3 top_right{ half_width, -half_height, 1.0f };
+		vec3 bottom_left{ -half_width, half_height, 1.0f };
+		vec3 bottom_right{ half_width, half_height, 1.0f };
+
+		const mat3 matrix = transform();
+
+		top_left = matrix * top_left;
+		top_right = matrix * top_right;
+		bottom_left = matrix * bottom_left;
+		bottom_right = matrix * bottom_right;
+
+
+		result.push_back(Quad{ texture_id, Position{top_left.x, top_left.y}, Position{top_right.x, top_right.y}, Position{bottom_left.x, bottom_left.y}, Position{bottom_right.x, bottom_right.y}, get_uv() });
 
 		for (auto& child : this->children)
 		{
@@ -53,6 +69,11 @@ namespace Flare
 		{
 			child->enter_frame();
 		}
+	}
+
+	mat3 Sprite::transform()
+	{
+		return translate(mat3{}, vec2{ this->x, this->y });
 	}
 
 	vec4 Sprite::get_bound()

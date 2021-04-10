@@ -41,13 +41,12 @@ namespace Flare
 		virtual vector<Quad> graphics();
 
 	private:
-		mat3 transform{};
-
 		float u_start{ 0.0f };
 		float u_end{ 1.0f };
 		float v_start{ 0.0f };
 		float v_end{ 1.0f };
 
+		mat3 transform();
 		vec4 get_bound();
 		vec4 get_uv();
 	};

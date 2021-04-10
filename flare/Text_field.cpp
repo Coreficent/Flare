@@ -300,7 +300,20 @@ namespace Flare
 
 				vec4 bound{ destRect.x, destRect.y, destRect.x + destRect.z , destRect.y + destRect.w };
 
-				result.push_back(Quad{ _texID, bound ,uv });
+
+				//const Vertex top_left{ Position{bound.x, bound.y}, color, UV{ uv.x, uv.y } };
+				//const Vertex top_right{ Position{ bound.z, bound.y}, color, UV{ uv.x + uv.z, uv.y } };
+				//const Vertex bottom_left{ Position{bound.x,  bound.w}, color, UV{uv.x, uv.y + uv.w } };
+				//const Vertex bottom_right{ Position{ bound.z,  bound.w}, color, UV{ uv.x + uv.z, uv.y + uv.w } };
+
+
+				Position top_left{ destRect.x, destRect.y };
+				Position top_right{ destRect.x + destRect.z, destRect.y };
+				Position bottom_left{ destRect.x,destRect.y + destRect.w };
+				Position bottom_right{ destRect.x + destRect.z, destRect.y + destRect.w };
+
+
+				result.push_back(Quad{ _texID, top_left, top_right, bottom_left, bottom_right, uv });
 
 				tp.x += _glyphs[gi].size.x * scaling.x;
 			}
