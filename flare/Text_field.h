@@ -58,15 +58,15 @@ namespace Flare
 		string text{};
 
 	private:
-		static vector<vector<int>> create_rows(vector<ivec4> rects, int rectsLength, int r, int padding, int& w);
 
-		int closestPow2(int i);
+		vector<CharGlyph> glyphs;
 
 		int font_start, font_length;
-		vector<CharGlyph> glyphs;
 		int font_height;
-
 		int maximum_resolution{ 4096 };
+
+		static vector<vector<int>> create_rows(vector<ivec4> rects, int rectsLength, int r, int padding, int& w);
+		int closestPow2(int i) noexcept;
 	};
 }
 

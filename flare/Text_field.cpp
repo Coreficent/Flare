@@ -67,7 +67,7 @@ namespace Flare
 		while (rows <= font_length)
 		{
 			height = rows * (padding + font_height) + padding;
-			auto gr = create_rows(rectangles, font_length, rows, padding, width);
+			vector<vector<int>> created_rows = create_rows(rectangles, font_length, rows, padding, width);
 
 			// Desire a power of 2 texture
 			width = closestPow2(width);
@@ -83,7 +83,7 @@ namespace Flare
 			// Check for minimal area
 			if (area >= width * height)
 			{
-				best_partition = gr;
+				best_partition = created_rows;
 				best_width = width;
 				best_height = height;
 				best_row = rows;
@@ -99,17 +99,17 @@ namespace Flare
 		// Can a bitmap font be made?
 		if (best_partition.empty())
 		{
-			fprintf(stderr, "Failed to Map TTF font %s to texture. Try lowering resolution.\n", font);
-			fflush(stderr);
+			cerr << "Failed to Map TTF font %s to texture. Try lowering resolution.\n" << font << endl;
 			throw 282;
 		}
+
 		// Create the texture
 		glGenTextures(1, &_texID);
 		glBindTexture(GL_TEXTURE_2D, _texID);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, best_width, best_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
 
 		// Now draw all the glyphs
-		SDL_Color fg = { 255, 255, 255, 255 };
+		SDL_Color color{ 255, 255, 255, 255 };
 		int ly = padding;
 		for (int ri = 0; ri < best_row; ri++)
 		{
@@ -118,7 +118,7 @@ namespace Flare
 			{
 				const int glyph_index = best_partition.at(ri).at(ci);
 
-				SDL_Surface* glyphSurface = TTF_RenderGlyph_Blended(open_font, first_printable_character + glyph_index, fg);
+				SDL_Surface* glyphSurface = TTF_RenderGlyph_Blended(open_font, first_printable_character + glyph_index, color);
 
 				// Save glyph image and update coordinates
 				glTexSubImage2D(GL_TEXTURE_2D, 0, lx, ly, glyphSurface->w, glyphSurface->h, GL_BGRA, GL_UNSIGNED_BYTE, glyphSurface->pixels);
@@ -139,6 +139,7 @@ namespace Flare
 		const int rs{ padding - 1 };
 		const long white_size{ rs * rs };
 		vector<int> white_squares(white_size);
+
 		memset(white_squares.data(), 0xffffffff, white_size * sizeof(int));
 		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, rs, rs, GL_RGBA, GL_UNSIGNED_BYTE, white_squares.data());
 
@@ -151,17 +152,14 @@ namespace Flare
 		// Create QuadBatch glyphs
 		const long glyph_size{ font_length + 1 };
 		glyphs = vector< CharGlyph>(glyph_size);
+
 		for (i = 0; i < font_length; i++)
 		{
 			glyphs.at(i).character = first_printable_character + i;
 			glyphs.at(i).size = vec2(rectangles.at(i).z, rectangles.at(i).w);
-			glyphs.at(i).uvRect = vec4(
-				1.0f * rectangles.at(i).x / best_width,
-				1.0f * rectangles.at(i).y / best_height,
-				1.0f * rectangles.at(i).z / best_width,
-				1.0f * rectangles.at(i).w / best_height
-			);
+			glyphs.at(i).uvRect = vec4{ 1.0f * rectangles.at(i).x / best_width,1.0f * rectangles.at(i).y / best_height,		1.0f * rectangles.at(i).z / best_width,	1.0f * rectangles.at(i).w / best_height };
 		}
+
 		glyphs.at(font_length).character = ' ';
 		glyphs.at(font_length).size = glyphs.at(0).size;
 		glyphs.at(font_length).uvRect = vec4(0, 0, 1.0f * rs / best_width, 1.0f * rs / best_height);
@@ -225,7 +223,9 @@ namespace Flare
 			{
 				size.y += font_height;
 				if (size.x < cw)
+				{
 					size.x = cw;
+				}
 				cw = 0;
 			}
 			else
@@ -248,7 +248,7 @@ namespace Flare
 		return size;
 	}
 
-	int Text_field::closestPow2(int i)
+	int Text_field::closestPow2(int i) noexcept
 	{
 		i--;
 		int pi = 1;
@@ -262,40 +262,43 @@ namespace Flare
 
 	vector<Quad> Text_field::graphics()
 	{
-		//const auto s = this->text.c_str();
 		const Justification just{ Justification::LEFT };
 
 		vector<Quad> result{};
 
 		const vec2 position{};
 		const vec2 scaling{ 1.0f, 1.0f };
-		vec2 tp = position;
+		vec2 text_position = position;
+
 		// Apply justification
 		if (just == Justification::MIDDLE)
 		{
-			tp.x -= measure(this->text).x * scaling.x / 2;
+			text_position.x -= measure(this->text).x * scaling.x / 2;
 		}
 		else if (just == Justification::RIGHT)
 		{
-			tp.x -= measure(this->text).x * scaling.x;
+			text_position.x -= measure(this->text).x * scaling.x;
 		}
-		for (int si = 0; this->text[si] != 0; si++)
-		{
-			char c = this->text[si];
-			if (this->text[si] == '\n')
-			{
-				tp.y += font_height * scaling.y;
 
-				tp.x = position.x;
+		for (const char c : this->text)
+		{
+			if (c == '\n')
+			{
+				text_position.y += font_height * scaling.y;
+				text_position.x = position.x;
 			}
 			else
 			{
 				// Check for correct glyph
 				int gi = c - font_start;
+
 				if (gi < 0 || gi >= font_length)
+				{
 					gi = font_length;
-				vec4 destRect(tp, glyphs[gi].size * scaling);
-				vec4 uv = glyphs[gi].uvRect;
+				}
+
+				const vec4 destRect(text_position, glyphs.at(gi).size * scaling);
+				const vec4 uv = glyphs.at(gi).uvRect;
 
 				vec3 top_left{ destRect.x, destRect.y, 1.0f };
 				vec3 top_right{ destRect.x + destRect.z, destRect.y, 1.0f };
@@ -311,7 +314,7 @@ namespace Flare
 
 				result.push_back(Quad{ _texID, Position{top_left.x, top_left.y}, Position{top_right.x, top_right.y}, Position{bottom_left.x, bottom_left.y}, Position{bottom_right.x, bottom_right.y}, uv });
 
-				tp.x += glyphs[gi].size.x * scaling.x;
+				text_position.x += glyphs.at(gi).size.x * scaling.x;
 			}
 		}
 
