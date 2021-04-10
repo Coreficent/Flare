@@ -24,30 +24,9 @@ namespace Flare
 		Sprite& operator=(Sprite&& value) = default;
 		virtual ~Sprite() = default;
 
-		float get_x() const noexcept;
-		float get_y() const noexcept;
-		float get_width() const noexcept;
-		float get_height() const noexcept;
-		GLuint get_texture_id() const noexcept;
-
-		void set_x(float value) noexcept;
-		void set_y(float value) noexcept;
-		void set_width(float value) noexcept;
-		void set_height(float value) noexcept;
-		void set_texture_id(GLuint value) noexcept;
-
-		void scale_x(float value) noexcept;
-		void scale_y(float value) noexcept;
-		void scale(float value) noexcept;
-		void rotate(float value) noexcept;
-
-		void render() const;
-
 		vec4 get_bound();
 		vec4 get_uv();
 		vector<Quad> graphics();
-
-		Vial<Vertex>* dest{ nullptr };
 
 		virtual void enter_frame() noexcept;
 
