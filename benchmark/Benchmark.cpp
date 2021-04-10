@@ -4,7 +4,7 @@
 int main(int argc, char** argv)
 {
 	using namespace std;
-	using namespace Benchmark::Core;
+	using namespace Benchmark;
 
 	cout << "Hello from Benchmark!" << endl;
 

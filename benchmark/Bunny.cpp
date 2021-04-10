@@ -1,6 +1,6 @@
 #include "Bunny.h"
 
-namespace Benchmark::Display
+namespace Benchmark
 {
 	void Bunny::enter_frame() noexcept {
 		this->x += this->speed_x;

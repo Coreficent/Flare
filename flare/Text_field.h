@@ -85,8 +85,8 @@ namespace Flare
 		unsigned int _texID;
 
 		/// Draws using a QuadBatch
-		
-		virtual vector<Quad> graphics() override;
+
+		vector<Quad> graphics() override;
 
 		string text{};
 

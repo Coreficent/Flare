@@ -1,16 +1,24 @@
 #include "Benchmark_core.h"
-#include "Bunny.h"
-#include <flare/Sprite.h>
+
 #include <flare/Resource_manager.h>
+#include <flare/Sprite.h>
 #include <iostream>
 
-namespace Benchmark::Core {
+namespace Benchmark {
 
-	using namespace Benchmark::Core;
-	using namespace Benchmark::Display;
+	using namespace Benchmark;
 	using namespace Flare;
 
 	Benchmark_core::Benchmark_core(int window_width, int window_height) :Flare_core{ window_width ,window_height } {}
+
+	void Benchmark_core::initialize() noexcept
+	{
+		shared_ptr<Text_field> monitor{ new Text_field{} };
+		monitor->initialize("font/disney.ttf", 64);
+		monitor->text = "testing testing testing testing testing testing";
+
+		this->get_stage().add_child(monitor);
+	}
 
 	void Benchmark_core::enter_frame() noexcept
 	{
@@ -39,14 +47,17 @@ namespace Benchmark::Core {
 				bunny->x = bunny->minimum_x;
 				bunny->y = bunny->minimum_y;
 
+				this->bunnies.push_back(bunny);
 				this->get_stage().add_child(bunny);
 			}
 		}
 		else if (this->frame_manager.frames_per_second < 59.0f)
 		{
-			if (!this->get_stage().children.empty())
+			if (!this->bunnies.empty())
 			{
-				this->get_stage().remove_child(this->get_stage().children.back());
+				auto last_bunny = this->bunnies.back();
+				this->bunnies.pop_back();
+				this->get_stage().remove_child(last_bunny);
 			}
 		}
 	}

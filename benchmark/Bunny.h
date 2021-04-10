@@ -2,7 +2,7 @@
 
 #include "flare/Sprite.h"
 
-namespace Benchmark::Display
+namespace Benchmark
 {
 	using namespace Flare;
 

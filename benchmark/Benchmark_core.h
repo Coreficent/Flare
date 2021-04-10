@@ -1,9 +1,13 @@
 #pragma once
 
-#include "flare/Flare_core.h"
+#include "Bunny.h"
 
-namespace Benchmark::Core {
+#include <flare/Flare_core.h>
+#include <flare/Sprite.h>
 
+namespace Benchmark {
+
+	using namespace std;
 	using namespace Flare;
 
 	class Benchmark_core : public Flare_core
@@ -12,10 +16,12 @@ namespace Benchmark::Core {
 	public:
 		Benchmark_core(int windowWidth, int windowHeight);
 
+		void initialize() noexcept override;
 		void enter_frame() noexcept override;
 
 	private:
-		void adjust_bunny() noexcept;
+		vector< shared_ptr<Bunny>> bunnies{};
 
+		void adjust_bunny() noexcept;
 	};
 }

@@ -2,6 +2,7 @@
 #include "Quad.h"
 #include <sdl/SDL.h>
 #include <glm/gtc/matrix_transform.inl>
+#include <iostream>
 
 
 int closestPow2(int i)
