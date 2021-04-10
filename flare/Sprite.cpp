@@ -13,6 +13,7 @@ namespace Flare
 	void Sprite::add_child(shared_ptr<Sprite> child)
 	{
 		this->children.push_back(child);
+		child->parent = this;
 	}
 
 	void Sprite::remove_child(shared_ptr<Sprite> child)
@@ -24,6 +25,7 @@ namespace Flare
 		{
 			index = std::distance(this->children.begin(), it);
 			this->children.erase(this->children.begin() + index);
+			child->parent = nullptr;
 		}
 	}
 
