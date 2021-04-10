@@ -46,7 +46,7 @@ namespace Flare
 		float v_start{ 0.0f };
 		float v_end{ 1.0f };
 
-		mat3 transform();
+		mat3 calculate_matrix();
 		vec4 get_bound();
 		vec4 get_uv();
 	};

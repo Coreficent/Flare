@@ -44,12 +44,12 @@ namespace Flare
 		vec3 bottom_left{ -half_width, half_height, 1.0f };
 		vec3 bottom_right{ half_width, half_height, 1.0f };
 
-		const mat3 matrix = transform();
+		const mat3 transform = calculate_matrix();
 
-		top_left = matrix * top_left;
-		top_right = matrix * top_right;
-		bottom_left = matrix * bottom_left;
-		bottom_right = matrix * bottom_right;
+		top_left = transform * top_left;
+		top_right = transform * top_right;
+		bottom_left = transform * bottom_left;
+		bottom_right = transform * bottom_right;
 
 
 		result.push_back(Quad{ texture_id, Position{top_left.x, top_left.y}, Position{top_right.x, top_right.y}, Position{bottom_left.x, bottom_left.y}, Position{bottom_right.x, bottom_right.y}, get_uv() });
@@ -71,7 +71,7 @@ namespace Flare
 		}
 	}
 
-	mat3 Sprite::transform()
+	mat3 Sprite::calculate_matrix()
 	{
 		return translate(mat3{}, vec2{ this->x, this->y });
 	}
