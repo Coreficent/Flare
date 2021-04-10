@@ -67,8 +67,6 @@ namespace Flare
 	private:
 		static vector<int>* createRows(ivec4* rects, int rectsLength, int r, int padding, int& w);
 
-		vector<Quad> draw(const char* s, Justification just = Justification::LEFT);
-
 		int _regStart, _regLength;
 		CharGlyph* _glyphs;
 		int _fontHeight;

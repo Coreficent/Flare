@@ -260,8 +260,11 @@ namespace Flare
 		return size;
 	}
 
-	vector<Quad> Text_field::draw(const char* s, Justification just)
+	vector<Quad> Text_field::graphics()
 	{
+		auto s = this->text.c_str();
+		Justification just{ Justification::LEFT };
+
 		vector<Quad> result{};
 
 		vec2 position{};
@@ -313,10 +316,5 @@ namespace Flare
 		}
 
 		return result;
-	}
-
-	vector<Quad> Text_field::graphics()
-	{
-		return this->draw(this->text.c_str(), Justification::LEFT);
 	}
 }
