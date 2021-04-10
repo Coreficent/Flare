@@ -57,11 +57,9 @@ namespace Flare
 
 	vec4 Sprite::get_bound()
 	{
-		vec3 top_left{ 0.0f, 0.0f, 1.0f };
-		vec3 bottom_right{ this->width , this->height, 1.0f };
 		const mat3 translation = translate(mat3{}, vec2{ this->x - this->width / 2.0f, this->y - this->height / 2.0f });
-		top_left = translation * top_left;
-		bottom_right = translation * bottom_right;
+		const vec3 top_left = translation * vec3{ 0.0f, 0.0f, 1.0f };
+		const vec3 bottom_right = translation * vec3{ this->width , this->height, 1.0f };
 
 		return vec4{ top_left.x, top_left.y, bottom_right.x , bottom_right.y };
 	}
