@@ -4,7 +4,6 @@
 #define Text_field_h__
 
 #include "Quad.h"
-#include "Vertex.h"
 #include "Sprite.h"
 
 #include <glm/glm.hpp>
@@ -49,9 +48,7 @@ namespace Flare
 		/// Measures the dimensions of the text
 		vec2 measure(string s);
 
-		unsigned int _texID;
-
-		/// Draws using a QuadBatch
+		unsigned int texture_id;
 
 		vector<Quad> graphics() override;
 
@@ -61,7 +58,8 @@ namespace Flare
 
 		vector<CharGlyph> glyphs;
 
-		int font_start, font_length;
+		int font_start;
+		int font_length;
 		int font_height;
 		int maximum_resolution{ 4096 };
 

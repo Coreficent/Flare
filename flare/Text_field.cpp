@@ -104,8 +104,8 @@ namespace Flare
 		}
 
 		// Create the texture
-		glGenTextures(1, &_texID);
-		glBindTexture(GL_TEXTURE_2D, _texID);
+		glGenTextures(1, &texture_id);
+		glBindTexture(GL_TEXTURE_2D, texture_id);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, best_width, best_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
 
 		// Now draw all the glyphs
@@ -170,10 +170,10 @@ namespace Flare
 
 	void Text_field::dispose() noexcept
 	{
-		if (_texID != 0)
+		if (texture_id != 0)
 		{
-			glDeleteTextures(1, &_texID);
-			_texID = 0;
+			glDeleteTextures(1, &texture_id);
+			texture_id = 0;
 		}
 	}
 
@@ -312,7 +312,7 @@ namespace Flare
 				bottom_left = transform * bottom_left;
 				bottom_right = transform * bottom_right;
 
-				result.push_back(Quad{ _texID, Position{top_left.x, top_left.y}, Position{top_right.x, top_right.y}, Position{bottom_left.x, bottom_left.y}, Position{bottom_right.x, bottom_right.y}, uv });
+				result.push_back(Quad{ texture_id, Position{top_left.x, top_left.y}, Position{top_right.x, top_right.y}, Position{bottom_left.x, bottom_left.y}, Position{bottom_right.x, bottom_right.y}, uv });
 
 				text_position.x += glyphs.at(gi).size.x * scaling.x;
 			}
