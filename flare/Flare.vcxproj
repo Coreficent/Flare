@@ -153,7 +153,6 @@
     <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Container.h" />
     <ClInclude Include="Quad.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="error.h" />
@@ -188,7 +187,6 @@
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Container.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="error.cpp" />
     <ClCompile Include="Frame_manager.cpp" />

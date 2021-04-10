@@ -44,7 +44,7 @@ namespace Flare
 
 		this->render_batches.clear();
 		this->vertex_buffer.refill();
-		this->previous_texture = 0;
+		this->previous_texture = 8192;
 	}
 
 	void Renderer::end()
@@ -71,7 +71,7 @@ namespace Flare
 
 		this->begin();
 
-		this->draw(this->stage.get_quads());
+		this->draw(this->stage.graphics());
 		this->draw(this->sprite_font.draw(this->text.c_str(), vec2(-400.0f, -200.0f), vec2(1.0f), 0.0f, Color{ 125,0,125,125 }));
 
 		this->end();

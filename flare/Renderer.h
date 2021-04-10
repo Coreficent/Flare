@@ -1,10 +1,11 @@
 #pragma once
 
 #include "Camera.h"
-#include "Container.h"
 #include "GLSL.h"
 #include "Glyph.h"
+#include "Sprite.h"
 #include "SpriteFont.h"
+
 #include "Vertex.h"
 #include "Vial.h"
 #include <gl/glew.h>
@@ -43,7 +44,7 @@ namespace Flare
 		void render();
 
 		Camera camera;
-		Container stage{};
+		Sprite stage{};
 		string text{};
 
 	private:

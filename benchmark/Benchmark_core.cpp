@@ -22,8 +22,8 @@ namespace Benchmark::Core {
 		static auto bunny_texture = Flare::Resource_manager::get_texture("texture/wabbit.png");
 
 		if (this->frame_manager.frames_per_second > 59.5) {
-
-			for (auto i{ 0 }; i < this->frame_manager.remaining_budget * this->frame_manager.remaining_budget; ++i) {
+			for (auto i{ 0 }; i < this->frame_manager.remaining_budget * this->frame_manager.remaining_budget; ++i)
+			{
 
 				shared_ptr<Bunny> bunny{ new Bunny{} };
 
@@ -42,8 +42,12 @@ namespace Benchmark::Core {
 				this->get_stage().add_child(bunny);
 			}
 		}
-		else if (this->frame_manager.frames_per_second < 59.0f) {
-			this->get_stage().reomve_last_child();
+		else if (this->frame_manager.frames_per_second < 59.0f)
+		{
+			if (!this->get_stage().children.empty())
+			{
+				this->get_stage().remove_child(this->get_stage().children.back());
+			}
 		}
 	}
 }

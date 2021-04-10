@@ -37,7 +37,7 @@ namespace Flare
 			this->program.run(this->key, this->renderer, this->audio);
 			this->game.run();
 			this->renderer.stage.enter_frame();
-			this->renderer.text = "fps:" + delimiter + to_string(static_cast <int>(this->frame_manager.frames_per_second) + 1) + "\n" + "object:" + delimiter + to_string(this->renderer.stage.get_size());
+			this->renderer.text = "fps:" + delimiter + to_string(static_cast <int>(this->frame_manager.frames_per_second) + 1) + "\n" + "object:" + delimiter + to_string(this->renderer.stage.child_count());
 			this->renderer.render();
 			this->window.swap_window();
 		}
@@ -45,7 +45,7 @@ namespace Flare
 		//music.stop();
 	}
 
-	Container& Flare_core::get_stage() noexcept
+	Sprite& Flare_core::get_stage() noexcept
 	{
 		return this->renderer.stage;
 	}

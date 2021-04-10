@@ -27,7 +27,7 @@ namespace Flare
 		Flare_core& operator=(Flare_core && value) = default;
 		virtual ~Flare_core() = default;
 
-		Container& get_stage() noexcept;
+		Sprite& get_stage() noexcept;
 
 		void run();
 

@@ -35,6 +35,7 @@ namespace Flare
 		vec4 get_bound();
 		vec4 get_uv();
 		vector<Quad> graphics();
+		vector<shared_ptr<Sprite>> children{};
 
 		void add_child(shared_ptr<Sprite> child);
 		void remove_child(shared_ptr<Sprite> child);
@@ -43,8 +44,6 @@ namespace Flare
 		virtual void enter_frame() noexcept;
 
 	private:
-		vector<shared_ptr<Sprite>> children{};
-
 		Matrix matrix{};
 
 		Color color{ 255,255,255 ,255 };

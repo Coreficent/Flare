@@ -56,7 +56,10 @@ namespace Flare
 
 	void Sprite::enter_frame() noexcept
 	{
-
+		for (auto& child : this->children)
+		{
+			child->enter_frame();
+		}
 	}
 
 	Point Sprite::locate_vertex(float x, float y) const
