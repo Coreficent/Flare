@@ -15,6 +15,10 @@ namespace Benchmark {
 	{
 		this->statistics->text = "statistics";
 
+		this->get_stage().scale_x = 0.5f;
+		this->get_stage().scale_y = 0.5f;
+		this->get_stage().rotation = 45.0f;
+
 		this->get_stage().add_child(this->bunny_layer);
 		this->get_stage().add_child(this->interface_layer);
 
@@ -40,6 +44,7 @@ namespace Benchmark {
 				bunny->texture_id = bunny_texture.id;
 				bunny->width = 26.0f;
 				bunny->height = 37.0f;
+
 				bunny->rotation = 45.0f;
 				bunny->scale_x = 2.0f;
 				bunny->scale_y = 4.0f;
