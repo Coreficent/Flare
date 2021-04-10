@@ -22,6 +22,8 @@ int closestPow2(int i)
 namespace Flare
 {
 	using namespace Flare;
+	using namespace glm;
+	using namespace std;
 
 	Text_field::Text_field(const char* font, int size)
 	{
@@ -45,7 +47,7 @@ namespace Flare
 		int padding = size / 8;
 
 		// First neasure all the regions
-		glm::ivec4* glyphRects = new glm::ivec4[_regLength];
+		ivec4* glyphRects = new ivec4[_regLength];
 		int i = 0, advance;
 		for (char c = cs; c <= ce; c++)
 		{
@@ -59,7 +61,7 @@ namespace Flare
 
 		// Find best partitioning of glyphs
 		int rows = 1, w, h, bestWidth = 0, bestHeight = 0, area = MAX_TEXTURE_RES * MAX_TEXTURE_RES, bestRows = 0;
-		std::vector<int>* bestPartition = nullptr;
+		vector<int>* bestPartition = nullptr;
 		while (rows <= _regLength)
 		{
 			h = rows * (padding + _fontHeight) + padding;
@@ -163,8 +165,8 @@ namespace Flare
 		for (i = 0; i < _regLength; i++)
 		{
 			_glyphs[i].character = (char)(cs + i);
-			_glyphs[i].size = glm::vec2(glyphRects[i].z, glyphRects[i].w);
-			_glyphs[i].uvRect = glm::vec4(
+			_glyphs[i].size = vec2(glyphRects[i].z, glyphRects[i].w);
+			_glyphs[i].uvRect = vec4(
 				(float)glyphRects[i].x / (float)bestWidth,
 				(float)glyphRects[i].y / (float)bestHeight,
 				(float)glyphRects[i].z / (float)bestWidth,
@@ -173,7 +175,7 @@ namespace Flare
 		}
 		_glyphs[_regLength].character = ' ';
 		_glyphs[_regLength].size = _glyphs[0].size;
-		_glyphs[_regLength].uvRect = glm::vec4(0, 0, (float)rs / (float)bestWidth, (float)rs / (float)bestHeight);
+		_glyphs[_regLength].uvRect = vec4(0, 0, (float)rs / (float)bestWidth, (float)rs / (float)bestHeight);
 
 		glBindTexture(GL_TEXTURE_2D, 0);
 		delete[] glyphRects;
@@ -195,10 +197,10 @@ namespace Flare
 		}
 	}
 
-	std::vector<int>* Text_field::createRows(glm::ivec4* rects, int rectsLength, int r, int padding, int& w)
+	vector<int>* Text_field::createRows(ivec4* rects, int rectsLength, int r, int padding, int& w)
 	{
 		// Blank initialize
-		std::vector<int>* l = new std::vector<int>[r]();
+		vector<int>* l = new vector<int>[r]();
 		int* cw = new int[r]();
 		for (int i = 0; i < r; i++)
 		{
@@ -230,9 +232,9 @@ namespace Flare
 		return l;
 	}
 
-	glm::vec2 Text_field::measure(const char* s)
+	vec2 Text_field::measure(const char* s)
 	{
-		glm::vec2 size(0, _fontHeight);
+		vec2 size(0, _fontHeight);
 		float cw = 0;
 		for (int si = 0; s[si] != 0; si++)
 		{
@@ -258,11 +260,11 @@ namespace Flare
 		return size;
 	}
 
-	std::vector<Quad> Text_field::draw(const char* s, glm::vec2 position, glm::vec2 scaling, float depth, Color tint, Justification just /* = Justification::LEFT */)
+	vector<Quad> Text_field::draw(const char* s, vec2 position, vec2 scaling, float depth, Color tint, Justification just /* = Justification::LEFT */)
 	{
-		std::vector<Quad> result{};
+		vector<Quad> result{};
 
-		glm::vec2 tp = position;
+		vec2 tp = position;
 		// Apply justification
 		if (just == Justification::MIDDLE)
 		{
@@ -287,8 +289,8 @@ namespace Flare
 				int gi = c - _regStart;
 				if (gi < 0 || gi >= _regLength)
 					gi = _regLength;
-				glm::vec4 destRect(tp, _glyphs[gi].size * scaling);
-				glm::vec4 uv = _glyphs[gi].uvRect;
+				vec4 destRect(tp, _glyphs[gi].size * scaling);
+				vec4 uv = _glyphs[gi].uvRect;
 
 				vec3 top_left{ destRect.x, destRect.y, 1.0f };
 				vec3 top_right{ destRect.x + destRect.z, destRect.y, 1.0f };

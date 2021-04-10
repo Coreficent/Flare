@@ -15,16 +15,17 @@
 
 namespace Flare
 {
-	using namespace std;
 	using namespace Flare;
+	using namespace glm;
+	using namespace std;
 
 	struct GLTexture;
 
 	struct CharGlyph
 	{
 		char character;
-		glm::vec4 uvRect;
-		glm::vec2 size;
+		vec4 uvRect;
+		vec2 size;
 	};
 
 #define FIRST_PRINTABLE_CHAR ((char)32)
@@ -53,7 +54,7 @@ namespace Flare
 		}
 
 		/// Measures the dimensions of the text
-		glm::vec2 measure(const char* s);
+		vec2 measure(const char* s);
 
 		unsigned int _texID;
 
@@ -64,9 +65,9 @@ namespace Flare
 		string text{};
 
 	private:
-		static std::vector<int>* createRows(glm::ivec4* rects, int rectsLength, int r, int padding, int& w);
+		static vector<int>* createRows(ivec4* rects, int rectsLength, int r, int padding, int& w);
 
-		std::vector<Quad> draw(const char* s, glm::vec2 position, glm::vec2 scaling, float depth, Color tint, Justification just = Justification::LEFT);
+		vector<Quad> draw(const char* s, vec2 position, vec2 scaling, float depth, Color tint, Justification just = Justification::LEFT);
 
 		int _regStart, _regLength;
 		CharGlyph* _glyphs;
@@ -74,4 +75,4 @@ namespace Flare
 	};
 }
 
-#endif // Text_field_h__
+#endif
