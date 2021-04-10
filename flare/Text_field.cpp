@@ -114,7 +114,7 @@ namespace Flare
 		for (int ri = 0; ri < best_row; ri++)
 		{
 			int lx = padding;
-			for (int ci = 0; ci < best_partition[ri].size(); ci++)
+			for (int ci = 0; ci < best_partition.at(ri).size(); ci++)
 			{
 				const int glyph_index = best_partition.at(ri).at(ci);
 
@@ -137,8 +137,9 @@ namespace Flare
 
 		// Draw the unsupported glyph
 		const int rs{ padding - 1 };
-		vector<int> white_squares(rs * rs);
-		memset(white_squares.data(), 0xffffffff, rs * rs * sizeof(int));
+		const long white_size{ rs * rs };
+		vector<int> white_squares(white_size);
+		memset(white_squares.data(), 0xffffffff, white_size * sizeof(int));
 		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, rs, rs, GL_RGBA, GL_UNSIGNED_BYTE, white_squares.data());
 
 		// Set some texture parameters
@@ -148,10 +149,11 @@ namespace Flare
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
 		// Create QuadBatch glyphs
-		glyphs = vector< CharGlyph>(font_length + 1);
+		const long glyph_size{ font_length + 1 };
+		glyphs = vector< CharGlyph>(glyph_size);
 		for (i = 0; i < font_length; i++)
 		{
-			glyphs.at(i).character = (char)(first_printable_character + i);
+			glyphs.at(i).character = first_printable_character + i;
 			glyphs.at(i).size = vec2(rectangles.at(i).z, rectangles.at(i).w);
 			glyphs.at(i).uvRect = vec4(
 				1.0f * rectangles.at(i).x / best_width,
@@ -162,7 +164,7 @@ namespace Flare
 		}
 		glyphs.at(font_length).character = ' ';
 		glyphs.at(font_length).size = glyphs[0].size;
-		glyphs.at(font_length).uvRect = vec4(0, 0, (float)rs / (float)best_width, (float)rs / (float)best_height);
+		glyphs.at(font_length).uvRect = vec4(0, 0, 1.0f * rs / best_width, 1.0f * rs / best_height);
 
 		glBindTexture(GL_TEXTURE_2D, 0);
 		TTF_CloseFont(open_font);
