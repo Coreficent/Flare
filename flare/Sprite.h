@@ -24,18 +24,17 @@ namespace Flare
 		Sprite& operator=(Sprite&& value) = default;
 		virtual ~Sprite() = default;
 
+		GLuint texture_id{ 0 };
+		float x{ 0.0f };
+		float y{ 0.0f };
+		float width{ 0.0f };
+		float height{ 0.0f };
+
 		vec4 get_bound();
 		vec4 get_uv();
 		vector<Quad> graphics();
 
 		virtual void enter_frame() noexcept;
-
-		GLuint texture_id{ 0 };
-
-		float x{ 0.0f };
-		float y{ 0.0f };
-		float width{ 0.0f };
-		float height{ 0.0f };
 
 	private:
 		Matrix matrix{};
