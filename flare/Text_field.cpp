@@ -160,21 +160,21 @@ namespace Flare
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
 		// Create QuadBatch glyphs
-		_glyphs = new CharGlyph[font_length + 1];
+		glyphs = vector< CharGlyph>(font_length + 1);
 		for (i = 0; i < font_length; i++)
 		{
-			_glyphs[i].character = (char)(first_printable_character + i);
-			_glyphs[i].size = vec2(rectangles[i].z, rectangles[i].w);
-			_glyphs[i].uvRect = vec4(
+			glyphs[i].character = (char)(first_printable_character + i);
+			glyphs[i].size = vec2(rectangles[i].z, rectangles[i].w);
+			glyphs[i].uvRect = vec4(
 				(float)rectangles[i].x / (float)best_width,
 				(float)rectangles[i].y / (float)best_height,
 				(float)rectangles[i].z / (float)best_width,
 				(float)rectangles[i].w / (float)best_height
 			);
 		}
-		_glyphs[font_length].character = ' ';
-		_glyphs[font_length].size = _glyphs[0].size;
-		_glyphs[font_length].uvRect = vec4(0, 0, (float)rs / (float)best_width, (float)rs / (float)best_height);
+		glyphs[font_length].character = ' ';
+		glyphs[font_length].size = glyphs[0].size;
+		glyphs[font_length].uvRect = vec4(0, 0, (float)rs / (float)best_width, (float)rs / (float)best_height);
 
 		glBindTexture(GL_TEXTURE_2D, 0);
 		TTF_CloseFont(open_font);
@@ -186,11 +186,6 @@ namespace Flare
 		{
 			glDeleteTextures(1, &_texID);
 			_texID = 0;
-		}
-		if (_glyphs)
-		{
-			delete[] _glyphs;
-			_glyphs = nullptr;
 		}
 	}
 
@@ -250,7 +245,7 @@ namespace Flare
 				int gi = c - font_start;
 				if (gi < 0 || gi >= font_length)
 					gi = font_length;
-				cw += _glyphs[gi].size.x;
+				cw += glyphs[gi].size.x;
 			}
 		}
 		if (size.x < cw)
@@ -304,8 +299,8 @@ namespace Flare
 				int gi = c - font_start;
 				if (gi < 0 || gi >= font_length)
 					gi = font_length;
-				vec4 destRect(tp, _glyphs[gi].size * scaling);
-				vec4 uv = _glyphs[gi].uvRect;
+				vec4 destRect(tp, glyphs[gi].size * scaling);
+				vec4 uv = glyphs[gi].uvRect;
 
 				vec3 top_left{ destRect.x, destRect.y, 1.0f };
 				vec3 top_right{ destRect.x + destRect.z, destRect.y, 1.0f };
@@ -321,7 +316,7 @@ namespace Flare
 
 				result.push_back(Quad{ _texID, Position{top_left.x, top_left.y}, Position{top_right.x, top_right.y}, Position{bottom_left.x, bottom_left.y}, Position{bottom_right.x, bottom_right.y}, uv });
 
-				tp.x += _glyphs[gi].size.x * scaling.x;
+				tp.x += glyphs[gi].size.x * scaling.x;
 			}
 		}
 

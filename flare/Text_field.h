@@ -63,7 +63,7 @@ namespace Flare
 		int closestPow2(int i);
 
 		int font_start, font_length;
-		CharGlyph* _glyphs;
+		vector<CharGlyph> glyphs;
 		int font_height;
 
 		int maximum_resolution{ 4096 };
