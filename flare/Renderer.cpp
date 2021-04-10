@@ -151,9 +151,9 @@ namespace Flare
 		this->previous_texture = texture;
 
 		const Vertex top_left{ Position{bound.x, bound.y}, color, UV{ uv.x, uv.y } };
-		const Vertex top_right{ Position{bound.x + bound.z, bound.y}, color, UV{ uv.x + uv.z, uv.y } };
-		const Vertex bottom_left{ Position{bound.x, bound.y + bound.w}, color, UV{uv.x, uv.y + uv.w } };
-		const Vertex bottom_right{ Position{bound.x + bound.z, bound.y + bound.w}, color, UV{ uv.x + uv.z, uv.y + uv.w } };
+		const Vertex top_right{ Position{ bound.z, bound.y}, color, UV{ uv.x + uv.z, uv.y } };
+		const Vertex bottom_left{ Position{bound.x,  bound.w}, color, UV{uv.x, uv.y + uv.w } };
+		const Vertex bottom_right{ Position{ bound.z,  bound.w}, color, UV{ uv.x + uv.z, uv.y + uv.w } };
 
 		this->vertex_buffer.next() = bottom_left;
 		this->vertex_buffer.next() = top_left;

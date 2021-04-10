@@ -3,20 +3,12 @@
 
 #include <algorithm>
 #include <iostream>
+#include <glm/glm.hpp>
+#include <glm/gtx/matrix_transform_2d.hpp>
 
 namespace Flare
 {
 	Sprite::Sprite() noexcept {}
-
-	vec4 Sprite::get_bound()
-	{
-		return vec4{ this->x, this->y, this->width , this->height };
-	}
-
-	vec4 Sprite::get_uv()
-	{
-		return vec4{ this->u_start,this->v_start,this->u_end,this->v_end };
-	}
 
 	void Sprite::add_child(shared_ptr<Sprite> child)
 	{
@@ -46,7 +38,8 @@ namespace Flare
 
 		result.push_back(Quad{ texture_id, get_bound(), get_uv() });
 
-		for (auto& child : this->children) {
+		for (auto& child : this->children)
+		{
 			auto& graphics = child->graphics();
 			result.insert(result.end(), graphics.begin(), graphics.end());
 		}
@@ -60,5 +53,21 @@ namespace Flare
 		{
 			child->enter_frame();
 		}
+	}
+
+	vec4 Sprite::get_bound()
+	{
+		vec3 top_left{ 0.0f, 0.0f, 1.0f };
+		vec3 bottom_right{ this->width , this->height, 1.0f };
+		const mat3 translation = translate(mat3{}, vec2{ this->x - this->width / 2.0f, this->y - this->height / 2.0f });
+		top_left = translation * top_left;
+		bottom_right = translation * bottom_right;
+
+		return vec4{ top_left.x, top_left.y, bottom_right.x , bottom_right.y };
+	}
+
+	vec4 Sprite::get_uv()
+	{
+		return vec4{ this->u_start,this->v_start,this->u_end,this->v_end };
 	}
 }

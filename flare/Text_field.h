@@ -89,7 +89,6 @@ namespace Flare
 
 		std::vector<Quad> draw(const char* s, glm::vec2 position, glm::vec2 scaling, float depth, Color tint, Justification just = Justification::LEFT);
 
-
 		int _regStart, _regLength;
 		CharGlyph* _glyphs;
 		int _fontHeight;

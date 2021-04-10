@@ -298,7 +298,9 @@ namespace Flare
 				//result.push_back(uv);
 
 
-				result.push_back(Quad{ _texID, destRect ,uv });
+				vec4 bound{ destRect.x, destRect.y, destRect.x + destRect.z , destRect.y + destRect.w };
+
+				result.push_back(Quad{ _texID, bound ,uv });
 
 				tp.x += _glyphs[gi].size.x * scaling.x;
 			}
