@@ -262,7 +262,7 @@ namespace Flare
 
 	vector<Quad> Text_field::graphics()
 	{
-		const auto s = this->text.c_str();
+		//const auto s = this->text.c_str();
 		const Justification just{ Justification::LEFT };
 
 		vector<Quad> result{};
@@ -273,16 +273,16 @@ namespace Flare
 		// Apply justification
 		if (just == Justification::MIDDLE)
 		{
-			tp.x -= measure(s).x * scaling.x / 2;
+			tp.x -= measure(this->text).x * scaling.x / 2;
 		}
 		else if (just == Justification::RIGHT)
 		{
-			tp.x -= measure(s).x * scaling.x;
+			tp.x -= measure(this->text).x * scaling.x;
 		}
-		for (int si = 0; s[si] != 0; si++)
+		for (int si = 0; this->text[si] != 0; si++)
 		{
-			char c = s[si];
-			if (s[si] == '\n')
+			char c = this->text[si];
+			if (this->text[si] == '\n')
 			{
 				tp.y += font_height * scaling.y;
 
