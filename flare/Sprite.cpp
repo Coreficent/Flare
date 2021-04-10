@@ -20,7 +20,7 @@ namespace Flare
 	{
 		auto it = find(this->children.begin(), this->children.end(), child);
 
-		int index{ -1 };
+		long index{ -1 };
 		if (it != this->children.end())
 		{
 			index = std::distance(this->children.begin(), it);
@@ -29,7 +29,7 @@ namespace Flare
 		}
 	}
 
-	int Sprite::child_count() noexcept
+	long Sprite::child_count() noexcept
 	{
 		return this->children.size();
 	}

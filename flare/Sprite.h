@@ -42,7 +42,7 @@ namespace Flare
 
 		void add_child(shared_ptr<Sprite> child);
 		void remove_child(shared_ptr<Sprite> child);
-		int child_count() noexcept;
+		long child_count() noexcept;
 
 		virtual void enter_frame() noexcept;
 		virtual vector<Quad> graphics();

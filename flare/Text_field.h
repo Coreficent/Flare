@@ -22,9 +22,9 @@ namespace Flare
 
 	struct CharGlyph
 	{
-		char character;
-		vec4 uvRect;
-		vec2 size;
+		char character{};
+		vec4 uvRect{};
+		vec2 size{};
 	};
 
 	/// For text justification
