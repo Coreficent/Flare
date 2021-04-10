@@ -2,14 +2,17 @@
 
 #include "Matrix.h"
 #include "Point.h"
-#include "Vertex.h"
-#include "Vial.h"
 #include "Quad.h"
+#include "Vertex.h"
+
+#include "Vial.h"
 #include <gl/glew.h>
+#include <vector>
 
 namespace Flare
 {
 	using namespace glm;
+	using namespace std;
 
 	class Sprite
 	{
@@ -42,7 +45,7 @@ namespace Flare
 
 		vec4 get_bound();
 		vec4 get_uv();
-		Quad get_quad();
+		vector<Quad> graphics();
 
 		Vial<Vertex>* dest{ nullptr };
 

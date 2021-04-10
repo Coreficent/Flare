@@ -27,7 +27,8 @@ namespace Flare
 		vector<Quad> result{};
 
 		for (auto& child : this->children) {
-			result.push_back(child->get_quad());
+			auto& graphics = child->graphics();
+			result.insert(result.end(), graphics.begin(), graphics.end());
 		}
 
 		return result;

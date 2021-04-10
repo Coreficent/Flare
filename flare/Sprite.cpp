@@ -1,5 +1,6 @@
 #include "Point.h"
 #include "Sprite.h"
+
 #include <iostream>
 
 namespace Flare
@@ -145,9 +146,9 @@ namespace Flare
 		return vec4{ this->u_start,this->v_start,this->u_end,this->v_end };
 	}
 
-	Quad Sprite::get_quad()
+	vector<Quad> Sprite::graphics()
 	{
-		return Quad{ texture_id, get_bound(),get_uv() };
+		return vector<Quad>{Quad{ texture_id, get_bound(),get_uv() }};
 	}
 
 	void Sprite::enter_frame() noexcept
