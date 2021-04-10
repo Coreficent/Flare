@@ -189,7 +189,7 @@
     <ClInclude Include="Context.h">
       <Filter>Header Files\media</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteFont.h">
+    <ClInclude Include="Text_field.h">
       <Filter>Header Files\display</Filter>
     </ClInclude>
     <ClInclude Include="Quad.h">
@@ -275,7 +275,7 @@
     <ClCompile Include="Context.cpp">
       <Filter>Source Files\media</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteFont.cpp">
+    <ClCompile Include="Text_field.cpp">
       <Filter>Source Files\display</Filter>
     </ClCompile>
     <ClCompile Include="Texture_cache.cpp">

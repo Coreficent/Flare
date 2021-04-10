@@ -1,4 +1,4 @@
-#include "SpriteFont.h"
+#include "Text_field.h"
 #include "Quad.h"
 #include <sdl/SDL.h>
 #include <glm/gtc/matrix_transform.inl>
@@ -22,16 +22,16 @@ namespace Flare
 {
 	using namespace Flare;
 
-	SpriteFont::SpriteFont()
+	Text_field::Text_field()
 	{
 	}
 
-	SpriteFont::SpriteFont(const char* font, int size, char cs, char ce)
+	Text_field::Text_field(const char* font, int size, char cs, char ce)
 	{
 		this->initialize(font, size);
 	}
 
-	void SpriteFont::initialize(const char* font, int size)
+	void Text_field::initialize(const char* font, int size)
 	{
 		char cs = FIRST_PRINTABLE_CHAR;
 		char ce = LAST_PRINTABLE_CHAR;
@@ -189,7 +189,7 @@ namespace Flare
 		TTF_CloseFont(f);
 	}
 
-	void SpriteFont::dispose()
+	void Text_field::dispose()
 	{
 		if (_texID != 0)
 		{
@@ -203,7 +203,7 @@ namespace Flare
 		}
 	}
 
-	std::vector<int>* SpriteFont::createRows(glm::ivec4* rects, int rectsLength, int r, int padding, int& w)
+	std::vector<int>* Text_field::createRows(glm::ivec4* rects, int rectsLength, int r, int padding, int& w)
 	{
 		// Blank initialize
 		std::vector<int>* l = new std::vector<int>[r]();
@@ -238,7 +238,7 @@ namespace Flare
 		return l;
 	}
 
-	glm::vec2 SpriteFont::measure(const char* s)
+	glm::vec2 Text_field::measure(const char* s)
 	{
 		glm::vec2 size(0, _fontHeight);
 		float cw = 0;
@@ -266,7 +266,7 @@ namespace Flare
 		return size;
 	}
 
-	std::vector<Quad> SpriteFont::draw(const char* s, glm::vec2 position, glm::vec2 scaling, float depth, Color tint, Justification just /* = Justification::LEFT */)
+	std::vector<Quad> Text_field::draw(const char* s, glm::vec2 position, glm::vec2 scaling, float depth, Color tint, Justification just /* = Justification::LEFT */)
 	{
 		std::vector<Quad> result{};
 
@@ -315,7 +315,7 @@ namespace Flare
 		return result;
 	}
 
-	vector<Quad> SpriteFont::graphics()
+	vector<Quad> Text_field::graphics()
 	{
 		return this->draw(this->text.c_str(), vec2(-400.0f, -200.0f), vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
 	}

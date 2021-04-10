@@ -7,7 +7,7 @@
 #include "Key.h"
 #include "Program.h"
 #include "Renderer.h"
-#include "SpriteFont.h"
+#include "Text_field.h"
 #include "Window.h"
 
 namespace Flare

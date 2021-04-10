@@ -1,5 +1,5 @@
 /*
-This is a modified version of the SpriteFont class from the
+This is a modified version of the Text_field class from the
 Seed Of Andromeda source code.
 Use it for any of your projects, commercial or otherwise,
 free of charge, but do not remove this disclaimer.
@@ -21,8 +21,8 @@ Modified By: Benjamin Arnold
 
 #pragma once
 
-#ifndef SpriteFont_h__
-#define SpriteFont_h__
+#ifndef Text_field_h__
+#define Text_field_h__
 
 #include "Quad.h"
 #include "Vertex.h"
@@ -59,14 +59,14 @@ namespace Flare
 		RIGHT
 	};
 
-	class SpriteFont : public Sprite
+	class Text_field : public Sprite
 	{
 	public:
-		SpriteFont();
-		SpriteFont(const char* font, int size, char cs, char ce);
+		Text_field();
+		Text_field(const char* font, int size, char cs, char ce);
 
-		SpriteFont(const char* font, int size) :
-			SpriteFont(font, size, FIRST_PRINTABLE_CHAR, LAST_PRINTABLE_CHAR)
+		Text_field(const char* font, int size) :
+			Text_field(font, size, FIRST_PRINTABLE_CHAR, LAST_PRINTABLE_CHAR)
 		{
 		}
 
@@ -102,4 +102,4 @@ namespace Flare
 	};
 }
 
-#endif // SpriteFont_h__
+#endif // Text_field_h__
