@@ -23,16 +23,7 @@ namespace Flare
 {
 	using namespace Flare;
 
-	Text_field::Text_field()
-	{
-	}
-
-	Text_field::Text_field(const char* font, int size, char cs, char ce)
-	{
-		this->initialize(font, size);
-	}
-
-	void Text_field::initialize(const char* font, int size)
+	Text_field::Text_field(const char* font, int size)
 	{
 		char cs = FIRST_PRINTABLE_CHAR;
 		char ce = LAST_PRINTABLE_CHAR;

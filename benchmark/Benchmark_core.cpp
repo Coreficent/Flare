@@ -13,7 +13,6 @@ namespace Benchmark {
 
 	void Benchmark_core::initialize() noexcept
 	{
-		this->statistics->initialize("font/disney.ttf", 64);
 		this->statistics->text = "statistics";
 
 		this->get_stage().add_child(this->bunny_layer);

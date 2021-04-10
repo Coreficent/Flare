@@ -24,7 +24,7 @@ namespace Benchmark {
 		shared_ptr<Sprite> interface_layer{ new Sprite{} };
 		shared_ptr<Sprite> bunny_layer{ new Sprite{} };
 
-		shared_ptr<Text_field> statistics{ new Text_field{} };
+		shared_ptr<Text_field> statistics{ new Text_field{"font/disney.ttf", 64} };
 
 		void adjust_bunny() noexcept;
 	};

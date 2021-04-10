@@ -62,15 +62,9 @@ namespace Flare
 	class Text_field : public Sprite
 	{
 	public:
-		Text_field();
-		Text_field(const char* font, int size, char cs, char ce);
 
-		Text_field(const char* font, int size) :
-			Text_field(font, size, FIRST_PRINTABLE_CHAR, LAST_PRINTABLE_CHAR)
-		{
-		}
+		Text_field(const char* font, int size);
 
-		void initialize(const char* font, int size);
 		/// Destroys the font resources
 		void dispose();
 
