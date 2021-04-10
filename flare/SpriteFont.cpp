@@ -306,12 +306,17 @@ namespace Flare
 				//result.push_back(uv);
 
 
-				result.push_back(Quad{_texID, destRect ,uv});
+				result.push_back(Quad{ _texID, destRect ,uv });
 
 				tp.x += _glyphs[gi].size.x * scaling.x;
 			}
 		}
 
 		return result;
+	}
+
+	vector<Quad> SpriteFont::graphics()
+	{
+		return this->draw(this->text.c_str(), vec2(-400.0f, -200.0f), vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
 	}
 }

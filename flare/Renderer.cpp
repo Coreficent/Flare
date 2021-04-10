@@ -72,7 +72,12 @@ namespace Flare
 		this->begin();
 
 		this->draw(this->stage.graphics());
-		this->draw(this->sprite_font.draw(this->text.c_str(), vec2(-400.0f, -200.0f), vec2(1.0f), 0.0f, Color{ 125,0,125,125 }));
+
+
+		this->sprite_font.text = this->text;
+		this->draw(this->sprite_font.graphics());
+
+		//this->draw(this->sprite_font.draw(this->text.c_str(), vec2(-400.0f, -200.0f), vec2(1.0f), 0.0f, Color{ 125,0,125,125 }));
 
 		this->end();
 		this->finalize();

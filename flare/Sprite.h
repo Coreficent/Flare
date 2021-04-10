@@ -34,7 +34,7 @@ namespace Flare
 
 		vec4 get_bound();
 		vec4 get_uv();
-		vector<Quad> graphics();
+		
 		vector<shared_ptr<Sprite>> children{};
 
 		void add_child(shared_ptr<Sprite> child);
@@ -42,6 +42,7 @@ namespace Flare
 		int child_count() noexcept;
 
 		virtual void enter_frame() noexcept;
+		virtual vector<Quad> graphics();
 
 	private:
 		Matrix matrix{};
