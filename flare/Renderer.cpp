@@ -137,7 +137,7 @@ namespace Flare
 		this->draw(quad.bound, quad.uv, quad.texture_id, 0.0f, Color{ 255,255,255,255 });
 	}
 
-	void Renderer::draw(const glm::vec4 bound, const glm::vec4 uv, GLuint texture, float depth, const Color color)
+	void Renderer::draw(const vec4 bound, const vec4 uv, GLuint texture, float depth, const Color color)
 	{
 		if (texture != this->previous_texture)
 		{

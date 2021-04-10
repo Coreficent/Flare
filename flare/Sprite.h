@@ -31,10 +31,6 @@ namespace Flare
 		float y{ 0.0f };
 		float width{ 0.0f };
 		float height{ 0.0f };
-
-		vec4 get_bound();
-		vec4 get_uv();
-		
 		vector<shared_ptr<Sprite>> children{};
 
 		void add_child(shared_ptr<Sprite> child);
@@ -45,9 +41,14 @@ namespace Flare
 		virtual vector<Quad> graphics();
 
 	private:
+		mat3 transform{};
+
 		float u_start{ 0.0f };
 		float u_end{ 1.0f };
 		float v_start{ 0.0f };
 		float v_end{ 1.0f };
+
+		vec4 get_bound();
+		vec4 get_uv();
 	};
 }

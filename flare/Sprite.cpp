@@ -44,7 +44,7 @@ namespace Flare
 	{
 		vector<Quad> result{};
 
-		result.push_back(Quad{ texture_id, get_bound(),get_uv() });
+		result.push_back(Quad{ texture_id, get_bound(), get_uv() });
 
 		for (auto& child : this->children) {
 			auto& graphics = child->graphics();
