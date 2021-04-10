@@ -1,9 +1,9 @@
-#include "Text_field.h"
 #include "Quad.h"
-#include <sdl/SDL.h>
+#include "Text_field.h"
+
 #include <glm/gtc/matrix_transform.inl>
 #include <iostream>
-
+#include <sdl/SDL.h>
 
 int closestPow2(int i)
 {
