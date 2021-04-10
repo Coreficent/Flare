@@ -44,10 +44,10 @@ namespace Flare
 		Text_field(string font, int size);
 
 		/// Destroys the font resources
-		void dispose();
+		void dispose() noexcept;
 
 		/// Measures the dimensions of the text
-		vec2 measure(const char* s);
+		vec2 measure(string s);
 
 		unsigned int _texID;
 
@@ -58,7 +58,7 @@ namespace Flare
 		string text{};
 
 	private:
-		static vector<vector<int>> create_rows(ivec4* rects, int rectsLength, int r, int padding, int& w);
+		static vector<vector<int>> create_rows(vector<ivec4> rects, int rectsLength, int r, int padding, int& w);
 
 		int closestPow2(int i);
 

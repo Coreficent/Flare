@@ -67,7 +67,7 @@ namespace Flare
 		while (rows <= font_length)
 		{
 			height = rows * (padding + font_height) + padding;
-			auto gr = create_rows(rectangles.data(), font_length, rows, padding, width);
+			auto gr = create_rows(rectangles, font_length, rows, padding, width);
 
 			// Desire a power of 2 texture
 			width = closestPow2(width);
@@ -163,14 +163,14 @@ namespace Flare
 			);
 		}
 		glyphs.at(font_length).character = ' ';
-		glyphs.at(font_length).size = glyphs[0].size;
+		glyphs.at(font_length).size = glyphs.at(0).size;
 		glyphs.at(font_length).uvRect = vec4(0, 0, 1.0f * rs / best_width, 1.0f * rs / best_height);
 
 		glBindTexture(GL_TEXTURE_2D, 0);
 		TTF_CloseFont(open_font);
 	}
 
-	void Text_field::dispose()
+	void Text_field::dispose() noexcept
 	{
 		if (_texID != 0)
 		{
@@ -179,15 +179,15 @@ namespace Flare
 		}
 	}
 
-	vector<vector<int>> Text_field::create_rows(ivec4* rects, int rectsLength, int r, int padding, int& w)
+	vector<vector<int>> Text_field::create_rows(vector<ivec4> rects, int rectsLength, int r, int padding, int& w)
 	{
 		// Blank initialize
 		vector<vector<int>> result(r);
 
-		int* cw = new int[r]();
+		vector<int> cw(r);
 		for (int i = 0; i < r; i++)
 		{
-			cw[i] = padding;
+			cw.at(i) = padding;
 		}
 
 		// Loop through all glyphs
@@ -196,33 +196,34 @@ namespace Flare
 			// Find row for placement
 			int ri = 0;
 			for (int rii = 1; rii < r; rii++)
-				if (cw[rii] < cw[ri]) ri = rii;
+				if (cw.at(rii) < cw.at(ri)) ri = rii;
 
 			// Add width to that row
-			cw[ri] += rects[i].z + padding;
+			cw.at(ri) += rects.at(i).z + padding;
 
 			// Add glyph to the row list
-			result[ri].push_back(i);
+			result.at(ri).push_back(i);
 		}
 
 		// Find the max width
 		w = 0;
 		for (int i = 0; i < r; i++)
 		{
-			if (cw[i] > w) w = cw[i];
+			if (cw.at(i) > w) w = cw.at(i);
 		}
 
 		return result;
 	}
 
-	vec2 Text_field::measure(const char* s)
+	vec2 Text_field::measure(string s)
 	{
 		vec2 size(0, font_height);
 		float cw = 0;
-		for (int si = 0; s[si] != 0; si++)
+
+		for (int i = 0; s.at(i); i++)
 		{
-			char c = s[si];
-			if (s[si] == '\n')
+			char c = s.at(i);
+			if (c == '\n')
 			{
 				size.y += font_height;
 				if (size.x < cw)
@@ -235,9 +236,10 @@ namespace Flare
 				int gi = c - font_start;
 				if (gi < 0 || gi >= font_length)
 					gi = font_length;
-				cw += glyphs[gi].size.x;
+				cw += glyphs.at(gi).size.x;
 			}
 		}
+
 		if (size.x < cw)
 			size.x = cw;
 		return size;
