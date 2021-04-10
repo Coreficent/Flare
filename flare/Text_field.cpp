@@ -62,7 +62,7 @@ namespace Flare
 		int area{ this->maximum_resolution * this->maximum_resolution };
 		int best_row = { 0 };
 
-		vector<int>* best_partition = nullptr;
+		vector<vector<int>> best_partition{};
 
 		while (rows <= font_length)
 		{
@@ -77,14 +77,12 @@ namespace Flare
 			if (width > this->maximum_resolution || height > this->maximum_resolution)
 			{
 				rows++;
-				delete[] gr;
 				continue;
 			}
 
 			// Check for minimal area
 			if (area >= width * height)
 			{
-				if (best_partition) delete[] best_partition;
 				best_partition = gr;
 				best_width = width;
 				best_height = height;
@@ -94,13 +92,12 @@ namespace Flare
 			}
 			else
 			{
-				delete[] gr;
 				break;
 			}
 		}
 
 		// Can a bitmap font be made?
-		if (!best_partition)
+		if (best_partition.empty())
 		{
 			fprintf(stderr, "Failed to Map TTF font %s to texture. Try lowering resolution.\n", font);
 			fflush(stderr);
@@ -180,7 +177,6 @@ namespace Flare
 		_glyphs[font_length].uvRect = vec4(0, 0, (float)rs / (float)best_width, (float)rs / (float)best_height);
 
 		glBindTexture(GL_TEXTURE_2D, 0);
-		delete[] best_partition;
 		TTF_CloseFont(open_font);
 	}
 
@@ -198,10 +194,11 @@ namespace Flare
 		}
 	}
 
-	vector<int>* Text_field::create_rows(ivec4* rects, int rectsLength, int r, int padding, int& w)
+	vector<vector<int>> Text_field::create_rows(ivec4* rects, int rectsLength, int r, int padding, int& w)
 	{
 		// Blank initialize
-		vector<int>* l = new vector<int>[r]();
+		vector<vector<int>> result(r);
+
 		int* cw = new int[r]();
 		for (int i = 0; i < r; i++)
 		{
@@ -220,7 +217,7 @@ namespace Flare
 			cw[ri] += rects[i].z + padding;
 
 			// Add glyph to the row list
-			l[ri].push_back(i);
+			result[ri].push_back(i);
 		}
 
 		// Find the max width
@@ -230,7 +227,7 @@ namespace Flare
 			if (cw[i] > w) w = cw[i];
 		}
 
-		return l;
+		return result;
 	}
 
 	vec2 Text_field::measure(const char* s)

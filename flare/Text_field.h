@@ -58,7 +58,7 @@ namespace Flare
 		string text{};
 
 	private:
-		static vector<int>* create_rows(ivec4* rects, int rectsLength, int r, int padding, int& w);
+		static vector<vector<int>> create_rows(ivec4* rects, int rectsLength, int r, int padding, int& w);
 
 		int closestPow2(int i);
 
