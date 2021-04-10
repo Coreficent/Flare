@@ -41,6 +41,8 @@ namespace Benchmark {
 				bunny->width = 26.0f;
 				bunny->height = 37.0f;
 				bunny->rotation = 45.0f;
+				bunny->scale_x = 2.0f;
+				bunny->scale_y = 4.0f;
 
 				bunny->minimum_x = this->window_width / -2.0f;
 				bunny->minimum_y = this->window_height / -2.0f;
