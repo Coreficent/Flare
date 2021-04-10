@@ -2,11 +2,12 @@
 
 #include "Matrix.h"
 #include "Point.h"
+
 #include "Quad.h"
 #include "Vertex.h"
-
 #include "Vial.h"
 #include <gl/glew.h>
+#include <memory>
 #include <vector>
 
 namespace Flare
@@ -34,9 +35,15 @@ namespace Flare
 		vec4 get_uv();
 		vector<Quad> graphics();
 
+		void add_child(shared_ptr<Sprite> child);
+		void remove_child(shared_ptr<Sprite> child);
+		int child_count() noexcept;
+
 		virtual void enter_frame() noexcept;
 
 	private:
+		vector<shared_ptr<Sprite>> children{};
+
 		Matrix matrix{};
 
 		Color color{ 255,255,255 ,255 };
