@@ -4,6 +4,7 @@
 #include "Sprite.h"
 #include "debug.h"
 #include "mathematics.h"
+
 #include <algorithm>
 #include <glm/detail/type_vec4.hpp>
 
@@ -23,7 +24,6 @@ namespace Flare
 		this->color_program.addAttribute("vertexUV");
 		this->color_program.linkShader();
 		this->create_vertex_array();
-		this->sprite_font.initialize("font/disney.ttf", 64);
 	}
 
 	void Renderer::begin()
@@ -72,11 +72,6 @@ namespace Flare
 		this->begin();
 
 		this->draw(this->stage.graphics());
-
-
-		this->sprite_font.text = this->text;
-		this->draw(this->sprite_font.graphics());
-
 
 		this->end();
 		this->finalize();

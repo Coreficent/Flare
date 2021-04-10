@@ -4,7 +4,6 @@
 #include "GLSL.h"
 #include "Glyph.h"
 #include "Sprite.h"
-#include "Text_field.h"
 
 #include "Vertex.h"
 #include "Vial.h"
@@ -55,7 +54,6 @@ namespace Flare
 		Vial<Vertex> vertex_buffer{};
 		Vial<Glyph> glyphs_vialxxx{};
 		GLSL color_program{};
-		Text_field sprite_font{};
 		GLuint vertex_buffer_id{};
 		GLuint vertex_array_id{};
 		GLuint previous_texture{};

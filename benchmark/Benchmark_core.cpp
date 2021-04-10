@@ -13,11 +13,10 @@ namespace Benchmark {
 
 	void Benchmark_core::initialize() noexcept
 	{
-		shared_ptr<Text_field> monitor{ new Text_field{} };
-		monitor->initialize("font/disney.ttf", 64);
-		monitor->text = "testing testing testing testing testing testing";
+		statistics->initialize("font/disney.ttf", 64);
+		statistics->text = "testing testing testing testing testing testing";
 
-		this->get_stage().add_child(monitor);
+		this->get_stage().add_child(statistics);
 	}
 
 	void Benchmark_core::enter_frame() noexcept
@@ -29,7 +28,8 @@ namespace Benchmark {
 	{
 		static auto bunny_texture = Flare::Resource_manager::get_texture("texture/wabbit.png");
 
-		if (this->frame_manager.frames_per_second > 59.5) {
+		if (this->frame_manager.frames_per_second > 59.5) 
+		{
 			for (auto i{ 0 }; i < this->frame_manager.remaining_budget * this->frame_manager.remaining_budget; ++i)
 			{
 
@@ -60,5 +60,8 @@ namespace Benchmark {
 				this->get_stage().remove_child(last_bunny);
 			}
 		}
+
+		string delimiter{ " " };
+		this->statistics->text  = "fps:" + delimiter + to_string(static_cast <int>(this->frame_manager.frames_per_second) + 1) + "\n" + "object:" + delimiter + to_string(this->renderer.stage.child_count());
 	}
 }
