@@ -46,7 +46,7 @@ namespace Flare
 		vec3 bottom_left{ -half_width, half_height, 1.0f };
 		vec3 bottom_right{ half_width, half_height, 1.0f };
 
-		const mat3 transform = calculate_matrix();
+		const mat3 transform = this->calculate_matrix();
 
 		top_left = transform * top_left;
 		top_right = transform * top_right;

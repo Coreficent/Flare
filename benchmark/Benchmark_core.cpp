@@ -14,10 +14,12 @@ namespace Benchmark {
 	void Benchmark_core::initialize() noexcept
 	{
 		this->statistics->text = "statistics";
+		this->statistics->x = -400.0f;
+		this->statistics->y = -200.0f;
 
 		this->get_stage().scale_x = 0.5f;
 		this->get_stage().scale_y = 0.5f;
-		this->get_stage().rotation = 45.0f;
+		this->get_stage().rotation = 15.0f;
 
 		this->get_stage().add_child(this->bunny_layer);
 		this->get_stage().add_child(this->interface_layer);

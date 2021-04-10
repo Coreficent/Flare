@@ -290,14 +290,19 @@ namespace Flare
 				glm::vec4 destRect(tp, _glyphs[gi].size * scaling);
 				glm::vec4 uv = _glyphs[gi].uvRect;
 
+				vec3 top_left{ destRect.x, destRect.y, 1.0f };
+				vec3 top_right{ destRect.x + destRect.z, destRect.y, 1.0f };
+				vec3 bottom_left{ destRect.x,destRect.y + destRect.w, 1.0f };
+				vec3 bottom_right{ destRect.x + destRect.z, destRect.y + destRect.w, 1.0f };
 
-				Position top_left{ destRect.x, destRect.y };
-				Position top_right{ destRect.x + destRect.z, destRect.y };
-				Position bottom_left{ destRect.x,destRect.y + destRect.w };
-				Position bottom_right{ destRect.x + destRect.z, destRect.y + destRect.w };
+				const mat3 transform = this->calculate_matrix();
 
+				top_left = transform * top_left;
+				top_right = transform * top_right;
+				bottom_left = transform * bottom_left;
+				bottom_right = transform * bottom_right;
 
-				result.push_back(Quad{ _texID, top_left, top_right, bottom_left, bottom_right, uv });
+				result.push_back(Quad{ _texID, Position{top_left.x, top_left.y}, Position{top_right.x, top_right.y}, Position{bottom_left.x, bottom_left.y}, Position{bottom_right.x, bottom_right.y}, uv });
 
 				tp.x += _glyphs[gi].size.x * scaling.x;
 			}
@@ -308,6 +313,6 @@ namespace Flare
 
 	vector<Quad> Text_field::graphics()
 	{
-		return this->draw(this->text.c_str(), vec2(-400.0f, -200.0f), vec2(1.0f), 0.0f, Color{ 125,0,125,125 });
+		return this->draw(this->text.c_str(), vec2(-0.0f, -0.0f), vec2(1.0f), 0.0f, Color{ 125,0,125,125 }, Justification::LEFT);
 	}
 }

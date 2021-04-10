@@ -47,13 +47,15 @@ namespace Flare
 		virtual void enter_frame() noexcept;
 		virtual vector<Quad> graphics();
 
+	protected:
+		mat3 calculate_matrix();
+
 	private:
 		float u_start{ 0.0f };
 		float u_end{ 1.0f };
 		float v_start{ 0.0f };
 		float v_end{ 1.0f };
 
-		mat3 calculate_matrix();
 		vec4 get_bound();
 		vec4 get_uv();
 	};
