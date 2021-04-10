@@ -42,7 +42,16 @@ namespace Flare
 
 	vector<Quad> Sprite::graphics()
 	{
-		return vector<Quad>{Quad{ texture_id, get_bound(),get_uv() }};
+		vector<Quad> result{};
+
+		result.push_back(Quad{ texture_id, get_bound(),get_uv() });
+
+		for (auto& child : this->children) {
+			auto& graphics = child->graphics();
+			result.insert(result.end(), graphics.begin(), graphics.end());
+		}
+
+		return result;
 	}
 
 	void Sprite::enter_frame() noexcept

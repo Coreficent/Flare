@@ -17,6 +17,7 @@ namespace Flare
 
 	class Sprite
 	{
+
 	public:
 		Sprite() noexcept;
 		Sprite(const Sprite& value) = default;
