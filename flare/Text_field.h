@@ -41,6 +41,7 @@ namespace Flare
 
 	class Text_field : public Sprite
 	{
+
 	public:
 
 		Text_field(const char* font, int size);
@@ -67,9 +68,13 @@ namespace Flare
 	private:
 		static vector<int>* createRows(ivec4* rects, int rectsLength, int r, int padding, int& w);
 
+		int closestPow2(int i);
+
 		int _regStart, _regLength;
 		CharGlyph* _glyphs;
 		int _fontHeight;
+
+		int maximum_resolution{ 4096 };
 	};
 }
 

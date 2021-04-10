@@ -5,20 +5,6 @@
 #include <iostream>
 #include <sdl/SDL.h>
 
-int closestPow2(int i)
-{
-	i--;
-	int pi = 1;
-	while (i > 0)
-	{
-		i >>= 1;
-		pi <<= 1;
-	}
-	return pi;
-}
-
-#define MAX_TEXTURE_RES 4096
-
 namespace Flare
 {
 	using namespace Flare;
@@ -60,7 +46,7 @@ namespace Flare
 		}
 
 		// Find best partitioning of glyphs
-		int rows = 1, w, h, bestWidth = 0, bestHeight = 0, area = MAX_TEXTURE_RES * MAX_TEXTURE_RES, bestRows = 0;
+		int rows = 1, w, h, bestWidth = 0, bestHeight = 0, area = this->maximum_resolution * this->maximum_resolution, bestRows = 0;
 		vector<int>* bestPartition = nullptr;
 		while (rows <= _regLength)
 		{
@@ -72,7 +58,7 @@ namespace Flare
 			h = closestPow2(h);
 
 			// A texture must be feasible
-			if (w > MAX_TEXTURE_RES || h > MAX_TEXTURE_RES)
+			if (w > this->maximum_resolution || h > this->maximum_resolution)
 			{
 				rows++;
 				delete[] gr;
@@ -260,15 +246,27 @@ namespace Flare
 		return size;
 	}
 
+	int Text_field::closestPow2(int i)
+	{
+		i--;
+		int pi = 1;
+		while (i > 0)
+		{
+			i >>= 1;
+			pi <<= 1;
+		}
+		return pi;
+	}
+
 	vector<Quad> Text_field::graphics()
 	{
-		auto s = this->text.c_str();
-		Justification just{ Justification::LEFT };
+		const auto s = this->text.c_str();
+		const Justification just{ Justification::LEFT };
 
 		vector<Quad> result{};
 
-		vec2 position{};
-		vec2 scaling{ 1.0f, 1.0f };
+		const vec2 position{};
+		const vec2 scaling{ 1.0f, 1.0f };
 		vec2 tp = position;
 		// Apply justification
 		if (just == Justification::MIDDLE)
