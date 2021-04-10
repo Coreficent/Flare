@@ -132,15 +132,15 @@ namespace Flare
 
 				// Save glyph image and update coordinates
 				glTexSubImage2D(GL_TEXTURE_2D, 0, lx, ly, glyphSurface->w, glyphSurface->h, GL_BGRA, GL_UNSIGNED_BYTE, glyphSurface->pixels);
-				rectangles[gi].x = lx;
-				rectangles[gi].y = ly;
-				rectangles[gi].z = glyphSurface->w;
-				rectangles[gi].w = glyphSurface->h;
+				rectangles.at(gi).x = lx;
+				rectangles.at(gi).y = ly;
+				rectangles.at(gi).z = glyphSurface->w;
+				rectangles.at(gi).w = glyphSurface->h;
 
 				SDL_FreeSurface(glyphSurface);
 				glyphSurface = nullptr;
 
-				lx += rectangles[gi].z + padding;
+				lx += rectangles.at(gi).z + padding;
 			}
 			ly += font_height + padding;
 		}
@@ -163,18 +163,18 @@ namespace Flare
 		glyphs = vector< CharGlyph>(font_length + 1);
 		for (i = 0; i < font_length; i++)
 		{
-			glyphs[i].character = (char)(first_printable_character + i);
-			glyphs[i].size = vec2(rectangles[i].z, rectangles[i].w);
-			glyphs[i].uvRect = vec4(
-				(float)rectangles[i].x / (float)best_width,
-				(float)rectangles[i].y / (float)best_height,
-				(float)rectangles[i].z / (float)best_width,
-				(float)rectangles[i].w / (float)best_height
+			glyphs.at(i).character = (char)(first_printable_character + i);
+			glyphs.at(i).size = vec2(rectangles.at(i).z, rectangles.at(i).w);
+			glyphs.at(i).uvRect = vec4(
+				1.0f * rectangles.at(i).x / best_width,
+				1.0f * rectangles.at(i).y / best_height,
+				1.0f * rectangles.at(i).z / best_width,
+				1.0f * rectangles.at(i).w / best_height
 			);
 		}
-		glyphs[font_length].character = ' ';
-		glyphs[font_length].size = glyphs[0].size;
-		glyphs[font_length].uvRect = vec4(0, 0, (float)rs / (float)best_width, (float)rs / (float)best_height);
+		glyphs.at(font_length).character = ' ';
+		glyphs.at(font_length).size = glyphs[0].size;
+		glyphs.at(font_length).uvRect = vec4(0, 0, (float)rs / (float)best_width, (float)rs / (float)best_height);
 
 		glBindTexture(GL_TEXTURE_2D, 0);
 		TTF_CloseFont(open_font);
