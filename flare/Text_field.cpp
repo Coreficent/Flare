@@ -260,7 +260,7 @@ namespace Flare
 		return size;
 	}
 
-	vector<Quad> Text_field::draw(const char* s, float depth, Color tint, Justification just)
+	vector<Quad> Text_field::draw(const char* s, Justification just)
 	{
 		vector<Quad> result{};
 
@@ -317,6 +317,6 @@ namespace Flare
 
 	vector<Quad> Text_field::graphics()
 	{
-		return this->draw(this->text.c_str(), 0.0f, Color{ 125,0,125,125 }, Justification::LEFT);
+		return this->draw(this->text.c_str(), Justification::LEFT);
 	}
 }
