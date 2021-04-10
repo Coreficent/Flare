@@ -220,9 +220,7 @@ namespace Flare
 		vec2 size(0, font_height);
 		float cw = 0;
 
-		for (int i = 0; s.at(i); i++)
-		{
-			char c = s.at(i);
+		for (const char c : s) {
 			if (c == '\n')
 			{
 				size.y += font_height;
@@ -235,13 +233,18 @@ namespace Flare
 				// Check for correct glyph
 				int gi = c - font_start;
 				if (gi < 0 || gi >= font_length)
+				{
 					gi = font_length;
+
+				}
 				cw += glyphs.at(gi).size.x;
 			}
 		}
 
 		if (size.x < cw)
+		{
 			size.x = cw;
+		}
 		return size;
 	}
 
