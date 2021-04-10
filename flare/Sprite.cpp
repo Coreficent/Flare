@@ -61,9 +61,4 @@ namespace Flare
 			child->enter_frame();
 		}
 	}
-
-	Point Sprite::locate_vertex(float x, float y) const
-	{
-		return Point{ x * this->matrix.a + y * this->matrix.c + this->matrix.x,x * this->matrix.b + y * this->matrix.d + this->matrix.y };
-	}
 }

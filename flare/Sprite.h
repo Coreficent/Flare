@@ -45,15 +45,9 @@ namespace Flare
 		virtual vector<Quad> graphics();
 
 	private:
-		Matrix matrix{};
-
-		Color color{ 255,255,255 ,255 };
-
 		float u_start{ 0.0f };
 		float u_end{ 1.0f };
 		float v_start{ 0.0f };
 		float v_end{ 1.0f };
-
-		Point locate_vertex(float x, float y) const;
 	};
 }
