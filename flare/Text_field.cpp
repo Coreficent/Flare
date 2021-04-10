@@ -116,42 +116,30 @@ namespace Flare
 			int lx = padding;
 			for (int ci = 0; ci < best_partition[ri].size(); ci++)
 			{
-				int gi = best_partition[ri][ci];
+				const int glyph_index = best_partition.at(ri).at(ci);
 
-				SDL_Surface* glyphSurface = TTF_RenderGlyph_Blended(open_font, (char)(first_printable_character + gi), fg);
-
-				// Pre-multiplication occurs here
-				unsigned char* sp = (unsigned char*)glyphSurface->pixels;
-				int cp = glyphSurface->w * glyphSurface->h * 4;
-				for (int i = 0; i < cp; i += 4)
-				{
-					sp[i] *= sp[i + 3] / 255;
-					sp[i + 1] = sp[i];
-					sp[i + 2] = sp[i];
-				}
+				SDL_Surface* glyphSurface = TTF_RenderGlyph_Blended(open_font, first_printable_character + glyph_index, fg);
 
 				// Save glyph image and update coordinates
 				glTexSubImage2D(GL_TEXTURE_2D, 0, lx, ly, glyphSurface->w, glyphSurface->h, GL_BGRA, GL_UNSIGNED_BYTE, glyphSurface->pixels);
-				rectangles.at(gi).x = lx;
-				rectangles.at(gi).y = ly;
-				rectangles.at(gi).z = glyphSurface->w;
-				rectangles.at(gi).w = glyphSurface->h;
+				rectangles.at(glyph_index).x = lx;
+				rectangles.at(glyph_index).y = ly;
+				rectangles.at(glyph_index).z = glyphSurface->w;
+				rectangles.at(glyph_index).w = glyphSurface->h;
 
 				SDL_FreeSurface(glyphSurface);
 				glyphSurface = nullptr;
 
-				lx += rectangles.at(gi).z + padding;
+				lx += rectangles.at(glyph_index).z + padding;
 			}
 			ly += font_height + padding;
 		}
 
 		// Draw the unsupported glyph
-		int rs = padding - 1;
-		int* pureWhiteSquare = new int[rs * rs];
-		memset(pureWhiteSquare, 0xffffffff, rs * rs * sizeof(int));
-		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, rs, rs, GL_RGBA, GL_UNSIGNED_BYTE, pureWhiteSquare);
-		delete[] pureWhiteSquare;
-		pureWhiteSquare = nullptr;
+		const int rs{ padding - 1 };
+		vector<int> white_squares(rs * rs);
+		memset(white_squares.data(), 0xffffffff, rs * rs * sizeof(int));
+		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, rs, rs, GL_RGBA, GL_UNSIGNED_BYTE, white_squares.data());
 
 		// Set some texture parameters
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
