@@ -290,22 +290,6 @@ namespace Flare
 				glm::vec4 destRect(tp, _glyphs[gi].size * scaling);
 				glm::vec4 uv = _glyphs[gi].uvRect;
 
-				//TODO implement render for text
-
-				// batch.draw(destRect, uv, _texID, depth, tint);
-
-				//result.push_back(destRect);
-				//result.push_back(uv);
-
-
-				vec4 bound{ destRect.x, destRect.y, destRect.x + destRect.z , destRect.y + destRect.w };
-
-
-				//const Vertex top_left{ Position{bound.x, bound.y}, color, UV{ uv.x, uv.y } };
-				//const Vertex top_right{ Position{ bound.z, bound.y}, color, UV{ uv.x + uv.z, uv.y } };
-				//const Vertex bottom_left{ Position{bound.x,  bound.w}, color, UV{uv.x, uv.y + uv.w } };
-				//const Vertex bottom_right{ Position{ bound.z,  bound.w}, color, UV{ uv.x + uv.z, uv.y + uv.w } };
-
 
 				Position top_left{ destRect.x, destRect.y };
 				Position top_right{ destRect.x + destRect.z, destRect.y };
