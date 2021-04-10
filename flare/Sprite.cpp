@@ -20,16 +20,15 @@ namespace Flare
 	{
 		auto it = find(this->children.begin(), this->children.end(), child);
 
-		long index{ -1 };
 		if (it != this->children.end())
 		{
-			index = std::distance(this->children.begin(), it);
+			const auto index = std::distance(this->children.begin(), it);
 			this->children.erase(this->children.begin() + index);
 			child->parent = nullptr;
 		}
 	}
 
-	long Sprite::child_count() noexcept
+	size_t Sprite::child_count() noexcept
 	{
 		return this->children.size();
 	}
