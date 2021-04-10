@@ -16,6 +16,7 @@ namespace Benchmark {
 		this->statistics->text = "statistics";
 		this->statistics->x = -400.0f;
 		this->statistics->y = -200.0f;
+		this->statistics->scale_y = 2.0f;
 
 		this->get_stage().scale_x = 0.5f;
 		this->get_stage().scale_y = 0.5f;
