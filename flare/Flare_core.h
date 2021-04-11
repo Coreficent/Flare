@@ -27,8 +27,6 @@ namespace Flare
 		Flare_core& operator=(Flare_core&& value) = default;
 		virtual ~Flare_core() = default;
 
-		Sprite& get_stage() noexcept;
-
 		void run();
 
 		virtual void initialize() noexcept;
@@ -51,5 +49,7 @@ namespace Flare
 		Frame_manager frame_manager{};
 
 		Window window{ "Flare", window_width ,window_height };
+
+		Sprite stage{};
 	};
 }

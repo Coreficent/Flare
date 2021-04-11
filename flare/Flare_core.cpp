@@ -28,20 +28,15 @@ namespace Flare
 		while (this->key.currentState != Key::GameState::ended)
 		{
 			this->enter_frame();
+			this->stage.enter_frame();
 			this->frame_manager.calculate_fps();
 			this->key.process();
 			this->program.run(this->key, this->renderer, this->audio);
 			this->game.run();
-			this->renderer.stage.enter_frame();
-			this->renderer.render();
+			this->renderer.render(this->stage);
 			this->window.swap_window();
 		}
 
 		//music.stop();
-	}
-
-	Sprite& Flare_core::get_stage() noexcept
-	{
-		return this->renderer.stage;
 	}
 }

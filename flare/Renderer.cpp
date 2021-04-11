@@ -65,13 +65,13 @@ namespace Flare
 		glBindVertexArray(0);
 	}
 
-	void Renderer::render()
+	void Renderer::render(Sprite& stage)
 	{
 		this->camera.update();
 
 		this->begin();
 
-		this->draw(this->stage.graphics());
+		this->draw(stage.graphics());
 
 		this->end();
 		this->finalize();

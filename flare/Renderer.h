@@ -40,10 +40,9 @@ namespace Flare
 		void draw(const Quad& quad, const vec4 uv, GLuint texture, float depth, const Color color);
 
 		void finalize() noexcept;
-		void render();
+		void render(Sprite& stage);
 
 		Camera camera;
-		Sprite stage{};
 
 	private:
 		void create_vertex_array() noexcept;

@@ -18,12 +18,12 @@ namespace Benchmark {
 		this->statistics->y = -200.0f;
 		this->statistics->scale_y = 2.0f;
 
-		this->get_stage().scale_x = 0.5f;
-		this->get_stage().scale_y = 0.5f;
-		this->get_stage().rotation = 15.0f;
+		this->stage.scale_x = 0.5f;
+		this->stage.scale_y = 0.5f;
+		this->stage.rotation = 15.0f;
 
-		this->get_stage().add_child(this->bunny_layer);
-		this->get_stage().add_child(this->interface_layer);
+		this->stage.add_child(this->bunny_layer);
+		this->stage.add_child(this->interface_layer);
 
 		this->interface_layer->add_child(this->statistics);
 	}
@@ -71,6 +71,6 @@ namespace Benchmark {
 		}
 
 		string delimiter{ " " };
-		this->statistics->text = "fps:" + delimiter + to_string(static_cast <int>(this->frame_manager.frames_per_second) + 1) + "\n" + "object:" + delimiter + to_string(this->renderer.stage.child_count() + this->bunnies.size());
+		this->statistics->text = "fps:" + delimiter + to_string(static_cast <int>(this->frame_manager.frames_per_second) + 1) + "\n" + "object:" + delimiter + to_string(this->stage.child_count() + this->bunnies.size());
 	}
 }
