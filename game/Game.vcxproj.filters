@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Game_core.cpp">
+      <Filter>Source\core</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source\main</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source\display</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game_core.h">
+      <Filter>Header\core</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header\display</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="shader\colorShade.sf">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="shader\colorShade.sv">
+      <Filter>Resource</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header">
+      <UniqueIdentifier>{c194af20-5239-4582-8a9a-5957c2a61443}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{e9b8de52-1546-485b-9fa4-080c7c11897f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\core">
+      <UniqueIdentifier>{1d7a9cdb-d602-404d-90f4-b7dbc985298c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\main">
+      <UniqueIdentifier>{dcd4376b-1224-444a-b4ad-6f106b3ef333}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\core">
+      <UniqueIdentifier>{edccf0ec-e127-4ece-b38d-249f1123a214}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\display">
+      <UniqueIdentifier>{15fcb67d-dfde-400b-82d4-62e4105ae118}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\display">
+      <UniqueIdentifier>{4aee4baa-09e7-4bfc-9b62-fc2cb7e19fd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{4619eecb-cab6-4f3a-a5f0-7f795e8c0060}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
