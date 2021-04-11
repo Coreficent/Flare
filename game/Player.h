@@ -11,11 +11,14 @@ namespace Game
 	{
 
 	public:
-		Player(string texture_url, Key& key);
+		Player(string texture_url, Key& key, int window_width);
 
 		void enter_frame() noexcept override;
 
 	private:
 		Key& key;
+
+		int window_width{};
+		float move_speed{ 10.0f };
 	};
 }

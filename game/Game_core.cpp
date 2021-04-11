@@ -25,7 +25,7 @@ namespace Game {
 			ground->y = 450;
 			this->stage.add_child(ground);
 
-			shared_ptr<Player> player{ make_shared<Player>("texture/Player.png", this->key) };
+			shared_ptr<Player> player{ make_shared<Player>("texture/Player.png", this->key, this->window_width) };
 			player->width = 300;
 			player->height = 200;
 			player->y = 400;
