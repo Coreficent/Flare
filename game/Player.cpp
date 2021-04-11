@@ -11,13 +11,20 @@ namespace Game
 	{
 		try
 		{
+			const int effective_width{ this->window_width * 8 / 10 / 2 };
+
 			if (this->key.input_manager.keyPressed(SDLK_LEFT))
 			{
-				this->x += -this->move_speed;
+				if (this->x > -effective_width)
+				{
+					this->x += -this->move_speed;
+				}
 			}
 			if (this->key.input_manager.keyPressed(SDLK_RIGHT))
 			{
-				this->x += this->move_speed;
+				if (this->x < effective_width) {
+					this->x += this->move_speed;
+				}
 			}
 		}
 		catch (...)
