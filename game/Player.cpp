@@ -1,14 +1,14 @@
 #include "Player.h"
 
-namespace Benchmark
+namespace Game
 {
-	Player::Player(string texture_url) : Sprite{ texture_url }
+	Player::Player(string texture_url, Key& key) : Sprite{ texture_url }, key{ key }
 	{
 
 	}
 
 	void Player::enter_frame() noexcept
 	{
-		
+
 	}
 }

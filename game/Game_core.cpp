@@ -1,4 +1,5 @@
 #include "Game_core.h"
+#include "Player.h"
 
 #include <iostream>
 
@@ -24,7 +25,7 @@ namespace Game {
 			ground->y = 450;
 			this->stage.add_child(ground);
 
-			shared_ptr<Sprite> player{ make_shared<Sprite>("texture/Player.png") };
+			shared_ptr<Player> player{ make_shared<Player>("texture/Player.png", this->key) };
 			player->width = 300;
 			player->height = 200;
 			player->y = 400;

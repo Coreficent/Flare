@@ -1,8 +1,9 @@
 #pragma once
 
+#include "flare/Key.h"
 #include "flare/Sprite.h"
 
-namespace Benchmark
+namespace Game
 {
 	using namespace Flare;
 
@@ -10,9 +11,11 @@ namespace Benchmark
 	{
 
 	public:
-		Player(string texture_url);
+		Player(string texture_url, Key& key);
 
 		void enter_frame() noexcept override;
 
+	private:
+		Key& key;
 	};
 }
