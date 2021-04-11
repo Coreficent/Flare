@@ -121,6 +121,11 @@ namespace Flare
 		}
 	}
 
+	bool Sprite::hit_test_object(Sprite& sprite) noexcept
+	{
+		return false;
+	}
+
 	mat3 Sprite::calculate_matrix()
 	{
 		mat3 transform = scale(rotate(translate(mat3{}, vec2{ this->x, this->y }), radians(this->rotation)), vec2{ this->scale_x, this->scale_y });
