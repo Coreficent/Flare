@@ -27,29 +27,23 @@ namespace Flare
 		Flare_core& operator=(Flare_core&& value) = default;
 		virtual ~Flare_core() = default;
 
-		void run();
-
 		virtual void initialize() noexcept;
 		virtual void enter_frame() noexcept;
+
+		void run();
 
 		int window_width;
 		int window_height;
 
 	protected:
-		Context context{};
-
 		Audio audio{};
-
+		Context context{};
+		Frame_manager frame_manager{};
+		Game game{};
 		Key key{};
 		Program program{};
-		Game game{};
-
 		Renderer renderer{ window_width, window_height };
-
-		Frame_manager frame_manager{};
-
-		Window window{ "Flare", window_width, window_height };
-
 		Sprite stage{};
+		Window window{ "Flare", window_width, window_height };
 	};
 }
