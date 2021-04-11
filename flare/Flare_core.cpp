@@ -20,8 +20,8 @@ namespace Flare
 	{
 		//Musice music = this->audio.load_music("music/x.ogg");
 		//music.play(-1);
-		this->audio.initialize();
 
+		this->audio.initialize();
 		this->renderer.initialize();
 		this->initialize();
 
