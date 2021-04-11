@@ -22,6 +22,11 @@ namespace Flare
 	public:
 		Sprite() noexcept;
 		Sprite(string texture_url);
+		Sprite(const Sprite& sprite) = delete;
+		Sprite(Sprite&& sprite) = delete;
+		Sprite& operator=(const Sprite& sprite) = delete;
+		Sprite& operator=(Sprite&& ssprite) = delete;
+		virtual ~Sprite() = default;
 
 		GLuint texture_id{ 0 };
 
