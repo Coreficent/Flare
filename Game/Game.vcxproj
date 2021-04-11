@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Debris.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Game_core.cpp" />
     <ClCompile Include="Gun.cpp" />
@@ -138,11 +139,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="shader\colorShade.sf" />
-    <None Include="shader\colorShade.sv" />
+    <None Include="shader\fragment.shader" />
+    <None Include="shader\vertex.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Debris.h" />
     <ClInclude Include="Game_core.h" />
     <ClInclude Include="Gun.h" />
     <ClInclude Include="Player.h" />

@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include "Debris.h"
 #include "Game_core.h"
 
 #include <iostream>
@@ -34,10 +35,15 @@ namespace Game {
 			gun->y = -100.0f;
 			player->add_child(gun);
 
-			shared_ptr<Sprite> base{ make_shared<Sprite>("texture/player.png") };
+			shared_ptr<Sprite> base{ make_shared<Sprite>("texture/Player.png") };
 			base->width = 300;
 			base->height = 200;
 			player->add_child(base);
+
+			shared_ptr<Debris> debris{ make_shared<Debris>("texture/Debris.png") };
+			debris->width = 100;
+			debris->height = 100;
+			this->add_child(debris);
 
 			this->statistics->text = "statistics";
 			this->statistics->x = -400.0f;
@@ -71,7 +77,7 @@ namespace Game {
 
 			for (auto child : this->children)
 			{
-				if (child->y < -this->window_height / 2)
+				if (child->y < -this->window_height || child->y > this->window_height)
 				{
 					cleanup.push_back(child);
 				}

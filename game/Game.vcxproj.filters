@@ -16,6 +16,9 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>Source\display</Filter>
     </ClCompile>
+    <ClCompile Include="Debris.cpp">
+      <Filter>Source\display</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game_core.h">
@@ -30,13 +33,16 @@
     <ClInclude Include="Bullet.h">
       <Filter>Header\display</Filter>
     </ClInclude>
+    <ClInclude Include="Debris.h">
+      <Filter>Header\display</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="shader\colorShade.sf">
+    <None Include="shader\fragment.shader">
       <Filter>Resource</Filter>
     </None>
-    <None Include="shader\colorShade.sv">
+    <None Include="shader\vertex.shader">
       <Filter>Resource</Filter>
     </None>
   </ItemGroup>
