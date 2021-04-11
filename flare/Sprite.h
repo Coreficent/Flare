@@ -45,6 +45,7 @@ namespace Flare
 		void add_child(shared_ptr<Sprite> child) noexcept;
 		void remove_child(shared_ptr<Sprite> child) noexcept;
 		size_t child_count() noexcept;
+		size_t total_child_count() noexcept;
 		float global_x();
 		float global_y();
 

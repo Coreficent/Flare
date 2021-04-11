@@ -19,6 +19,7 @@ namespace Game {
 		void enter_frame() noexcept override;
 
 	private:
+		shared_ptr<Text_field> statistics{ new Text_field{"font/disney.ttf", 64} };
 		shared_ptr<Gun> gun{ make_shared<Gun>("texture/gun.png") };
 		
 	};

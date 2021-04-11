@@ -37,6 +37,12 @@ namespace Game {
 			base->width = 300;
 			base->height = 200;
 			player->add_child(base);
+
+			this->statistics->text = "statistics";
+			this->statistics->x = -400.0f;
+			this->statistics->y = -200.0f;
+			this->statistics->scale_y = 2.0f;
+			this->add_child(statistics);
 		}
 		catch (...)
 		{
@@ -58,5 +64,8 @@ namespace Game {
 
 			this->add_child(bullet);
 		}
+
+		string delimiter{ " " };
+		this->statistics->text = "fps:" + delimiter + to_string(static_cast <int>(this->frame_manager.frames_per_second) + 1) + "\n" + "object:" + delimiter + to_string(this->child_count() + this->total_child_count());
 	}
 }

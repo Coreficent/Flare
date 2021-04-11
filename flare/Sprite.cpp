@@ -55,6 +55,18 @@ namespace Flare
 		return this->children.size();
 	}
 
+	size_t Sprite::total_child_count() noexcept
+	{
+		size_t result{ child_count() };
+
+		for (auto& child : this->children)
+		{
+			result += child->total_child_count();
+		}
+
+		return result;
+	}
+
 	float Sprite::global_x()
 	{
 		return this->global_position().x;
