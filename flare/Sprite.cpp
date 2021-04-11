@@ -18,21 +18,35 @@ namespace Flare
 		this->texture_id = Resource_manager::get_texture(texture_url).id;
 	}
 
-	void Sprite::add_child(shared_ptr<Sprite> child)
+	void Sprite::add_child(shared_ptr<Sprite> child) noexcept
 	{
-		this->children.push_back(child);
-		child->parent = this;
+		try
+		{
+			this->children.push_back(child);
+			child->parent = this;
+		}
+		catch (...)
+		{
+			printf("failed to add child");
+		}
 	}
 
-	void Sprite::remove_child(shared_ptr<Sprite> child)
+	void Sprite::remove_child(shared_ptr<Sprite> child) noexcept
 	{
-		auto it = find(this->children.begin(), this->children.end(), child);
-
-		if (it != this->children.end())
+		try
 		{
-			const auto index = std::distance(this->children.begin(), it);
-			this->children.erase(this->children.begin() + index);
-			child->parent = nullptr;
+			auto it = find(this->children.begin(), this->children.end(), child);
+
+			if (it != this->children.end())
+			{
+				const auto index = std::distance(this->children.begin(), it);
+				this->children.erase(this->children.begin() + index);
+				child->parent = nullptr;
+			}
+		}
+		catch (...)
+		{
+			printf("failed to remove child");
 		}
 	}
 

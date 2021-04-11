@@ -10,11 +10,15 @@ namespace Game {
 
 	void Game_core::initialize() noexcept
 	{
-		
+		shared_ptr<Sprite> sky{ new Sprite{"texture/Sky.png" } };
+		sky->width = 1600;
+		sky->height = 900;
+
+		this->get_stage().add_child(sky);
 	}
 
 	void Game_core::enter_frame() noexcept
 	{
-		
+
 	}
 }

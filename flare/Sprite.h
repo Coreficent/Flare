@@ -37,8 +37,8 @@ namespace Flare
 
 		vector<shared_ptr<Sprite>> children{};
 
-		void add_child(shared_ptr<Sprite> child);
-		void remove_child(shared_ptr<Sprite> child);
+		void add_child(shared_ptr<Sprite> child) noexcept;
+		void remove_child(shared_ptr<Sprite> child) noexcept;
 		size_t child_count() noexcept;
 
 		virtual void enter_frame() noexcept;
