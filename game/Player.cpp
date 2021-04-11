@@ -19,6 +19,8 @@ namespace Game
 
 	void Player::enter_frame() noexcept
 	{
+		Sprite::enter_frame();
+
 		try
 		{
 			const int effective_width{ this->window_width * 8 / 10 / 2 };
