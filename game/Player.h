@@ -11,7 +11,7 @@ namespace Game
 	{
 
 	public:
-		Player(string texture_url, Key& key, int window_width);
+		Player(Key& key, int window_width);
 
 		void enter_frame() noexcept override;
 
