@@ -9,7 +9,7 @@ int main(int argc, char** argv)
 	std::cout << "Hello World from Ripple!\n";
 
 	Flare_core core{ 500,500 };
-	core.run();
+	core.running();
 
 	return 0;
 }

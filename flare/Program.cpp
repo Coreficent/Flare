@@ -4,7 +4,7 @@
 
 namespace Flare
 {
-	void Program::run(Flare::Renderer& renderer, Audio& audio)
+	void Program::running(Flare::Renderer& renderer, Audio& audio)
 	{
 		if (Key::is_down(SDLK_w))
 		{

@@ -28,7 +28,7 @@ namespace Flare
 
 		virtual void initialize() noexcept;
 
-		void run();
+		void running();
 
 		int window_width;
 		int window_height;

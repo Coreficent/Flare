@@ -11,7 +11,7 @@ namespace Flare
 			switch (Key::event.type)
 			{
 			case SDL_QUIT:
-				Key::state = GameState::ended;
+				Key::state = Game_state::ending;
 				break;
 			case SDL_MOUSEMOTION:
 				Key::mouse_position = vec2{ Key::event.motion.x, Key::event.motion.y };

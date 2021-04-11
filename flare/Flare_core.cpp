@@ -15,7 +15,7 @@ namespace Flare
 
 	void Flare_core::initialize() noexcept {}
 
-	void Flare_core::run()
+	void Flare_core::running()
 	{
 		//Musice music = this->audio.load_music("music/x.ogg");
 		//music.play(-1);
@@ -24,12 +24,12 @@ namespace Flare
 		this->renderer.initialize();
 		this->initialize();
 
-		while (Key::state != Key::GameState::ended)
+		while (Key::state != Key::Game_state::ending)
 		{
 			this->enter_frame();
 			this->frame_manager.calculate_fps();
 			Key::process();
-			this->program.run(this->renderer, this->audio);
+			this->program.running(this->renderer, this->audio);
 			this->renderer.render(*this);
 			this->window.swap_window();
 		}

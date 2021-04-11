@@ -18,13 +18,13 @@ namespace Flare
 		static void press_key(unsigned int key_id);
 		static void release_key(unsigned int key_id);
 
-		enum class GameState
+		enum class Game_state
 		{
 			running,
-			ended
+			ending
 		};
 
-		inline static GameState state{ GameState::running };
+		inline static Game_state state{ Game_state::running };
 		inline static vec2 mouse_position{};
 
 	private:
