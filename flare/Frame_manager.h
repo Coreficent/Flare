@@ -1,8 +1,8 @@
 #pragma once
 
-#include <sdl/SDL_stdinc.h>
-#include <queue>
 #include <chrono>
+#include <queue>
+#include <sdl/SDL_stdinc.h>
 #include <thread>
 
 namespace Flare

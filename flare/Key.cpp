@@ -1,19 +1,8 @@
 #include "Key.h"
 
-
 namespace Flare
 {
 	using namespace std;
-
-
-	Key::Key()
-	{
-	}
-
-
-	Key::~Key()
-	{
-	}
 
 	void Key::process()
 	{
@@ -38,7 +27,9 @@ namespace Flare
 				break;
 			case SDL_MOUSEBUTTONUP:
 				this->input_manager.releaseKey(this->event.button.button);
-
+				break;
+			default:
+				printf("unimplemented key");
 				break;
 			}
 		}

@@ -9,9 +9,6 @@ namespace Flare
 	class Key
 	{
 	public:
-		Key();
-		~Key();
-
 		void process();
 
 		InputManager input_manager{};
