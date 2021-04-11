@@ -1,6 +1,6 @@
-#include <iostream>
-
 #include "Evader_core.h"
+
+#include <iostream>
 
 namespace Evader {
 
@@ -10,11 +10,11 @@ namespace Evader {
 
 	void Evader_core::initialize() noexcept
 	{
-		std::cout << "evader core initialized" << std::endl;
+		
 	}
 
 	void Evader_core::enter_frame() noexcept
 	{
-		// std::cout << "evader core enter" << std::endl;
+		
 	}
 }

@@ -1,4 +1,5 @@
 #include "Point.h"
+#include "Resource_manager.h"
 #include "Sprite.h"
 
 #include <algorithm>
@@ -8,7 +9,14 @@
 
 namespace Flare
 {
-	Sprite::Sprite() noexcept {}
+	Sprite::Sprite() noexcept
+	{
+	}
+
+	Sprite::Sprite(string texture_url)
+	{
+		this->texture_id = Resource_manager::get_texture(texture_url).id;
+	}
 
 	void Sprite::add_child(shared_ptr<Sprite> child)
 	{

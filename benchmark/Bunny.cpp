@@ -2,6 +2,11 @@
 
 namespace Benchmark
 {
+	Bunny::Bunny(string texture_url) : Sprite{ texture_url }
+	{
+
+	}
+
 	void Bunny::enter_frame() noexcept
 	{
 		this->x += this->speed_x;

@@ -192,14 +192,14 @@
     <ClInclude Include="Text_field.h">
       <Filter>Header Files\display</Filter>
     </ClInclude>
-    <ClInclude Include="Quad.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Resource_manager.h">
       <Filter>Header Files\texture</Filter>
     </ClInclude>
     <ClInclude Include="Texture_cache.h">
       <Filter>Header Files\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Quad.h">
+      <Filter>Header Files\display</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

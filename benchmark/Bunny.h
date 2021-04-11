@@ -9,6 +9,8 @@ namespace Benchmark
 	class Bunny : public Sprite
 	{
 	public:
+		Bunny(string texture_url);
+
 		virtual void enter_frame() noexcept override;
 
 		float speed_x{ rand() % 50 / 10.f };
