@@ -14,8 +14,8 @@ namespace Game {
 		{
 			shared_ptr<Sprite> sky{ make_shared<Sprite>("texture/Sky.png") };
 
-			sky->width = 1600;
-			sky->height = 900;
+			sky->width = this->window_width;
+			sky->height = this->window_height;
 			this->get_stage().add_child(sky);
 
 			shared_ptr<Sprite> ground{ make_shared<Sprite>("texture/Ground.png") };
