@@ -24,7 +24,7 @@ namespace Game {
 			ground->y = 450;
 			this->add_child(ground);
 
-			shared_ptr<Player> player{ make_shared<Player>(this->key, this->window_width) };
+			shared_ptr<Player> player{ make_shared<Player>(this->window_width) };
 			player->y = 400;
 			this->add_child(player);
 		}

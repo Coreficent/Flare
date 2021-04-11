@@ -2,7 +2,7 @@
 
 namespace Game
 {
-	Gun::Gun(string texture_rul, Key& key) : Sprite{ texture_rul }, key{ key }
+	Gun::Gun(string texture_url) : Sprite{ texture_url }
 	{
 	}
 
@@ -10,7 +10,7 @@ namespace Game
 	{
 		try
 		{
-			if (this->key.input_manager.keyPressed(SDL_BUTTON_LEFT))
+			if (Key::input_manager.keyPressed(SDL_BUTTON_LEFT))
 			{
 				shared_ptr<Sprite> bullet{ make_shared<Sprite>("texture/bullet.png") };
 				bullet->width = 35;

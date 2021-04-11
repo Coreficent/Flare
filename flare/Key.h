@@ -8,10 +8,9 @@ namespace Flare
 
 	class Key
 	{
-	public:
-		void process();
 
-		InputManager input_manager{};
+	public:
+		static void process();
 
 		enum class GameState
 		{
@@ -19,8 +18,11 @@ namespace Flare
 			ended
 		};
 
-		GameState currentState{GameState::running};
+		inline static GameState currentState{ GameState::running };
+		inline static InputManager input_manager{};
+		
 	private:
-		SDL_Event event{};
+		inline static SDL_Event event{};
+
 	};
 }

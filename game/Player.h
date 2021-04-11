@@ -11,13 +11,11 @@ namespace Game
 	{
 
 	public:
-		Player(Key& key, int window_width);
+		Player(int window_width);
 
 		void enter_frame() noexcept override;
 
 	private:
-		Key& key;
-
 		int window_width{};
 		float move_speed{ 10.0f };
 	};

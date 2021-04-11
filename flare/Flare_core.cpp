@@ -24,12 +24,12 @@ namespace Flare
 		this->renderer.initialize();
 		this->initialize();
 
-		while (this->key.currentState != Key::GameState::ended)
+		while (Key::currentState != Key::GameState::ended)
 		{
 			this->enter_frame();
 			this->frame_manager.calculate_fps();
-			this->key.process();
-			this->program.run(this->key, this->renderer, this->audio);
+			Key::process();
+			this->program.run(this->renderer, this->audio);
 			this->renderer.render(*this);
 			this->window.swap_window();
 		}

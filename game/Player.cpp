@@ -3,9 +3,9 @@
 
 namespace Game
 {
-	Player::Player(Key& key, int window_width) : Sprite{}, key{ key }, window_width{ window_width }
+	Player::Player(int window_width) : Sprite{}, window_width{ window_width }
 	{
-		shared_ptr<Gun> gun{ make_shared<Gun>("texture/gun.png", this->key) };
+		shared_ptr<Gun> gun{ make_shared<Gun>("texture/gun.png") };
 		gun->width = 50.0f;
 		gun->height = 100.0f;
 		gun->y = -100.0f;
@@ -25,14 +25,14 @@ namespace Game
 		{
 			const int effective_width{ this->window_width * 8 / 10 / 2 };
 
-			if (this->key.input_manager.keyPressed(SDLK_LEFT))
+			if (Key::input_manager.keyPressed(SDLK_LEFT))
 			{
 				if (this->x > -effective_width)
 				{
 					this->x += -this->move_speed;
 				}
 			}
-			if (this->key.input_manager.keyPressed(SDLK_RIGHT))
+			if (Key::input_manager.keyPressed(SDLK_RIGHT))
 			{
 				if (this->x < effective_width) {
 					this->x += this->move_speed;

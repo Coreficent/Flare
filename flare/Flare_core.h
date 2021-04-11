@@ -37,7 +37,6 @@ namespace Flare
 		Audio audio{};
 		Context context{};
 		Frame_manager frame_manager{};
-		Key key{};
 		Program program{};
 		Renderer renderer{ window_width, window_height };
 		Window window{ "Flare", window_width, window_height };

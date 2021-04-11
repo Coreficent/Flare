@@ -11,11 +11,8 @@ namespace Game
 	{
 
 	public:
-		Gun(string texture_rul, Key& key);
+		Gun(string texture_url);
 
 		void enter_frame() noexcept override;
-
-	private:
-		Key& key;
 	};
 }
