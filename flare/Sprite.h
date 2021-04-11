@@ -63,7 +63,6 @@ namespace Flare
 
 		vec3 global_position();
 
-		vec4 get_bound();
 		vec4 get_uv();
 	};
 }
