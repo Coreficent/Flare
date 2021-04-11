@@ -44,7 +44,6 @@ namespace Flare
 
 		Camera camera;
 		Sprite stage{};
-		string text{};
 
 	private:
 		void create_vertex_array() noexcept;
