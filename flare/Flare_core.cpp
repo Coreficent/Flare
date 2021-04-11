@@ -8,13 +8,12 @@ namespace Flare
 {
 	using namespace std;
 
-	Flare_core::Flare_core(int window_width, int window_height) : window_width{ window_width }, window_height{ window_height }
+	Flare_core::Flare_core(int window_width, int window_height) : window_width{ window_width }, window_height{ window_height }, stage{ *this }
 	{
 		dout << "Debug Mode" << endl;
 	}
 
 	void Flare_core::initialize() noexcept {}
-	void Flare_core::enter_frame() noexcept {}
 
 	void Flare_core::run()
 	{
@@ -27,7 +26,6 @@ namespace Flare
 
 		while (this->key.currentState != Key::GameState::ended)
 		{
-			this->enter_frame();
 			this->stage.enter_frame();
 			this->frame_manager.calculate_fps();
 			this->key.process();

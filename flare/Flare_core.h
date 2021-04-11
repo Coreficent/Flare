@@ -15,7 +15,7 @@ namespace Flare
 	using namespace Flare;
 	using namespace Flare;
 
-	class Flare_core
+	class Flare_core : public Sprite
 	{
 
 	public:
@@ -27,7 +27,6 @@ namespace Flare
 		virtual ~Flare_core() = default;
 
 		virtual void initialize() noexcept;
-		virtual void enter_frame() noexcept;
 
 		void run();
 
@@ -41,7 +40,7 @@ namespace Flare
 		Key key{};
 		Program program{};
 		Renderer renderer{ window_width, window_height };
-		Sprite stage{};
+		Sprite& stage;
 		Window window{ "Flare", window_width, window_height };
 	};
 }

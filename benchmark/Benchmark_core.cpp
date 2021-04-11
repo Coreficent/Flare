@@ -30,6 +30,7 @@ namespace Benchmark {
 
 	void Benchmark_core::enter_frame() noexcept
 	{
+		Sprite::enter_frame();
 		this->adjust_bunny();
 	}
 

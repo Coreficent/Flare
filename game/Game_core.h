@@ -13,7 +13,6 @@ namespace Game {
 		Game_core(int windowWidth, int windowHeight);
 
 		void initialize() noexcept override;
-		void enter_frame() noexcept override;
 
 	private:
 

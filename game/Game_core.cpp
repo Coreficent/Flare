@@ -34,9 +34,4 @@ namespace Game {
 		}
 
 	}
-
-	void Game_core::enter_frame() noexcept
-	{
-
-	}
 }
