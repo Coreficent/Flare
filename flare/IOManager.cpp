@@ -1,17 +1,19 @@
 #include "IOManager.h"
-#include <fstream>
 #include "error.h"
+
+#include <fstream>
 
 namespace Flare
 {
 	using namespace std;
 
-	bool IOManager::readFileToBuffer(string filePath, vector<unsigned char>& buffer)
+	bool IOManager::read_file_to_buffer(string filePath, vector<unsigned char>& buffer)
 	{
 		ifstream file(filePath, ios::binary);
+
 		if (file.fail())
 		{
-			output_error("failed to load binary");
+			output_error("failed to load binary at " + filePath);
 			return false;
 		}
 
@@ -22,6 +24,7 @@ namespace Flare
 		fileSize -= file.tellg();
 
 		buffer.resize(fileSize);
+
 		file.read(reinterpret_cast<char*>(&buffer[0]), fileSize);
 		file.close();
 
