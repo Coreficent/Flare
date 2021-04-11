@@ -1,4 +1,4 @@
-#include "Evader_core.h"
+#include "Game_core.h"
 
 #include <flare/Flare_core.h>
 #include <gsl/gsl>
@@ -6,9 +6,9 @@
 
 int main(int argc, char** argv)
 {
-	using namespace Evader;
+	using namespace Game;
 
-	Evader_core core{1600,900};
+	Game_core core{1600,900};
 	core.run();
 
 	return 0;
