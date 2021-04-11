@@ -123,7 +123,10 @@ namespace Flare
 
 	bool Sprite::hit_test_object(Sprite& sprite) noexcept
 	{
-		return false;
+		const float gap = distance(vec2{ this->global_x(), this->global_y() }, vec2{ sprite.global_x(), sprite.global_y() });
+		const float radius_sum = (this->width, this->height) / 2.0f + (sprite.width, sprite.height) / 2.0f;
+
+		return gap < radius_sum;
 	}
 
 	mat3 Sprite::calculate_matrix()
