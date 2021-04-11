@@ -1,3 +1,4 @@
+#include "Bullet.h"
 #include "Game_core.h"
 
 #include <iostream>
@@ -38,8 +39,6 @@ namespace Game {
 			base->height = 200;
 			player->add_child(base);
 
-			
-
 			this->statistics->text = "statistics";
 			this->statistics->x = -400.0f;
 			this->statistics->y = -200.0f;
@@ -58,7 +57,7 @@ namespace Game {
 
 		if (Key::is_down(SDL_BUTTON_LEFT))
 		{
-			shared_ptr<Sprite> bullet{ make_shared<Sprite>("texture/bullet.png") };
+			shared_ptr<Bullet> bullet{ make_shared<Bullet>("texture/bullet.png", this->window_height) };
 			bullet->width = 35;
 			bullet->height = 35;
 			bullet->x = gun->global_x();

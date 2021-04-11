@@ -13,6 +13,9 @@
     <ClCompile Include="Gun.cpp">
       <Filter>Source\display</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source\display</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game_core.h">
@@ -22,6 +25,9 @@
       <Filter>Header\display</Filter>
     </ClInclude>
     <ClInclude Include="Gun.h">
+      <Filter>Header\display</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
       <Filter>Header\display</Filter>
     </ClInclude>
   </ItemGroup>

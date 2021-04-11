@@ -1,6 +1,5 @@
 #pragma once
 
-#include "flare/Key.h"
 #include "flare/Sprite.h"
 
 namespace Game
