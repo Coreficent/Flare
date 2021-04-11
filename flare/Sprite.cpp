@@ -79,7 +79,7 @@ namespace Flare
 
 	vec3 Sprite::global_position()
 	{
-		return this->calculate_matrix() * vec3 { this->x, this->y, 1.0f };
+		return this->calculate_matrix() * vec3 { 0.0f, 0.0f, 1.0f };
 	}
 
 	vector<Quad> Sprite::graphics()

@@ -38,6 +38,8 @@ namespace Game {
 			base->height = 200;
 			player->add_child(base);
 
+			
+
 			this->statistics->text = "statistics";
 			this->statistics->x = -400.0f;
 			this->statistics->y = -200.0f;
