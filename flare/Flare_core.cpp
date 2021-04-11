@@ -32,7 +32,6 @@ namespace Flare
 			this->frame_manager.calculate_fps();
 			this->key.process();
 			this->program.run(this->key, this->renderer, this->audio);
-			this->game.run();
 			this->renderer.render(this->stage);
 			this->window.swap_window();
 		}

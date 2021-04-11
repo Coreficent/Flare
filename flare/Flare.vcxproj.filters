@@ -180,9 +180,6 @@
     <ClInclude Include="Program.h">
       <Filter>Header Files\logic</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files\logic</Filter>
-    </ClInclude>
     <ClInclude Include="Vial.h">
       <Filter>Header Files\container</Filter>
     </ClInclude>
@@ -267,9 +264,6 @@
       <Filter>Source Files\key</Filter>
     </ClCompile>
     <ClCompile Include="Program.cpp">
-      <Filter>Source Files\logic</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
       <Filter>Source Files\logic</Filter>
     </ClCompile>
     <ClCompile Include="Context.cpp">

@@ -3,7 +3,6 @@
 #include "Audio.h"
 #include "Context.h"
 #include "Frame_manager.h"
-#include "Game.h"
 #include "Key.h"
 #include "Program.h"
 #include "Renderer.h"
@@ -39,7 +38,6 @@ namespace Flare
 		Audio audio{};
 		Context context{};
 		Frame_manager frame_manager{};
-		Game game{};
 		Key key{};
 		Program program{};
 		Renderer renderer{ window_width, window_height };
