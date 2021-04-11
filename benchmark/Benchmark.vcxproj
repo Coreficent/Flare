@@ -160,8 +160,8 @@
     <ClInclude Include="Bunny.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="shader\colorShade.sf" />
-    <None Include="shader\colorShade.sv" />
+    <None Include="shader\fragment.shader" />
+    <None Include="shader\vertex.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

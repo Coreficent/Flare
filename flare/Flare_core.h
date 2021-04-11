@@ -44,11 +44,11 @@ namespace Flare
 		Program program{};
 		Game game{};
 
-		Renderer renderer;
+		Renderer renderer{ window_width, window_height };
 
 		Frame_manager frame_manager{};
 
-		Window window{ "Flare", window_width ,window_height };
+		Window window{ "Flare", window_width, window_height };
 
 		Sprite stage{};
 	};

@@ -49,10 +49,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shader\colorShade.sf">
+    <None Include="shader\fragment.shader">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="shader\colorShade.sv">
+    <None Include="shader\vertex.shader">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

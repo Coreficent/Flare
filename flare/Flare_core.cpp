@@ -8,7 +8,7 @@ namespace Flare
 {
 	using namespace std;
 
-	Flare_core::Flare_core(int window_width, int window_height) : renderer{ window_width ,window_height }, window_width{ window_width }, window_height{ window_height }
+	Flare_core::Flare_core(int window_width, int window_height) : window_width{ window_width }, window_height{ window_height }
 	{
 		dout << "Debug Mode" << endl;
 	}
