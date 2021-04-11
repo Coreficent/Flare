@@ -1,6 +1,9 @@
 #pragma once
 
-#include "flare/Flare_core.h"
+#include "Gun.h"
+#include "Player.h"
+
+#include <flare/Flare_core.h>
 
 namespace Game {
 
@@ -13,8 +16,10 @@ namespace Game {
 		Game_core(int windowWidth, int windowHeight);
 
 		void initialize() noexcept override;
+		void enter_frame() noexcept override;
 
 	private:
-
+		shared_ptr<Gun> gun{ make_shared<Gun>("texture/gun.png") };
+		
 	};
 }

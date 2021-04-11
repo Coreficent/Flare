@@ -45,9 +45,12 @@ namespace Flare
 		void add_child(shared_ptr<Sprite> child) noexcept;
 		void remove_child(shared_ptr<Sprite> child) noexcept;
 		size_t child_count() noexcept;
+		float global_x();
+		float global_y();
 
 		virtual void enter_frame() noexcept;
 		virtual vector<Quad> graphics();
+
 
 	protected:
 		mat3 calculate_matrix();
@@ -57,6 +60,8 @@ namespace Flare
 		float u_end{ 1.0f };
 		float v_start{ 0.0f };
 		float v_end{ 1.0f };
+
+		vec3 global_position();
 
 		vec4 get_bound();
 		vec4 get_uv();

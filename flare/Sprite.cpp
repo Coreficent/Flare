@@ -55,6 +55,21 @@ namespace Flare
 		return this->children.size();
 	}
 
+	float Sprite::global_x()
+	{
+		return this->global_position().x;
+	}
+
+	float Sprite::global_y()
+	{
+		return this->global_position().y;
+	}
+
+	vec3 Sprite::global_position()
+	{
+		return this->calculate_matrix() * vec3 { this->x, this->y, 1.0f };
+	}
+
 	vector<Quad> Sprite::graphics()
 	{
 		vector<Quad> result{};

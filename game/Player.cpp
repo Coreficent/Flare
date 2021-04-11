@@ -1,20 +1,10 @@
-#include "Gun.h"
 #include "Player.h"
 
 namespace Game
 {
 	Player::Player(int window_width) : Sprite{}, window_width{ window_width }
 	{
-		shared_ptr<Gun> gun{ make_shared<Gun>("texture/gun.png") };
-		gun->width = 50.0f;
-		gun->height = 100.0f;
-		gun->y = -100.0f;
-		this->add_child(gun);
-
-		shared_ptr<Sprite> player{ make_shared<Sprite>("texture/player.png") };
-		player->width = 300;
-		player->height = 200;
-		this->add_child(player);
+		
 	}
 
 	void Player::enter_frame() noexcept
