@@ -23,6 +23,12 @@ namespace Game {
 			ground->height = 200;
 			ground->y = 450;
 			this->get_stage().add_child(ground);
+
+			shared_ptr<Sprite> player{ make_shared<Sprite>("texture/Player.png") };
+			player->width = 300;
+			player->height = 200;
+			player->y = 400;
+			this->get_stage().add_child(player);
 		}
 		catch (...)
 		{

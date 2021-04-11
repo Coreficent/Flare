@@ -8,7 +8,7 @@ int main(int argc, char** argv)
 {
 	using namespace Game;
 
-	Game_core core{1600,900};
+	Game_core core{ 1'600, 1'000 };
 	core.run();
 
 	return 0;
