@@ -10,7 +10,6 @@ int main(int argc, char** argv)
 	cout << "Hello from Benchmark!" << endl;
 
 	Benchmark_core core{ 1000,500 };
-
 	core.run();
 
 	cout << "Bye from Benchmark!" << endl;

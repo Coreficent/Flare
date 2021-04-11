@@ -22,9 +22,9 @@ namespace Flare
 	public:
 		Flare_core(int window_width, int window_height);
 		Flare_core(const Flare_core& value) = default;
-		Flare_core(Flare_core && value) = default;
-		Flare_core& operator=(const Flare_core & value) = default;
-		Flare_core& operator=(Flare_core && value) = default;
+		Flare_core(Flare_core&& value) = default;
+		Flare_core& operator=(const Flare_core& value) = default;
+		Flare_core& operator=(Flare_core&& value) = default;
 		virtual ~Flare_core() = default;
 
 		Sprite& get_stage() noexcept;
@@ -39,7 +39,7 @@ namespace Flare
 
 	protected:
 		Context context{};
-		Window window{};
+
 		Audio audio{};
 
 		Key key{};
@@ -49,5 +49,7 @@ namespace Flare
 		Renderer renderer;
 
 		Frame_manager frame_manager{};
+
+		Window window{ "Flare", window_width ,window_height };
 	};
 }

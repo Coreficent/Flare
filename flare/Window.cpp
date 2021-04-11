@@ -1,28 +1,13 @@
 #include "Window.h"
-#include <gl/glew.h>
 #include "debug.h"
 
+#include <gl/glew.h>
 
 namespace Flare
 {
 	using namespace std;
 
-	Window::Window() : window{nullptr}
-	{
-	}
-
-
-	Window::~Window()
-	{
-	}
-
-
-	void Window::swap_window() const
-	{
-		SDL_GL_SwapWindow(this->window);
-	}
-
-	void Window::initialize(string name, int width, int height)
+	Window::Window(string name, int width, int height) : window{nullptr}
 	{
 		//Use this function to set an OpenGL window attribute before window creation. 
 		if (SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1) != 0)
@@ -74,5 +59,10 @@ namespace Flare
 		//blending
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	}
+
+	void Window::swap_window() const noexcept
+	{
+		SDL_GL_SwapWindow(this->window);
 	}
 }

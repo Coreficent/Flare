@@ -11,10 +11,6 @@ namespace Flare
 	Flare_core::Flare_core(int window_width, int window_height) : renderer{ window_width ,window_height }, window_width{ window_width }, window_height{ window_height }
 	{
 		dout << "Debug Mode" << endl;
-
-		this->window.initialize("Flare", window_width, window_height);
-		this->audio.initialize();
-		this->renderer.initialize();
 	}
 
 	void Flare_core::initialize() noexcept {}
@@ -24,7 +20,9 @@ namespace Flare
 	{
 		//Musice music = this->audio.load_music("music/x.ogg");
 		//music.play(-1);
+		this->audio.initialize();
 
+		this->renderer.initialize();
 		this->initialize();
 
 		while (this->key.currentState != Key::GameState::ended)
