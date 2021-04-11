@@ -40,7 +40,6 @@ namespace Flare
 		Key key{};
 		Program program{};
 		Renderer renderer{ window_width, window_height };
-		Sprite& stage;
 		Window window{ "Flare", window_width, window_height };
 	};
 }
