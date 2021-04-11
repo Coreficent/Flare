@@ -1,6 +1,6 @@
+#include "Audio.h"
 #include "Program.h"
 #include "debug.h"
-#include "Audio.h"
 
 namespace Flare
 {

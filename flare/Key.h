@@ -1,7 +1,5 @@
 #pragma once
 
-#include "InputManager.h"
-
 #include <glm/detail/type_vec2.hpp>
 #include <sdl/SDL.h>
 #include <unordered_map>

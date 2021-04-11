@@ -126,9 +126,6 @@
     <ClInclude Include="ImageLoader.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Header Files\unsorted</Filter>
-    </ClInclude>
     <ClInclude Include="IOManager.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
@@ -216,9 +213,6 @@
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
     <ClCompile Include="ImageLoader.cpp">
-      <Filter>Source Files\unsorted</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
     <ClCompile Include="IOManager.cpp">
