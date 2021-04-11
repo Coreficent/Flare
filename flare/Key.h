@@ -1,9 +1,14 @@
 #pragma once
-#include <sdl/SDL.h>
+
 #include "InputManager.h"
+
+#include <glm/detail/type_vec2.hpp>
+#include <sdl/SDL.h>
+#include <unordered_map>
 
 namespace Flare
 {
+	using namespace glm;
 	using namespace std;
 
 	class Key
@@ -11,6 +16,9 @@ namespace Flare
 
 	public:
 		static void process();
+		static bool is_down(unsigned int key_id);
+		static void press_key(unsigned int key_id);
+		static void release_key(unsigned int key_id);
 
 		enum class GameState
 		{
@@ -18,11 +26,12 @@ namespace Flare
 			ended
 		};
 
-		inline static GameState currentState{ GameState::running };
-		inline static InputManager input_manager{};
-		
+		inline static GameState state{ GameState::running };
+		inline static vec2 mouse_position{};
+
 	private:
 		inline static SDL_Event event{};
+		inline static unordered_map<unsigned int, bool> keymap{};
 
 	};
 }

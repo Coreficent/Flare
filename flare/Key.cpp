@@ -11,27 +11,44 @@ namespace Flare
 			switch (Key::event.type)
 			{
 			case SDL_QUIT:
-				Key::currentState = GameState::ended;
+				Key::state = GameState::ended;
 				break;
 			case SDL_MOUSEMOTION:
-				Key::input_manager.setMousePosition((float)Key::event.motion.x, (float)Key::event.motion.y);
+				Key::mouse_position = vec2{ Key::event.motion.x, Key::event.motion.y };
 				break;
 			case SDL_KEYDOWN:
-				Key::input_manager.pressKey(Key::event.key.keysym.sym);
+				Key::press_key(Key::event.key.keysym.sym);
 				break;
 			case SDL_KEYUP:
-				Key::input_manager.releaseKey(Key::event.key.keysym.sym);
+				Key::release_key(Key::event.key.keysym.sym);
 				break;
 			case SDL_MOUSEBUTTONDOWN:
-				Key::input_manager.pressKey(Key::event.button.button);
+				Key::press_key(Key::event.button.button);
 				break;
 			case SDL_MOUSEBUTTONUP:
-				Key::input_manager.releaseKey(Key::event.button.button);
+				Key::release_key(Key::event.button.button);
 				break;
 			default:
-				printf("unimplemented key");
+				printf("unimplemented key\n");
 				break;
 			}
 		}
+	}
+
+	bool Key::is_down(unsigned int key_id)
+	{
+		auto it = Key::keymap.find(key_id);
+		return it != Key::keymap.end() ? it->second : false;
+	}
+
+	void Key::press_key(unsigned int key_id)
+	{
+		Key::keymap[key_id] = true;
+	}
+
+
+	void Key::release_key(unsigned int key_id)
+	{
+		Key::keymap[key_id] = false;
 	}
 }

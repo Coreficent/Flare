@@ -10,7 +10,7 @@ namespace Game
 	{
 		try
 		{
-			if (Key::input_manager.keyPressed(SDL_BUTTON_LEFT))
+			if (Key::is_down(SDL_BUTTON_LEFT))
 			{
 				shared_ptr<Sprite> bullet{ make_shared<Sprite>("texture/bullet.png") };
 				bullet->width = 35;

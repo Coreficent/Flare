@@ -14,8 +14,8 @@ namespace Flare
 
 		bool keyPressed(unsigned int keyID);
 
-		void pressKey(unsigned int keyID);
-		void releaseKey(unsigned int keyID);
+		void press_key(unsigned int keyID);
+		void release_key(unsigned int keyID);
 		void setMousePosition(float x, float y);
 		glm::vec2 get_mouse_position() const;
 

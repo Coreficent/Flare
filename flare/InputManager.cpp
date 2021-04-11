@@ -11,13 +11,13 @@ namespace Flare
 	{
 	}
 
-	void InputManager::pressKey(unsigned int keyID)
+	void InputManager::press_key(unsigned int keyID)
 	{
 		this->keymap[keyID] = true;
 	}
 
 
-	void InputManager::releaseKey(unsigned int keyID)
+	void InputManager::release_key(unsigned int keyID)
 	{
 		this->keymap[keyID] = false;
 	}

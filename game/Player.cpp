@@ -25,14 +25,14 @@ namespace Game
 		{
 			const int effective_width{ this->window_width * 8 / 10 / 2 };
 
-			if (Key::input_manager.keyPressed(SDLK_LEFT))
+			if (Key::is_down(SDLK_LEFT))
 			{
 				if (this->x > -effective_width)
 				{
 					this->x += -this->move_speed;
 				}
 			}
-			if (Key::input_manager.keyPressed(SDLK_RIGHT))
+			if (Key::is_down(SDLK_RIGHT))
 			{
 				if (this->x < effective_width) {
 					this->x += this->move_speed;

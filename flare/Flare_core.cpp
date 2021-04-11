@@ -24,7 +24,7 @@ namespace Flare
 		this->renderer.initialize();
 		this->initialize();
 
-		while (Key::currentState != Key::GameState::ended)
+		while (Key::state != Key::GameState::ended)
 		{
 			this->enter_frame();
 			this->frame_manager.calculate_fps();
