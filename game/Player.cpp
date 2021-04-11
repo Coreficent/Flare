@@ -1,10 +1,11 @@
+#include "Gun.h"
 #include "Player.h"
 
 namespace Game
 {
 	Player::Player(Key& key, int window_width) : Sprite{}, key{ key }, window_width{ window_width }
 	{
-		shared_ptr<Sprite> gun{ make_shared<Sprite>("texture/gun.png") };
+		shared_ptr<Gun> gun{ make_shared<Gun>("texture/gun.png", this->key) };
 		gun->width = 50.0f;
 		gun->height = 100.0f;
 		gun->y = -100.0f;
