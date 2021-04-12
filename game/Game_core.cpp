@@ -63,8 +63,9 @@ namespace Game {
 		this->add_child(this->interface_layer);
 
 		this->statistics->text = "statistics";
-		this->statistics->x = -400.0f;
-		this->statistics->y = -200.0f;
+		float border{ 25.0f };
+		this->statistics->x = -this->window_width / 2 + border;
+		this->statistics->y = -this->window_height / 2 + border;
 		this->statistics->scale_y = 2.0f;
 		this->interface_layer->add_child(statistics);
 

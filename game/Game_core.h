@@ -27,7 +27,7 @@ namespace Game {
 		shared_ptr<Sprite> static_layer{ make_shared<Sprite>() };
 		shared_ptr<Sprite> interactive_layer{ make_shared<Sprite>() };
 		shared_ptr<Sprite> interface_layer{ make_shared<Sprite>() };
-		shared_ptr<Text_field> statistics{ make_shared<Text_field>("font/disney.ttf", 64) };
+		shared_ptr<Text_field> statistics{ make_shared<Text_field>("font/disney.ttf", 32) };
 		shared_ptr<Sprite> bullet_layer{ make_shared<Sprite>() };
 		shared_ptr<Outer_space> debris_layer{ make_shared<Outer_space>(window_width,window_height) };
 
