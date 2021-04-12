@@ -15,6 +15,16 @@ namespace Game
 
 	void Gun::enter_frame() noexcept
 	{
+		// avoid concurrent modification
+		auto children = this->spawn_layer->children;
+		for (auto& bullet : children)
+		{
+			if (length(vec2{ bullet->global_x(), bullet->global_y()}) > 2000.0f)
+			{
+				this->spawn_layer->remove_child(bullet);
+			}
+		}
+
 		if (Key::is_down(SDL_BUTTON_LEFT))
 		{
 			shared_ptr<Bullet> bullet{ make_shared<Bullet>("texture/bullet.png", 1'000) };
