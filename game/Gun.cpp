@@ -40,6 +40,8 @@ namespace Game
 				bullet->speed_y = -15.0f;
 
 				this->spawn_layer->add_child(bullet);
+
+				bullet_sound.play();
 			}
 		}
 	}

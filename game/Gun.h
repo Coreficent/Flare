@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Spawner.h"
+#include <flare/Sound.h>
 
 namespace Game
 {
@@ -15,6 +16,8 @@ namespace Game
 
 	private :
 		shared_ptr<Sprite> gun_graphics{ make_shared<Sprite>("texture/Gun.png") };
+
+		Sound bullet_sound{ "sound/Liquid.wav" };
 		int cool_down{ 10 };
 	};
 }
