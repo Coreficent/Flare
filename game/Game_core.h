@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Bullet.h"
+#include "Cannon.h"
 #include "Debris.h"
 #include "Outer_space.h"
 #include "Gun.h"
@@ -29,6 +30,10 @@ namespace Game {
 		shared_ptr<Text_field> statistics{ make_shared<Text_field>("font/disney.ttf", 64) };
 		shared_ptr<Sprite> bullet_layer{ make_shared<Sprite>() };
 		shared_ptr<Outer_space> debris_layer{ make_shared<Outer_space>(window_width,window_height) };
+		shared_ptr<Gun> gun{};
+		shared_ptr<Cannon> cannon_left{};
+		shared_ptr<Cannon> cannon_right{};
+
 		Sound hit_sound{ "sound/Water.wav" };
 		Sound explode_sound{ "sound/Pop.wav" };
 		int score{ 0 };

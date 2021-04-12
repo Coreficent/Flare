@@ -39,23 +39,23 @@ namespace Game {
 
 		this->interactive_layer->add_child(this->bullet_layer);
 
-		shared_ptr<Gun> gun{ make_shared<Gun>(this->bullet_layer, this->window_width,this->window_height) };
-		player->add_child(gun);
+		this->gun = make_shared<Gun>(this->bullet_layer, this->window_width, this->window_height);
+		player->add_child(this->gun);
 
 		shared_ptr<Sprite> base{ make_shared<Sprite>("texture/Player.png") };
 		base->width = 300;
 		base->height = 200;
 		player->add_child(base);
 
-		shared_ptr<Cannon> cannon_left{ make_shared<Cannon>(this->bullet_layer, this->window_width, this->window_height) };
-		cannon_left->x = -150.0f;
-		cannon_left->y = 75.0f;
-		player->add_child(cannon_left);
+		this->cannon_left = make_shared<Cannon>(this->bullet_layer, this->window_width, this->window_height);
+		this->cannon_left->x = -150.0f;
+		this->cannon_left->y = 75.0f;
+		player->add_child(this->cannon_left);
 
-		shared_ptr<Cannon> cannon_right{ make_shared<Cannon>(this->bullet_layer, this->window_width, this->window_height) };
-		cannon_right->x = 150.0f;
-		cannon_right->y = 75.0f;
-		player->add_child(cannon_right);
+		this->cannon_right = make_shared<Cannon>(this->bullet_layer, this->window_width, this->window_height);
+		this->cannon_right->x = 150.0f;
+		this->cannon_right->y = 75.0f;
+		player->add_child(this->cannon_right);
 
 		this->interactive_layer->add_child(this->debris_layer);
 
@@ -79,7 +79,7 @@ namespace Game {
 
 		for (auto& bullet_sprite : bullet_children)
 		{
-			auto& bullet = static_cast<Bullet&>(*bullet_sprite);
+			const auto& bullet = static_cast<Bullet&>(*bullet_sprite);
 
 			for (auto& debris_sprite : debris_children)
 			{
@@ -101,6 +101,37 @@ namespace Game {
 					}
 				}
 			}
+		}
+
+		if (this->score < 50)
+		{
+			this->gun->cool_down = 100;
+			this->cannon_left->cool_down = this->cannon_right->cool_down = 500;
+		}
+		else if (this->score < 100)
+		{
+			this->gun->cool_down = 100;
+			this->cannon_left->cool_down = this->cannon_right->cool_down = 250;
+		}
+		else if (this->score < 250)
+		{
+			this->gun->cool_down = 50;
+			this->cannon_left->cool_down = this->cannon_right->cool_down = 250;
+		}
+		else if (this->score < 500)
+		{
+			this->gun->cool_down = 25;
+			this->cannon_left->cool_down = this->cannon_right->cool_down = 100;
+		}
+		else if (this->score < 1000)
+		{
+			this->gun->cool_down = 15;
+			this->cannon_left->cool_down = this->cannon_right->cool_down = 50;
+		}
+		else if (this->score < 2500)
+		{
+			this->gun->cool_down = 5;
+			this->cannon_left->cool_down = this->cannon_right->cool_down = 25;
 		}
 
 		string delimiter{ " " };

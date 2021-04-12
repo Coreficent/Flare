@@ -12,7 +12,7 @@ namespace Game
 	{
 		Sprite::enter_frame();
 
-		this->progress += 0.001f;
+		this->progress += 0.0001f;
 
 		if (this->progress > 1.0f) {
 			this->progress = 1.0f;

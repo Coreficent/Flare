@@ -14,6 +14,8 @@ namespace Game
 		Gun(shared_ptr<Sprite> spawn_layer, int windiws_width, int windows_height);
 		void enter_frame() override;
 
+		int cool_down{ 100 };
+
 	private :
 		shared_ptr<Sprite> gun_graphics{ make_shared<Sprite>("texture/Gun.png") };
 
@@ -21,6 +23,5 @@ namespace Game
 
 		int windiws_width{};
 		int windows_height{};
-		int cool_down{ 10 };
 	};
 }
