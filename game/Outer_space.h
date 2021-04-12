@@ -18,5 +18,7 @@ namespace Game
 		int spawn_chance_per_frame{1};
 		int window_width{};
 		int window_height{};
+
+		float progress{0.0f};
 	};
 }
