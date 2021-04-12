@@ -95,6 +95,8 @@ namespace Game {
 					{
 						this->debris_layer->remove_child(debris);
 						this->score += 10;
+
+						this->explode_sound.play();
 					}
 				}
 			}
