@@ -110,13 +110,13 @@ namespace Game {
 		}
 		else if (this->score < 100)
 		{
-			this->gun->cool_down = 100;
+			this->gun->cool_down = 75;
 			this->cannon_left->cool_down = this->cannon_right->cool_down = 250;
 		}
 		else if (this->score < 250)
 		{
 			this->gun->cool_down = 50;
-			this->cannon_left->cool_down = this->cannon_right->cool_down = 250;
+			this->cannon_left->cool_down = this->cannon_right->cool_down = 125;
 		}
 		else if (this->score < 500)
 		{
