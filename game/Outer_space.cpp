@@ -3,7 +3,7 @@
 
 namespace Game
 {
-	Outer_space::Outer_space() noexcept
+	Outer_space::Outer_space(int window_width, int window_height) noexcept : window_width{ window_width }, window_height{ window_height }
 	{
 
 	}
@@ -15,7 +15,7 @@ namespace Game
 		auto children = this->children;
 		for (auto& debris : children)
 		{
-			if (length(vec2{ debris->global_x(), debris->global_y() }) > 2000.0f)
+			if (length(vec2{ debris->global_x(), debris->global_y() }) > 1.5f * glm::max(this->window_width, this->window_height))
 			{
 				this->remove_child(debris);
 			}

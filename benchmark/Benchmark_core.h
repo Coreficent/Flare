@@ -14,7 +14,7 @@ namespace Benchmark {
 	{
 
 	public:
-		Benchmark_core(int windowWidth, int windowHeight);
+		Benchmark_core(int window_width, int window_height);
 
 		void initialize() noexcept override;
 		void enter_frame() noexcept override;

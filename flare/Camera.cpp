@@ -2,8 +2,8 @@
 
 namespace Flare
 {
-	Camera::Camera(int windowWidth, int windowHeight)
-		: position{0.0f,0.0f}, cameraMatrix(1.0f), orthoMatrix{glm::ortho(0.0f, static_cast<float>(windowWidth), static_cast<float>(windowHeight), 0.0f)}, identityMatrix{1.0f}, scale{1.0f}, window_width{windowWidth}, window_height{windowHeight}, updateRequired{true}
+	Camera::Camera(int window_width, int window_height)
+		: position{0.0f,0.0f}, cameraMatrix(1.0f), orthoMatrix{glm::ortho(0.0f, static_cast<float>(window_width), static_cast<float>(window_height), 0.0f)}, identityMatrix{1.0f}, scale{1.0f}, window_width{window_width}, window_height{window_height}, updateRequired{true}
 	{
 	}
 

@@ -6,7 +6,7 @@ namespace Flare
 	class Camera
 	{
 	public:
-		Camera(int windowWidth, int windowHeight);
+		Camera(int window_width, int window_height);
 		~Camera();
 		void setPosition(const glm::vec2& position);
 		glm::vec2 getPosition() const;
