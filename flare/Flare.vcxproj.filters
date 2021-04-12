@@ -37,12 +37,6 @@
     <Filter Include="Header Files\unsorted">
       <UniqueIdentifier>{a4af31e8-8b8e-4832-ae6b-904baf07d35b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\geometry">
-      <UniqueIdentifier>{5da9e2f8-3407-458c-8eb5-b843a6e212c8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\geometry">
-      <UniqueIdentifier>{42e5ce9f-14c8-40ba-b5c4-55dc393afacf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\render">
       <UniqueIdentifier>{63a42c88-c8cd-4569-bd2c-0505be98701b}</UniqueIdentifier>
     </Filter>
@@ -60,12 +54,6 @@
     </Filter>
     <Filter Include="Source Files\window">
       <UniqueIdentifier>{6014e4d8-3fe8-4ff9-a602-e865dee3623d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\media">
-      <UniqueIdentifier>{541493b6-019f-4001-a746-918fe1955bf7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\media">
-      <UniqueIdentifier>{5394d912-3d7f-429f-b612-f24923484d5a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\graphics">
       <UniqueIdentifier>{a55ce34a-a04e-4e42-89ff-ccd5cd73c70f}</UniqueIdentifier>
@@ -105,9 +93,6 @@
     <ClInclude Include="Frame_manager.h">
       <Filter>Header Files\frame</Filter>
     </ClInclude>
-    <ClInclude Include="AudioManager.h">
-      <Filter>Header Files\unsorted</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
@@ -128,12 +113,6 @@
     </ClInclude>
     <ClInclude Include="Vertex.h">
       <Filter>Header Files\unsorted</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix.h">
-      <Filter>Header Files\geometry</Filter>
-    </ClInclude>
-    <ClInclude Include="Point.h">
-      <Filter>Header Files\geometry</Filter>
     </ClInclude>
     <ClInclude Include="mathematics.h">
       <Filter>Header Files\utility</Filter>
@@ -165,9 +144,6 @@
     <ClInclude Include="Vial.h">
       <Filter>Header Files\container</Filter>
     </ClInclude>
-    <ClInclude Include="Context.h">
-      <Filter>Header Files\media</Filter>
-    </ClInclude>
     <ClInclude Include="Text_field.h">
       <Filter>Header Files\display</Filter>
     </ClInclude>
@@ -185,9 +161,6 @@
     <ClCompile Include="Frame_manager.cpp">
       <Filter>Source Files\frame</Filter>
     </ClCompile>
-    <ClCompile Include="AudioManager.cpp">
-      <Filter>Source Files\unsorted</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
@@ -202,12 +175,6 @@
     </ClCompile>
     <ClCompile Include="picoPNG.cpp">
       <Filter>Source Files\unsorted</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix.cpp">
-      <Filter>Source Files\geometry</Filter>
-    </ClCompile>
-    <ClCompile Include="Point.cpp">
-      <Filter>Source Files\geometry</Filter>
     </ClCompile>
     <ClCompile Include="mathematics.cpp">
       <Filter>Source Files\utility</Filter>
@@ -232,9 +199,6 @@
     </ClCompile>
     <ClCompile Include="Key.cpp">
       <Filter>Source Files\key</Filter>
-    </ClCompile>
-    <ClCompile Include="Context.cpp">
-      <Filter>Source Files\media</Filter>
     </ClCompile>
     <ClCompile Include="Text_field.cpp">
       <Filter>Source Files\display</Filter>

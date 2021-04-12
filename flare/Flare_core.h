@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Context.h"
 #include "Frame_manager.h"
 #include "Key.h"
 #include "Renderer.h"
@@ -32,10 +31,7 @@ namespace Flare
 		int window_height;
 
 	protected:
-		//Audio audio{};
-		Context context{};
 		Frame_manager frame_manager{};
-		//Program program{};
 		Renderer renderer{ window_width, window_height };
 		Window window{ "", window_width, window_height };
 	};
