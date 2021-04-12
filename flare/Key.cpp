@@ -29,7 +29,6 @@ namespace Flare
 				Key::release_key(Key::event.button.button);
 				break;
 			default:
-				printf("unimplemented key\n");
 				break;
 			}
 		}
