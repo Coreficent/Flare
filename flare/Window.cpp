@@ -60,6 +60,19 @@ namespace Flare
 		//blending
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		/* logo */
+		Uint16 pixels[16 * 16] = {};
+
+		for (auto i{ 0 }; i < 16 * 16; ++i)
+		{
+			pixels[i] = 0xFFFF;
+		}
+
+		SDL_Surface* surface = SDL_CreateRGBSurfaceFrom(pixels, 16, 16, 16, 16 * 2, 0x0f00, 0x00f0, 0x000f, 0xf000);
+
+		SDL_SetWindowIcon(window, surface);
+		SDL_FreeSurface(surface);
 	}
 
 	void Window::update_window() noexcept
