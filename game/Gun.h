@@ -10,7 +10,9 @@ namespace Game
 	{
 
 	public:
-		Gun(string texture_url);
+		Gun(string texture_url, shared_ptr<Sprite> spawn_layer);
+		void enter_frame() noexcept override;
 
+		shared_ptr<Sprite> spawn_layer{};
 	};
 }

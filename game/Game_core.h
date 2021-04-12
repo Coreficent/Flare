@@ -27,13 +27,5 @@ namespace Game {
 		shared_ptr<Sprite> interactive_layer{ make_shared<Sprite>() };
 		shared_ptr<Sprite> interface_layer{ make_shared<Sprite>() };
 		shared_ptr<Text_field> statistics{ make_shared<Text_field>("font/disney.ttf", 64) };
-		shared_ptr<Debris_spawner> debris_spawner{ make_shared<Debris_spawner>() };
-		shared_ptr<Gun> gun{ make_shared<Gun>("texture/gun.png") };
-		
-		
-
-		
-		shared_ptr<Debris> debris{ make_shared<Debris>("texture/Debris.png") };
-		set<shared_ptr<Bullet>> bullets{};
 	};
 }

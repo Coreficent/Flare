@@ -37,6 +37,10 @@ namespace Game {
 			player->y = 400;
 			this->interactive_layer->add_child(player);
 
+			shared_ptr<Sprite> bullet_layer{ make_shared<Sprite>() };
+			this->interactive_layer->add_child(bullet_layer);
+
+			shared_ptr<Gun> gun{ make_shared<Gun>("texture/gun.png", bullet_layer) };
 			gun->width = 50.0f;
 			gun->height = 100.0f;
 			gun->y = -100.0f;
@@ -47,8 +51,6 @@ namespace Game {
 			base->height = 200;
 			player->add_child(base);
 
-			this->debris_spawner->spawn_target = this->gun;
-			this->interactive_layer->add_child(debris_spawner);
 
 
 			/* user interface layer */
@@ -60,13 +62,7 @@ namespace Game {
 			this->statistics->scale_y = 2.0f;
 			this->interface_layer->add_child(statistics);
 
-			/// <summary>
-			/// 
-			/// </summary>
-			/// <returns></returns>
-			debris->width = 100;
-			debris->height = 100;
-			this->add_child(debris);
+
 		}
 		catch (...)
 		{
@@ -81,39 +77,13 @@ namespace Game {
 		{
 			if (Key::is_down(SDL_BUTTON_LEFT))
 			{
-				shared_ptr<Bullet> bullet{ make_shared<Bullet>("texture/bullet.png", this->window_height) };
-				bullet->width = 35;
-				bullet->height = 35;
-				bullet->x = gun->global_x();
-				bullet->y = gun->global_y();
+				//shared_ptr<Bullet> bullet{ make_shared<Bullet>("texture/bullet.png", this->window_height) };
+				//bullet->width = 35;
+				//bullet->height = 35;
+				//bullet->x = gun->global_x();
+				//bullet->y = gun->global_y();
 
-				this->bullets.insert(bullet);
-				this->add_child(bullet);
-			}
-
-			vector<shared_ptr<Bullet>> cleanup{};
-
-			for (auto bullet : this->bullets)
-			{
-				if (bullet->y < -this->window_height || bullet->y > this->window_height)
-				{
-					cleanup.push_back(bullet);
-				}
-			}
-
-
-			for (auto bullet : this->bullets)
-			{
-				if (bullet->hit_test_object(*this->debris))
-				{
-					this->remove_child(this->debris);
-				}
-			}
-
-			for (auto i : cleanup)
-			{
-				this->remove_child(i);
-				this->bullets.erase(i);
+				//this->add_child(bullet);
 			}
 
 			string delimiter{ " " };
