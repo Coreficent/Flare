@@ -31,7 +31,7 @@ namespace Flare
 			Key::process();
 			this->program.running(this->renderer, this->audio);
 			this->renderer.render(*this);
-			this->window.swap_window();
+			this->window.update_window();
 		}
 
 		//music.stop();

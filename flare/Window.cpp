@@ -7,7 +7,7 @@ namespace Flare
 {
 	using namespace std;
 
-	Window::Window(string name, int width, int height) : window{nullptr}
+	Window::Window(string name, int windows_width, int windows_height) : window{ nullptr }, windows_width{ windows_width }, windows_height{ windows_height }
 	{
 		//Use this function to set an OpenGL window attribute before window creation. 
 		if (SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1) != 0)
@@ -30,7 +30,7 @@ namespace Flare
 			flag |= SDL_WINDOW_BORDERLESS;
 		}
 
-		this->window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flag);
+		this->window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, this->windows_width, this->windows_height, flag);
 
 		if (!this->window)
 		{
@@ -61,8 +61,9 @@ namespace Flare
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 
-	void Window::swap_window() const noexcept
+	void Window::update_window() noexcept
 	{
 		SDL_GL_SwapWindow(this->window);
+		SDL_GetWindowSize(this->window, &this->windows_width, &this->windows_height);
 	}
 }

@@ -18,13 +18,16 @@ namespace Flare
 	{
 
 	public:
-		Window(string name, int width, int height);
+		Window(string name, int window_width, int window_height);
 
-		void swap_window() const noexcept;
+		void update_window() noexcept;
 
 		bool full_screen{ false };
 		bool hidden{ false };
 		bool borderless{ false };
+
+		int windows_width{};
+		int windows_height{};
 
 	private:
 		SDL_Window* window;
