@@ -27,23 +27,21 @@ namespace Game
 			}
 		}
 
-		if (Key::is_down(SDL_BUTTON_LEFT))
+
+		if (this->frame % this->cool_down == 0)
 		{
-			if (this->frame % this->cool_down == 0)
-			{
-				shared_ptr<Bullet> bullet{ make_shared<Bullet>("texture/Bullet.png", 1'000) };
-				bullet->width = 50;
-				bullet->height = 50;
-				bullet->x = this->gun_graphics->global_x();
-				bullet->y = this->gun_graphics->global_y();
-				bullet->speed_x = 0.0f;
-				bullet->speed_y = -15.0f;
-				bullet->damage = 15.0f;
+			shared_ptr<Bullet> bullet{ make_shared<Bullet>("texture/Bullet.png", 1'000) };
+			bullet->width = 50;
+			bullet->height = 50;
+			bullet->x = this->gun_graphics->global_x();
+			bullet->y = this->gun_graphics->global_y();
+			bullet->speed_x = 0.0f;
+			bullet->speed_y = -15.0f;
+			bullet->damage = 15.0f;
 
-				this->spawn_layer->add_child(bullet);
+			this->spawn_layer->add_child(bullet);
 
-				bullet_sound.play();
-			}
+			bullet_sound.play();
 		}
 	}
 }

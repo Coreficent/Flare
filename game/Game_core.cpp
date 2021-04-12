@@ -113,36 +113,8 @@ namespace Game {
 			}
 		}
 
-		if (this->score < 50)
-		{
-			this->gun->cool_down = 100;
-			this->cannon_left->cool_down = this->cannon_right->cool_down = 500;
-		}
-		else if (this->score < 100)
-		{
-			this->gun->cool_down = 75;
-			this->cannon_left->cool_down = this->cannon_right->cool_down = 250;
-		}
-		else if (this->score < 250)
-		{
-			this->gun->cool_down = 50;
-			this->cannon_left->cool_down = this->cannon_right->cool_down = 125;
-		}
-		else if (this->score < 500)
-		{
-			this->gun->cool_down = 25;
-			this->cannon_left->cool_down = this->cannon_right->cool_down = 100;
-		}
-		else if (this->score < 1000)
-		{
-			this->gun->cool_down = 15;
-			this->cannon_left->cool_down = this->cannon_right->cool_down = 50;
-		}
-		else if (this->score < 2500)
-		{
-			this->gun->cool_down = 5;
-			this->cannon_left->cool_down = this->cannon_right->cool_down = 25;
-		}
+		this->gun->cool_down = 5 + 100 * 100 / (this->score + 1);
+		this->cannon_left->cool_down = this->cannon_right->cool_down = 15 + 500 * 100 / (this->score + 1);
 
 		string delimiter{ " " };
 		this->statistics->text = "";
