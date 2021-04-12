@@ -15,6 +15,6 @@ namespace Game
 		void enter_frame() noexcept override;
 
 	private:
-		float speed{ 1.0f };
+		float speed{ 10.0f };
 	};
 }
