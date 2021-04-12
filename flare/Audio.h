@@ -42,7 +42,7 @@ namespace Flare
 		SoundEffect load_sound_effect(const std::string& file_path);
 		Musice load_music(const std::string& file_path);
 	private:
-		map<string, Mix_Chunk*> effect_map;
+		map<string, Mix_Chunk*> audio_cache;
 		map<string, Mix_Music*> music_map;
 	};
 }

@@ -63,11 +63,11 @@ namespace Flare
 
 	SoundEffect Audio::load_sound_effect(const std::string& file_path)
 	{
-		auto it = this->effect_map.find(file_path);
+		auto it = this->audio_cache.find(file_path);
 
 		SoundEffect effect;
 
-		if (it == this->effect_map.end())
+		if (it == this->audio_cache.end())
 		{
 			Mix_Chunk* chunk = Mix_LoadWAV(file_path.c_str());
 			if (chunk == nullptr)
@@ -75,7 +75,7 @@ namespace Flare
 				printf("load sound filed");
 			}
 			effect.mix_chunk = chunk;
-			this->effect_map[file_path] = chunk;
+			this->audio_cache[file_path] = chunk;
 		}
 		else
 		{
