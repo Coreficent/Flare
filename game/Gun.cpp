@@ -37,7 +37,7 @@ namespace Game
 			bullet->y = this->gun_graphics->global_y();
 			bullet->speed_x = 0.0f;
 			bullet->speed_y = -15.0f;
-			bullet->damage = 15.0f;
+			bullet->damage = 45.0f;
 
 			this->spawn_layer->add_child(bullet);
 

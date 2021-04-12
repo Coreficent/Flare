@@ -113,8 +113,13 @@ namespace Game {
 			}
 		}
 
-		this->gun->cool_down = 5 + 100 * 100 / (this->score + 1);
-		this->cannon_left->cool_down = this->cannon_right->cool_down = 15 + 500 * 100 / (this->score + 1);
+		this->gun->cool_down = 5 + 250 * 1'00 / (this->score + 1);
+		this->cannon_left->cool_down = this->cannon_right->cool_down = 10 + 125 * 1'00 / (this->score + 1);
+
+		int score_maximum{ 99'999 };
+		if (this->score > score_maximum) {
+			this->score = score_maximum;
+		}
 
 		string delimiter{ " " };
 		this->statistics->text = "";

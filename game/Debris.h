@@ -14,8 +14,8 @@ namespace Game
 
 		void enter_frame() noexcept override;
 		float mass{ 10.0f };
+		float speed{ 10.0f };
 
 	private:
-		float speed{ 10.0f };
 	};
 }
