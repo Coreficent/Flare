@@ -176,7 +176,6 @@
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Text_field.h" />
     <ClInclude Include="Glyph.h" />
-    <ClInclude Include="Texture_cache.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Vial.h" />
     <ClInclude Include="Window.h" />
@@ -205,7 +204,6 @@
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Text_field.cpp" />
     <ClCompile Include="Glyph.cpp" />
-    <ClCompile Include="Texture_cache.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>

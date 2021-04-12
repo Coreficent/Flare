@@ -189,9 +189,6 @@
     <ClInclude Include="Resource_manager.h">
       <Filter>Header Files\texture</Filter>
     </ClInclude>
-    <ClInclude Include="Texture_cache.h">
-      <Filter>Header Files\texture</Filter>
-    </ClInclude>
     <ClInclude Include="Quad.h">
       <Filter>Header Files\display</Filter>
     </ClInclude>
@@ -265,9 +262,6 @@
     </ClCompile>
     <ClCompile Include="Text_field.cpp">
       <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture_cache.cpp">
-      <Filter>Source Files\texture</Filter>
     </ClCompile>
     <ClCompile Include="Resource_manager.cpp">
       <Filter>Source Files\texture</Filter>
