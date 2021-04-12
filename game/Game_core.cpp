@@ -77,24 +77,25 @@ namespace Game {
 		auto bullet_children = this->bullet_layer->children;
 		auto debris_children = this->debris_layer->children;
 
-		for (auto& bullet : bullet_children)
+		for (auto& bullet_sprite : bullet_children)
 		{
-			for (auto& debris : debris_children)
+			auto& bullet = static_cast<Bullet&>(*bullet_sprite);
+
+			for (auto& debris_sprite : debris_children)
 			{
-				if (bullet->hit_test_object(*debris))
+				auto& debris = static_cast<Debris&>(*debris_sprite);
+
+				if (bullet_sprite->hit_test_object(*debris_sprite))
 				{
-					this->bullet_layer->remove_child(bullet);
+					this->bullet_layer->remove_child(bullet_sprite);
 					this->hit_sound.play();
+					debris.mass -= bullet.damage;
+					this->score += 5;
 
-					auto& debris_cast = static_cast<Debris&>(*debris);
-					debris_cast.mass -= 10.0f;
-
-					this->score += 1;
-
-					if (debris_cast.mass < 50.0f)
+					if (debris.mass < 50.0f)
 					{
-						this->debris_layer->remove_child(debris);
-						this->score += 10;
+						this->debris_layer->remove_child(debris_sprite);
+						this->score += 15;
 
 						this->explode_sound.play();
 					}

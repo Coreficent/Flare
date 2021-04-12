@@ -46,6 +46,7 @@ namespace Game
 				constexpr float speed{ 10.0f };
 				bullet->speed_x = cos(radian) * speed;
 				bullet->speed_y = sin(radian) * speed;
+				bullet->damage = 10.0f;
 
 				this->spawn_layer->add_child(bullet);
 

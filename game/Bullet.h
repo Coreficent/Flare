@@ -17,6 +17,8 @@ namespace Game
 		float speed_x{ 0.0f };
 		float speed_y{ 0.0f };
 
+		float damage{ 1.0f };
+
 	private:
 		int window_height;
 	};
