@@ -24,7 +24,7 @@ namespace Flare
 		Flare_core(Flare_core&& value) = default;
 		Flare_core& operator=(const Flare_core& value) = default;
 		Flare_core& operator=(Flare_core&& value) = default;
-		virtual ~Flare_core() = default;
+		virtual ~Flare_core();
 
 		virtual void initialize();
 
@@ -34,7 +34,7 @@ namespace Flare
 		int window_height;
 
 	protected:
-		Audio audio{};
+		//Audio audio{};
 		Context context{};
 		Frame_manager frame_manager{};
 		//Program program{};

@@ -12,6 +12,23 @@ namespace Flare
 	Flare_core::Flare_core(int window_width, int window_height) : window_width{ window_width }, window_height{ window_height }
 	{
 		dout << "Debug Mode" << endl;
+
+		/* audio */
+		if (Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG) == -1)
+		{
+			printf("mixer initilization failed");
+		}
+		if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 1024))
+		{
+			printf("audio failed to open");
+		}
+	}
+
+	Flare_core::~Flare_core()
+	{
+		/* audio */
+		Mix_CloseAudio();
+		Mix_Quit();
 	}
 
 	void Flare_core::initialize() {}
@@ -21,7 +38,7 @@ namespace Flare
 		//Musice music = this->audio.load_music("music/x.ogg");
 		//music.play(-1);
 
-		this->audio.initialize();
+		//this->audio.initialize();
 		this->renderer.initialize();
 		this->initialize();
 
