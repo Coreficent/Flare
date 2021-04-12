@@ -43,6 +43,7 @@ namespace Flare
 		void render(Sprite& stage);
 
 		Camera camera;
+		int draw_call_count{0};
 
 	private:
 		void create_vertex_array() noexcept;

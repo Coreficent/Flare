@@ -28,6 +28,8 @@ namespace Flare
 
 	void Renderer::begin()
 	{
+		this->draw_call_count = 0;
+
 		glClearDepth(1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -67,6 +69,8 @@ namespace Flare
 
 	void Renderer::render(Sprite& stage)
 	{
+
+
 		this->camera.update();
 
 		this->begin();
@@ -142,6 +146,7 @@ namespace Flare
 		if (texture != this->previous_texture)
 		{
 			this->render_batches.emplace_back(this->vertex_buffer.get_index(), 6, texture);
+			++this->draw_call_count;
 		}
 		else
 		{

@@ -81,7 +81,10 @@ namespace Game {
 		try
 		{
 			string delimiter{ " " };
-			this->statistics->text = "fps:" + delimiter + to_string(static_cast <int>(this->frame_manager.frames_per_second) + 1) + "\n" + "object:" + delimiter + to_string(this->child_count() + this->total_child_count());
+			this->statistics->text = "";
+			this->statistics->text += "fps:" + delimiter + to_string(static_cast <int>(this->frame_manager.frames_per_second) + 1) + "\n";
+			this->statistics->text += "object:" + delimiter + to_string(this->total_child_count()) + "\n";;
+			this->statistics->text += "draw call:" + delimiter + to_string(this->renderer.draw_call_count) + "\n";;
 		}
 		catch (...)
 		{
