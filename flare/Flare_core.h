@@ -39,6 +39,6 @@ namespace Flare
 		Frame_manager frame_manager{};
 		//Program program{};
 		Renderer renderer{ window_width, window_height };
-		Window window{ "Flare", window_width, window_height };
+		Window window{ "", window_width, window_height };
 	};
 }
