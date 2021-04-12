@@ -26,9 +26,9 @@ namespace Flare
 		Flare_core& operator=(Flare_core&& value) = default;
 		virtual ~Flare_core() = default;
 
-		virtual void initialize() noexcept;
+		virtual void initialize();
 
-		void running();
+		void run();
 
 		int window_width;
 		int window_height;

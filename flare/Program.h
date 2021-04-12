@@ -9,6 +9,6 @@ namespace Flare
 	class Program
 	{
 	public:
-		void running(Flare::Renderer& renderer, Audio& audio);
+		void run(Flare::Renderer& renderer, Audio& audio);
 	};
 }

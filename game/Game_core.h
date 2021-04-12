@@ -19,8 +19,8 @@ namespace Game {
 	public:
 		Game_core(int window_width, int window_height);
 
-		void initialize() noexcept override;
-		void enter_frame() noexcept override;
+		void initialize() override;
+		void enter_frame() override;
 
 	private:
 		shared_ptr<Sprite> static_layer{ make_shared<Sprite>() };

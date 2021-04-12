@@ -13,9 +13,9 @@ namespace Flare
 		dout << "Debug Mode" << endl;
 	}
 
-	void Flare_core::initialize() noexcept {}
+	void Flare_core::initialize() {}
 
-	void Flare_core::running()
+	void Flare_core::run()
 	{
 		//Musice music = this->audio.load_music("music/x.ogg");
 		//music.play(-1);
@@ -29,7 +29,7 @@ namespace Flare
 			this->enter_frame();
 			this->frame_manager.calculate_fps();
 			Key::process();
-			this->program.running(this->renderer, this->audio);
+			this->program.run(this->renderer, this->audio);
 			this->renderer.render(*this);
 			this->window.update_window();
 		}

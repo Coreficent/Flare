@@ -9,7 +9,7 @@ int main(int argc, char** argv)
 	using namespace Game;
 
 	Game_core core{ 1'600, 1'000 };
-	core.running();
+	core.run();
 
 	return 0;
 }
