@@ -69,27 +69,33 @@ namespace Game {
 				bullet->x = gun->global_x();
 				bullet->y = gun->global_y();
 
+				this->bullets.insert(bullet);
 				this->add_child(bullet);
 			}
 
-			vector<shared_ptr<Sprite>> cleanup{};
+			vector<shared_ptr<Bullet>> cleanup{};
 
-			for (auto child : this->children)
+			for (auto bullet : this->bullets)
 			{
-				if (child->y < -this->window_height || child->y > this->window_height)
+				if (bullet->y < -this->window_height || bullet->y > this->window_height)
 				{
-					cleanup.push_back(child);
+					cleanup.push_back(bullet);
 				}
 			}
 
-			if (this->gun->hit_test_object(*this->debris))
+
+			for (auto bullet : this->bullets)
 			{
-				cleanup.push_back(this->debris);
+				if (bullet->hit_test_object(*this->debris))
+				{
+					this->remove_child(this->debris);
+				}
 			}
 
 			for (auto i : cleanup)
 			{
 				this->remove_child(i);
+				this->bullets.erase(i);
 			}
 
 			string delimiter{ " " };
