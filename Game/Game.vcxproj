@@ -132,10 +132,12 @@
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Debris.cpp" />
+    <ClCompile Include="Debris_spawner.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Game_core.cpp" />
     <ClCompile Include="Gun.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Spawner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -145,9 +147,11 @@
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Debris.h" />
+    <ClInclude Include="Debris_spawner.h" />
     <ClInclude Include="Game_core.h" />
     <ClInclude Include="Gun.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Spawner.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

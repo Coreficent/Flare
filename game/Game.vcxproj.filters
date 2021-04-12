@@ -19,6 +19,12 @@
     <ClCompile Include="Debris.cpp">
       <Filter>Source\display</Filter>
     </ClCompile>
+    <ClCompile Include="Spawner.cpp">
+      <Filter>Source\display</Filter>
+    </ClCompile>
+    <ClCompile Include="Debris_spawner.cpp">
+      <Filter>Source\display</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game_core.h">
@@ -34,6 +40,12 @@
       <Filter>Header\display</Filter>
     </ClInclude>
     <ClInclude Include="Debris.h">
+      <Filter>Header\display</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>Header\display</Filter>
+    </ClInclude>
+    <ClInclude Include="Debris_spawner.h">
       <Filter>Header\display</Filter>
     </ClInclude>
   </ItemGroup>

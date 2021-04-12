@@ -1,7 +1,9 @@
 #include "Bullet.h"
+#include "Debris_spawner.h"
 #include "Game_core.h"
 
 #include <iostream>
+#include <game/Spawner.h>
 
 namespace Game {
 
@@ -13,21 +15,27 @@ namespace Game {
 	{
 		try
 		{
+			/* static layer */
+			this->add_child(this->static_layer);
+
 			shared_ptr<Sprite> sky{ make_shared<Sprite>("texture/Sky.png") };
 			sky->width = this->window_width;
 			sky->height = this->window_height;
-			this->add_child(sky);
+			this->static_layer->add_child(sky);
 
 			shared_ptr<Sprite> ground{ make_shared<Sprite>("texture/Ground.png") };
 			ground->width = 2000;
 			ground->height = 200;
 			ground->y = 450;
-			this->add_child(ground);
+			this->static_layer->add_child(ground);
 
-			/* player */
+
+			/* interactive layer */
+			this->add_child(this->interactive_layer);
+
 			shared_ptr<Player> player{ make_shared<Player>(this->window_width) };
 			player->y = 400;
-			this->add_child(player);
+			this->interactive_layer->add_child(player);
 
 			gun->width = 50.0f;
 			gun->height = 100.0f;
@@ -39,16 +47,26 @@ namespace Game {
 			base->height = 200;
 			player->add_child(base);
 
+			this->debris_spawner->spawn_target = this->gun;
+			this->interactive_layer->add_child(debris_spawner);
 
-			debris->width = 100;
-			debris->height = 100;
-			this->add_child(debris);
+
+			/* user interface layer */
+			this->add_child(this->interface_layer);
 
 			this->statistics->text = "statistics";
 			this->statistics->x = -400.0f;
 			this->statistics->y = -200.0f;
 			this->statistics->scale_y = 2.0f;
-			this->add_child(statistics);
+			this->interface_layer->add_child(statistics);
+
+			/// <summary>
+			/// 
+			/// </summary>
+			/// <returns></returns>
+			debris->width = 100;
+			debris->height = 100;
+			this->add_child(debris);
 		}
 		catch (...)
 		{
