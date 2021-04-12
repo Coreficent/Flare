@@ -20,6 +20,7 @@ namespace Flare
 		if (this->full_screen)
 		{
 			flag |= SDL_WINDOW_FULLSCREEN_DESKTOP;
+			flag |= SDL_WINDOW_RESIZABLE;
 		}
 		if (this->hidden)
 		{
