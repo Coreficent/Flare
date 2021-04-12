@@ -1,5 +1,6 @@
 #include "Flare_core.h"
 #include "debug.h"
+#include "Sound.h"
 
 #include <iostream>
 #include <string>
@@ -24,14 +25,18 @@ namespace Flare
 		this->renderer.initialize();
 		this->initialize();
 
+		Sound test{ "sound/bounce.wav" };
+
 		while (!Key::is_down(SDLK_ESCAPE) && !Key::is_down(SDL_QUIT))
 		{
 			this->enter_frame();
 			this->frame_manager.calculate_fps();
 			Key::process();
-			this->program.run(this->renderer, this->audio);
+			//this->program.run(this->renderer, this->audio);
 			this->renderer.render(*this);
 			this->window.update_window();
+
+			test.play();
 		}
 
 		//music.stop();

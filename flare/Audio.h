@@ -1,7 +1,8 @@
 #pragma once
+
+#include <map>
 #include <sdl/SDL_mixer.h>
 #include <string>
-#include <map>
 
 namespace Flare
 {

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Texture_cache.h"
+#include <sdl/SDL_mixer.h>
 
 namespace Flare
 {
@@ -9,9 +10,11 @@ namespace Flare
 
 	public:
 		static GLTexture get_texture(std::string file_path);
+		static Mix_Chunk* Resource_manager::get_audio(const std::string& file_path);
 
 	private:
-		static Texture_cache texture_cache;
+		inline static Texture_cache texture_cache{};
+		inline static map<string, Mix_Chunk*> effect_map{};
 	};
 
 }

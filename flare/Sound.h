@@ -1,7 +1,22 @@
 #pragma once
-class Sound
+
+#include <map>
+#include <sdl/SDL_mixer.h>
+#include <string>
+
+namespace Flare
 {
-public:
-	Sound();
-	~Sound();
-};
+	using namespace std;
+
+	class Sound
+	{
+	public:
+		Sound(string url);
+
+		void play() noexcept;
+		void play(int loop) noexcept;
+
+	private:
+		Mix_Chunk* chunk{nullptr};
+	};
+}
