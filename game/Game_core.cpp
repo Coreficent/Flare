@@ -37,13 +37,13 @@ namespace Game {
 			player->y = 400;
 			this->interactive_layer->add_child(player);
 
-			shared_ptr<Sprite> bullet_layer{ make_shared<Sprite>() };
-			this->interactive_layer->add_child(bullet_layer);
 
-			shared_ptr<Gun> gun{ make_shared<Gun>(bullet_layer) };
+			this->interactive_layer->add_child(this->bullet_layer);
+
+			shared_ptr<Gun> gun{ make_shared<Gun>(this->bullet_layer) };
 			player->add_child(gun);
 
-			shared_ptr<Gun> gun2{ make_shared<Gun>(bullet_layer) };
+			shared_ptr<Gun> gun2{ make_shared<Gun>(this->bullet_layer) };
 			gun2->x = 100.0f;
 			player->add_child(gun2);
 
@@ -52,8 +52,8 @@ namespace Game {
 			base->height = 200;
 			player->add_child(base);
 
-			shared_ptr<Outer_space> debrist_layer{ make_shared<Outer_space>() };
-			this->interactive_layer->add_child(debrist_layer);
+
+			this->interactive_layer->add_child(this->debrist_layer);
 
 
 
@@ -77,6 +77,21 @@ namespace Game {
 	void Game_core::enter_frame() noexcept
 	{
 		Sprite::enter_frame();
+
+		auto bullets = this->bullet_layer->children;
+		auto debris = this->debrist_layer->children;
+
+		for (auto& b : bullets)
+		{
+			for (auto& d : debris)
+			{
+				if (b->hit_test_object(*d))
+				{
+					this->bullet_layer->remove_child(b);
+					this->debrist_layer->remove_child(d);
+				}
+			}
+		}
 
 		try
 		{
