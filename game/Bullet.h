@@ -12,10 +12,11 @@ namespace Game
 	public:
 		Bullet(string texture_url, int window_height);
 
-		void enter_frame() override;
+		void enter_frame() noexcept override;
 
+		float speed_x{ 0.0f };
+		float speed_y{ 1.0f };
 	private:
-		float speed{ 15.0f };
 		int window_height;
 	};
 }

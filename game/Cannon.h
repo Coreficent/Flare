@@ -14,7 +14,7 @@ namespace Game
 		void enter_frame() override;
 
 	private:
-		float calculate_angle(float x1, float y1, float x2, float y2);
+		float calculate_radian(float x1, float y1, float x2, float y2) noexcept;
 
 		shared_ptr<Sprite> cannon_graphics{ make_shared<Sprite>("texture/Cannon.png") };
 		int cool_down{30};

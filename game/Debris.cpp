@@ -9,6 +9,6 @@ namespace Game
 
 	void Debris::enter_frame()
 	{
-		this->y += this->speed;
+		this->y += this->speed_x;
 	}
 }
