@@ -11,13 +11,16 @@ namespace Game
 	{
 
 	public:
-		Gun(shared_ptr<Sprite> spawn_layer);
+		Gun(shared_ptr<Sprite> spawn_layer, int windiws_width, int windows_height);
 		void enter_frame() override;
 
 	private :
 		shared_ptr<Sprite> gun_graphics{ make_shared<Sprite>("texture/Gun.png") };
 
 		Sound bullet_sound{ "sound/Liquid.wav" };
+
+		int windiws_width{};
+		int windows_height{};
 		int cool_down{ 10 };
 	};
 }

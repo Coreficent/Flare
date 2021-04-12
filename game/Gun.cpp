@@ -5,7 +5,7 @@
 
 namespace Game
 {
-	Gun::Gun(shared_ptr<Sprite> spawn_layer) : Spawner{ spawn_layer }
+	Gun::Gun(shared_ptr<Sprite> spawn_layer, int windiws_width, int windows_height) : Spawner{ spawn_layer }, windiws_width{ windiws_width }, windows_height{ windows_height }
 	{
 		this->gun_graphics->width = 50.0f;
 		this->gun_graphics->height = 100.0f;
@@ -21,7 +21,7 @@ namespace Game
 		auto children = this->spawn_layer->children;
 		for (auto& bullet : children)
 		{
-			if (length(vec2{ bullet->global_x(), bullet->global_y() }) > 2000.0f)
+			if (abs(bullet->global_x()) > this->windiws_width / 2 || abs(bullet->global_y() > this->windows_height / 2))
 			{
 				this->spawn_layer->remove_child(bullet);
 			}
