@@ -15,7 +15,7 @@ namespace Flare
 
 	public:
 		static GLTexture get_texture(string file_path);
-		static Mix_Chunk* Resource_manager::get_audio(const string& file_path);
+		static Mix_Chunk* get_audio(const string& file_path);
 
 	private:
 		inline static map<string, GLTexture> texture_cache{};
