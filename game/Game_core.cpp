@@ -53,8 +53,6 @@ namespace Game {
 
 		this->interactive_layer->add_child(this->debrist_layer);
 
-
-
 		/* user interface layer */
 		this->add_child(this->interface_layer);
 
