@@ -10,4 +10,9 @@ namespace Game
 	{
 
 	}
+
+	void Spawner::enter_frame()
+	{
+		++this->frame;
+	}
 }

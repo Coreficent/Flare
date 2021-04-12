@@ -13,6 +13,11 @@ namespace Game
 		Spawner() noexcept;
 		Spawner(shared_ptr<Sprite> spawn_layer) noexcept;
 
+		void enter_frame() override;
+
 		shared_ptr<Sprite> spawn_layer{};
+
+	protected:
+		unsigned int frame{0};
 	};
 }
