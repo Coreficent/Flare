@@ -1,5 +1,5 @@
 #include "Bullet.h"
-#include "Debris_spawner.h"
+#include "Outer_space.h"
 #include "Game_core.h"
 
 #include <iostream>
@@ -51,6 +51,9 @@ namespace Game {
 			base->width = 300;
 			base->height = 200;
 			player->add_child(base);
+
+			shared_ptr<Outer_space> debrist_layer{ make_shared<Outer_space>() };
+			this->interactive_layer->add_child(debrist_layer);
 
 
 

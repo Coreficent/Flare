@@ -132,7 +132,7 @@
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Debris.cpp" />
-    <ClCompile Include="Debris_spawner.cpp" />
+    <ClCompile Include="Outer_space.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Game_core.cpp" />
     <ClCompile Include="Gun.cpp" />
@@ -147,7 +147,7 @@
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Debris.h" />
-    <ClInclude Include="Debris_spawner.h" />
+    <ClInclude Include="Outer_space.h" />
     <ClInclude Include="Game_core.h" />
     <ClInclude Include="Gun.h" />
     <ClInclude Include="Player.h" />

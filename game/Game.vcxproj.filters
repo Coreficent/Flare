@@ -22,7 +22,7 @@
     <ClCompile Include="Spawner.cpp">
       <Filter>Source\display</Filter>
     </ClCompile>
-    <ClCompile Include="Debris_spawner.cpp">
+    <ClCompile Include="Outer_space.cpp">
       <Filter>Source\display</Filter>
     </ClCompile>
   </ItemGroup>
@@ -45,7 +45,7 @@
     <ClInclude Include="Spawner.h">
       <Filter>Header\display</Filter>
     </ClInclude>
-    <ClInclude Include="Debris_spawner.h">
+    <ClInclude Include="Outer_space.h">
       <Filter>Header\display</Filter>
     </ClInclude>
   </ItemGroup>

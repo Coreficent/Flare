@@ -6,12 +6,11 @@ namespace Game
 {
 	using namespace Flare;
 
-	class Debris_spawner : public Spawner
+	class Outer_space : public Sprite
 	{
 
 	public:
-		Debris_spawner() noexcept;
-		Debris_spawner(shared_ptr<Sprite> spawn_layer) noexcept;
+		Outer_space() noexcept;
 
 		void enter_frame() noexcept override;
 	};

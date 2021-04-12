@@ -2,7 +2,7 @@
 
 #include "Bullet.h"
 #include "Debris.h"
-#include "Debris_spawner.h"
+#include "Outer_space.h"
 #include "Gun.h"
 #include "Player.h"
 
