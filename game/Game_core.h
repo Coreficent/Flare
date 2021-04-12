@@ -31,5 +31,6 @@ namespace Game {
 		shared_ptr<Outer_space> debris_layer{ make_shared<Outer_space>(window_width,window_height) };
 		Sound hit_sound{ "sound/Water.wav" };
 		Sound explode_sound{ "sound/Pop.wav" };
+		int score{ 0 };
 	};
 }

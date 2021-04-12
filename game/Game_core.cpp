@@ -89,9 +89,12 @@ namespace Game {
 					auto& debris_cast = static_cast<Debris&>(*debris);
 					debris_cast.mass -= 10.0f;
 
+					this->score += 1;
+
 					if (debris_cast.mass < 50.0f)
 					{
 						this->debris_layer->remove_child(debris);
+						this->score += 10;
 					}
 				}
 			}
@@ -100,7 +103,8 @@ namespace Game {
 		string delimiter{ " " };
 		this->statistics->text = "";
 		this->statistics->text += "fps:" + delimiter + to_string(static_cast <int>(this->frame_manager.frames_per_second) + 1) + "\n";
-		this->statistics->text += "object:" + delimiter + to_string(this->total_child_count()) + "\n";;
-		this->statistics->text += "draw call:" + delimiter + to_string(this->renderer.draw_call_count) + "\n";;
+		this->statistics->text += "object:" + delimiter + to_string(this->total_child_count()) + "\n";
+		this->statistics->text += "draw call:" + delimiter + to_string(this->renderer.draw_call_count) + "\n";
+		this->statistics->text += "score:" + delimiter + to_string(this->score) + "\n";
 	}
 }
