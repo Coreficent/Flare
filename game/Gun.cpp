@@ -13,7 +13,7 @@ namespace Game
 		this->add_child(this->gun_graphics);
 	}
 
-	void Gun::enter_frame() noexcept
+	void Gun::enter_frame()
 	{
 		// avoid concurrent modification
 		auto children = this->spawn_layer->children;

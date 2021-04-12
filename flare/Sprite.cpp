@@ -3,9 +3,9 @@
 #include "Sprite.h"
 
 #include <algorithm>
-#include <iostream>
 #include <glm/glm.hpp>
 #include <glm/gtx/matrix_transform_2d.hpp>
+#include <iostream>
 
 namespace Flare
 {
@@ -18,7 +18,7 @@ namespace Flare
 		this->texture_id = Resource_manager::get_texture(texture_url).id;
 	}
 
-	void Sprite::add_child(shared_ptr<Sprite> child) noexcept
+	void Sprite::add_child(shared_ptr<Sprite> child)
 	{
 		try
 		{
@@ -31,7 +31,7 @@ namespace Flare
 		}
 	}
 
-	void Sprite::remove_child(shared_ptr<Sprite> child) noexcept
+	void Sprite::remove_child(shared_ptr<Sprite> child)
 	{
 		try
 		{
@@ -113,7 +113,7 @@ namespace Flare
 		return result;
 	}
 
-	void Sprite::enter_frame() noexcept
+	void Sprite::enter_frame()
 	{
 		for (auto& child : this->children)
 		{
@@ -121,7 +121,7 @@ namespace Flare
 		}
 	}
 
-	bool Sprite::hit_test_object(Sprite& sprite) noexcept
+	bool Sprite::hit_test_object(Sprite& sprite)
 	{
 		const float gap = distance(vec2{ this->global_x(), this->global_y() }, vec2{ sprite.global_x(), sprite.global_y() });
 		const float radius_sum = (this->width, this->height) / 2.0f + (sprite.width, sprite.height) / 2.0f;

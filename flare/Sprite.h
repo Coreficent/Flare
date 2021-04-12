@@ -28,19 +28,18 @@ namespace Flare
 		Sprite& operator=(Sprite&& ssprite) = delete;
 		virtual ~Sprite() = default;
 
-		virtual vector<Quad> graphics();
-		virtual void enter_frame() noexcept;
-		virtual bool hit_test_object(Sprite& sprite) noexcept;
-
-		float global_x();
-		float global_y();
 		size_t child_count() noexcept;
 		size_t total_child_count() noexcept;
-		void add_child(shared_ptr<Sprite> child) noexcept;
-		void remove_child(shared_ptr<Sprite> child) noexcept;
+		virtual bool hit_test_object(Sprite& sprite);
+		virtual vector<Quad> graphics();
+		virtual void enter_frame();
+		void add_child(shared_ptr<Sprite> child);
+		void remove_child(shared_ptr<Sprite> child);
 
 		GLuint texture_id{ 0 };
 		Sprite* parent{ nullptr };
+		float global_x();
+		float global_y();
 		float height{ 0.0f };
 		float rotation{ 0.0f };
 		float scale_x{ 1.0f };
@@ -61,6 +60,5 @@ namespace Flare
 		float u_start{ 0.0f };
 		float v_end{ 1.0f };
 		float v_start{ 0.0f };
-
 	};
 }

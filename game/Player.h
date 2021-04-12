@@ -13,7 +13,7 @@ namespace Game
 	public:
 		Player(int window_width);
 
-		void enter_frame() noexcept override;
+		void enter_frame() override;
 
 	private:
 		int window_width{};

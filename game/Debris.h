@@ -12,7 +12,7 @@ namespace Game
 	public:
 		Debris(string texture_url);
 
-		void enter_frame() noexcept override;
+		void enter_frame() override;
 
 	private:
 		float speed{ 10.0f };

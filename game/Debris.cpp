@@ -7,7 +7,7 @@ namespace Game
 
 	}
 
-	void Debris::enter_frame() noexcept
+	void Debris::enter_frame()
 	{
 		this->y += this->speed;
 	}

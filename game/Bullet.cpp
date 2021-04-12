@@ -7,7 +7,7 @@ namespace Game
 
 	}
 
-	void Bullet::enter_frame() noexcept
+	void Bullet::enter_frame()
 	{
 		this->y -= this->speed;
 	}

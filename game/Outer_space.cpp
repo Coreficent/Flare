@@ -8,7 +8,7 @@ namespace Game
 
 	}
 
-	void Outer_space::enter_frame() noexcept
+	void Outer_space::enter_frame()
 	{
 		Sprite::enter_frame();
 

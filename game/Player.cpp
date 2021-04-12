@@ -7,7 +7,7 @@ namespace Game
 		
 	}
 
-	void Player::enter_frame() noexcept
+	void Player::enter_frame()
 	{
 		Sprite::enter_frame();
 

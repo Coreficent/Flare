@@ -12,7 +12,7 @@ namespace Game
 	public:
 		Outer_space(int window_width, int window_height) noexcept;
 
-		void enter_frame() noexcept override;
+		void enter_frame() override;
 
 	private:
 		int spawn_chance_per_frame{1};

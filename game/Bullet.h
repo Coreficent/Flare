@@ -12,7 +12,7 @@ namespace Game
 	public:
 		Bullet(string texture_url, int window_height);
 
-		void enter_frame() noexcept override;
+		void enter_frame() override;
 
 	private:
 		float speed{ 15.0f };
