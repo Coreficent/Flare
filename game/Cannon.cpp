@@ -27,7 +27,7 @@ namespace Game
 		auto children = this->spawn_layer->children;
 		for (auto& bullet : children)
 		{
-			if (length(vec2{ bullet->global_x(), bullet->global_y() }) > 2000.0f)
+			if (abs(bullet->global_x()) > this->windiws_width / 2 || abs(bullet->global_y()) > this->windows_height / 2)
 			{
 				this->spawn_layer->remove_child(bullet);
 			}
