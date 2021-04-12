@@ -15,5 +15,6 @@ namespace Game
 
 	private :
 		shared_ptr<Sprite> gun_graphics{ make_shared<Sprite>("texture/Gun.png") };
+		int cool_down{ 10 };
 	};
 }

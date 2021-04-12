@@ -15,6 +15,6 @@ namespace Game
 
 	private:
 		shared_ptr<Sprite> cannon_graphics{ make_shared<Sprite>("texture/Cannon.png") };
-		int cool_down{10};
+		int cool_down{30};
 	};
 }

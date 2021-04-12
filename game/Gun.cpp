@@ -15,11 +15,13 @@ namespace Game
 
 	void Gun::enter_frame()
 	{
+		Spawner::enter_frame();
+
 		// avoid concurrent modification
 		auto children = this->spawn_layer->children;
 		for (auto& bullet : children)
 		{
-			if (length(vec2{ bullet->global_x(), bullet->global_y()}) > 2000.0f)
+			if (length(vec2{ bullet->global_x(), bullet->global_y() }) > 2000.0f)
 			{
 				this->spawn_layer->remove_child(bullet);
 			}
@@ -27,13 +29,16 @@ namespace Game
 
 		if (Key::is_down(SDL_BUTTON_LEFT))
 		{
-			shared_ptr<Bullet> bullet{ make_shared<Bullet>("texture/Bullet.png", 1'000) };
-			bullet->width = 35;
-			bullet->height = 35;
-			bullet->x = this->gun_graphics->global_x();
-			bullet->y = this->gun_graphics->global_y();
+			if (this->frame % this->cool_down == 0)
+			{
+				shared_ptr<Bullet> bullet{ make_shared<Bullet>("texture/Bullet.png", 1'000) };
+				bullet->width = 35;
+				bullet->height = 35;
+				bullet->x = this->gun_graphics->global_x();
+				bullet->y = this->gun_graphics->global_y();
 
-			this->spawn_layer->add_child(bullet);
+				this->spawn_layer->add_child(bullet);
+			}
 		}
 	}
 }
