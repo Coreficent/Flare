@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <windows.h>
 
 namespace Flare
 {
@@ -12,6 +13,14 @@ namespace Flare
 	Flare_core::Flare_core(int window_width, int window_height) : window_width{ window_width }, window_height{ window_height }
 	{
 		dout << "Debug Mode" << endl;
+
+#ifdef _DEBUG
+		HWND windowHandle = GetConsoleWindow();
+		ShowWindow(windowHandle, SW_SHOW);
+#else
+		HWND windowHandle = GetConsoleWindow();
+		ShowWindow(windowHandle, SW_HIDE);
+#endif
 
 		/* audio */
 		if (Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG) == -1)
