@@ -55,7 +55,7 @@ namespace Game {
 		shared_ptr<Cannon> cannon_right{ make_shared<Cannon>(this->bullet_layer, this->window_width, this->window_height) };
 		cannon_right->x = 150.0f;
 		cannon_right->y = 75.0f;
-		//player->add_child(cannon_right);
+		player->add_child(cannon_right);
 
 		this->interactive_layer->add_child(this->debrist_layer);
 

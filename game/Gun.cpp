@@ -36,6 +36,8 @@ namespace Game
 				bullet->height = 35;
 				bullet->x = this->gun_graphics->global_x();
 				bullet->y = this->gun_graphics->global_y();
+				bullet->speed_x = 0.0f;
+				bullet->speed_y = -15.0f;
 
 				this->spawn_layer->add_child(bullet);
 			}
