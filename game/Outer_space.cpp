@@ -12,9 +12,12 @@ namespace Game
 	{
 		Sprite::enter_frame();
 
-		shared_ptr<Debris> debris{ make_shared<Debris>("texture/Debris.png") };
-		debris->width = 100;
-		debris->height = 100;
-		this->add_child(debris);
+		if (this->spawn_chance_per_frame > rand() % 100)
+		{
+			shared_ptr<Debris> debris{ make_shared<Debris>("texture/Debris.png") };
+			debris->width = 100;
+			debris->height = 100;
+			this->add_child(debris);
+		}
 	}
 }
