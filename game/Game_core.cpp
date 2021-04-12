@@ -57,7 +57,7 @@ namespace Game {
 		cannon_right->y = 75.0f;
 		player->add_child(cannon_right);
 
-		this->interactive_layer->add_child(this->debrist_layer);
+		this->interactive_layer->add_child(this->debris_layer);
 
 		/* user interface layer */
 		this->add_child(this->interface_layer);
@@ -74,17 +74,25 @@ namespace Game {
 	{
 		Sprite::enter_frame();
 
-		auto bullets = this->bullet_layer->children;
-		auto debris = this->debrist_layer->children;
+		auto bullet_children = this->bullet_layer->children;
+		auto debris_children = this->debris_layer->children;
 
-		for (auto& b : bullets)
+		for (auto& bullet : bullet_children)
 		{
-			for (auto& d : debris)
+			for (auto& debris : debris_children)
 			{
-				if (b->hit_test_object(*d))
+				if (bullet->hit_test_object(*debris))
 				{
-					this->bullet_layer->remove_child(b);
-					this->debrist_layer->remove_child(d);
+					this->bullet_layer->remove_child(bullet);
+					this->hit_sound.play();
+
+					auto& debris_cast = static_cast<Debris&>(*debris);
+					debris_cast.mass -= 10.0f;
+
+					if (debris_cast.mass < 50.0f)
+					{
+						this->debris_layer->remove_child(debris);
+					}
 				}
 			}
 		}
