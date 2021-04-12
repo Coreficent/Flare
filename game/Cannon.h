@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Spawner.h"
+#include <flare/Sound.h>
 
 namespace Game
 {
@@ -21,5 +22,7 @@ namespace Game
 
 		int windiws_width{};
 		int windows_height{};
+
+		Sound bullet_sound{ "sound/bounce.wav" };
 	};
 }

@@ -48,6 +48,8 @@ namespace Game
 				bullet->speed_y = sin(radian) * speed;
 
 				this->spawn_layer->add_child(bullet);
+
+				this->bullet_sound.play();
 			}
 		}
 	}
