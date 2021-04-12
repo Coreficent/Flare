@@ -12,7 +12,7 @@ namespace Game
 	{
 		Sprite::enter_frame();
 
-		this->progress += 0.0001f;
+		this->progress += 0.001f;
 
 		if (this->progress > 1.0f) {
 			this->progress = 1.0f;
@@ -29,12 +29,10 @@ namespace Game
 
 		if (this->spawn_chance_per_frame > rand() % 100)
 		{
-			shared_ptr<Debris> debris{ make_shared<Debris>("texture/Debris.png") };
-			const float size{ (this->progress * 450.0f + 50.0f) * (50 + rand() % 50) / 100 };
-			debris->width = size;
-			debris->height = size;
+			const float mass{ (this->progress * 450.0f + 50.0f) * (10 * rand() % 90) / 100 };
+			shared_ptr<Debris> debris{ make_shared<Debris>("texture/Debris.png", mass) };
 			debris->x = (rand() % this->window_width - this->window_width / 2) * 8 / 10;
-			debris->y = -this->window_height;
+			debris->y = -this->window_height / 2  - mass / 2;
 			this->add_child(debris);
 		}
 	}
