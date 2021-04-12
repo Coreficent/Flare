@@ -42,10 +42,10 @@ namespace Game {
 		this->gun = make_shared<Gun>(this->bullet_layer, this->window_width, this->window_height);
 		player->add_child(this->gun);
 
-		shared_ptr<Sprite> base{ make_shared<Sprite>("texture/Player.png") };
-		base->width = 300;
-		base->height = 200;
-		player->add_child(base);
+
+		this->base->width = 300.0f;
+		this->base->height = 200.0f;
+		player->add_child(this->base);
 
 		this->cannon_left = make_shared<Cannon>(this->bullet_layer, this->window_width, this->window_height);
 		this->cannon_left->x = -150.0f;
@@ -77,27 +77,36 @@ namespace Game {
 		auto bullet_children = this->bullet_layer->children;
 		auto debris_children = this->debris_layer->children;
 
-		for (auto& bullet_sprite : bullet_children)
+		for (auto& debris_sprite : debris_children)
 		{
-			const auto& bullet = static_cast<Bullet&>(*bullet_sprite);
-
-			for (auto& debris_sprite : debris_children)
+			if (this->base->hit_test_object(*debris_sprite))
 			{
-				auto& debris = static_cast<Debris&>(*debris_sprite);
+				this->debris_layer->remove_child(debris_sprite);
+				this->score += 25;
 
-				if (bullet_sprite->hit_test_object(*debris_sprite))
+				this->explode_sound.play();
+			}
+			else
+			{
+				for (auto& bullet_sprite : bullet_children)
 				{
-					this->bullet_layer->remove_child(bullet_sprite);
-					this->hit_sound.play();
-					debris.mass -= bullet.damage;
-					this->score += 5;
-
-					if (debris.mass < 50.0f)
+					if (bullet_sprite->hit_test_object(*debris_sprite))
 					{
-						this->debris_layer->remove_child(debris_sprite);
-						this->score += 15;
+						this->bullet_layer->remove_child(bullet_sprite);
+						this->hit_sound.play();
 
-						this->explode_sound.play();
+						auto& debris = static_cast<Debris&>(*debris_sprite);
+						const auto& bullet = static_cast<Bullet&>(*bullet_sprite);
+						debris.mass -= bullet.damage;
+						this->score += 5;
+
+						if (debris.mass < 50.0f)
+						{
+							this->debris_layer->remove_child(debris_sprite);
+							this->score += 15;
+
+							this->explode_sound.play();
+						}
 					}
 				}
 			}
