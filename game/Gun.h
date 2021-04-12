@@ -1,18 +1,19 @@
 #pragma once
 
-#include "flare/Sprite.h"
+#include "Spawner.h"
 
 namespace Game
 {
 	using namespace Flare;
 
-	class Gun : public Sprite
+	class Gun : public Spawner
 	{
 
 	public:
-		Gun(string texture_url, shared_ptr<Sprite> spawn_layer);
+		Gun(shared_ptr<Sprite> spawn_layer);
 		void enter_frame() noexcept override;
 
-		shared_ptr<Sprite> spawn_layer{};
+	private :
+		shared_ptr<Sprite> gun_graphics{ make_shared<Sprite>("texture/Gun.png") };
 	};
 }

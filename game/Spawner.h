@@ -11,8 +11,8 @@ namespace Game
 
 	public:
 		Spawner() noexcept;
-		Spawner(shared_ptr<Sprite> spawn_target) noexcept;
+		Spawner(shared_ptr<Sprite> spawn_layer) noexcept;
 
-		shared_ptr<Sprite> spawn_target{};
+		shared_ptr<Sprite> spawn_layer{};
 	};
 }

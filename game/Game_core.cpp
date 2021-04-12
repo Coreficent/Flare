@@ -40,10 +40,8 @@ namespace Game {
 			shared_ptr<Sprite> bullet_layer{ make_shared<Sprite>() };
 			this->interactive_layer->add_child(bullet_layer);
 
-			shared_ptr<Gun> gun{ make_shared<Gun>("texture/gun.png", bullet_layer) };
-			gun->width = 50.0f;
-			gun->height = 100.0f;
-			gun->y = -100.0f;
+			shared_ptr<Gun> gun{ make_shared<Gun>(bullet_layer) };
+
 			player->add_child(gun);
 
 			shared_ptr<Sprite> base{ make_shared<Sprite>("texture/Player.png") };

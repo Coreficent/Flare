@@ -11,7 +11,7 @@ namespace Game
 
 	public:
 		Debris_spawner() noexcept;
-		Debris_spawner(shared_ptr<Sprite> spawn_target) noexcept;
+		Debris_spawner(shared_ptr<Sprite> spawn_layer) noexcept;
 
 		void enter_frame() noexcept override;
 	};
