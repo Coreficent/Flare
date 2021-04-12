@@ -15,7 +15,7 @@ namespace Flare
 			dout << "window set attribute failed: " << SDL_GetError() << endl;
 		}
 
-		Uint32 flag = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE;
+		Uint32 flag = SDL_WINDOW_OPENGL;
 
 		if (this->full_screen)
 		{

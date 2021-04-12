@@ -24,7 +24,7 @@ namespace Flare
 		this->renderer.initialize();
 		this->initialize();
 
-		while (Key::state != Key::Game_state::ending)
+		while (!Key::is_down(SDLK_ESCAPE) && !Key::is_down(SDL_QUIT))
 		{
 			this->enter_frame();
 			this->frame_manager.calculate_fps();

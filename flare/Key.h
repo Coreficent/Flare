@@ -18,18 +18,10 @@ namespace Flare
 		static void press_key(unsigned int key_id);
 		static void release_key(unsigned int key_id);
 
-		enum class Game_state
-		{
-			running,
-			ending
-		};
-
-		inline static Game_state state{ Game_state::running };
 		inline static vec2 mouse_position{};
 
 	private:
 		inline static SDL_Event event{};
 		inline static unordered_map<unsigned int, bool> keymap{};
-
 	};
 }
