@@ -85,12 +85,6 @@
     <Filter Include="Source Files\key">
       <UniqueIdentifier>{80265441-a1b5-4f32-bcf1-4e3f99dba7e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\logic">
-      <UniqueIdentifier>{21f6b1b4-2d35-45b0-b652-1bc25f1f70d6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\logic">
-      <UniqueIdentifier>{70c936c8-ea2e-417f-b44a-11a2698b5906}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\container">
       <UniqueIdentifier>{0d746330-176d-4ea3-a606-702a119aca9d}</UniqueIdentifier>
     </Filter>
@@ -156,13 +150,7 @@
     <ClInclude Include="debug.h">
       <Filter>Header Files\utility</Filter>
     </ClInclude>
-    <ClInclude Include="Music.h">
-      <Filter>Header Files\audio</Filter>
-    </ClInclude>
     <ClInclude Include="Sound.h">
-      <Filter>Header Files\audio</Filter>
-    </ClInclude>
-    <ClInclude Include="Audio.h">
       <Filter>Header Files\audio</Filter>
     </ClInclude>
     <ClInclude Include="Flare_core.h">
@@ -173,9 +161,6 @@
     </ClInclude>
     <ClInclude Include="Key.h">
       <Filter>Header Files\key</Filter>
-    </ClInclude>
-    <ClInclude Include="Program.h">
-      <Filter>Header Files\logic</Filter>
     </ClInclude>
     <ClInclude Include="Vial.h">
       <Filter>Header Files\container</Filter>
@@ -236,13 +221,7 @@
     <ClCompile Include="Glyph.cpp">
       <Filter>Source Files\graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Music.cpp">
-      <Filter>Source Files\audio</Filter>
-    </ClCompile>
     <ClCompile Include="Sound.cpp">
-      <Filter>Source Files\audio</Filter>
-    </ClCompile>
-    <ClCompile Include="Audio.cpp">
       <Filter>Source Files\audio</Filter>
     </ClCompile>
     <ClCompile Include="Flare_core.cpp">
@@ -253,9 +232,6 @@
     </ClCompile>
     <ClCompile Include="Key.cpp">
       <Filter>Source Files\key</Filter>
-    </ClCompile>
-    <ClCompile Include="Program.cpp">
-      <Filter>Source Files\logic</Filter>
     </ClCompile>
     <ClCompile Include="Context.cpp">
       <Filter>Source Files\media</Filter>

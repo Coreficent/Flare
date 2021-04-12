@@ -150,7 +150,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Quad.h" />
@@ -167,10 +166,8 @@
     <ClInclude Include="Flare_core.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Context.h" />
-    <ClInclude Include="Music.h" />
     <ClInclude Include="picoPNG.h" />
     <ClInclude Include="Point.h" />
-    <ClInclude Include="Program.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Resource_manager.h" />
     <ClInclude Include="Sound.h" />
@@ -181,7 +178,6 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Audio.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -194,10 +190,8 @@
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Context.cpp" />
-    <ClCompile Include="Music.cpp" />
     <ClCompile Include="picoPNG.cpp" />
     <ClCompile Include="Point.cpp" />
-    <ClCompile Include="Program.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Resource_manager.cpp" />
     <ClCompile Include="mathematics.cpp" />
