@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include "Cannon.h"
 #include "Outer_space.h"
 #include "Game_core.h"
 
@@ -41,15 +42,20 @@ namespace Game {
 		shared_ptr<Gun> gun{ make_shared<Gun>(this->bullet_layer) };
 		player->add_child(gun);
 
-		shared_ptr<Gun> gun2{ make_shared<Gun>(this->bullet_layer) };
-		gun2->x = 100.0f;
-		player->add_child(gun2);
-
 		shared_ptr<Sprite> base{ make_shared<Sprite>("texture/Player.png") };
 		base->width = 300;
 		base->height = 200;
 		player->add_child(base);
 
+		shared_ptr<Cannon> cannon_left{ make_shared<Cannon>(this->bullet_layer) };
+		cannon_left->x = -150.0f;
+		cannon_left->y = 75.0f;
+		player->add_child(cannon_left);
+
+		shared_ptr<Cannon> cannon_right{ make_shared<Cannon>(this->bullet_layer) };
+		cannon_right->x = 150.0f;
+		cannon_right->y = 75.0f;
+		player->add_child(cannon_right);
 
 		this->interactive_layer->add_child(this->debrist_layer);
 

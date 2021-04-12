@@ -25,6 +25,9 @@
     <ClCompile Include="Outer_space.cpp">
       <Filter>Source\display</Filter>
     </ClCompile>
+    <ClCompile Include="Cannon.cpp">
+      <Filter>Source\display</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game_core.h">
@@ -46,6 +49,9 @@
       <Filter>Header\display</Filter>
     </ClInclude>
     <ClInclude Include="Outer_space.h">
+      <Filter>Header\display</Filter>
+    </ClInclude>
+    <ClInclude Include="Cannon.h">
       <Filter>Header\display</Filter>
     </ClInclude>
   </ItemGroup>

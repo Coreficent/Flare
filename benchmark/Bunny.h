@@ -1,6 +1,6 @@
 #pragma once
 
-#include "flare/Sprite.h"
+#include <flare/Sprite.h>
 
 namespace Benchmark
 {
