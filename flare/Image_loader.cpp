@@ -1,27 +1,28 @@
-#include "ImageLoader.h"
-#include "picoPNG.h"
 #include "IOManager.h"
+#include "Image_loader.h"
 #include "error.h"
+#include "picoPNG.h"
 
 namespace Flare
 {
 	using namespace std;
 
-	GL_texture ImageLoader::loadPNG(string filePath)
+	GL_texture Image_loader::load_png(const string& filePath)
 	{
 		GL_texture texture = {};
 		vector<unsigned char> input{};
 		vector<unsigned char> output{};
-		unsigned long width;
-		unsigned long height;
+		unsigned long width{};
+		unsigned long height{};
 
 		if (!IOManager::read_file_to_buffer(filePath, input))
 		{
 			output_error("failed to load to buffer");
 		}
 
-		auto errorCode = decodePNG(output, width, height, &(input[0]), input.size(), true);
-		if (errorCode != 0)
+		const auto error_code = decodePNG(output, width, height, &(input.at(0)), input.size(), true);
+
+		if (error_code != 0)
 		{
 			output_error("decode failed");
 		}
@@ -29,7 +30,7 @@ namespace Flare
 		glGenTextures(1, &texture.id);
 
 		glBindTexture(GL_TEXTURE_2D, texture.id);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, &(output[0]));
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, &(output.at(0)));
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);

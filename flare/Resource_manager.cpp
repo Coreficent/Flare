@@ -1,4 +1,4 @@
-#include "ImageLoader.h"
+#include "Image_loader.h"
 #include "Resource_manager.h"
 
 namespace Flare
@@ -10,7 +10,7 @@ namespace Flare
 		auto it = Resource_manager::texture_cache.find(file_path);
 		if (it == Resource_manager::texture_cache.end())
 		{
-			auto texture = ImageLoader::loadPNG(file_path);
+			auto texture = Image_loader::load_png(file_path);
 			Resource_manager::texture_cache.insert({ file_path,texture });
 			return texture;
 		}

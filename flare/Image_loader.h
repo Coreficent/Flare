@@ -8,9 +8,9 @@ namespace Flare
 {
 	using namespace std;
 
-	class ImageLoader
+	class Image_loader
 	{
 	public:
-		static GL_texture loadPNG(string filePath);
+		static GL_texture load_png(const string& file_path);
 	};
 }
