@@ -7,9 +7,9 @@ namespace Flare
 {
 	using namespace std;
 
-	GLTexture ImageLoader::loadPNG(string filePath)
+	GL_texture ImageLoader::loadPNG(string filePath)
 	{
-		GLTexture texture = {};
+		GL_texture texture = {};
 		vector<unsigned char> input{};
 		vector<unsigned char> output{};
 		unsigned long width;

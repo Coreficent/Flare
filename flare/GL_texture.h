@@ -4,7 +4,7 @@
 
 namespace Flare
 {
-	struct GLTexture
+	struct GL_texture
 	{
 		GLuint id;
 		int width;

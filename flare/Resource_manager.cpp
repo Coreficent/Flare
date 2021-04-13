@@ -5,7 +5,7 @@ namespace Flare
 {
 	using namespace std;
 
-	GLTexture Resource_manager::get_texture(string file_path)
+	GL_texture Resource_manager::get_texture(string file_path)
 	{
 		auto it = Resource_manager::texture_cache.find(file_path);
 		if (it == Resource_manager::texture_cache.end())

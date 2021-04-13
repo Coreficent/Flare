@@ -18,7 +18,7 @@ namespace Flare
 	using namespace glm;
 	using namespace std;
 
-	struct GLTexture;
+	struct GL_texture;
 
 	struct CharGlyph
 	{

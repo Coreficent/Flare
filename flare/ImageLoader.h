@@ -1,12 +1,16 @@
 #pragma once
-#include "GLTexture.h"
+
+#include "GL_texture.h"
+
 #include <string>
 
 namespace Flare
 {
+	using namespace std;
+
 	class ImageLoader
 	{
 	public:
-		static GLTexture loadPNG(std::string filePath);
+		static GL_texture loadPNG(string filePath);
 	};
 }

@@ -99,7 +99,7 @@
     <ClInclude Include="GLSL.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
-    <ClInclude Include="GLTexture.h">
+    <ClInclude Include="GL_texture.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
     <ClInclude Include="ImageLoader.h">

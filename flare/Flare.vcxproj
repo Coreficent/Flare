@@ -156,7 +156,7 @@
     <ClInclude Include="error.h" />
     <ClInclude Include="Frame_manager.h" />
     <ClInclude Include="GLSL.h" />
-    <ClInclude Include="GLTexture.h" />
+    <ClInclude Include="GL_texture.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="mathematics.h" />
