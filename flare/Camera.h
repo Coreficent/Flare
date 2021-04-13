@@ -1,28 +1,33 @@
 #pragma once
+
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace Flare
 {
+	using namespace glm;
+
 	class Camera
 	{
 	public:
 		Camera(int window_width, int window_height);
-		~Camera();
-		void setPosition(const glm::vec2& position);
-		glm::vec2 getPosition() const;
-		void setScale(float scale);
-		float getScale() const;
-		glm::mat4 getCameraMatrix() const;
+
+		float get_scale() const noexcept;
+		void set_position(const vec2& position) noexcept;
+		void set_scale(float scale) noexcept;
 		void update();
-		glm::vec2 global_to_local(glm::vec2 global_position) const;
+
+		mat4 get_camera_matrix() const noexcept;
+		vec2 get_position() const noexcept;
+		vec2 global_to_local(vec2 global_position) const;
+
 	private:
-		glm::vec2 position;
-		glm::mat4 cameraMatrix;
-		glm::mat4 orthoMatrix;
-		glm::mat4 identityMatrix;
+		bool update_required;
 		float scale;
-		int window_width;
 		int window_height;
-		bool updateRequired;
+		int window_width;
+		mat4 camera_matrix;
+		mat4 identity_matrix;
+		mat4 orthogonal_matrix;
+		vec2 position;
 	};
 }

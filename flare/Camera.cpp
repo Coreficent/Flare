@@ -2,60 +2,58 @@
 
 namespace Flare
 {
+	using namespace glm;
+
 	Camera::Camera(int window_width, int window_height)
-		: position{0.0f,0.0f}, cameraMatrix(1.0f), orthoMatrix{glm::ortho(0.0f, static_cast<float>(window_width), static_cast<float>(window_height), 0.0f)}, identityMatrix{1.0f}, scale{1.0f}, window_width{window_width}, window_height{window_height}, updateRequired{true}
+		: position{0.0f,0.0f}, camera_matrix(1.0f), orthogonal_matrix{ortho(0.0f, static_cast<float>(window_width), static_cast<float>(window_height), 0.0f)}, identity_matrix{1.0f}, scale{1.0f}, window_width{window_width}, window_height{window_height}, update_required{true}
 	{
 	}
 
-
-	Camera::~Camera()
-	{
-	}
-
-	void Camera::setPosition(const glm::vec2& position)
+	void Camera::set_position(const vec2& position) noexcept
 	{
 		this->position = position;
-		this->updateRequired = true;
+		this->update_required = true;
 	}
 
-	glm::vec2 Camera::getPosition() const
+	vec2 Camera::get_position() const noexcept
 	{
 		return this->position;
 	}
 
-	void Camera::setScale(float scale)
+	void Camera::set_scale(float scale) noexcept
 	{
 		this->scale = scale;
-		this->updateRequired = true;
+		this->update_required = true;
 	}
 
-	float Camera::getScale() const
+	float Camera::get_scale() const noexcept
 	{
 		return this->scale;
 	}
 
-	glm::mat4 Camera::getCameraMatrix() const
+	mat4 Camera::get_camera_matrix() const noexcept
 	{
-		return this->cameraMatrix;
+		return this->camera_matrix;
 	}
 
 	void Camera::update()
 	{
-		if (this->updateRequired)
+		if (this->update_required)
 		{
-			glm::vec3 translate{this->position.x + this->window_width / 2, this->position.y + this->window_height / 2, 0.0f};
-			this->cameraMatrix = glm::translate(this->orthoMatrix, translate);
-			glm::vec3 scale{this->scale,this->scale,0.0f};
-			this->cameraMatrix = glm::scale(this->identityMatrix, scale) * this->cameraMatrix;
-			this->updateRequired = false;
+			const vec3 translate{this->position.x + this->window_width / 2, this->position.y + this->window_height / 2, 0.0f};
+			this->camera_matrix = glm::translate(this->orthogonal_matrix, translate);
+			const vec3 scale{this->scale,this->scale,0.0f};
+			this->camera_matrix = glm::scale(this->identity_matrix, scale) * this->camera_matrix;
+			this->update_required = false;
 		}
 	}
 
-	glm::vec2 Camera::global_to_local(glm::vec2 global_position) const
+	vec2 Camera::global_to_local(vec2 global_position) const
 	{
-		global_position -= glm::vec2(this->window_width / 2, this->window_height / 2);
+		global_position -= vec2(this->window_width / 2, this->window_height / 2);
 		global_position /= this->scale;
 		global_position += this->position;
+
 		return global_position;
 	}
 }

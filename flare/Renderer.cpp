@@ -40,7 +40,7 @@ namespace Flare
 		glUniform1i(textureLocation, 0);
 
 		auto local_camera = this->color_program.get_uniform("cameraPosition");
-		auto camera_matrix = this->camera.getCameraMatrix();
+		auto camera_matrix = this->camera.get_camera_matrix();
 
 		glUniformMatrix4fv(local_camera, 1, GL_FALSE, &(camera_matrix[0][0]));
 
@@ -69,8 +69,6 @@ namespace Flare
 
 	void Renderer::render(Sprite& stage)
 	{
-
-
 		this->camera.update();
 
 		this->begin();
