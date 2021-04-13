@@ -18,11 +18,11 @@ namespace Flare
 
 	void Renderer::initialize()
 	{
-		this->color_program.compileShader("shader/vertex.shader", "shader/fragment.shader");
-		this->color_program.addAttribute("vertexPosition");
-		this->color_program.addAttribute("vertexColor");
-		this->color_program.addAttribute("vertexUV");
-		this->color_program.linkShader();
+		this->color_program.compile_shader("shader/vertex.shader", "shader/fragment.shader");
+		this->color_program.add_attribute("vertexPosition");
+		this->color_program.add_attribute("vertexColor");
+		this->color_program.add_attribute("vertexUV");
+		this->color_program.link_shader();
 		this->create_vertex_array();
 	}
 
@@ -36,10 +36,10 @@ namespace Flare
 		this->color_program.use();
 		glActiveTexture(GL_TEXTURE0);
 
-		auto textureLocation = this->color_program.getUniform("imageSampler");
+		auto textureLocation = this->color_program.get_uniform("imageSampler");
 		glUniform1i(textureLocation, 0);
 
-		auto local_camera = this->color_program.getUniform("cameraPosition");
+		auto local_camera = this->color_program.get_uniform("cameraPosition");
 		auto camera_matrix = this->camera.getCameraMatrix();
 
 		glUniformMatrix4fv(local_camera, 1, GL_FALSE, &(camera_matrix[0][0]));

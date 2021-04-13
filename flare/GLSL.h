@@ -1,33 +1,32 @@
 #pragma once
-#include <string>
-#include <gl/glew.h>
 
+#include <gl/glew.h>
+#include <string>
 
 namespace Flare
 {
 	class GLSL
 	{
+
 	public:
-		GLSL();
-		~GLSL();
+		GLSL() noexcept;
 
-		void compileShader(const std::string& vertexShaderPath, const std::string& fragmentShaderPath);
-		void linkShader() const;
-		void addAttribute(const std::string& attributeName);
+		void compile_shader(const std::string& vertex_shader_path, const std::string& fragment_shader_path);
+		void link_shader() const;
+		void add_attribute(const std::string& attribute_name) noexcept;
 
-		void use() const;
-		void unuse() const;
+		void use() const noexcept;
+		void unuse() const noexcept;
 
-		GLint getUniform(const std::string& uniformName) const;
+		GLint get_uniform(const std::string& uniform_name) const;
+
 	private:
+		GLuint program_id;
+		GLuint vertex_shader_id;
+		GLuint fragment_shader_id;
 
+		int attribute_count;
 
-		GLuint programID;
-		GLuint vertexShaderID;
-		GLuint fragmentShaderID;
-
-		int attributeCount;
-
-		void compileSource(const std::string& sourcePath, GLuint shaderID) const;
+		void compile_source(const std::string& source_path, GLuint shaderID) const;
 	};
 }
