@@ -186,7 +186,6 @@
     <ClCompile Include="picoPNG.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Resource_manager.cpp" />
-    <ClCompile Include="mathematics.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Text_field.cpp" />
     <ClCompile Include="Glyph.cpp" />
