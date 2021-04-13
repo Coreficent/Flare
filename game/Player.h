@@ -11,7 +11,7 @@ namespace Game
 	{
 
 	public:
-		Player(int window_width);
+		Player(int window_width) noexcept;
 
 		void enter_frame() override;
 

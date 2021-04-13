@@ -2,7 +2,7 @@
 
 namespace Game
 {
-	Player::Player(int window_width) : Sprite{}, window_width{ window_width }
+	Player::Player(int window_width) noexcept: Sprite{}, window_width{ window_width }
 	{
 		
 	}

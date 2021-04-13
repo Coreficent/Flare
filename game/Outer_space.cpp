@@ -31,7 +31,7 @@ namespace Game
 		{
 			const float mass{ (this->progress * 450.0f + 50.0f) * (10 * rand() % 90) / 100 };
 			shared_ptr<Debris> debris{ make_shared<Debris>("texture/Debris.png", mass) };
-			debris->x = (rand() % this->window_width - this->window_width / 2) * 8 / 10;
+			debris->x = 1.0f * (rand() % this->window_width - this->window_width / 2) * 8 / 10;
 			debris->y = -this->window_height / 2 - mass / 2;
 			debris->speed = 5.0f + rand() % 10;
 

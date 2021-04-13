@@ -18,8 +18,8 @@ namespace Game {
 		this->add_child(this->static_layer);
 
 		shared_ptr<Sprite> sky{ make_shared<Sprite>("texture/Sky.png") };
-		sky->width = this->window_width;
-		sky->height = this->window_height;
+		sky->width = 1.0f * this->window_width;
+		sky->height = 1.0f * this->window_height;
 		this->static_layer->add_child(sky);
 
 		shared_ptr<Sprite> ground{ make_shared<Sprite>("texture/Ground.png") };
@@ -63,7 +63,7 @@ namespace Game {
 		this->add_child(this->interface_layer);
 
 		this->statistics->text = "statistics";
-		float border{ 25.0f };
+		const float border{ 25.0f };
 		this->statistics->x = -this->window_width / 2 + border;
 		this->statistics->y = -this->window_height / 2 + border;
 		this->statistics->scale_y = 2.0f;
@@ -116,7 +116,7 @@ namespace Game {
 		this->gun->cool_down = 5 + 250 * 1'00 / (this->score + 1);
 		this->cannon_left->cool_down = this->cannon_right->cool_down = 10 + 125 * 1'00 / (this->score + 1);
 
-		int score_maximum{ 99'999 };
+		const int score_maximum{ 99'999 };
 		if (this->score > score_maximum) {
 			this->score = score_maximum;
 		}
