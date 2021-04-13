@@ -1,4 +1,4 @@
-#include "IOManager.h"
+#include "IO_manager.h"
 #include "Image_loader.h"
 #include "error.h"
 #include "picoPNG.h"
@@ -15,7 +15,7 @@ namespace Flare
 		unsigned long width{};
 		unsigned long height{};
 
-		if (!IOManager::read_file_to_buffer(filePath, input))
+		if (!IO_manager::read_file_to_buffer(filePath, input))
 		{
 			output_error("failed to load to buffer");
 		}

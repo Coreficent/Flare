@@ -1,4 +1,4 @@
-#include "IOManager.h"
+#include "IO_manager.h"
 #include "error.h"
 
 #include <fstream>
@@ -7,13 +7,13 @@ namespace Flare
 {
 	using namespace std;
 
-	bool IOManager::read_file_to_buffer(string filePath, vector<unsigned char>& buffer)
+	bool IO_manager::read_file_to_buffer(string file_path, vector<unsigned char>& buffer)
 	{
-		ifstream file(filePath, ios::binary);
+		ifstream file(file_path, ios::binary);
 
 		if (file.fail())
 		{
-			output_error("failed to load binary at " + filePath);
+			output_error("failed to load binary at " + file_path);
 			return false;
 		}
 

@@ -105,7 +105,7 @@
     <ClInclude Include="Image_loader.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
-    <ClInclude Include="IOManager.h">
+    <ClInclude Include="IO_manager.h">
       <Filter>Header Files\unsorted</Filter>
     </ClInclude>
     <ClInclude Include="picoPNG.h">
@@ -170,7 +170,7 @@
     <ClCompile Include="Image_loader.cpp">
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
-    <ClCompile Include="IOManager.cpp">
+    <ClCompile Include="IO_manager.cpp">
       <Filter>Source Files\unsorted</Filter>
     </ClCompile>
     <ClCompile Include="picoPNG.cpp">

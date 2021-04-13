@@ -161,7 +161,7 @@
     <ClInclude Include="Key.h" />
     <ClInclude Include="mathematics.h" />
     <ClInclude Include="Image_loader.h" />
-    <ClInclude Include="IOManager.h" />
+    <ClInclude Include="IO_manager.h" />
     <ClInclude Include="Flare_core.h" />
     <ClInclude Include="picoPNG.h" />
     <ClInclude Include="Renderer.h" />
@@ -180,7 +180,7 @@
     <ClCompile Include="Frame_manager.cpp" />
     <ClCompile Include="GLSL.cpp" />
     <ClCompile Include="Image_loader.cpp" />
-    <ClCompile Include="IOManager.cpp" />
+    <ClCompile Include="IO_manager.cpp" />
     <ClCompile Include="Flare_core.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="picoPNG.cpp" />
